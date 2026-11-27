@@ -39,6 +39,8 @@ La page **#entreprises** affiche une liste d'entreprises remplie par les étudia
    - **Secteur** d'activité (réponse courte)
    - **Ville** / pays (réponse courte)
    - Type d'**accueil** (cases à cocher : Stage 1re année, Stage 2e année (étranger), Stage 3e année, Alternance)
+   - **Nom du contact** (réponse courte : la personne à contacter, avec son accord)
+   - E-mail du **contact** (réponse courte : de préférence une adresse professionnelle ou générique, stages@…)
    - **Site** web (réponse courte)
    - **Commentaire** (paragraphe, facultatif)
 2. Relie-le à un tableau Google Sheets, publie l'onglet des réponses en **CSV** (comme pour les projets).

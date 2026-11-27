@@ -10,7 +10,7 @@
   l'empreinte doit être recalculée, sinon le site ne s'affichera plus.
   Modifier le texte, CONFIG ou SEED ne change PAS l'empreinte.
 -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-XhD18gDh/SyaTh3TzQd0uMpcsErp1O5MpTXozMfhcA4='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https: data:; connect-src https://docs.google.com https://*.googleusercontent.com; frame-src https://docs.google.com https://accounts.google.com https://www.youtube-nocookie.com; base-uri 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-N5gzO4FirwagnGFZWj2hhEQCIgJzaJwxT/VgNB7Zyz0='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https: data:; connect-src https://docs.google.com https://*.googleusercontent.com; frame-src https://docs.google.com https://accounts.google.com https://www.youtube-nocookie.com; base-uri 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Projets ITS – EPISEN · Santé, IA & Cybersécurité</title>
 <meta name="description" content="Les projets MESPI et PoC des élèves-ingénieurs de la spécialité ITS (Ingénierie et Technologies pour la Santé) de l'EPISEN : parcours IA&D-S (Intelligence Artificielle et Données de Santé) et Cyber-S (Cybersécurité en Santé).">
@@ -724,6 +724,10 @@ a.aud:hover .ic,a.stage:hover .ic{transform:rotate(-8deg) scale(1.08)}
 .tbl td{padding:14px 16px;border-bottom:1px solid var(--line);vertical-align:top}
 .tbl tr:last-child td{border-bottom:none}
 .tbl td b{display:block}
+.ent-tbl caption{caption-side:top;text-align:left;padding:14px 16px;font-weight:800;font-size:15px;letter-spacing:-.01em;border-bottom:1px solid var(--line)}
+.ent-tbl caption span{display:inline-block;margin-left:6px;padding:1px 8px;border-radius:999px;background:var(--brand-soft);color:var(--brand);font-size:12.5px}
+.ent-tbl td .muted{display:block;font-size:13px}
+.tbl-empty{text-align:center;color:var(--muted);padding:26px 16px!important;font-style:italic}
 .tbl-inline td b{display:inline}
 .more-wrap{grid-column:1/-1;display:flex;justify-content:center;padding:6px 0}
 .tbl .tbd{color:var(--muted);font-style:italic}
@@ -1897,18 +1901,23 @@ if("IntersectionObserver" in window && !reduceMotion){
 }else reveals.forEach(el=>el.classList.add("in"));
 
 /* ---------- Liste collaborative des entreprises (page Entreprises) ---------- */
-const ENT_MATCH=[["publie",/publi|valid|approuv|moder/],["lien",/site|lien|url/],["type",/accueil|type/],["secteur",/secteur/],["ville",/ville|lieu|pays/],["note",/commentaire|remarque|precision/],["contact",/contact|mail|courriel/],["nom",/entreprise|structure|nom/]];
-const ENT_LIM={nom:80,secteur:60,ville:60,type:160,lien:2000,note:300,contact:120};
+const ENT_MATCH=[["publie",/publi|valid|approuv|moder/],["lien",/site|lien|url/],["type",/accueil|type/],["secteur",/secteur/],["ville",/ville|lieu|pays/],["note",/commentaire|remarque|precision/],["personne",/nom du contact|interlocuteur|personne/],["contact",/contact|mail|courriel/],["nom",/entreprise|structure|nom/]];
+const ENT_LIM={nom:80,secteur:60,ville:60,type:160,lien:2000,note:300,contact:120,personne:80};
 const ENT_TYPES=[["s1","Stage 1re année",/1re|1ere|premiere|decouverte/],["s2","Stage 2e année",/2e|deuxieme|etranger/],["s3","Stage 3e année",/3e|troisieme|fin d.etudes/],["alt","Alternance",/alternance|apprenti|fisa/]];
 let ENTS=[], entFilter="";
+const STAGE_TITLES={s1:"Lieux de stage de 1re année · monde de la santé",s2:"Entreprises et laboratoires à l'étranger · stage de 2e année",s3:"Entreprises et laboratoires · stage de fin d'études"};
+function entTable(list,title,withType,open){
+  const cols=["Structure",...(withType?["Accueil"]:[]),"Ville / pays","Nom du contact","E-mail","Commentaire"];
+  const rows=list.length ? list.map(e=>`<tr><td><b>${e.lien?`<a href="${esc(e.lien)}" target="_blank" rel="noopener noreferrer">${esc(e.nom)} ↗</a>`:esc(e.nom)}</b>${e.secteur?`<span class="muted">${esc(e.secteur)}</span>`:""}</td>${withType?`<td>${e.tk.map(k=>`<span class="tag">${esc(ENT_TYPES.find(t=>t[0]===k)[1])}</span>`).join(" ")}</td>`:""}<td>${esc(e.ville)}</td><td>${esc(e.personne)}</td><td>${e.mail?`<a href="mailto:${esc(e.mail)}">${esc(e.mail)}</a>`:esc(e.contact)}</td><td>${esc(e.note)}</td></tr>`).join("")
+    : `<tr><td colspan="${cols.length}" class="tbl-empty">Aucune structure pour l'instant. ${open?"Tu en connais une ? Ajoute-la : elle aidera toute la promo.":"La liste sera bientôt ouverte aux contributions des étudiants."}</td></tr>`;
+  return `<div class="tbl-wrap"><table class="tbl ent-tbl"><caption>${esc(title)}${list.length?` <span>${list.length}</span>`:""}</caption><thead><tr>${cols.map(c=>`<th>${c}</th>`).join("")}</tr></thead><tbody>${rows}</tbody></table></div>`;
+}
 function renderStageTables(){
   const open=!!safeUrl(CONFIG.ENTREPRISES_FORM_URL);
   document.querySelectorAll("[data-stage-add]").forEach(a=>a.hidden=!open);
   document.querySelectorAll("[data-stage-list]").forEach(box=>{
-    const k=box.dataset.stageList, list=ENTS.filter(e=>e.tk.includes(k));
-    box.innerHTML = !list.length
-      ? `<div class="ent-empty"><b>La liste se remplit grâce aux étudiants</b>${open?"Sois le premier à partager un lieu de stage.":"Elle sera bientôt ouverte aux contributions."}</div>`
-      : `<div class="tbl-wrap"><table class="tbl"><thead><tr><th>Structure</th><th>Secteur</th><th>Ville / pays</th><th>Contact</th><th>Commentaire</th></tr></thead><tbody>${list.map(e=>`<tr><td><b>${e.lien?`<a href="${esc(e.lien)}" target="_blank" rel="noopener noreferrer">${esc(e.nom)} ↗</a>`:esc(e.nom)}</b></td><td>${esc(e.secteur)}</td><td>${esc(e.ville)}</td><td>${e.mail?`<a href="mailto:${esc(e.mail)}">${esc(e.mail)}</a>`:esc(e.contact)}</td><td>${esc(e.note)}</td></tr>`).join("")}</tbody></table></div>`;
+    const k=box.dataset.stageList;
+    box.innerHTML=entTable(ENTS.filter(e=>e.tk.includes(k)),STAGE_TITLES[k]||"",false,open);
   });
 }
 function renderEnts(){
@@ -1916,9 +1925,7 @@ function renderEnts(){
   const add=$("#ent-add"); add.hidden=!safeUrl(CONFIG.ENTREPRISES_FORM_URL);
   $("#ent-chips").innerHTML = ENTS.length ? [["","Toutes"],...ENT_TYPES.map(t=>[t[0],t[1]])].map(([k,l])=>`<button type="button" class="chip" data-ent="${k}" aria-pressed="${entFilter===k}">${esc(l)}</button>`).join("") : "";
   const list=ENTS.filter(e=>!entFilter||e.tk.includes(entFilter));
-  $("#ent-list").innerHTML = !ENTS.length
-    ? `<div class="ent-empty"><b>La liste se remplit grâce aux étudiants</b>${add.hidden?"Elle sera bientôt ouverte aux contributions.":"Sois le premier à ajouter une entreprise qui t'a accueilli."}</div>`
-    : `<div class="ent-grid">${list.map(e=>`<article class="ent"><h4>${esc(e.nom)}</h4>${e.secteur||e.ville?`<span class="m">${esc([e.secteur,e.ville].filter(Boolean).join(" · "))}</span>`:""}<div class="tags">${e.tk.map(k=>`<span class="tag">${esc(ENT_TYPES.find(t=>t[0]===k)[1])}</span>`).join("")}</div>${e.note?`<p class="n">${esc(e.note)}</p>`:""}${e.lien?`<a href="${esc(e.lien)}" target="_blank" rel="noopener noreferrer">Site de l'entreprise ↗</a>`:""}</article>`).join("")}</div>`;
+  $("#ent-list").innerHTML = entTable(list,entFilter?ENT_TYPES.find(t=>t[0]===entFilter)[1]:"Toutes les structures",true,!add.hidden);
 }
 async function loadEnts(){
   renderEnts();
