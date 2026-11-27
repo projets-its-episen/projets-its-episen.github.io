@@ -10,7 +10,7 @@
   l'empreinte doit être recalculée, sinon le site ne s'affichera plus.
   Modifier le texte, CONFIG ou SEED ne change PAS l'empreinte.
 -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-72BiGBsrBYeoaDNLy3kkF1GUZ3i1abGOdcydXqouigY='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https: data:; connect-src https://docs.google.com https://*.googleusercontent.com; frame-src https://docs.google.com https://accounts.google.com https://www.youtube-nocookie.com; base-uri 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-WwX7yD68unSpJ/GQ6vrsWEI+f0Yv0EQpALV+yxf8m8M='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https: data:; connect-src https://docs.google.com https://*.googleusercontent.com; frame-src https://docs.google.com https://accounts.google.com https://www.youtube-nocookie.com; base-uri 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Projets ITS – EPISEN · Santé, IA & Cybersécurité</title>
 <meta name="description" content="Les projets MESPI et PoC des élèves-ingénieurs de la spécialité ITS (Ingénierie et Technologies pour la Santé) de l'EPISEN : parcours IA&D-S (Intelligence Artificielle et Données de Santé) et Cyber-S (Cybersécurité en Santé).">
@@ -49,6 +49,8 @@
      SHEET_CSV_URL : lien CSV du tableau (Fichier > Partager > Publier sur le Web > CSV)
      FORM_URL      : lien du formulaire Google (bouton "Envoyer" > lien)
      CONTACT_EMAIL : adresse qui reçoit les signalements
+     ENTREPRISES_CSV_URL / ENTREPRISES_FORM_URL : tableau et formulaire de la liste
+                                    collaborative des entreprises (page Entreprises)
      MASQUER_EXEMPLES_A_PARTIR_DE : les projets exemples disparaissent dès qu'il y a
                                     ce nombre de vrais projets (0 = ne jamais les afficher)
      Garde les guillemets et les virgules (format JSON).
@@ -58,7 +60,9 @@
   "SHEET_CSV_URL": "https://docs.google.com/spreadsheets/d/e/2PACX-1vT3IUIzq-4m4OgX6QjNPeyxWifSh22qraIiD5FnA8hZOsYImm9R95bRfkHo8UiO4qs6OYiM8O5OoUt7/pub?gid=799833823&single=true&output=csv",
   "FORM_URL": "https://docs.google.com/forms/d/e/1FAIpQLScz9egcTJLxxIh9N9W8atfQSzkuk1lnDvxhXEKN0jSuB3QIpg/viewform",
   "CONTACT_EMAIL": "projets.its.episen@gmail.com",
-  "MASQUER_EXEMPLES_A_PARTIR_DE": 8
+  "MASQUER_EXEMPLES_A_PARTIR_DE": 8,
+  "ENTREPRISES_CSV_URL": "",
+  "ENTREPRISES_FORM_URL": ""
 }
 </script>
 
@@ -712,6 +716,23 @@ a.aud:hover .ic,a.stage:hover .ic{transform:rotate(-8deg) scale(1.08)}
 .speech p:not(.lead-xl){color:var(--ink)}
 .speech a{color:var(--brand);font-weight:700;text-underline-offset:3px}
 .speech-end{margin-top:34px;padding:18px 20px;border-radius:16px;background:var(--brand-soft);border:1px solid var(--line)}
+.tbl-wrap{overflow-x:auto;margin-top:14px;border:1px solid var(--line);border-radius:18px;background:var(--surface)}
+.tbl{width:100%;border-collapse:collapse;font-size:14.5px;min-width:640px}
+.tbl th{text-align:left;font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);padding:14px 16px;border-bottom:1px solid var(--line);background:var(--surface-2)}
+.tbl td{padding:14px 16px;border-bottom:1px solid var(--line);vertical-align:top}
+.tbl tr:last-child td{border-bottom:none}
+.tbl td b{display:block}
+.tbl .tbd{color:var(--muted);font-style:italic}
+.tbl a{color:var(--brand);font-weight:700}
+.ent-tools{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-top:14px}
+.ent-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;margin-top:16px}
+.ent{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:18px;display:flex;flex-direction:column;gap:8px;box-shadow:var(--shadow-sm)}
+.ent h4{font-size:16.5px;letter-spacing:-.02em}
+.ent .m{font-size:13px;color:var(--muted);font-weight:600}
+.ent .n{font-size:14px;color:var(--muted)}
+.ent a{color:var(--brand);font-weight:700;font-size:14px;margin-top:auto}
+.ent-empty{margin-top:16px;padding:26px;border:2px dashed var(--line-2);border-radius:18px;text-align:center;color:var(--muted)}
+.ent-empty b{display:block;color:var(--ink);font-size:17px;margin-bottom:4px}
 .lead-xl{font-size:clamp(17px,2vw,20px);color:var(--muted);max-width:720px;margin-top:6px}
 .points{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-top:32px}
 .point{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:24px;box-shadow:var(--shadow-sm)}
@@ -724,9 +745,9 @@ a.aud:hover .ic,a.stage:hover .ic{transform:rotate(-8deg) scale(1.08)}
 .weeks{margin-top:34px;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:22px}
 .weeks .bar3{display:flex;gap:6px;height:16px}
 .weeks .bar3 i{border-radius:8px;background:linear-gradient(90deg,var(--brand),var(--teal))}
-.weeks .bar3 i:nth-child(1){flex:6;opacity:.5}.weeks .bar3 i:nth-child(2){flex:14;opacity:.75}.weeks .bar3 i:nth-child(3){flex:24}
+.weeks .bar3 i:nth-child(1){flex:6;opacity:.5}.weeks .bar3 i:nth-child(2){flex:16;opacity:.75}.weeks .bar3 i:nth-child(3){flex:24}
 .weeks .lab3{display:flex;gap:6px;margin-top:10px;font-size:13px;font-weight:700;color:var(--muted)}
-.weeks .lab3 span:nth-child(1){flex:6}.weeks .lab3 span:nth-child(2){flex:14}.weeks .lab3 span:nth-child(3){flex:24}
+.weeks .lab3 span:nth-child(1){flex:6}.weeks .lab3 span:nth-child(2){flex:16}.weeks .lab3 span:nth-child(3){flex:24}
 .weeks .tot{display:flex;justify-content:space-between;margin-bottom:12px;font-weight:800}
 .weeks .tot span{color:var(--muted);font-weight:600;font-size:14px}
 .stage p.desc{color:var(--muted);font-size:14.5px}
@@ -906,8 +927,8 @@ a.aud:hover .ic,a.stage:hover .ic{transform:rotate(-8deg) scale(1.08)}
       <p class="section-sub">Le cycle ingénieur ITS se déroule sur trois ans : des fondamentaux jusqu'aux deux axes IA&amp;D-S et Cyber-S, avec un stage chaque année.</p>
     </div>
     <div class="timeline reveal">
-      <div class="tl"><small>1re année · Semestres 1 et 2</small><b>Les fondamentaux</b><span>Le socle commun de l'ingénieur, entre numérique et santé.</span><br><span class="stg">Stage de découverte · 6 semaines</span><i class="bar"></i></div>
-      <div class="tl"><small>2e année · Semestres 3 et 4</small><b>Les bases des deux axes</b><span>Premiers modules IA&amp;D-S et Cyber-S.</span><br><span class="stg">Stage à l'étranger · 14 semaines</span><i class="bar"></i></div>
+      <div class="tl"><small>1re année · Semestres 1 et 2</small><b>Les fondamentaux</b><span>Le socle commun de l'ingénieur, entre numérique et santé.</span><br><span class="stg">Stage de découverte · 4 à 6 semaines</span><i class="bar"></i></div>
+      <div class="tl"><small>2e année · Semestres 3 et 4</small><b>Les bases des deux axes</b><span>Premiers modules IA&amp;D-S et Cyber-S.</span><br><span class="stg">Stage à l'étranger · 12 à 16 semaines</span><i class="bar"></i></div>
       <div class="tl"><small>3e année · Semestre 5</small><b>Approfondissement</b><span>Les deux axes se densifient.</span><br><span class="stg">Stage de fin d'études · 24 semaines</span><i class="bar"></i></div>
     </div>
     <p class="fineprint">D'après la maquette de la spécialité et la présentation de la formation par l'EPISEN.</p>
@@ -961,21 +982,21 @@ a.aud:hover .ic,a.stage:hover .ic{transform:rotate(-8deg) scale(1.08)}
     <div class="reveal">
       <span class="kicker">Stages &amp; international</span>
       <h2 class="section-title">Trois stages, <em>une ouverture internationale</em></h2>
-      <p class="section-sub">Des expériences professionnelles chaque année pour une intégration réussie : <strong>44 semaines de stage</strong> sur les trois années du cycle ingénieur.</p>
+      <p class="section-sub">Des expériences professionnelles chaque année pour une intégration réussie : <strong>jusqu'à 46 semaines de stage</strong> sur les trois années du cycle ingénieur, dont une expérience obligatoire à l'étranger.</p>
     </div>
     <div class="stages reveal">
       <a class="stage glow" href="#infos-stages" style="--w:25%">
         <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5z"/></svg></span>
         <span class="yr">1re année</span>
-        <div class="wk"><b data-count="6">6</b><span>semaines</span></div>
+        <div class="wk"><b>4–6</b><span>semaines</span></div>
         <h3>Stage de découverte du monde professionnel</h3>
         <div class="dur" aria-hidden="true"><i></i></div>
         <span class="more">Voir les détails <i aria-hidden="true">→</i></span>
       </a>
-      <a class="stage glow" href="#infos-stages" style="--w:58.3%">
+      <a class="stage glow" href="#infos-stages" style="--w:66.7%">
         <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg></span>
         <span class="yr">2e année</span>
-        <div class="wk"><b data-count="14">14</b><span>semaines</span></div>
+        <div class="wk"><b>12–16</b><span>semaines</span></div>
         <h3>Stage de réalisation</h3>
         <span class="flag">À l'étranger</span>
         <div class="dur" aria-hidden="true"><i></i></div>
@@ -1047,29 +1068,29 @@ a.aud:hover .ic,a.stage:hover .ic{transform:rotate(-8deg) scale(1.08)}
   <div class="wrap">
     <a href="#stages" class="back">← Retour</a>
     <span class="kicker">Stages &amp; international</span>
-    <h1 class="section-title view-title" id="view-stages-t" tabindex="-1">Un stage chaque année, <em>44 semaines d'expérience</em></h1>
+    <h1 class="section-title view-title" id="view-stages-t" tabindex="-1">Un stage chaque année, <em>et une expérience à l'étranger</em></h1>
     <p class="lead-xl">Des expériences professionnelles à chaque année du cycle ingénieur, pour une intégration réussie.</p>
     <div class="weeks">
-      <div class="tot">44 semaines de stage <span>sur les 3 années</span></div>
+      <div class="tot">Jusqu'à 46 semaines de stage <span>FISE, sur les 3 années</span></div>
       <div class="bar3" aria-hidden="true"><i></i><i></i><i></i></div>
-      <div class="lab3"><span>6 sem.</span><span>14 sem. · étranger</span><span>24 sem.</span></div>
+      <div class="lab3"><span>4–6 sem.</span><span>12–16 sem. · étranger</span><span>24 sem.</span></div>
     </div>
     <div class="stages in">
       <article class="stage" style="--w:25%">
         <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5z"/></svg></span>
         <span class="yr">1re année</span>
-        <div class="wk"><b>6</b><span>semaines</span></div>
+        <div class="wk"><b>4–6</b><span>semaines</span></div>
         <h3>Stage de découverte du monde professionnel</h3>
-        <p class="desc">Un premier contact avec le monde professionnel dès la première année.</p>
+        <p class="desc">Au semestre 2 : un premier contact avec le monde professionnel, dans le monde de la santé.</p>
         <div class="dur" aria-hidden="true"><i></i></div>
       </article>
-      <article class="stage" style="--w:58.3%">
+      <article class="stage" style="--w:66.7%">
         <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg></span>
         <span class="yr">2e année</span>
-        <div class="wk"><b>14</b><span>semaines</span></div>
+        <div class="wk"><b>12–16</b><span>semaines</span></div>
         <h3>Stage de réalisation</h3>
         <span class="flag">À l'étranger</span>
-        <p class="desc">Une mission de réalisation à l'étranger, qui ouvre la formation à l'international.</p>
+        <p class="desc">Stage international à la fin du semestre 4 (16 semaines pour la promo 2026-2027, départ le 10 mai 2027). Les pays non francophones sont privilégiés.</p>
         <div class="dur" aria-hidden="true"><i></i></div>
       </article>
       <article class="stage" style="--w:100%">
@@ -1077,9 +1098,17 @@ a.aud:hover .ic,a.stage:hover .ic{transform:rotate(-8deg) scale(1.08)}
         <span class="yr">3e année</span>
         <div class="wk"><b>24</b><span>semaines</span></div>
         <h3>Stage de fin d'études</h3>
-        <p class="desc">Le stage qui conclut le cycle ingénieur.</p>
+        <p class="desc">Après le semestre 5, le stage qui conclut le cycle ingénieur.</p>
         <div class="dur" aria-hidden="true"><i></i></div>
       </article>
+    </div>
+    <h2 class="sub-title">Partir <em>à l'étranger</em></h2>
+    <div class="speech">
+      <p>L'expérience internationale est <strong>obligatoire</strong>. En FISE, c'est le stage de 2e année : 12 à 16 semaines à la fin du semestre 4. En FISA, c'est une <strong>mobilité de 9 à 12 semaines</strong>, en 2e ou en 3e année, dans une branche étrangère de l'entreprise ou dans une autre entreprise (le contrat d'alternance est alors suspendu, avec une convention de stage et une convention de mobilité signées avec l'école, le CFA et l'entreprise).</p>
+      <p><strong>Destinations fréquentes :</strong> Vietnam, Thaïlande, Malaisie, Canada, mais aussi Corée du Sud, Espagne, Portugal, Italie, Allemagne, Suède, Brésil…</p>
+      <p><strong>Autres options en FISE :</strong> un semestre 4 à l'université HUST de Hanoï (programmes Global ICT, Data Science &amp; AI, Cyber Security) ou une université du <a href="https://www.u-pec.fr/fr/international/aurora/opportunites-etudiants" target="_blank" rel="noopener noreferrer">réseau européen AURORA ↗</a>.</p>
+      <p><strong>Bon à savoir :</strong> l'aide à la mobilité internationale de l'UPEC est d'environ 350 à 400 € par mois, sous réserve de budget et de classement. Le <strong>TOEIC (785 minimum)</strong> est obligatoire pour obtenir le diplôme : l'école finance une session au semestre 4, avant le départ.</p>
+      <p><strong>Le conseil des étudiants :</strong> commence ta recherche dès la rentrée, parle aux ITS3 et aux diplômés, récupère leurs contacts et sollicite le BDE.</p>
     </div>
     <div class="passport">
       <div>
@@ -1098,7 +1127,7 @@ a.aud:hover .ic,a.stage:hover .ic{transform:rotate(-8deg) scale(1.08)}
     <div class="contact-more">
       <article class="cm">
         <h3>Entreprises &amp; établissements de santé</h3>
-        <p>Proposer un stage (6, 14 ou 24 semaines), un projet MESPI ou PoC, ou présenter votre structure aux étudiants ITS.</p>
+        <p>Proposer un stage (4 à 6, 12 à 16 ou 24 semaines), un projet MESPI ou PoC, ou présenter votre structure aux étudiants ITS.</p>
         <a class="btn btn-primary btn-sm" href="#" data-contact="Proposition de stage ou de projet">Proposer un stage</a>
       </article>
       <article class="cm">
@@ -1112,7 +1141,7 @@ a.aud:hover .ic,a.stage:hover .ic{transform:rotate(-8deg) scale(1.08)}
         <a class="btn btn-ghost btn-sm" href="https://episen.u-pec.fr/formations/technologies-pour-la-sante-its" target="_blank" rel="noopener noreferrer">Site de l'EPISEN ↗</a>
       </article>
     </div>
-    <p class="fineprint">D'après la présentation de la formation par l'EPISEN. Site étudiant non officiel.</p>
+    <p class="fineprint">D'après la présentation de la formation par l'EPISEN, les M3C 2026-2027 et la pré-rentrée ITS2 2026-2027. Les dates peuvent évoluer : les communications officielles de l'école font référence. Site étudiant non officiel.</p>
   </div>
 </section>
 
@@ -1137,7 +1166,7 @@ a.aud:hover .ic,a.stage:hover .ic{transform:rotate(-8deg) scale(1.08)}
       <p>Pendant la formation, tu te spécialises dans l'un des deux axes : <a href="#specialite">IA&amp;D-S</a>, l'intelligence artificielle appliquée aux données de santé, ou <a href="#specialite">Cyber-S</a>, la cybersécurité des systèmes de santé. Les deux se construisent sur <a href="#formation">trois années</a>, des fondamentaux jusqu'à l'approfondissement.</p>
 
       <h3>Des stages chaque année</h3>
-      <p>Tu n'attends pas la fin des études pour découvrir l'entreprise : un stage de découverte de 6 semaines en 1re année, un stage de 14 semaines <strong>à l'étranger</strong> en 2e année, puis le stage de fin d'études de 24 semaines. Soit 44 semaines au total. <a href="#infos-stages">Tout sur les stages →</a></p>
+      <p>Tu n'attends pas la fin des études pour découvrir l'entreprise : un stage de découverte de 4 à 6 semaines dans le monde de la santé en 1re année, un stage de 12 à 16 semaines <strong>à l'étranger</strong> en 2e année, puis le stage de fin d'études de 24 semaines. En alternance, la mobilité internationale de 9 à 12 semaines est aussi obligatoire. <a href="#infos-stages">Tout sur les stages →</a></p>
 
       <h3>Des projets concrets</h3>
       <p>Ici, on ne fait pas que de la théorie. Chaque année, on mène de vrais projets, notamment les <strong>MESPI</strong> et les <strong>PoC</strong> : un brassard connecté qui mesure l'activité musculaire, l'architecture réseau sécurisée d'une entreprise de téléradiologie… Si tu veux voir à quoi ça ressemble, voici <a href="#projets">des projets réalisés par les étudiants et des exemples de sujets →</a></p>
@@ -1151,15 +1180,48 @@ a.aud:hover .ic,a.stage:hover .ic{transform:rotate(-8deg) scale(1.08)}
   <div class="wrap">
     <a href="#pour-qui" class="back">← Retour</a>
     <span class="kicker">Entreprises &amp; recruteurs</span>
-    <h1 class="section-title view-title" id="view-entreprises-t" tabindex="-1">Des profils <em>santé, IA et cyber</em></h1>
-    <p class="lead-xl">Les étudiants ITS sont formés à l'intelligence artificielle appliquée aux données de santé et à la cybersécurité des systèmes de santé.</p>
-    <div class="points">
-        <article class="point" style="--c:#5b3df5"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="6" r="2"/><circle cx="5" cy="18" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="19" cy="18" r="2"/><path d="m7 7 3.5 3.5M7 17l3.5-3.5M13.5 10.5 17 7M13.5 13.5 17 17"/></svg></div><h3>Parcours IA&amp;D-S</h3><p>Traitement des signaux de santé, apprentissage machine et automatisation de l'analyse des données pour la santé.</p></article>
-        <article class="point" style="--c:#0b6e8e"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 20 5v6c0 5-3.4 9.3-8 11-4.6-1.7-8-6-8-11V5Z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg></div><h3>Parcours Cyber-S</h3><p>Sécurité des communications, sécurité des architectures et mise en œuvre de systèmes sécurisés en santé.</p></article>
-        <article class="point" style="--c:#0ba597"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18"/></svg></div><h3>Trois fenêtres de stage</h3><p>6 semaines en 1re année, 14 semaines à l'étranger en 2e année et 24 semaines en fin d'études. <a href="#infos-stages">Détails des stages</a></p></article>
-        <article class="point" style="--c:#2457f5"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></div><h3>Des réalisations visibles</h3><p>Consultez les projets MESPI et PoC pour juger concrètement du niveau des étudiants. <a href="#projets">Voir les projets</a></p></article>
+    <h1 class="section-title view-title" id="view-entreprises-t" tabindex="-1">Accueillir un <em>étudiant ITS</em></h1>
+    <div class="speech">
+      <p class="lead-xl">Vous souhaitez accueillir un étudiant de la spécialité ITS de l'EPISEN, en stage ou en alternance ? Voici l'essentiel, les consignes de chaque stage et les bons contacts.</p>
+
+      <h3>Recruter un alternant</h3>
+      <p>La formation existe aussi <strong>en alternance</strong> (statut d'apprenti, souvent appelé <strong>FISA</strong>), en partenariat avec le <strong>CFA numiA</strong>. L'entreprise recrute l'apprenti, et le contrat d'apprentissage se monte avec le CFA. Pour connaître les démarches et le calendrier, consultez la <a href="https://episen.u-pec.fr/formations/apprentissage" target="_blank" rel="noopener noreferrer">page Apprentissage de l'EPISEN ↗</a>.</p>
+
+      <h3>Accueillir un stagiaire</h3>
+      <p>Les étudiants sous statut étudiant (<strong>FISE</strong>) font un stage chaque année ; les apprentis (<strong>FISA</strong>) sont en entreprise toute l'année et partent aussi à l'étranger. Voici ce qui est attendu chaque année :</p>
     </div>
-    <div class="cta-row"><a class="btn btn-primary" href="#" data-contact="Proposition de stage ou de projet">Proposer un stage ou un projet</a><a class="btn btn-ghost" href="#infos-stages">Voir les stages</a><a class="btn btn-ghost" href="#projets">Voir les projets</a></div>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Année</th><th>Étudiants FISE (stages)</th><th>Apprentis FISA</th><th>Période</th></tr></thead>
+        <tbody>
+          <tr><td><b>1re année</b></td><td><b>Stage de découverte · 4 à 6 semaines</b>Découverte du monde professionnel dans le monde de la santé (par exemple en pharmacie ou en établissement de santé).</td><td>En entreprise, sur des missions définies avec l'entreprise.</td><td>Semestre 2</td></tr>
+          <tr><td><b>2e année</b></td><td><b>Stage de réalisation à l'étranger · 12 à 16 semaines</b>Stage international à la fin du semestre 4. Pays non francophones privilégiés.</td><td><b>Mobilité internationale · 9 à 12 semaines</b>Obligatoire, en 2e ou en 3e année, dans une branche étrangère de l'entreprise ou une autre entreprise.</td><td>Départ le 10 mai 2027 (FISE, promo 2026-2027 : 16 semaines)</td></tr>
+          <tr><td><b>3e année</b></td><td><b>Stage de fin d'études · 24 semaines</b>Stage en entreprise qui conclut le cycle ingénieur.</td><td>En entreprise.</td><td>Après le semestre 5</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="fineprint">D'après les M3C 2026-2027 et la pré-rentrée ITS2 de l'EPISEN. Les consignes et les dates officielles sont fixées par l'école et peuvent évoluer : en cas de doute, renseignez-vous auprès de l'EPISEN. <a href="#infos-stages">Tout sur les stages →</a></p>
+
+    <h2 class="sub-title">Les <em>bons contacts</em></h2>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Vous souhaitez…</th><th>Contact</th><th>Comment</th></tr></thead>
+        <tbody>
+          <tr><td><b>Recruter un alternant (FISA)</b></td><td>CFA numiA, partenaire de l'école</td><td><a href="https://episen.u-pec.fr/formations/apprentissage" target="_blank" rel="noopener noreferrer">Démarches sur la page Apprentissage de l'EPISEN ↗</a></td></tr>
+          <tr><td><b>Conventions de stage, partenariats</b></td><td>EPISEN (adresse générale de l'école)</td><td><a href="mailto:episen@u-pec.fr">episen@u-pec.fr</a></td></tr>
+          <tr><td><b>Diffuser une offre aux étudiants</b></td><td>L'équipe du site Projets ITS</td><td><a href="#" data-contact="Offre de stage ou d'alternance">Envoyer l'offre</a>, nous la partagerons aux promos concernées.</td></tr>
+          <tr><td><b>Informations officielles</b></td><td>Formation ITS</td><td><a href="https://episen.u-pec.fr/formations/technologies-pour-la-sante-its" target="_blank" rel="noopener noreferrer">Page de la formation sur le site de l'EPISEN ↗</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 class="sub-title">Ils accueillent <em>des étudiants ITS</em></h2>
+    <p class="section-sub">Une liste remplie par les étudiants : entreprises qui ont accueilli des stagiaires ou des alternants. Utile aux FISA qui cherchent une alternance comme aux FISE qui cherchent un stage.</p>
+    <div class="ent-tools">
+      <div class="chips" id="ent-chips" role="group" aria-label="Filtrer les entreprises"></div>
+      <a class="btn btn-primary btn-sm" href="#ajouter-entreprise" id="ent-add">+ Ajouter une entreprise</a>
+    </div>
+    <div id="ent-list"></div>
   </div>
 </section>
 
@@ -1172,7 +1234,7 @@ a.aud:hover .ic,a.stage:hover .ic{transform:rotate(-8deg) scale(1.08)}
     <div class="points">
         <article class="point" style="--c:#ff6a55"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.1V17h6v-.2c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2z"/></svg></div><h3>Trouve l'inspiration</h3><p>Des projets et des sujets exemples IA&amp;D-S et Cyber-S pour ton futur MESPI ou PoC. <a href="#projets">Voir les projets</a></p></article>
         <article class="point" style="--c:#5b3df5"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="6" r="2"/><circle cx="5" cy="18" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="19" cy="18" r="2"/><path d="m7 7 3.5 3.5M7 17l3.5-3.5M13.5 10.5 17 7M13.5 13.5 17 17"/></svg></div><h3>Choisis ton parcours</h3><p>Compare les unités d'enseignement IA&amp;D-S et Cyber-S avant de te décider. <a href="#specialite">Voir la spécialité</a></p></article>
-        <article class="point" style="--c:#0ba597"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg></div><h3>Anticipe ton stage</h3><p>En 2e année, le stage de réalisation dure 14 semaines à l'étranger. <a href="#infos-stages">Voir les stages</a></p></article>
+        <article class="point" style="--c:#0ba597"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg></div><h3>Anticipe ton stage</h3><p>En 2e année, le stage de réalisation dure 12 à 16 semaines à l'étranger : commence ta recherche dès la rentrée. <a href="#infos-stages">Voir les stages</a></p></article>
         <article class="point" style="--c:#2457f5"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg></div><h3>Partage ton projet</h3><p>Ton projet mérite d'être vu : ajoute-le en 2 minutes. <a href="#ajouter">Ajouter mon projet</a></p></article>
     </div>
     <div class="cta-row"><a class="btn btn-primary" href="#projets">Voir les projets →</a><a class="btn btn-ghost" href="#specialite">Comparer les parcours</a><a class="btn btn-ghost" href="#contacts">Écrire aux 2e année</a></div>
@@ -1452,9 +1514,8 @@ function clean(p){
 }
 
 /* ---------- Chargement ---------- */
-const CACHE_KEY="its-projets-csv";
-async function fetchSheet(){
-  const url=safeUrl(CONFIG.SHEET_CSV_URL);
+async function fetchSheet(src=CONFIG.SHEET_CSV_URL, CACHE_KEY="its-projets-csv"){
+  const url=safeUrl(src);
   if(!url) return {text:"",source:"none"};
   const ctrl=new AbortController(), timer=setTimeout(()=>ctrl.abort(),12000);
   try{
@@ -1590,7 +1651,7 @@ function hideOverlays(){
   if(lastFocus && document.contains(lastFocus)) lastFocus.focus({preventScroll:true});
 }
 function closeModal(){
-  if(/^#(\/|ajouter$)/.test(location.hash)) history.replaceState(null,"",location.pathname+location.search);
+  if(/^#(\/|ajouter$|ajouter-entreprise$)/.test(location.hash)) history.replaceState(null,"",location.pathname+location.search);
   hideOverlays();
 }
 
@@ -1620,8 +1681,17 @@ function showProject(p){
   showOverlay("ov-proj");
 }
 
-function showForm(){
-  const body=$("#form-body"), url=safeUrl(CONFIG.FORM_URL);
+function showForm(kind){
+  const ent=kind==="entreprise", body=$("#form-body"), url=safeUrl(ent?CONFIG.ENTREPRISES_FORM_URL:CONFIG.FORM_URL);
+  if(ent && url && hostOf(url)==="docs.google.com"){
+    const u=new URL(url); u.searchParams.set("embedded","true");
+    body.innerHTML=`<h2 id="form-title" style="font-size:clamp(22px,3vw,28px);letter-spacing:-.03em;margin-bottom:6px;padding-right:48px">Ajouter une entreprise</h2>
+      <p class="muted" style="margin-bottom:16px">Une entreprise qui t'a accueilli en stage ou en alternance ? Ajoute-la pour aider les autres étudiants.</p>
+      <iframe class="form-frame" src="${esc(u.href)}" title="Formulaire d'ajout d'entreprise" loading="lazy" referrerpolicy="strict-origin-when-cross-origin">Chargement…</iframe>
+      <p style="text-align:center;font-size:13px;padding:12px 0" class="muted">Le formulaire ne s'affiche pas ? <a href="${esc(url)}" target="_blank" rel="noopener noreferrer">Ouvre-le dans un nouvel onglet</a>.</p>`;
+    document.title="Ajouter une entreprise – Projets ITS";
+    return showOverlay("ov-form");
+  }
   if(!url || hostOf(url)!=="docs.google.com"){
     body.innerHTML=`<h2 id="form-title" style="font-size:24px;margin-bottom:12px">Ajouter un projet</h2><p class="notice">Le formulaire n'est pas encore relié. Colle le lien du formulaire Google dans le bloc CONFIG en haut du fichier <code>index.html</code>.</p><div style="height:20px"></div>`;
   }else{
@@ -1677,7 +1747,7 @@ const VIEWS = {
 function applyView(){
   let h=""; try{ h=decodeURIComponent(location.hash.slice(1)); }catch(e){}
   closeMenu();
-  if(h==="ajouter"||h.startsWith("/")) return;
+  if(h==="ajouter"||h==="ajouter-entreprise"||h.startsWith("/")) return;
   const v=Object.prototype.hasOwnProperty.call(VIEWS,h)?VIEWS[h]:null, prev=document.body.dataset.view||"";
   document.querySelectorAll(".view").forEach(el=>el.classList.toggle("on",!!v&&el.id===v.id));
   if(v) document.body.dataset.view=h; else delete document.body.dataset.view;
@@ -1690,6 +1760,7 @@ function route(){
   applyView();
   let h=""; try{ h=decodeURIComponent(location.hash.slice(1)); }catch(e){}
   if(h==="ajouter") return showForm();
+  if(h==="ajouter-entreprise" && safeUrl(CONFIG.ENTREPRISES_FORM_URL)) return showForm("entreprise");
   if(h.startsWith("/")){ const p=BY_SLUG.get(h.slice(1)); if(p) return showProject(p); }
   hideOverlays();
 }
@@ -1764,9 +1835,39 @@ if("IntersectionObserver" in window && !reduceMotion){
   reveals.forEach(el=>io.observe(el));
 }else reveals.forEach(el=>el.classList.add("in"));
 
+/* ---------- Liste collaborative des entreprises (page Entreprises) ---------- */
+const ENT_MATCH=[["publie",/publi|valid|approuv|moder/],["lien",/site|lien|url/],["type",/accueil|type/],["secteur",/secteur/],["ville",/ville|lieu|pays/],["note",/commentaire|remarque|precision/],["nom",/entreprise|structure|nom/]];
+const ENT_LIM={nom:80,secteur:60,ville:60,type:160,lien:2000,note:300};
+const ENT_TYPES=[["s1","Stage 1re année",/1re|1ere|premiere|decouverte/],["s2","Stage 2e année",/2e|deuxieme|etranger/],["s3","Stage 3e année",/3e|troisieme|fin d.etudes/],["alt","Alternance",/alternance|apprenti|fisa/]];
+let ENTS=[], entFilter="";
+function renderEnts(){
+  const add=$("#ent-add"); add.hidden=!safeUrl(CONFIG.ENTREPRISES_FORM_URL);
+  $("#ent-chips").innerHTML = ENTS.length ? [["","Toutes"],...ENT_TYPES.map(t=>[t[0],t[1]])].map(([k,l])=>`<button type="button" class="chip" data-ent="${k}" aria-pressed="${entFilter===k}">${esc(l)}</button>`).join("") : "";
+  const list=ENTS.filter(e=>!entFilter||e.tk.includes(entFilter));
+  $("#ent-list").innerHTML = !ENTS.length
+    ? `<div class="ent-empty"><b>La liste se remplit grâce aux étudiants</b>${add.hidden?"Elle sera bientôt ouverte aux contributions.":"Sois le premier à ajouter une entreprise qui t'a accueilli."}</div>`
+    : `<div class="ent-grid">${list.map(e=>`<article class="ent"><h4>${esc(e.nom)}</h4>${e.secteur||e.ville?`<span class="m">${esc([e.secteur,e.ville].filter(Boolean).join(" · "))}</span>`:""}<div class="tags">${e.tk.map(k=>`<span class="tag">${esc(ENT_TYPES.find(t=>t[0]===k)[1])}</span>`).join("")}</div>${e.note?`<p class="n">${esc(e.note)}</p>`:""}${e.lien?`<a href="${esc(e.lien)}" target="_blank" rel="noopener noreferrer">Site de l'entreprise ↗</a>`:""}</article>`).join("")}</div>`;
+}
+async function loadEnts(){
+  renderEnts();
+  if(!safeUrl(CONFIG.ENTREPRISES_CSV_URL)) return;
+  const {text}=await fetchSheet(CONFIG.ENTREPRISES_CSV_URL,"its-entreprises-csv");
+  const rows=text?parseCSV(text):[]; if(rows.length<2) return;
+  const head=rows[0].map(norm), idx={};
+  head.forEach((h,i)=>{ for(const [k,re] of ENT_MATCH){ if(idx[k]===undefined && re.test(h)){ idx[k]=i; break; } } });
+  const seen=new Set();
+  ENTS=rows.slice(1).filter(r=>idx.publie===undefined||YES.has(norm(r[idx.publie]))).map(r=>{
+    const e={}; for(const k in ENT_LIM) e[k]=clip(idx[k]!==undefined?r[idx[k]]:"",ENT_LIM[k]);
+    e.lien=safeUrl(e.lien); const t=norm(e.type); e.tk=ENT_TYPES.filter(x=>x[2].test(t)).map(x=>x[0]); return e;
+  }).filter(e=>e.nom && !seen.has(norm(e.nom)) && seen.add(norm(e.nom))).sort((a,b)=>a.nom.localeCompare(b.nom,"fr",{sensitivity:"base"}));
+  renderEnts();
+}
+document.addEventListener("click",e=>{ const c=e.target.closest("[data-ent]"); if(c){ entFilter=entFilter===c.dataset.ent?"":c.dataset.ent; renderEnts(); } });
+
 renderContacts();
 applyView();
 load();
+loadEnts();
 })();
 </script>
 </body>

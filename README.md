@@ -30,6 +30,22 @@ En attendant les vrais projets de la promo, le site affiche 21 **sujets exemples
 
 Ils disparaissent automatiquement dès qu'il y a **8 vrais projets** (réglage `MASQUER_EXEMPLES_A_PARTIR_DE` dans le bloc `config`, mettre `0` pour ne jamais les afficher). Pour en modifier ou en retirer un, édite le bloc `exemples` en haut de `index.html`.
 
+## Liste collaborative des entreprises (page Entreprises)
+
+La page **#entreprises** affiche une liste d'entreprises remplie par les étudiants. Pour l'activer :
+
+1. Crée un **nouveau formulaire Google** « Ajouter une entreprise ITS » avec ces questions (garde les mots en gras) :
+   - **Nom de l'entreprise** (réponse courte, obligatoire)
+   - **Secteur** d'activité (réponse courte)
+   - **Ville** / pays (réponse courte)
+   - Type d'**accueil** (cases à cocher : Stage 1re année, Stage 2e année (étranger), Stage 3e année, Alternance)
+   - **Site** web (réponse courte)
+   - **Commentaire** (paragraphe, facultatif)
+2. Relie-le à un tableau Google Sheets, publie l'onglet des réponses en **CSV** (comme pour les projets).
+3. Envoie les deux liens : ils vont dans `ENTREPRISES_CSV_URL` et `ENTREPRISES_FORM_URL` du bloc `config`.
+
+Le bouton « Ajouter une entreprise » n'apparaît qu'une fois le formulaire relié. La colonne `Publié` fonctionne aussi ici pour valider avant affichage.
+
 ## Page Contacts
 
 La page **https://projets-its-episen.github.io/#contacts** présente une carte par année (1re, 2e, 3e année).
