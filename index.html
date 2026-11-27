@@ -378,7 +378,7 @@ button{cursor:pointer;border:none;background:none}
 .logo-mark{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--brand),var(--teal));display:grid;place-items:center;box-shadow:0 6px 16px -6px color-mix(in srgb,var(--brand) 70%,transparent)}
 .logo-mark svg{width:22px;height:22px}
 .nav{display:flex;gap:4px}
-.nav a{padding:8px 12px;border-radius:10px;font-size:14.5px;font-weight:600;color:var(--muted);text-decoration:none;transition:color .2s,background .2s}
+.nav a{padding:8px 9px;border-radius:10px;font-size:14px;font-weight:600;color:var(--muted);text-decoration:none;transition:color .2s,background .2s}
 .nav a:hover{color:var(--ink);background:var(--surface-2)}
 .theme-btn .moon{display:none}
 .theme-btn[data-mode="dark"] .sun{display:none}
@@ -387,7 +387,7 @@ button{cursor:pointer;border:none;background:none}
 .menu-btn{display:none}
 .menu-btn .x,.top.menu-open .menu-btn .bars{display:none}
 .top.menu-open .menu-btn .x{display:block}
-@media(max-width:980px){
+@media(max-width:1140px){
   .nav{display:none}
   .menu-btn{display:grid}
   .top.menu-open .nav{display:flex;flex-direction:column;gap:2px;position:absolute;left:0;right:0;top:64px;padding:10px 16px 16px;background:var(--surface);border-bottom:1px solid var(--line);box-shadow:var(--shadow)}
@@ -755,10 +755,12 @@ body.view-contacts #page>section:not(#contacts-view),body.view-contacts #page>ma
       Projets ITS
     </a>
     <nav class="nav" id="nav" aria-label="Navigation principale">
-      <a href="#specialite">La spécialité</a>
-      <a href="#stages">Stages</a>
-      <a href="#projets">Projets</a>
       <a href="#pour-qui">Pour qui ?</a>
+      <a href="#formation">La formation</a>
+      <a href="#stages">Stages</a>
+      <a href="#specialite">La spécialité</a>
+      <a href="#contribuer">Contribuer</a>
+      <a href="#projets">Projets</a>
       <a href="#contacts" data-view="contacts">Contacts</a>
     </nav>
     <button class="icon-btn menu-btn" id="menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav">
@@ -827,53 +829,50 @@ body.view-contacts #page>section:not(#contacts-view),body.view-contacts #page>ma
   </div>
 </section>
 
-<section class="section" id="specialite">
+
+
+<section class="section" id="pour-qui" style="padding-top:40px">
+  <div class="wrap">
+    <span class="kicker">Pour qui ?</span>
+    <h2 class="section-title">Une vitrine, <em>trois regards</em></h2>
+    <p class="section-sub">Ce site montre ce qui se fait réellement en ITS, au-delà des plaquettes.</p>
+    <div class="audience reveal">
+      <div class="aud" style="--c:#2457f5">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg></div>
+        <h3>Futurs candidats</h3>
+        <p>Découvre à quoi ressemblent concrètement les projets de la filière avant de faire ton choix d'école.</p>
+      </div>
+      <div class="aud" style="--c:#0ba597">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18"/></svg></div>
+        <h3>Entreprises &amp; recruteurs</h3>
+        <p>Repérez des profils formés à l'IA appliquée aux données de santé et à la cybersécurité des systèmes de santé.</p>
+      </div>
+      <div class="aud" style="--c:#ff6a55">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.1V17h6v-.2c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2z"/></svg></div>
+        <h3>Étudiants en ING1</h3>
+        <p>Trouve l'inspiration pour ton futur MESPI ou PoC et découvre à quoi mènent les parcours IA&amp;D-S et Cyber-S.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="formation">
   <div class="wrap">
     <div class="reveal">
-      <span class="kicker">La spécialité ITS</span>
-      <h2 class="section-title">Une spécialité, <em>deux parcours</em></h2>
-      <p class="section-sub">ITS, pour <strong>Ingénierie et Technologies pour la Santé</strong> : former des ingénieurs à la croisée du numérique et de la santé. La formation s'articule autour de deux axes, IA&amp;D-S et Cyber-S.</p>
-    </div>
-    <div class="tracks">
-      <article class="track track-ia reveal">
-        <svg class="deco" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M15 30 50 15 85 35M15 30 50 50 85 35M15 30 50 85M15 70 50 15M15 70 50 50 85 65M15 70 50 85 85 65M50 50 85 65M50 15 85 65M50 85 85 35"/><g fill="currentColor"><circle cx="15" cy="30" r="6"/><circle cx="15" cy="70" r="6"/><circle cx="50" cy="15" r="6"/><circle cx="50" cy="50" r="6"/><circle cx="50" cy="85" r="6"/><circle cx="85" cy="35" r="6"/><circle cx="85" cy="65" r="6"/></g></svg>
-        <span class="acr">IA&amp;D-S</span>
-        <h3>Intelligence Artificielle et Données de Santé</h3>
-        <p>Faire parler les données de santé : signaux physiologiques, apprentissage machine et analyse automatisée.</p>
-        <h4>Unités d'enseignement</h4>
-        <ul class="ue">
-          <li>Représentation et traitement avancés des signaux de santé</li>
-          <li>Introduction aux méthodes d'apprentissage machine</li>
-          <li>Approfondissement de l'apprentissage machine</li>
-          <li>Automatisation de l'analyse des données pour la santé</li>
-        </ul>
-        <a class="btn btn-ghost btn-sm" href="#projets" data-parcours="ia">Voir les projets IA&amp;D-S →</a>
-      </article>
-      <article class="track track-cy reveal">
-        <svg class="deco" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M50 6 88 20v28c0 24-17 40-38 46C29 88 12 72 12 48V20Z"/><path d="M38 50v-8a12 12 0 0 1 24 0v8"/><rect x="33" y="50" width="34" height="26" rx="5"/></svg>
-        <span class="acr">Cyber-S</span>
-        <h3>Cybersécurité en Santé</h3>
-        <p>Protéger les systèmes de santé : sécurité des communications, des architectures et des données sensibles.</p>
-        <h4>Unités d'enseignement</h4>
-        <ul class="ue">
-          <li>Concepts et protocoles pour la sécurité des communications</li>
-          <li>Mécanismes internes des systèmes de santé</li>
-          <li>Sécurité des architectures des systèmes de santé</li>
-          <li>Mise en œuvre de systèmes sécurisés en santé</li>
-        </ul>
-        <a class="btn btn-ghost btn-sm" href="#projets" data-parcours="cyber">Voir les projets Cyber-S →</a>
-      </article>
+      <span class="kicker">La formation</span>
+      <h2 class="section-title">Trois années, <em>un parcours progressif</em></h2>
+      <p class="section-sub">Le cycle ingénieur ITS se déroule sur trois ans : des fondamentaux jusqu'aux deux axes IA&amp;D-S et Cyber-S, avec un stage chaque année.</p>
     </div>
     <div class="timeline reveal">
       <div class="tl"><small>1re année · Semestres 1 et 2</small><b>Les fondamentaux</b><span>Le socle commun de l'ingénieur, entre numérique et santé.</span><br><span class="stg">Stage de découverte · 6 semaines</span><i class="bar"></i></div>
       <div class="tl"><small>2e année · Semestres 3 et 4</small><b>Les bases des deux axes</b><span>Premiers modules IA&amp;D-S et Cyber-S.</span><br><span class="stg">Stage à l'étranger · 14 semaines</span><i class="bar"></i></div>
       <div class="tl"><small>3e année · Semestre 5</small><b>Approfondissement</b><span>Les deux axes se densifient.</span><br><span class="stg">Stage de fin d'études · 24 semaines</span><i class="bar"></i></div>
     </div>
-    <p class="fineprint">D'après la maquette de la spécialité. Site étudiant non officiel : pour le programme de référence, consulte le <a href="https://episen.u-pec.fr/" target="_blank" rel="noopener noreferrer">site de l'EPISEN</a>.</p>
+    <p class="fineprint">D'après la maquette de la spécialité et la présentation de la formation par l'EPISEN.</p>
   </div>
 </section>
 
-<section class="section" id="stages" style="padding-top:8px">
+<section class="section" id="stages">
   <div class="wrap">
     <div class="reveal">
       <span class="kicker">Stages &amp; international</span>
@@ -924,6 +923,64 @@ body.view-contacts #page>section:not(#contacts-view),body.view-contacts #page>ma
   </div>
 </section>
 
+<section class="section" id="specialite">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="kicker">La spécialité ITS</span>
+      <h2 class="section-title">Une spécialité, <em>deux parcours</em></h2>
+      <p class="section-sub">ITS, pour <strong>Ingénierie et Technologies pour la Santé</strong> : former des ingénieurs à la croisée du numérique et de la santé. La formation s'articule autour de deux axes, IA&amp;D-S et Cyber-S.</p>
+    </div>
+    <div class="tracks">
+      <article class="track track-ia reveal">
+        <svg class="deco" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M15 30 50 15 85 35M15 30 50 50 85 35M15 30 50 85M15 70 50 15M15 70 50 50 85 65M15 70 50 85 85 65M50 50 85 65M50 15 85 65M50 85 85 35"/><g fill="currentColor"><circle cx="15" cy="30" r="6"/><circle cx="15" cy="70" r="6"/><circle cx="50" cy="15" r="6"/><circle cx="50" cy="50" r="6"/><circle cx="50" cy="85" r="6"/><circle cx="85" cy="35" r="6"/><circle cx="85" cy="65" r="6"/></g></svg>
+        <span class="acr">IA&amp;D-S</span>
+        <h3>Intelligence Artificielle et Données de Santé</h3>
+        <p>Faire parler les données de santé : signaux physiologiques, apprentissage machine et analyse automatisée.</p>
+        <h4>Unités d'enseignement</h4>
+        <ul class="ue">
+          <li>Représentation et traitement avancés des signaux de santé</li>
+          <li>Introduction aux méthodes d'apprentissage machine</li>
+          <li>Approfondissement de l'apprentissage machine</li>
+          <li>Automatisation de l'analyse des données pour la santé</li>
+        </ul>
+        <a class="btn btn-ghost btn-sm" href="#projets" data-parcours="ia">Voir les projets IA&amp;D-S →</a>
+      </article>
+      <article class="track track-cy reveal">
+        <svg class="deco" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M50 6 88 20v28c0 24-17 40-38 46C29 88 12 72 12 48V20Z"/><path d="M38 50v-8a12 12 0 0 1 24 0v8"/><rect x="33" y="50" width="34" height="26" rx="5"/></svg>
+        <span class="acr">Cyber-S</span>
+        <h3>Cybersécurité en Santé</h3>
+        <p>Protéger les systèmes de santé : sécurité des communications, des architectures et des données sensibles.</p>
+        <h4>Unités d'enseignement</h4>
+        <ul class="ue">
+          <li>Concepts et protocoles pour la sécurité des communications</li>
+          <li>Mécanismes internes des systèmes de santé</li>
+          <li>Sécurité des architectures des systèmes de santé</li>
+          <li>Mise en œuvre de systèmes sécurisés en santé</li>
+        </ul>
+        <a class="btn btn-ghost btn-sm" href="#projets" data-parcours="cyber">Voir les projets Cyber-S →</a>
+      </article>
+    </div>
+    <p class="fineprint">D'après la maquette de la spécialité. Site étudiant non officiel : pour le programme de référence, consulte le <a href="https://episen.u-pec.fr/" target="_blank" rel="noopener noreferrer">site de l'EPISEN</a>.</p>
+  </div>
+</section>
+
+<section class="section" id="contribuer" style="padding-top:8px">
+  <div class="wrap">
+    <div class="contrib reveal">
+      <span class="kicker">Contribuer</span>
+      <h2 class="section-title">Ton projet mérite d'être <em>vu.</em></h2>
+      <p class="section-sub">Aucun compte ni code nécessaire : tout passe par un formulaire.</p>
+      <ol class="steps">
+        <li><b>Clique sur « Ajouter mon projet »</b>Le formulaire s'ouvre directement sur la page.</li>
+        <li><b>Décris ton projet</b>Nom, résumé, technologies, équipe, et un lien vers une image ou une vidéo si tu en as.</li>
+        <li><b>Il apparaît sur le site</b><span id="step3">Quelques minutes après l'envoi, le temps que la liste se mette à jour.</span></li>
+      </ol>
+      <a class="btn btn-primary" href="#ajouter">Ajouter mon projet
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+  </div>
+</section>
+
 <main id="projets" class="wrap" tabindex="-1">
   <span class="kicker">Les projets</span>
   <h2 class="section-title">Des idées devenues <em>prototypes</em></h2>
@@ -954,47 +1011,7 @@ body.view-contacts #page>section:not(#contacts-view),body.view-contacts #page>ma
 </main>
 
 
-<section class="section" id="pour-qui">
-  <div class="wrap">
-    <span class="kicker">Pour qui ?</span>
-    <h2 class="section-title">Une vitrine, <em>trois regards</em></h2>
-    <p class="section-sub">Ce site montre ce qui se fait réellement en ITS, au-delà des plaquettes.</p>
-    <div class="audience reveal">
-      <div class="aud" style="--c:#2457f5">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg></div>
-        <h3>Futurs candidats</h3>
-        <p>Découvre à quoi ressemblent concrètement les projets de la filière avant de faire ton choix d'école.</p>
-      </div>
-      <div class="aud" style="--c:#0ba597">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18"/></svg></div>
-        <h3>Entreprises &amp; recruteurs</h3>
-        <p>Repérez des profils formés à l'IA appliquée aux données de santé et à la cybersécurité des systèmes de santé.</p>
-      </div>
-      <div class="aud" style="--c:#ff6a55">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.1V17h6v-.2c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2z"/></svg></div>
-        <h3>Étudiants en ING1</h3>
-        <p>Trouve l'inspiration pour ton futur MESPI ou PoC et découvre à quoi mènent les parcours IA&amp;D-S et Cyber-S.</p>
-      </div>
-    </div>
-  </div>
-</section>
 
-<section class="section" id="contribuer" style="padding-top:8px">
-  <div class="wrap">
-    <div class="contrib reveal">
-      <span class="kicker">Contribuer</span>
-      <h2 class="section-title">Ton projet mérite d'être <em>vu.</em></h2>
-      <p class="section-sub">Aucun compte ni code nécessaire : tout passe par un formulaire.</p>
-      <ol class="steps">
-        <li><b>Clique sur « Ajouter mon projet »</b>Le formulaire s'ouvre directement sur la page.</li>
-        <li><b>Décris ton projet</b>Nom, résumé, technologies, équipe, et un lien vers une image ou une vidéo si tu en as.</li>
-        <li><b>Il apparaît sur le site</b><span id="step3">Quelques minutes après l'envoi, le temps que la liste se mette à jour.</span></li>
-      </ol>
-      <a class="btn btn-primary" href="#ajouter">Ajouter mon projet
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-    </div>
-  </div>
-</section>
 
 <section class="section" id="contacts-view" aria-labelledby="contacts-title">
   <div class="wrap">
@@ -1008,6 +1025,11 @@ body.view-contacts #page>section:not(#contacts-view),body.view-contacts #page>ma
         <h3>Entreprises &amp; établissements de santé</h3>
         <p>Proposer un stage, un projet MESPI ou PoC, ou présenter votre structure aux étudiants ITS.</p>
         <a class="btn btn-primary btn-sm" href="#" data-contact="Proposition de stage ou de projet">Proposer un stage ou un projet</a>
+      </article>
+      <article class="cm">
+        <h3>Le créateur du site</h3>
+        <p>Valentin Auger, étudiant en 2e année ITS. Une idée, une correction ou un projet à ajouter ? Écris-moi.</p>
+        <a class="btn btn-ghost btn-sm" href="#" data-contact="Message pour Valentin (Projets ITS)">Écrire à Valentin</a>
       </article>
       <article class="cm">
         <h3>Informations officielles</h3>
@@ -1028,8 +1050,10 @@ body.view-contacts #page>section:not(#contacts-view),body.view-contacts #page>ma
         <span class="secure"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 20 5v6c0 5-3.4 9.3-8 11-4.6-1.7-8-6-8-11V5Z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg>Politique de sécurité stricte · sans publicité ni outil de suivi</span>
       </div>
       <nav class="foot-links" aria-label="Liens du pied de page">
-        <a href="#specialite">La spécialité</a>
+        <a href="#pour-qui">Pour qui ?</a>
+        <a href="#formation">La formation</a>
         <a href="#stages">Stages</a>
+        <a href="#specialite">La spécialité</a>
         <a href="#projets">Projets</a>
         <a href="#contacts">Contacts</a>
         <a href="#ajouter">Ajouter mon projet</a>
