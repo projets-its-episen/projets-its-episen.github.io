@@ -263,6 +263,19 @@
 <script type="application/json" id="seed">
 [
   {
+    "nom": "Plateforme de téléradiologie sécurisée",
+    "type": "PoC",
+    "annee": "2025-2026",
+    "domaine": "Réseaux",
+    "parcours": "Cyber-S",
+    "resume": "Maquette GNS3 d'une infrastructure réseau multi-sites sécurisée pour une entreprise de téléradiologie : VLAN, OSPF, pare-feu VyOS, DMZ et zones Extranet.",
+    "description": "Contexte : une entreprise de téléradiologie répartie sur 3 sites (Paris, Lyon, Marseille, environ 300 salariés) reçoit des images médicales d'établissements de santé, les met à disposition de radiologues distants et renvoie les comptes rendus. Ces données de santé imposent le RGPD, l'hébergement HDS, ainsi que les protocoles DICOM et HL7.\n\nSolution : une architecture en défense en profondeur, où aucune zone peu fiable n'accède directement à une zone critique. Zones de confiance (intranets, DMZ, Cloud HDS, Extranets radiologues et établissements), segmentation en 4 VLAN dont un VLAN dédié aux appareils d'imagerie, routage OSPF entre les sites et pare-feu stateful VyOS en « deny by default ». Une plateforme web « TeleRad Pro » est hébergée en DMZ.\n\nRésultats : 10 tests de validation (flux inter-sites, accès Extranet vers la DMZ, blocage des accès Extranet vers le réseau interne). Le dépôt documente aussi les limites connues et ce qui est prévu en production : VPN IPsec, 2FA, HTTPS, DICOM TLS, IDS/IPS.",
+    "technos": "GNS3, Cisco IOS, VyOS, OSPF, VLAN 802.1Q, Debian 12, Apache2",
+    "equipe": "Valentin Auger",
+    "image": "https://raw.githubusercontent.com/Valentin-Auger-Laboratoire/poc-reseau-teleradiologie/main/images/01-architecture-globale.png",
+    "lien": "https://github.com/Valentin-Auger-Laboratoire/poc-reseau-teleradiologie"
+  },
+  {
     "nom": "Athletix-Data",
     "type": "MESPI",
     "annee": "2025-2026",
