@@ -21,6 +21,15 @@ Le site est un seul fichier, `index.html`, sans dépendance à installer. Les pr
   - le formulaire directement : `https://projets-its-episen.github.io/#ajouter`
   - un projet précis : bouton « Partager » dans sa fiche.
 
+## Projets exemples
+
+En attendant les vrais projets de la promo, le site affiche 9 **sujets exemples** (IA&D-S et Cyber-S) :
+- marqués « Exemple » sur la carte et « Projet exemple (fictif) » dans la fiche ;
+- **sans aucun nom d'étudiant** ;
+- non comptés dans les statistiques.
+
+Ils disparaissent automatiquement dès qu'il y a **8 vrais projets** (réglage `MASQUER_EXEMPLES_A_PARTIR_DE` dans le bloc `config`, mettre `0` pour ne jamais les afficher). Pour en modifier ou en retirer un, édite le bloc `exemples` en haut de `index.html`.
+
 ## Modération (recommandé)
 
 Par défaut, tout projet envoyé s'affiche automatiquement. Pour **valider les projets avant publication** :

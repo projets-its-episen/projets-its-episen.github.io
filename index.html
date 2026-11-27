@@ -10,7 +10,7 @@
   l'empreinte doit être recalculée, sinon le site ne s'affichera plus.
   Modifier le texte, CONFIG ou SEED ne change PAS l'empreinte.
 -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-QGmqNsrH9IWECWFJKwpCb29/A7BjwdvGYNjcNe7VYic='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https: data:; connect-src https://docs.google.com https://*.googleusercontent.com; frame-src https://docs.google.com https://accounts.google.com https://www.youtube-nocookie.com; base-uri 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-OD8QHPmEepeOMyvFsbWKLGRDdTQo9xvnU81GystrEnw='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https: data:; connect-src https://docs.google.com https://*.googleusercontent.com; frame-src https://docs.google.com https://accounts.google.com https://www.youtube-nocookie.com; base-uri 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Projets ITS – EPISEN · Santé, IA & Cybersécurité</title>
 <meta name="description" content="Les projets MESPI et PoC des élèves-ingénieurs de la spécialité ITS (Ingénierie et Technologies pour la Santé) de l'EPISEN : parcours IA&D-S (Intelligence Artificielle et Données de Santé) et Cyber-S (Cybersécurité en Santé).">
@@ -49,14 +49,106 @@
      SHEET_CSV_URL : lien CSV du tableau (Fichier > Partager > Publier sur le Web > CSV)
      FORM_URL      : lien du formulaire Google (bouton "Envoyer" > lien)
      CONTACT_EMAIL : adresse qui reçoit les signalements
+     MASQUER_EXEMPLES_A_PARTIR_DE : les projets exemples disparaissent dès qu'il y a
+                                    ce nombre de vrais projets (0 = ne jamais les afficher)
      Garde les guillemets et les virgules (format JSON).
      ========================================================= -->
 <script type="application/json" id="config">
 {
   "SHEET_CSV_URL": "https://docs.google.com/spreadsheets/d/e/2PACX-1vT3IUIzq-4m4OgX6QjNPeyxWifSh22qraIiD5FnA8hZOsYImm9R95bRfkHo8UiO4qs6OYiM8O5OoUt7/pub?gid=799833823&single=true&output=csv",
   "FORM_URL": "https://docs.google.com/forms/d/e/1FAIpQLScz9egcTJLxxIh9N9W8atfQSzkuk1lnDvxhXEKN0jSuB3QIpg/viewform",
-  "CONTACT_EMAIL": "projets.its.episen@gmail.com"
+  "CONTACT_EMAIL": "projets.its.episen@gmail.com",
+  "MASQUER_EXEMPLES_A_PARTIR_DE": 8
 }
+</script>
+
+<!-- Projets EXEMPLES : sujets fictifs, sans nom d'étudiant, marqués « Exemple » sur le site.
+     Ils ne comptent pas dans les statistiques et disparaissent automatiquement
+     quand il y a assez de vrais projets (voir MASQUER_EXEMPLES_A_PARTIR_DE). -->
+<script type="application/json" id="exemples">
+[
+  {
+    "nom": "PulseNet",
+    "type": "PoC",
+    "parcours": "IA&D-S",
+    "domaine": "IA & Data",
+    "resume": "Détecter automatiquement les arythmies cardiaques sur un ECG grâce à un réseau de neurones.",
+    "description": "Problème : l'analyse manuelle de longs enregistrements ECG est lente et sujette aux erreurs.\n\nSolution : un réseau de neurones convolutif 1D entraîné sur une base ECG publique (MIT-BIH) qui repère les battements anormaux et les affiche sur un tableau de bord.",
+    "technos": "Python, PyTorch, MIT-BIH, Streamlit"
+  },
+  {
+    "nom": "SleepScope",
+    "type": "MESPI",
+    "parcours": "IA&D-S",
+    "domaine": "IA & Data",
+    "resume": "Classer les stades du sommeil à partir du signal EEG pour faciliter le diagnostic des troubles du sommeil.",
+    "description": "Problème : le scorage du sommeil par un expert prend plusieurs heures par patient.\n\nSolution : extraction de caractéristiques EEG et modèle d'apprentissage machine entraîné sur une base publique (Sleep-EDF), avec un rapport automatique par nuit.",
+    "technos": "Python, MNE, scikit-learn, Sleep-EDF"
+  },
+  {
+    "nom": "DermaScan",
+    "type": "PoC",
+    "parcours": "IA&D-S",
+    "domaine": "Imagerie",
+    "resume": "Une aide au tri des lésions cutanées par vision par ordinateur, à partir d'une simple photo.",
+    "description": "Problème : les délais pour consulter un dermatologue sont longs.\n\nSolution : un modèle de classification d'images entraîné sur une base publique (ISIC) qui indique le niveau de priorité d'une lésion, sans jamais remplacer l'avis médical.",
+    "technos": "TensorFlow, OpenCV, FastAPI, ISIC"
+  },
+  {
+    "nom": "FallGuard",
+    "type": "MESPI",
+    "parcours": "IA&D-S",
+    "domaine": "IoT & capteurs",
+    "resume": "Un boîtier porté à la ceinture qui détecte les chutes des personnes âgées avec de l'IA embarquée.",
+    "description": "Problème : une chute non détectée peut avoir des conséquences graves pour une personne seule.\n\nSolution : un accéléromètre relié à un microcontrôleur qui exécute un petit modèle de détection (TinyML) et envoie une alerte en Bluetooth Low Energy.",
+    "technos": "ESP32, TensorFlow Lite Micro, Bluetooth Low Energy"
+  },
+  {
+    "nom": "MedVault",
+    "type": "PoC",
+    "parcours": "Cyber-S",
+    "domaine": "Cybersécurité",
+    "resume": "Un dossier médical partagé chiffré de bout en bout, avec un contrôle d'accès par rôle.",
+    "description": "Problème : les données de santé sont parmi les plus ciblées par les cyberattaques.\n\nSolution : une application où chaque document est chiffré côté client, les accès sont limités selon le rôle (patient, médecin, secrétariat) et chaque consultation est journalisée.",
+    "technos": "Node.js, PostgreSQL, AES-256-GCM, OAuth 2.0"
+  },
+  {
+    "nom": "FHIR Sentinel",
+    "type": "MESPI",
+    "parcours": "Cyber-S",
+    "domaine": "Cybersécurité",
+    "resume": "Détecter les intrusions dans les échanges de données entre logiciels hospitaliers (HL7 / FHIR).",
+    "description": "Problème : les flux entre logiciels de santé sont rarement surveillés.\n\nSolution : un réseau hospitalier simulé, des règles de détection adaptées aux protocoles HL7 et FHIR, et un tableau de bord des alertes.",
+    "technos": "Suricata, Zeek, Python, FHIR"
+  },
+  {
+    "nom": "SecurePump",
+    "type": "PoC",
+    "parcours": "Cyber-S",
+    "domaine": "Cybersécurité",
+    "resume": "L'audit de sécurité d'un dispositif médical connecté simulé, et les correctifs associés.",
+    "description": "Problème : beaucoup de dispositifs médicaux connectés communiquent sans protection suffisante.\n\nSolution : une pompe connectée simulée sur Raspberry Pi, une analyse de ses vulnérabilités puis la mise en place de communications chiffrées et authentifiées.",
+    "technos": "Raspberry Pi, MQTT, TLS, Wireshark"
+  },
+  {
+    "nom": "PhishLab Santé",
+    "type": "MESPI",
+    "parcours": "Cyber-S",
+    "domaine": "Cybersécurité",
+    "resume": "Une plateforme de sensibilisation au hameçonnage pensée pour les personnels soignants.",
+    "description": "Problème : la majorité des attaques contre les hôpitaux commencent par un e-mail piégé.\n\nSolution : des campagnes d'entraînement réalistes, des mini-formations adaptées au quotidien d'un service hospitalier et un suivi des progrès.",
+    "technos": "Python, Django, GoPhish"
+  },
+  {
+    "nom": "TrustFL",
+    "type": "PoC",
+    "parcours": "Les deux",
+    "domaine": "IA & Data",
+    "resume": "Entraîner un modèle d'IA entre plusieurs hôpitaux sans jamais partager les données des patients.",
+    "description": "Problème : les données de santé ne peuvent pas quitter les établissements, ce qui freine l'IA médicale.\n\nSolution : l'apprentissage fédéré, où seuls les paramètres du modèle circulent, renforcé par de la confidentialité différentielle et des échanges chiffrés.",
+    "technos": "Flower, PyTorch, Confidentialité différentielle, TLS"
+  }
+]
 </script>
 
 <!-- Projets de départ (toujours affichés) -->
@@ -67,6 +159,7 @@
     "type": "MESPI",
     "annee": "2025-2026",
     "domaine": "IoT & capteurs",
+    "parcours": "IA&D-S",
     "resume": "Un brassard connecté qui mesure l'activité musculaire (EMG) et l'affiche en temps réel sur une application mobile.",
     "description": "Problème : suivre l'activité musculaire pendant l'effort demande aujourd'hui du matériel coûteux et peu pratique.\n\nSolution : un brassard porté sur le bras, équipé d'un capteur EMG MyoWare 2.0 relié à un microcontrôleur ESP32-S3. Les mesures sont envoyées en Bluetooth Low Energy vers une application Flutter qui affiche et enregistre le signal.",
     "technos": "ESP32-S3, MyoWare 2.0 (EMG), Bluetooth Low Energy, Flutter",
@@ -380,7 +473,11 @@ footer{border-top:1px solid var(--line);padding:44px 0 36px;color:var(--muted);f
 .pl-ia{color:var(--ia-ink);background:color-mix(in srgb,var(--ia-ink) 12%,transparent)}
 .pl-cyber{color:var(--cy-ink);background:color-mix(in srgb,var(--cy-ink) 12%,transparent)}
 .chip-p{font-weight:800}
-.chip-p .n{font-weight:700;opacity:.65;font-size:12.5px}
+.badge-ex{padding:5px 10px;border-radius:8px;background:#ffcf5c;color:#3d2c00;font-size:12px;font-weight:800;letter-spacing:.03em;box-shadow:0 2px 8px rgba(0,0,0,.12)}
+.card.is-ex{border-style:dashed;border-color:var(--line-2)}
+.card.is-ex .cover{filter:saturate(.75)}
+.ex-note{display:flex;gap:10px;align-items:flex-start;padding:12px 14px;border-radius:12px;margin-bottom:16px;font-size:14px;background:color-mix(in srgb,#ffcf5c 16%,var(--surface));border:1px solid color-mix(in srgb,#ffcf5c 55%,var(--line))}
+.ex-note a{font-weight:700}
 
 /* Effet lumière sur les cartes */
 .card::before{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;border-radius:inherit;background:radial-gradient(420px circle at var(--mx,50%) var(--my,0%),color-mix(in srgb,var(--a,var(--brand)) 16%,transparent),transparent 45%);opacity:0;transition:opacity .3s}
@@ -698,6 +795,7 @@ function readJSON(id){
 }
 const CONFIG = Object.assign({SHEET_CSV_URL:"",FORM_URL:"",CONTACT_EMAIL:""}, readJSON("config")||{});
 const SEED = Array.isArray(readJSON("seed")) ? readJSON("seed") : [];
+const EXEMPLES = Array.isArray(readJSON("exemples")) ? readJSON("exemples") : [];
 
 /* ---------- Petits outils ---------- */
 const $ = (s,r=document)=>r.querySelector(s);
@@ -825,7 +923,7 @@ function art(p,uid){
 }
 function cover(p,uid){
   const img = p.image ? driveImg(p.image) : "";
-  return `<div class="cover">${art(p,uid)}${img?`<img src="${esc(img)}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" data-fallback>`:""}<span class="ini" aria-hidden="true">${esc(initials(p.nom))}</span><span class="badges">${p.type?`<span class="badge">${esc(p.type)}</span>`:""}${p.pk.map(k=>`<span class="badge-p">${esc(PARCOURS[k].label)}</span>`).join("")}</span></div>`;
+  return `<div class="cover">${art(p,uid)}${img?`<img src="${esc(img)}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" data-fallback>`:""}<span class="ini" aria-hidden="true">${esc(initials(p.nom))}</span><span class="badges">${p.ex?`<span class="badge-ex">Exemple</span>`:""}${p.type?`<span class="badge">${esc(p.type)}</span>`:""}${p.pk.map(k=>`<span class="badge-p">${esc(PARCOURS[k].label)}</span>`).join("")}</span></div>`;
 }
 
 /* ---------- CSV ---------- */
@@ -907,9 +1005,12 @@ async function load(){
   const {text,source,t}=await fetchSheet();
   const fromSheet = text ? rowsToProjects(parseCSV(text)) : [];
   const seen=new Set(); ALL=[]; BY_SLUG.clear();
-  [...fromSheet.reverse(),...SEED].map(clean).filter(Boolean).forEach(p=>{
+  const real=[...fromSheet.reverse(),...SEED].map(clean).filter(Boolean);
+  const limit=Number(CONFIG.MASQUER_EXEMPLES_A_PARTIR_DE)||0;
+  const ex = real.length<limit ? EXEMPLES.map(e=>{ const c=clean({...e,equipe:"",image:"",lien:""}); if(c){ c.ex=true; c.annee=""; } return c; }).filter(Boolean) : [];
+  [...real,...ex].forEach(p=>{
     const k=norm(p.nom+"|"+p.annee); if(seen.has(k)) return; seen.add(k);
-    let slug=slugify(p.nom+(p.annee?"-"+p.annee:"")), n=2, base=slug;
+    let slug=(p.ex?"exemple-":"")+slugify(p.nom+(p.annee?"-"+p.annee:"")), n=2, base=slug;
     while(BY_SLUG.has(slug)) slug=base+"-"+(n++);
     p.slug=slug; p.i=ALL.length; p.pk=parcoursOf(p);
     p._hay=norm([p.nom,p.resume,p.description,p.technos,p.equipe,p.domaine,p.type,p.annee,...p.pk.flatMap(k=>[PARCOURS[k].label,PARCOURS[k].name])].join(" "));
@@ -928,11 +1029,11 @@ async function load(){
 
 /* ---------- Statistiques ---------- */
 function stats(){
-  const n=a=>new Set(a.filter(Boolean).map(norm)).size;
-  count("s-proj",ALL.length);
-  count("s-ia",ALL.filter(p=>p.pk.includes("ia")).length);
-  count("s-cy",ALL.filter(p=>p.pk.includes("cyber")).length);
-  count("s-tech",n(ALL.flatMap(p=>splitList(p.technos))));
+  const n=a=>new Set(a.filter(Boolean).map(norm)).size, R=ALL.filter(p=>!p.ex);
+  count("s-proj",R.length);
+  count("s-ia",R.filter(p=>p.pk.includes("ia")).length);
+  count("s-cy",R.filter(p=>p.pk.includes("cyber")).length);
+  count("s-tech",n(R.flatMap(p=>splitList(p.technos))));
 }
 function count(id,to){
   const el=document.getElementById(id);
@@ -947,7 +1048,7 @@ const uniq=a=>{ const m=new Map(); a.filter(Boolean).forEach(v=>{ const k=norm(v
 function filters(){
   const types=uniq(ALL.map(p=>p.type)), doms=uniq(ALL.map(p=>p.domaine));
   const chip=(attr,val,label,on,dot)=>`<button type="button" class="chip" data-${attr}="${esc(val)}" aria-pressed="${on}">${dot?`<span class="dot" style="background:${dot}"></span>`:""}${esc(label)}</button>`;
-  const pchip=k=>`<button type="button" class="chip chip-p" data-p="${k}" aria-pressed="${state.parcours===k}" title="${esc(PARCOURS[k].name)}"><span class="dot" style="background:linear-gradient(135deg,${PARCOURS[k].colors.join(",")})"></span>${esc(PARCOURS[k].label)} <span class="n">${ALL.filter(p=>p.pk.includes(k)).length}</span></button>`;
+  const pchip=k=>`<button type="button" class="chip chip-p" data-p="${k}" aria-pressed="${state.parcours===k}" title="${esc(PARCOURS[k].name)}"><span class="dot" style="background:linear-gradient(135deg,${PARCOURS[k].colors.join(",")})"></span>${esc(PARCOURS[k].label)}</button>`;
   $("#chips").innerHTML =
     chip("t","","Tous les projets",!state.type&&!state.dom&&!state.parcours) +
     pchip("ia") + pchip("cyber") + `<span class="sep" aria-hidden="true"></span>` +
@@ -967,15 +1068,15 @@ function render(){
     (!state.dom ||norm(p.domaine)===norm(state.dom)) &&
     (!state.year||norm(p.annee)===norm(state.year)) &&
     words.every(w=>p._hay.includes(w)));
-  if(state.sort==="az") VISIBLE=[...VISIBLE].sort((a,b)=>a.nom.localeCompare(b.nom,"fr",{sensitivity:"base"}));
+  if(state.sort==="az") VISIBLE=[...VISIBLE].sort((a,b)=>(a.ex-b.ex)||a.nom.localeCompare(b.nom,"fr",{sensitivity:"base"}));
   const g=$("#grid");
   g.innerHTML = VISIBLE.map((p,k)=>{
     const a=projColors(p)[0], sum=p.resume||p.description;
-    return `<article class="card" style="--a:${a};animation-delay:${Math.min(k,8)*40}ms">
+    return `<article class="card${p.ex?" is-ex":""}" style="--a:${a};animation-delay:${Math.min(k,8)*40}ms">
       <a class="card-link" href="#/${p.slug}">
         ${cover(p,"c"+p.i)}
         <div class="card-body">
-          <div class="meta">${p.domaine?`<span class="dot"></span>${esc(p.domaine)}`:""}${p.domaine&&p.annee?`<span aria-hidden="true">·</span>`:""}${esc(p.annee)}</div>
+          <div class="meta">${p.domaine?`<span class="dot"></span>${esc(p.domaine)}`:""}${p.domaine&&(p.annee||p.ex)?`<span aria-hidden="true">·</span>`:""}${p.ex?"Sujet exemple":esc(p.annee)}</div>
           <h3>${esc(p.nom)}</h3>
           ${sum?`<p>${esc(sum)}</p>`:""}
           <div class="card-foot"><div class="tags">${splitList(p.technos).slice(0,3).map(t=>`<span class="tag">${esc(clip(t,28))}</span>`).join("")}</div><span class="go" aria-hidden="true">→</span></div>
@@ -987,7 +1088,8 @@ function render(){
   + `<a class="add-card" href="#ajouter"><div><div class="plus" aria-hidden="true">+</div>Ton projet n'est pas encore là ?<br>Ajoute-le en 2 minutes.</div></a>`;
   g.setAttribute("aria-busy","false");
   const active = state.q||state.parcours||state.type||state.dom||state.year;
-  $("#count").textContent = active ? `${plural(VISIBLE.length,"projet")} sur ${ALL.length}` : plural(ALL.length,"projet");
+  const nr=ALL.filter(p=>!p.ex).length, ne=ALL.length-nr, vr=VISIBLE.filter(p=>!p.ex).length, ve=VISIBLE.length-vr;
+  $("#count").textContent = (active ? `${plural(vr,"projet")} sur ${nr}` : plural(nr,"projet")) + ((active?ve:ne) ? ` · ${plural(active?ve:ne,"exemple")} de sujet` : "");
   $("#reset").hidden=!active;
 }
 function resetFilters(){
@@ -1025,7 +1127,8 @@ function showProject(p){
   $("#detail").innerHTML = `
     ${cover(p,"m"+p.i)}
     <div class="modal-inner" style="--a:${a}">
-      <div class="meta">${p.pk.map(plBadge).join("")}${p.domaine?`<span class="dot"></span>${esc(p.domaine)}`:""}${p.domaine&&p.annee?`<span aria-hidden="true">·</span>`:""}${p.annee?`Promo ${esc(p.annee)}`:""}</div>
+      ${p.ex?`<p class="ex-note" role="note"><span aria-hidden="true">💡</span><span><b>Projet exemple (fictif).</b> Ce sujet illustre le type de projet possible en ${p.pk.map(k=>esc(PARCOURS[k].label)).join(" et ")||"ITS"}, en attendant les vrais projets de la promo. <a href="#ajouter">Ajoute ton projet</a> pour qu'il prenne sa place.</span></p>`:""}
+      <div class="meta">${p.pk.map(plBadge).join("")}${p.domaine?`<span class="dot"></span>${esc(p.domaine)}`:""}${p.domaine&&p.annee?`<span aria-hidden="true">·</span>`:""}${p.annee?`Promo ${esc(p.annee)}`:""}${p.ex?`<span aria-hidden="true">·</span>Sujet exemple`:""}</div>
       <h2 id="detail-title">${esc(p.nom)}</h2>
       ${p.resume?`<p class="lead">${esc(p.resume)}</p>`:""}
       ${yt?`<div class="block"><div class="video" data-yt="${yt}"><button type="button" aria-label="Lire la vidéo du projet"><img src="https://i.ytimg.com/vi/${yt}/hqdefault.jpg" alt="" loading="lazy" referrerpolicy="no-referrer"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></button></div></div>`:""}
