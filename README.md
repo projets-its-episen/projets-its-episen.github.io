@@ -1,6 +1,9 @@
 # Projets ITS
 
-Vitrine des projets étudiants (MESPI et PoC) de la filière ITS de l'EPISEN.
+Vitrine des projets étudiants (MESPI et PoC) de la spécialité ITS (Ingénierie et Technologies pour la Santé) de l'EPISEN, avec ses deux parcours :
+- **IA&D-S** : Intelligence Artificielle et Données de Santé
+- **Cyber-S** : Cybersécurité en Santé
+
 Initiative étudiante, site non officiel. En ligne sur **https://projets-its-episen.github.io**
 
 Le site est un seul fichier, `index.html`, sans dépendance à installer. Les projets viennent d'un **formulaire Google** relié à un **tableau Google Sheets publié en CSV** : personne n'a besoin de toucher au code pour ajouter un projet.
@@ -59,6 +62,9 @@ Le site reconnaît les colonnes grâce aux mots en gras. Si tu renommes une ques
 | 8 | **Membres** de l'équipe (séparés par des virgules) | Réponse courte | Non |
 | 9 | Lien d'une **image** (optionnel) | Réponse courte | Non |
 | 10 | **Lien** vidéo, poster ou GitHub (optionnel) | Réponse courte | Non |
+| 11 | **Parcours** | Choix multiples : IA&D-S (Intelligence Artificielle et Données de Santé) / Cyber-S (Cybersécurité en Santé) / Les deux | Recommandé |
+
+**Parcours :** la question 11 permet d'afficher le badge IA&D-S ou Cyber-S sur chaque projet et de filtrer par parcours. Si elle est absente ou vide, le site devine le parcours à partir du domaine (IA, données, imagerie → IA&D-S ; cybersécurité → Cyber-S).
 
 **Important :** le tableau publié est lisible par tout le monde. Ne collecte **pas** les adresses e-mail dans le formulaire (Paramètres → Réponses → « Collecter les adresses e-mail » désactivé), sinon elles seraient publiques.
 
@@ -68,6 +74,12 @@ Le site reconnaît les colonnes grâce aux mots en gras. Si tu renommes une ques
 - Seuls les liens `http(s)` sont acceptés. Les liens s'ouvrent dans un nouvel onglet, isolés du site.
 - Une politique de sécurité (CSP) limite le site à Google (tableau, formulaire, polices) et YouTube (vidéos).
 - Le script de la page est identifié par son empreinte `sha256` dans la CSP. **Si tu modifies le bloc `<script>` du bas de page, recalcule cette empreinte**, sinon le site ne s'affichera plus. Modifier le texte, `config` ou `seed` ne pose aucun problème.
+
+## Fichiers
+
+- `index.html` : le site complet.
+- `og-image.jpg` : l'image d'aperçu affichée quand on partage le lien (LinkedIn, WhatsApp…).
+- `robots.txt` et `sitemap.xml` : aident Google à référencer le site.
 
 ## Mise en ligne
 

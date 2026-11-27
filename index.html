@@ -10,19 +10,35 @@
   l'empreinte doit être recalculée, sinon le site ne s'affichera plus.
   Modifier le texte, CONFIG ou SEED ne change PAS l'empreinte.
 -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-Ob1TioJnra8nARptNaJb8dzQMXhx6MrleQnCN/uKKPY='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https: data:; connect-src https://docs.google.com https://*.googleusercontent.com; frame-src https://docs.google.com https://accounts.google.com https://www.youtube-nocookie.com; base-uri 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-QGmqNsrH9IWECWFJKwpCb29/A7BjwdvGYNjcNe7VYic='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https: data:; connect-src https://docs.google.com https://*.googleusercontent.com; frame-src https://docs.google.com https://accounts.google.com https://www.youtube-nocookie.com; base-uri 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<title>Projets ITS – EPISEN</title>
-<meta name="description" content="Découvrez concrètement les projets MESPI et PoC réalisés par les élèves-ingénieurs de la filière ITS (Ingénierie des Technologies pour la Santé) de l'EPISEN.">
+<title>Projets ITS – EPISEN · Santé, IA & Cybersécurité</title>
+<meta name="description" content="Les projets MESPI et PoC des élèves-ingénieurs de la spécialité ITS (Ingénierie et Technologies pour la Santé) de l'EPISEN : parcours IA&D-S (Intelligence Artificielle et Données de Santé) et Cyber-S (Cybersécurité en Santé).">
 <link rel="canonical" href="https://projets-its-episen.github.io/">
 <meta name="theme-color" content="#f5f7fb" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#070c16" media="(prefers-color-scheme: dark)">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Projets ITS">
 <meta property="og:title" content="Projets ITS – ce que les élèves-ingénieurs construisent vraiment">
-<meta property="og:description" content="Capteurs connectés, IA, cybersécurité, e-santé : les projets étudiants de la filière ITS de l'EPISEN.">
+<meta property="og:description" content="Santé connectée, IA&D-S et Cyber-S : les projets étudiants de la spécialité Ingénierie et Technologies pour la Santé de l'EPISEN.">
 <meta property="og:url" content="https://projets-its-episen.github.io/">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="https://projets-its-episen.github.io/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Projets ITS : santé, intelligence artificielle et cybersécurité">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://projets-its-episen.github.io/og-image.jpg">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Projets ITS",
+  "url": "https://projets-its-episen.github.io/",
+  "inLanguage": "fr",
+  "description": "Vitrine étudiante non officielle des projets MESPI et PoC de la spécialité ITS (Ingénierie et Technologies pour la Santé) de l'EPISEN, parcours IA&D-S et Cyber-S."
+}
+</script>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%232457f5'/%3E%3Cstop offset='1' stop-color='%230ba597'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Cpath d='M8 36h12l4-8 6 18 6-26 5 16h15' fill='none' stroke='%23fff' stroke-width='4.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -155,7 +171,7 @@ button{cursor:pointer;border:none;background:none}
 .hero-bg::before{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--grid-line) 1px,transparent 1px),linear-gradient(90deg,var(--grid-line) 1px,transparent 1px);background-size:44px 44px;-webkit-mask-image:radial-gradient(ellipse 80% 70% at 60% 30%,#000 25%,transparent 75%);mask-image:radial-gradient(ellipse 80% 70% at 60% 30%,#000 25%,transparent 75%)}
 .eyebrow{display:inline-flex;align-items:center;gap:10px;padding:6px 14px 6px 8px;border-radius:999px;background:var(--surface);border:1px solid var(--line);color:var(--muted);font-size:13px;font-weight:700;box-shadow:var(--shadow-sm)}
 .eyebrow .pulse{width:8px;height:8px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 0 color-mix(in srgb,var(--teal) 60%,transparent);animation:ping 2s infinite}
-.hero h1{font-size:clamp(40px,6.4vw,78px);line-height:1.02;letter-spacing:-.045em;font-weight:800;margin:22px 0 20px;max-width:900px;text-wrap:balance}
+.hero h1{font-size:clamp(40px,5.4vw,70px);line-height:1.03;letter-spacing:-.045em;font-weight:800;margin:22px 0 20px;max-width:900px;text-wrap:balance}
 .accent{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:-.02em;background:linear-gradient(95deg,var(--brand) 10%,var(--teal) 90%);-webkit-background-clip:text;background-clip:text;color:transparent;padding-right:.06em}
 .hero p.lede{font-size:clamp(16.5px,2vw,19.5px);color:var(--muted);max-width:640px;text-wrap:pretty}
 .hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
@@ -309,7 +325,111 @@ footer{border-top:1px solid var(--line);padding:44px 0 36px;color:var(--muted);f
 .foot-links a:hover{color:var(--ink)}
 .foot-bottom{display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-between;margin-top:28px;padding-top:20px;border-top:1px solid var(--line);font-size:13px}
 
+/* ---------- Parcours IA&D-S / Cyber-S ---------- */
+:root{--ia:#5b3df5;--ia-2:#2f7bff;--cy:#0b3b6e;--cy-2:#0fb59c;--ia-ink:#4b2fd6;--cy-ink:#08786f}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ia-ink:#ab98ff;--cy-ink:#43e0c6}}
+:root[data-theme="dark"]{--ia-ink:#ab98ff;--cy-ink:#43e0c6}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);gap:56px;align-items:center}
+@media(max-width:980px){.hero-grid{grid-template-columns:1fr}.hero-visual{display:none!important}}
+.parcours-pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.pp{display:inline-flex;align-items:center;gap:10px;padding:7px 14px 7px 7px;border-radius:999px;background:var(--surface);border:1px solid var(--line);text-decoration:none;font-size:13.5px;color:var(--muted);font-weight:600;box-shadow:var(--shadow-sm);transition:border-color .2s,transform .2s}
+.pp:hover{transform:translateY(-1px);border-color:var(--line-2)}
+.pp b{color:#fff;font-size:12.5px;letter-spacing:.02em;padding:4px 9px;border-radius:999px;background:linear-gradient(135deg,var(--c1),var(--c2))}
+.pp-ia{--c1:var(--ia);--c2:var(--ia-2)} .pp-cy{--c1:var(--cy);--c2:var(--cy-2)}
+@media(max-width:520px){.pp span{display:none}.pp{padding:6px}}
+
+/* Illustration du hero */
+.hero-visual{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.hv-card{background:color-mix(in srgb,var(--surface) 82%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--line);border-radius:18px;padding:16px;box-shadow:var(--shadow);animation:float 7s ease-in-out infinite}
+.hv-ecg{grid-column:1/-1;animation-delay:-1s}
+.hv-ia{animation-delay:-3s;transform:translateY(10px)}
+.hv-cy{animation-delay:-5s}
+.hv-head{display:flex;align-items:center;gap:8px;font-size:12.5px;font-weight:800;letter-spacing:.02em;margin-bottom:10px}
+.hv-head .sub{margin-left:auto;font-weight:700;color:var(--muted);font-size:11.5px;text-transform:uppercase;letter-spacing:.1em}
+.hv-head .live{margin-left:auto;display:inline-flex;align-items:center;gap:6px;font-size:10.5px;letter-spacing:.12em;color:var(--coral)}
+.hv-head .live::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--coral);animation:blink 1.2s infinite}
+.hv-dot{width:9px;height:9px;border-radius:3px;background:var(--c)}
+.hv-ecg svg{width:100%;height:76px}
+.hv-ecg .grid-bg{stroke:var(--line);stroke-width:1}
+.hv-ecg .tr,.hv-ecg .tr2{fill:none;stroke:var(--coral);stroke-width:2.4;stroke-linejoin:round;stroke-linecap:round}
+.hv-ecg .tr{stroke-opacity:.45}
+.hv-ecg .tr2{stroke-width:3;stroke-dasharray:90 560;animation:trace 2.6s linear infinite;filter:drop-shadow(0 0 4px var(--coral))}
+.hv-row{display:flex;align-items:baseline;gap:6px;margin-top:6px}
+.hv-row b{font-size:30px;letter-spacing:-.04em;line-height:1}
+.hv-row small{color:var(--muted);font-weight:700}
+.hv-row .tagx{margin-left:auto;font-size:11.5px;font-weight:700;color:var(--muted);border:1px solid var(--line);padding:3px 8px;border-radius:999px}
+.hv-ia svg,.hv-cy svg{width:100%;height:118px}
+.hv-ia line{stroke:var(--ia-ink);stroke-opacity:.22;stroke-width:1.2}
+.hv-ia line.hot{stroke-opacity:.9;stroke-width:1.6;stroke-dasharray:6 120;animation:flow 2.4s linear infinite}
+.hv-ia circle{fill:var(--surface);stroke:var(--ia-ink);stroke-width:2}
+.hv-ia circle.on{fill:var(--ia-ink);animation:glow 2.4s ease-in-out infinite}
+.hv-bar{height:6px;border-radius:6px;background:var(--surface-2);overflow:hidden;margin-top:8px}
+.hv-bar span{display:block;height:100%;width:30%;border-radius:inherit;background:linear-gradient(90deg,var(--ia),var(--ia-2));animation:train 4s ease-in-out infinite}
+.hv-cap{display:block;font-size:11.5px;color:var(--muted);font-weight:700;margin-top:6px}
+.hv-cy .shield{fill:color-mix(in srgb,var(--cy-ink) 12%,transparent);stroke:var(--cy-ink);stroke-width:2.4}
+.hv-cy .lock{fill:none;stroke:var(--cy-ink);stroke-width:2.6;stroke-linecap:round}
+.hv-cy .scan{stroke:var(--cy-ink);stroke-width:2;stroke-opacity:.7;animation:scan 2.8s ease-in-out infinite}
+.hv-checks{list-style:none;display:grid;gap:4px;font-size:11.5px;font-weight:700;color:var(--muted);margin-top:4px}
+.hv-checks li::before{content:"✓";color:var(--cy-ink);margin-right:6px;font-weight:800}
+
+/* Badges de parcours sur les couvertures */
+.badges{position:absolute;top:12px;left:12px;display:flex;gap:6px;flex-wrap:wrap;z-index:1}
+.badges .badge{position:static}
+.badge-p{padding:5px 10px;border-radius:8px;background:rgba(6,12,26,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);color:#fff;font-size:12px;font-weight:800;letter-spacing:.03em;border:1px solid rgba(255,255,255,.18)}
+.pl{display:inline-flex;align-items:center;gap:6px;font-weight:800;padding:2px 8px;border-radius:6px;font-size:11.5px;letter-spacing:.02em}
+.pl-ia{color:var(--ia-ink);background:color-mix(in srgb,var(--ia-ink) 12%,transparent)}
+.pl-cyber{color:var(--cy-ink);background:color-mix(in srgb,var(--cy-ink) 12%,transparent)}
+.chip-p{font-weight:800}
+.chip-p .n{font-weight:700;opacity:.65;font-size:12.5px}
+
+/* Effet lumière sur les cartes */
+.card::before{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;border-radius:inherit;background:radial-gradient(420px circle at var(--mx,50%) var(--my,0%),color-mix(in srgb,var(--a,var(--brand)) 16%,transparent),transparent 45%);opacity:0;transition:opacity .3s}
+.card:hover::before{opacity:1}
+
+/* Section spécialité */
+.tracks{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px;margin-top:36px}
+.track{position:relative;overflow:hidden;isolation:isolate;border-radius:24px;padding:clamp(24px,3.5vw,34px);background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow-sm);display:flex;flex-direction:column}
+.track::before{content:"";position:absolute;inset:0 0 auto 0;height:5px;background:linear-gradient(90deg,var(--c1),var(--c2))}
+.track .deco{position:absolute;right:-30px;top:-30px;width:210px;height:210px;z-index:-1;opacity:.16;color:var(--c-ink)}
+.track-ia{--c1:var(--ia);--c2:var(--ia-2);--c-ink:var(--ia-ink)}
+.track-cy{--c1:var(--cy);--c2:var(--cy-2);--c-ink:var(--cy-ink)}
+.track .acr{font-size:clamp(34px,4.4vw,48px);font-weight:800;letter-spacing:-.04em;line-height:1;background:linear-gradient(120deg,var(--c1),var(--c2));-webkit-background-clip:text;background-clip:text;color:transparent;padding-bottom:4px}
+.track-cy .acr{background:linear-gradient(120deg,var(--c-ink),var(--c2));-webkit-background-clip:text;background-clip:text}
+.track h3{font-size:19px;letter-spacing:-.02em;margin:6px 0 8px}
+.track>p{color:var(--muted);font-size:15.5px}
+.track h4{font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin:22px 0 10px;font-weight:800}
+.ue{list-style:none;display:grid;gap:8px;margin-bottom:24px}
+.ue li{display:flex;gap:10px;align-items:flex-start;font-size:14.5px;font-weight:600;padding:10px 12px;border-radius:12px;background:var(--surface-2);border:1px solid var(--line)}
+.ue li::before{content:"";flex:none;width:8px;height:8px;margin-top:7px;border-radius:2px;background:linear-gradient(135deg,var(--c1),var(--c2));transform:rotate(45deg)}
+.track .btn{margin-top:auto;align-self:flex-start}
+.timeline{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:0;margin-top:26px;border:1px solid var(--line);border-radius:20px;overflow:hidden;background:var(--surface)}
+.tl{padding:20px 24px;position:relative}
+.tl+.tl{border-left:1px solid var(--line)}
+@media(max-width:600px){.tl+.tl{border-left:none;border-top:1px solid var(--line)}}
+.tl small{display:block;font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--brand)}
+.tl b{display:block;font-size:17px;letter-spacing:-.02em;margin:4px 0 2px}
+.tl span{color:var(--muted);font-size:14.5px}
+.tl .bar{position:absolute;left:24px;right:24px;bottom:0;height:3px;border-radius:3px;background:linear-gradient(90deg,var(--ia),var(--cy-2));opacity:.5}
+.tl:last-child .bar{opacity:1}
+.fineprint{margin-top:14px;font-size:13px;color:var(--muted)}
+.fineprint a{font-weight:700}
+
+/* Pied de page : badge sécurité */
+.secure{display:inline-flex;align-items:center;gap:8px;margin-top:14px;padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:var(--surface);font-size:12.5px;font-weight:700}
+.secure svg{width:14px;height:14px;color:var(--teal)}
+
+/* Apparition au défilement */
+.js .reveal{opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.8,.2,1)}
+.js .reveal.in{opacity:1;transform:none}
+
 /* ---------- Animations ---------- */
+@keyframes float{0%,100%{translate:0 0}50%{translate:0 -8px}}
+@keyframes blink{50%{opacity:.25}}
+@keyframes trace{from{stroke-dashoffset:90}to{stroke-dashoffset:-560}}
+@keyframes flow{from{stroke-dashoffset:126}to{stroke-dashoffset:0}}
+@keyframes glow{50%{opacity:.45}}
+@keyframes train{0%{width:12%}70%{width:96%}100%{width:96%}}
+@keyframes scan{0%,100%{transform:translateY(-26px);opacity:0}15%,85%{opacity:.8}50%{transform:translateY(26px)}}
 @keyframes fade{from{opacity:0}to{opacity:1}}
 @keyframes up{from{transform:translateY(40px);opacity:0}to{transform:none;opacity:1}}
 @keyframes rise{from{transform:translateY(14px);opacity:0}to{transform:none;opacity:1}}
@@ -322,8 +442,10 @@ footer{border-top:1px solid var(--line);padding:44px 0 36px;color:var(--muted);f
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
   .ecg .trace{stroke-dashoffset:0}
   .ecg .blip{display:none}
+  .js .reveal{opacity:1!important;transform:none!important}
+  .hv-card{animation:none!important}
 }
-@media print{.top,.toolbar,.add-card,.contrib,.ecg,.hero-cta{display:none!important}body{background:#fff;color:#000}.card{break-inside:avoid;box-shadow:none}}
+@media print{.js .reveal{opacity:1!important;transform:none!important}.top,.toolbar,.add-card,.contrib,.ecg,.hero-cta{display:none!important}body{background:#fff;color:#000}.card{break-inside:avoid;box-shadow:none}}
 </style>
 </head>
 <body>
@@ -338,6 +460,7 @@ footer{border-top:1px solid var(--line);padding:44px 0 36px;color:var(--muted);f
     </a>
     <nav class="nav" aria-label="Navigation principale">
       <a href="#projets">Projets</a>
+      <a href="#specialite">La spécialité</a>
       <a href="#pour-qui">Pour qui ?</a>
       <a href="#contribuer">Contribuer</a>
     </nav>
@@ -359,19 +482,45 @@ footer{border-top:1px solid var(--line);padding:44px 0 36px;color:var(--muted);f
     <path class="trace" d="M0 82H300l14-10 10 10h22l8 14 14-74 16 84 10-24h30q20-24 40 0H700l14-10 10 10h22l8 14 14-74 16 84 10-24h30q20-24 40 0H1200"/>
     <path class="blip" d="M0 82H300l14-10 10 10h22l8 14 14-74 16 84 10-24h30q20-24 40 0H700l14-10 10 10h22l8 14 14-74 16 84 10-24h30q20-24 40 0H1200"/>
   </svg>
-  <div class="wrap">
-    <span class="eyebrow"><span class="pulse" aria-hidden="true"></span>Filière ITS · EPISEN · UPEC</span>
-    <h1>Ce que les élèves-ingénieurs ITS <em class="accent">construisent vraiment.</em></h1>
-    <p class="lede">Capteurs connectés, IA, cybersécurité, e-santé… Découvrez concrètement les projets MESPI et PoC réalisés par les étudiants de la filière Ingénierie des Technologies pour la Santé.</p>
-    <div class="hero-cta">
-      <a href="#projets" class="btn btn-primary">Explorer les projets
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a>
-      <a href="#ajouter" class="btn btn-ghost">Ajouter mon projet</a>
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow"><span class="pulse" aria-hidden="true"></span>Spécialité ITS · EPISEN · UPEC</span>
+      <h1>Ce que les élèves-ingénieurs ITS <em class="accent">construisent vraiment.</em></h1>
+      <p class="lede">Santé connectée, intelligence artificielle, cybersécurité… Découvrez concrètement les projets MESPI et PoC réalisés par les étudiants de la spécialité <strong>Ingénierie et Technologies pour la Santé</strong>.</p>
+      <div class="parcours-pills">
+        <a href="#projets" class="pp pp-ia" data-parcours="ia"><b>IA&amp;D-S</b><span>Intelligence Artificielle et Données de Santé</span></a>
+        <a href="#projets" class="pp pp-cy" data-parcours="cyber"><b>Cyber-S</b><span>Cybersécurité en Santé</span></a>
+      </div>
+      <div class="hero-cta">
+        <a href="#projets" class="btn btn-primary">Explorer les projets
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a>
+        <a href="#ajouter" class="btn btn-ghost">Ajouter mon projet</a>
+      </div>
     </div>
+    <div class="hero-visual" aria-hidden="true">
+      <div class="hv-card hv-ecg">
+        <div class="hv-head"><span class="hv-dot" style="--c:var(--coral)"></span>Signal de santé<span class="live">EN DIRECT</span></div>
+        <svg viewBox="0 0 300 76" preserveAspectRatio="none"><path class="grid-bg" d="M0 0V76"/><path class="grid-bg" d="M25 0V76"/><path class="grid-bg" d="M50 0V76"/><path class="grid-bg" d="M75 0V76"/><path class="grid-bg" d="M100 0V76"/><path class="grid-bg" d="M125 0V76"/><path class="grid-bg" d="M150 0V76"/><path class="grid-bg" d="M175 0V76"/><path class="grid-bg" d="M200 0V76"/><path class="grid-bg" d="M225 0V76"/><path class="grid-bg" d="M250 0V76"/><path class="grid-bg" d="M275 0V76"/><path class="grid-bg" d="M300 0V76"/><path class="grid-bg" d="M0 19H300"/><path class="grid-bg" d="M0 38H300"/><path class="grid-bg" d="M0 57H300"/><path class="tr" d="M0 46H40l8-6 6 6h10l5 8 8-40 9 46 6-14h16q10-12 20 0H150l8-6 6 6h10l5 8 8-40 9 46 6-14h16q10-12 20 0H300"/><path class="tr2" d="M0 46H40l8-6 6 6h10l5 8 8-40 9 46 6-14h16q10-12 20 0H150l8-6 6 6h10l5 8 8-40 9 46 6-14h16q10-12 20 0H300"/></svg>
+        <div class="hv-row"><b>72</b><small>bpm</small><span class="tagx">ECG · EMG · capteurs</span></div>
+      </div>
+      <div class="hv-card hv-ia">
+        <div class="hv-head"><span class="hv-dot" style="--c:var(--ia)"></span>IA&amp;D-S<span class="sub">Modèle</span></div>
+        <svg viewBox="0 0 224 120" aria-hidden="true"><line x1="20" y1="25" x2="82" y2="14"/><line x1="20" y1="25" x2="82" y2="46"/><line x1="20" y1="25" x2="82" y2="78"/><line x1="20" y1="25" x2="82" y2="106"/><line x1="20" y1="60" x2="82" y2="14"/><line x1="20" y1="60" x2="82" y2="46"/><line x1="20" y1="60" x2="82" y2="78"/><line x1="20" y1="60" x2="82" y2="106"/><line x1="20" y1="95" x2="82" y2="14"/><line x1="20" y1="95" x2="82" y2="46" class="hot"/><line x1="20" y1="95" x2="82" y2="78"/><line x1="20" y1="95" x2="82" y2="106"/><line x1="82" y1="14" x2="146" y2="28"/><line x1="82" y1="14" x2="146" y2="60" class="hot"/><line x1="82" y1="14" x2="146" y2="92"/><line x1="82" y1="46" x2="146" y2="28"/><line x1="82" y1="46" x2="146" y2="60"/><line x1="82" y1="46" x2="146" y2="92" class="hot"/><line x1="82" y1="78" x2="146" y2="28" class="hot"/><line x1="82" y1="78" x2="146" y2="60"/><line x1="82" y1="78" x2="146" y2="92"/><line x1="82" y1="106" x2="146" y2="28"/><line x1="82" y1="106" x2="146" y2="60"/><line x1="82" y1="106" x2="146" y2="92"/><line x1="146" y1="28" x2="204" y2="44" class="hot"/><line x1="146" y1="28" x2="204" y2="76"/><line x1="146" y1="60" x2="204" y2="44"/><line x1="146" y1="60" x2="204" y2="76"/><line x1="146" y1="92" x2="204" y2="44"/><line x1="146" y1="92" x2="204" y2="76"/><circle cx="20" cy="25" r="6" class="on"/><circle cx="20" cy="60" r="6"/><circle cx="20" cy="95" r="6"/><circle cx="82" cy="14" r="6"/><circle cx="82" cy="46" r="6" class="on"/><circle cx="82" cy="78" r="6"/><circle cx="82" cy="106" r="6"/><circle cx="146" cy="28" r="6"/><circle cx="146" cy="60" r="6" class="on"/><circle cx="146" cy="92" r="6"/><circle cx="204" cy="44" r="6" class="on"/><circle cx="204" cy="76" r="6"/></svg>
+        <div class="hv-bar"><span></span></div>
+        <span class="hv-cap">Apprentissage sur données de santé</span>
+      </div>
+      <div class="hv-card hv-cy">
+        <div class="hv-head"><span class="hv-dot" style="--c:var(--cy-2)"></span>Cyber-S<span class="sub">Protection</span></div>
+        <svg viewBox="0 0 120 120"><path class="shield" d="M60 8 104 24v34c0 28-20 46-44 54C36 104 16 86 16 58V24Z"/><path class="lock" d="M48 60v-9a12 12 0 0 1 24 0v9"/><rect class="lock" x="42" y="60" width="36" height="28" rx="6"/><path class="lock" d="M60 70v8"/><line class="scan" x1="22" y1="62" x2="98" y2="62"/></svg>
+        <ul class="hv-checks"><li>Communications chiffrées</li><li>Données patient protégées</li></ul>
+      </div>
+    </div>
+  </div>
+  <div class="wrap">
     <div class="stats" aria-label="Chiffres clés">
       <div class="stat"><b id="s-proj">–</b><small>projets</small></div>
-      <div class="stat"><b id="s-dom">–</b><small>domaines</small></div>
-      <div class="stat"><b id="s-promo">–</b><small>promotions</small></div>
+      <div class="stat"><b id="s-ia">–</b><small>projets IA&amp;D-S</small></div>
+      <div class="stat"><b id="s-cy">–</b><small>projets Cyber-S</small></div>
       <div class="stat"><b id="s-tech">–</b><small>technologies</small></div>
     </div>
   </div>
@@ -380,7 +529,7 @@ footer{border-top:1px solid var(--line);padding:44px 0 36px;color:var(--muted);f
 <main id="projets" class="wrap" tabindex="-1">
   <span class="kicker">Les projets</span>
   <h2 class="section-title">Des idées devenues <em>prototypes</em></h2>
-  <p class="section-sub">Filtre par type, domaine ou promotion, ou cherche une technologie, un nom, un mot-clé.</p>
+  <p class="section-sub">Filtre par parcours (IA&amp;D-S, Cyber-S), type, domaine ou promotion, ou cherche une technologie, un nom, un mot-clé.</p>
 
   <div class="toolbar">
     <div class="toolbar-row">
@@ -406,12 +555,57 @@ footer{border-top:1px solid var(--line);padding:44px 0 36px;color:var(--muted);f
   <noscript><p class="notice">Active JavaScript pour afficher les projets.</p></noscript>
 </main>
 
+<section class="section" id="specialite">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="kicker">La spécialité ITS</span>
+      <h2 class="section-title">Une spécialité, <em>deux parcours</em></h2>
+      <p class="section-sub">ITS, pour <strong>Ingénierie et Technologies pour la Santé</strong> : former des ingénieurs à la croisée du numérique et de la santé. La formation s'articule autour de deux axes, IA&amp;D-S et Cyber-S.</p>
+    </div>
+    <div class="tracks">
+      <article class="track track-ia reveal">
+        <svg class="deco" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M15 30 50 15 85 35M15 30 50 50 85 35M15 30 50 85M15 70 50 15M15 70 50 50 85 65M15 70 50 85 85 65M50 50 85 65M50 15 85 65M50 85 85 35"/><g fill="currentColor"><circle cx="15" cy="30" r="6"/><circle cx="15" cy="70" r="6"/><circle cx="50" cy="15" r="6"/><circle cx="50" cy="50" r="6"/><circle cx="50" cy="85" r="6"/><circle cx="85" cy="35" r="6"/><circle cx="85" cy="65" r="6"/></g></svg>
+        <span class="acr">IA&amp;D-S</span>
+        <h3>Intelligence Artificielle et Données de Santé</h3>
+        <p>Faire parler les données de santé : signaux physiologiques, apprentissage machine et analyse automatisée.</p>
+        <h4>Unités d'enseignement</h4>
+        <ul class="ue">
+          <li>Représentation et traitement avancés des signaux de santé</li>
+          <li>Introduction aux méthodes d'apprentissage machine</li>
+          <li>Approfondissement de l'apprentissage machine</li>
+          <li>Automatisation de l'analyse des données pour la santé</li>
+        </ul>
+        <a class="btn btn-ghost btn-sm" href="#projets" data-parcours="ia">Voir les projets IA&amp;D-S →</a>
+      </article>
+      <article class="track track-cy reveal">
+        <svg class="deco" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M50 6 88 20v28c0 24-17 40-38 46C29 88 12 72 12 48V20Z"/><path d="M38 50v-8a12 12 0 0 1 24 0v8"/><rect x="33" y="50" width="34" height="26" rx="5"/></svg>
+        <span class="acr">Cyber-S</span>
+        <h3>Cybersécurité en Santé</h3>
+        <p>Protéger les systèmes de santé : sécurité des communications, des architectures et des données sensibles.</p>
+        <h4>Unités d'enseignement</h4>
+        <ul class="ue">
+          <li>Concepts et protocoles pour la sécurité des communications</li>
+          <li>Mécanismes internes des systèmes de santé</li>
+          <li>Sécurité des architectures des systèmes de santé</li>
+          <li>Mise en œuvre de systèmes sécurisés en santé</li>
+        </ul>
+        <a class="btn btn-ghost btn-sm" href="#projets" data-parcours="cyber">Voir les projets Cyber-S →</a>
+      </article>
+    </div>
+    <div class="timeline reveal">
+      <div class="tl"><small>2e année · Semestres 3 et 4</small><b>Les bases des deux axes</b><span>Premiers modules IA&amp;D-S et Cyber-S.</span><i class="bar"></i></div>
+      <div class="tl"><small>3e année · Semestre 5</small><b>Approfondissement</b><span>Les deux axes se densifient.</span><i class="bar"></i></div>
+    </div>
+    <p class="fineprint">D'après la maquette de la spécialité. Site étudiant non officiel : pour le programme de référence, consulte le <a href="https://episen.u-pec.fr/" target="_blank" rel="noopener noreferrer">site de l'EPISEN</a>.</p>
+  </div>
+</section>
+
 <section class="section" id="pour-qui">
   <div class="wrap">
     <span class="kicker">Pour qui ?</span>
     <h2 class="section-title">Une vitrine, <em>trois regards</em></h2>
     <p class="section-sub">Ce site montre ce qui se fait réellement en ITS, au-delà des plaquettes.</p>
-    <div class="audience">
+    <div class="audience reveal">
       <div class="aud" style="--c:#2457f5">
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg></div>
         <h3>Futurs candidats</h3>
@@ -420,12 +614,12 @@ footer{border-top:1px solid var(--line);padding:44px 0 36px;color:var(--muted);f
       <div class="aud" style="--c:#0ba597">
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18"/></svg></div>
         <h3>Entreprises &amp; recruteurs</h3>
-        <p>Repérez des profils qui conçoivent déjà des solutions en IoT, IA, cybersécurité et e-santé.</p>
+        <p>Repérez des profils formés à l'IA appliquée aux données de santé et à la cybersécurité des systèmes de santé.</p>
       </div>
       <div class="aud" style="--c:#ff6a55">
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.1V17h6v-.2c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2z"/></svg></div>
         <h3>Étudiants en ING1</h3>
-        <p>Trouve l'inspiration pour ton futur MESPI ou PoC en voyant ce que les promos précédentes ont réalisé.</p>
+        <p>Trouve l'inspiration pour ton futur MESPI ou PoC et découvre à quoi mènent les parcours IA&amp;D-S et Cyber-S.</p>
       </div>
     </div>
   </div>
@@ -433,7 +627,7 @@ footer{border-top:1px solid var(--line);padding:44px 0 36px;color:var(--muted);f
 
 <section class="section" id="contribuer" style="padding-top:8px">
   <div class="wrap">
-    <div class="contrib">
+    <div class="contrib reveal">
       <span class="kicker">Contribuer</span>
       <h2 class="section-title">Ton projet mérite d'être <em>vu.</em></h2>
       <p class="section-sub">Aucun compte ni code nécessaire : tout passe par un formulaire.</p>
@@ -453,7 +647,8 @@ footer{border-top:1px solid var(--line);padding:44px 0 36px;color:var(--muted);f
     <div class="foot-top">
       <div>
         <a href="#" class="logo"><span class="logo-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 13h4l2-4 3 9 3-12 2.5 7H22"/></svg></span>Projets ITS</a>
-        <p>La vitrine des projets étudiants de la filière Ingénierie des Technologies pour la Santé.</p>
+        <p>La vitrine des projets étudiants de la spécialité ITS, Ingénierie et Technologies pour la Santé : IA&amp;D-S et Cyber-S.</p>
+        <span class="secure"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 20 5v6c0 5-3.4 9.3-8 11-4.6-1.7-8-6-8-11V5Z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg>Politique de sécurité stricte · sans publicité ni outil de suivi</span>
       </div>
       <nav class="foot-links" aria-label="Liens du pied de page">
         <a href="#projets">Projets</a>
@@ -507,8 +702,8 @@ const SEED = Array.isArray(readJSON("seed")) ? readJSON("seed") : [];
 /* ---------- Petits outils ---------- */
 const $ = (s,r=document)=>r.querySelector(s);
 const esc = s=>String(s??"").replace(/[&<>"'`]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;","`":"&#96;"}[c]));
-const norm = s=>String(s??"").normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase().trim();
-const clip = (s,n)=>{ s=String(s??"").replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F​-‏‪-‮⁦-⁩]/g,"").trim(); return s.length>n ? s.slice(0,n-1).trimEnd()+"…" : s; };
+const norm = s=>String(s??"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().trim();
+const clip = (s,n)=>{ s=String(s??"").replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F\u200B-\u200F\u202A-\u202E\u2066-\u2069]/g,"").trim(); return s.length>n ? s.slice(0,n-1).trimEnd()+"…" : s; };
 const initials = s=>(s||"?").split(/[\s\-_]+/).filter(Boolean).slice(0,2).map(w=>Array.from(w)[0].toUpperCase()).join("");
 const splitList = s=>(s||"").split(/[,;\n]+/).map(x=>x.trim()).filter(Boolean);
 const slugify = s=>norm(s).replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"").slice(0,60)||"projet";
@@ -520,6 +715,34 @@ const store = {
   set(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
 };
 const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+document.documentElement.classList.add("js");
+
+/* ---------- Parcours de la spécialité ITS ---------- */
+const PARCOURS = {
+  ia:    {label:"IA&D-S",  name:"Intelligence Artificielle et Données de Santé", colors:["#5b3df5","#2f7bff"]},
+  cyber: {label:"Cyber-S", name:"Cybersécurité en Santé",                        colors:["#0b3b6e","#0fb59c"]},
+};
+/* Parcours d'un projet : colonne "Parcours" du formulaire si elle existe, sinon déduit du domaine */
+function parcoursOf(p){
+  const t=norm(p.parcours), out=[];
+  if(t){
+    const both=/deux|tronc|commun|both/.test(t);
+    if(both||/ia ?& ?d|intelligence|donnee|\bia\b|data/.test(t)) out.push("ia");
+    if(both||/cyber|secu/.test(t)) out.push("cyber");
+    if(out.length) return out;
+  }
+  const d=norm(p.domaine);
+  if(/\bia\b|intelligence|data|donnee|imagerie|apprentissage|machine learning/.test(d)) out.push("ia");
+  if(/cyber|secu|crypt/.test(d)) out.push("cyber");
+  return out;
+}
+function projColors(p){
+  if(p.pk.length===2) return [PARCOURS.ia.colors[0],PARCOURS.cyber.colors[1]];
+  if(p.pk.length===1) return PARCOURS[p.pk[0]].colors;
+  return colorsFor(p.domaine);
+}
+function inkFor(p){ return p.pk.length ? (p.pk[0]==="ia"?"var(--ia-ink)":"var(--cy-ink)") : colorsFor(p.domaine)[0]; }
+const plBadge = k=>`<span class="pl pl-${k}" title="${esc(PARCOURS[k].name)}">${esc(PARCOURS[k].label)}</span>`;
 
 /* ---------- Liens : uniquement http(s), jamais javascript: ou data: ---------- */
 function safeUrl(u){
@@ -569,23 +792,45 @@ function colorsFor(d){
 }
 
 /* ---------- Couverture générée (motif unique par projet) ---------- */
-function art(p,uid){
-  const [a,b]=colorsFor(p.domaine), r=rng(hash(p.nom+"|"+p.annee)), id="g"+uid;
+function neural(r){
+  const cols=[40+r()*30, 150+r()*30, 260+r()*30, 360], nodes=cols.map(x=>{ const n=2+(r()*3|0); return Array.from({length:n},(_,i)=>[x,25+(i+.5)*(150/n)+r()*12]); });
   let s="";
-  for(let i=0;i<4;i++) s+=`<circle cx="${r()*400|0}" cy="${r()*225|0}" r="${40+r()*110|0}" fill="#fff" fill-opacity="${(.05+r()*.1).toFixed(2)}"/>`;
-  for(let i=0;i<3;i++) s+=`<circle cx="${r()*400|0}" cy="${r()*225|0}" r="${18+r()*70|0}" fill="none" stroke="#fff" stroke-opacity=".22" stroke-width="1.4"/>`;
+  for(let c=0;c<3;c++) for(const [x1,y1] of nodes[c]) for(const [x2,y2] of nodes[c+1]) s+=`<line x1="${x1|0}" y1="${y1|0}" x2="${x2|0}" y2="${y2|0}" stroke="#fff" stroke-opacity="${(.12+r()*.18).toFixed(2)}" stroke-width="1.2"/>`;
+  for(const col of nodes) for(const [x,y] of col) s+=`<circle cx="${x|0}" cy="${y|0}" r="${(4+r()*3).toFixed(1)}" fill="#fff" fill-opacity="${(.35+r()*.5).toFixed(2)}"/>`;
+  return s;
+}
+function hexes(r){
+  let s=""; const R=22, w=R*Math.sqrt(3);
+  for(let row=0;row<7;row++) for(let col=0;col<11;col++){
+    if(r()<.45) continue;
+    const cx=col*w+(row%2?w/2:0), cy=row*R*1.5, pts=[0,1,2,3,4,5].map(i=>{ const a=Math.PI/180*(60*i-30); return (cx+R*Math.cos(a)).toFixed(1)+","+(cy+R*Math.sin(a)).toFixed(1); }).join(" ");
+    s+=`<polygon points="${pts}" fill="#fff" fill-opacity="${r()<.12?.16:0}" stroke="#fff" stroke-opacity="${(.12+r()*.16).toFixed(2)}" stroke-width="1.2"/>`;
+  }
+  const x=250+r()*80|0, y=30+r()*40|0;
+  s+=`<g transform="translate(${x} ${y})" fill="none" stroke="#fff" stroke-opacity=".55" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"><path d="M40 0 76 13v26c0 23-16 38-36 45C20 77 4 62 4 39V13Z" fill="#fff" fill-opacity=".08"/><path d="M30 44v-8a10 10 0 0 1 20 0v8"/><rect x="25" y="44" width="30" height="22" rx="5"/></g>`;
+  return s;
+}
+function art(p,uid){
+  const [a,b]=projColors(p), r=rng(hash(p.nom+"|"+p.annee)), id="g"+uid;
+  let s="";
+  if(p.pk.includes("cyber")) s+=hexes(r);
+  if(p.pk.includes("ia")) s+=neural(r);
+  if(!p.pk.length){
+    for(let i=0;i<4;i++) s+=`<circle cx="${r()*400|0}" cy="${r()*225|0}" r="${40+r()*110|0}" fill="#fff" fill-opacity="${(.05+r()*.1).toFixed(2)}"/>`;
+    for(let i=0;i<3;i++) s+=`<circle cx="${r()*400|0}" cy="${r()*225|0}" r="${18+r()*70|0}" fill="none" stroke="#fff" stroke-opacity=".22" stroke-width="1.4"/>`;
+  }
   const y=160+(r()*30|0), x0=40+(r()*230|0);
   const d=`M0 ${y}H${x0}l10 -7 8 7h14l6 9 10 -44 12 52 8 -17h18q14 -14 28 0H400`;
   return `<svg class="art" viewBox="0 0 400 225" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><defs><linearGradient id="${id}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${a}"/><stop offset="1" stop-color="${b}"/></linearGradient></defs><rect width="400" height="225" fill="url(#${id})"/>${s}<path d="${d}" fill="none" stroke="#fff" stroke-opacity=".6" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/></svg>`;
 }
 function cover(p,uid){
   const img = p.image ? driveImg(p.image) : "";
-  return `<div class="cover">${art(p,uid)}${img?`<img src="${esc(img)}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" data-fallback>`:""}<span class="ini" aria-hidden="true">${esc(initials(p.nom))}</span>${p.type?`<span class="badge">${esc(p.type)}</span>`:""}</div>`;
+  return `<div class="cover">${art(p,uid)}${img?`<img src="${esc(img)}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" data-fallback>`:""}<span class="ini" aria-hidden="true">${esc(initials(p.nom))}</span><span class="badges">${p.type?`<span class="badge">${esc(p.type)}</span>`:""}${p.pk.map(k=>`<span class="badge-p">${esc(PARCOURS[k].label)}</span>`).join("")}</span></div>`;
 }
 
 /* ---------- CSV ---------- */
 function parseCSV(t){
-  t=String(t).replace(/^﻿/,"");
+  t=String(t).replace(/^\uFEFF/,"");
   const rows=[]; let row=[], f="", q=false;
   for(let i=0;i<t.length;i++){
     const c=t[i];
@@ -603,6 +848,7 @@ function parseCSV(t){
    "publie" : colonne facultative ajoutée à la main dans le tableau pour la modération. */
 const MATCH = [
   ["publie",     /publi|valid|approuv|moder/],
+  ["parcours",   /parcours|^axe|specialit|majeure/],
   ["image",      /image|photo|visuel/],
   ["lien",       /lien|video|poster|github|url/],
   ["nom",        /nom du projet|titre|^nom/],
@@ -614,7 +860,7 @@ const MATCH = [
   ["technos",    /techno|outil/],
   ["equipe",     /membre|equipe/],
 ];
-const LIMITS = {nom:90,type:30,annee:20,domaine:40,resume:300,description:5000,technos:400,equipe:400,image:2000,lien:2000};
+const LIMITS = {parcours:80,nom:90,type:30,annee:20,domaine:40,resume:300,description:5000,technos:400,equipe:400,image:2000,lien:2000};
 const YES = new Set(["oui","yes","ok","x","1","true","vrai","publie","publier","valide","approuve","✓","✔","✅"]);
 let MODERATED = false;
 
@@ -655,7 +901,7 @@ async function fetchSheet(){
 
 let ALL=[], VISIBLE=[];
 const BY_SLUG=new Map();
-const state={q:"",type:"",dom:"",year:"",sort:"recent"};
+const state={q:"",parcours:"",type:"",dom:"",year:"",sort:"recent"};
 
 async function load(){
   const {text,source,t}=await fetchSheet();
@@ -665,8 +911,8 @@ async function load(){
     const k=norm(p.nom+"|"+p.annee); if(seen.has(k)) return; seen.add(k);
     let slug=slugify(p.nom+(p.annee?"-"+p.annee:"")), n=2, base=slug;
     while(BY_SLUG.has(slug)) slug=base+"-"+(n++);
-    p.slug=slug; p.i=ALL.length;
-    p._hay=norm([p.nom,p.resume,p.description,p.technos,p.equipe,p.domaine,p.type,p.annee].join(" "));
+    p.slug=slug; p.i=ALL.length; p.pk=parcoursOf(p);
+    p._hay=norm([p.nom,p.resume,p.description,p.technos,p.equipe,p.domaine,p.type,p.annee,...p.pk.flatMap(k=>[PARCOURS[k].label,PARCOURS[k].name])].join(" "));
     ALL.push(p); BY_SLUG.set(slug,p);
   });
   const st=$("#status");
@@ -684,8 +930,8 @@ async function load(){
 function stats(){
   const n=a=>new Set(a.filter(Boolean).map(norm)).size;
   count("s-proj",ALL.length);
-  count("s-dom",n(ALL.map(p=>p.domaine)));
-  count("s-promo",n(ALL.map(p=>p.annee)));
+  count("s-ia",ALL.filter(p=>p.pk.includes("ia")).length);
+  count("s-cy",ALL.filter(p=>p.pk.includes("cyber")).length);
   count("s-tech",n(ALL.flatMap(p=>splitList(p.technos))));
 }
 function count(id,to){
@@ -701,8 +947,10 @@ const uniq=a=>{ const m=new Map(); a.filter(Boolean).forEach(v=>{ const k=norm(v
 function filters(){
   const types=uniq(ALL.map(p=>p.type)), doms=uniq(ALL.map(p=>p.domaine));
   const chip=(attr,val,label,on,dot)=>`<button type="button" class="chip" data-${attr}="${esc(val)}" aria-pressed="${on}">${dot?`<span class="dot" style="background:${dot}"></span>`:""}${esc(label)}</button>`;
+  const pchip=k=>`<button type="button" class="chip chip-p" data-p="${k}" aria-pressed="${state.parcours===k}" title="${esc(PARCOURS[k].name)}"><span class="dot" style="background:linear-gradient(135deg,${PARCOURS[k].colors.join(",")})"></span>${esc(PARCOURS[k].label)} <span class="n">${ALL.filter(p=>p.pk.includes(k)).length}</span></button>`;
   $("#chips").innerHTML =
-    chip("t","","Tous les projets",!state.type&&!state.dom) +
+    chip("t","","Tous les projets",!state.type&&!state.dom&&!state.parcours) +
+    pchip("ia") + pchip("cyber") + `<span class="sep" aria-hidden="true"></span>` +
     types.map(t=>chip("t",t,t,norm(state.type)===norm(t))).join("") +
     (doms.length>1 ? `<span class="sep" aria-hidden="true"></span>`+doms.map(d=>chip("d",d,d,norm(state.dom)===norm(d),colorsFor(d)[0])).join("") : "");
   const years=uniq(ALL.map(p=>p.annee)).sort((a,b)=>b.localeCompare(a,"fr"));
@@ -714,6 +962,7 @@ function filters(){
 function render(){
   const q=norm(state.q), words=q.split(/\s+/).filter(Boolean);
   VISIBLE=ALL.filter(p=>
+    (!state.parcours||p.pk.includes(state.parcours)) &&
     (!state.type||norm(p.type)===norm(state.type)) &&
     (!state.dom ||norm(p.domaine)===norm(state.dom)) &&
     (!state.year||norm(p.annee)===norm(state.year)) &&
@@ -721,7 +970,7 @@ function render(){
   if(state.sort==="az") VISIBLE=[...VISIBLE].sort((a,b)=>a.nom.localeCompare(b.nom,"fr",{sensitivity:"base"}));
   const g=$("#grid");
   g.innerHTML = VISIBLE.map((p,k)=>{
-    const [a]=colorsFor(p.domaine), sum=p.resume||p.description;
+    const a=projColors(p)[0], sum=p.resume||p.description;
     return `<article class="card" style="--a:${a};animation-delay:${Math.min(k,8)*40}ms">
       <a class="card-link" href="#/${p.slug}">
         ${cover(p,"c"+p.i)}
@@ -737,12 +986,12 @@ function render(){
   + (VISIBLE.length ? "" : `<div class="empty"><b>Aucun projet trouvé</b>Essaie un autre mot-clé ou retire un filtre.<br><button type="button" class="link-btn" data-reset>Réinitialiser les filtres</button></div>`)
   + `<a class="add-card" href="#ajouter"><div><div class="plus" aria-hidden="true">+</div>Ton projet n'est pas encore là ?<br>Ajoute-le en 2 minutes.</div></a>`;
   g.setAttribute("aria-busy","false");
-  const active = state.q||state.type||state.dom||state.year;
+  const active = state.q||state.parcours||state.type||state.dom||state.year;
   $("#count").textContent = active ? `${plural(VISIBLE.length,"projet")} sur ${ALL.length}` : plural(ALL.length,"projet");
   $("#reset").hidden=!active;
 }
 function resetFilters(){
-  Object.assign(state,{q:"",type:"",dom:"",year:""}); $("#q").value="";
+  Object.assign(state,{q:"",parcours:"",type:"",dom:"",year:""}); $("#q").value="";
   filters(); render();
 }
 
@@ -771,12 +1020,12 @@ function closeModal(){
 
 function showProject(p){
   const list=VISIBLE.includes(p)?VISIBLE:ALL, k=list.indexOf(p), prev=list[k-1], next=list[k+1];
-  const yt=youtubeId(p.lien), [a]=colorsFor(p.domaine);
+  const yt=youtubeId(p.lien), a=projColors(p)[0];
   const contact=validEmail(CONFIG.CONTACT_EMAIL) ? `mailto:${CONFIG.CONTACT_EMAIL}?subject=${encodeURIComponent("Signalement : "+p.nom)}` : "";
   $("#detail").innerHTML = `
     ${cover(p,"m"+p.i)}
     <div class="modal-inner" style="--a:${a}">
-      <div class="meta">${p.domaine?`<span class="dot"></span>${esc(p.domaine)}`:""}${p.domaine&&p.annee?`<span aria-hidden="true">·</span>`:""}${p.annee?`Promo ${esc(p.annee)}`:""}</div>
+      <div class="meta">${p.pk.map(plBadge).join("")}${p.domaine?`<span class="dot"></span>${esc(p.domaine)}`:""}${p.domaine&&p.annee?`<span aria-hidden="true">·</span>`:""}${p.annee?`Promo ${esc(p.annee)}`:""}</div>
       <h2 id="detail-title">${esc(p.nom)}</h2>
       ${p.resume?`<p class="lead">${esc(p.resume)}</p>`:""}
       ${yt?`<div class="block"><div class="video" data-yt="${yt}"><button type="button" aria-label="Lire la vidéo du projet"><img src="https://i.ytimg.com/vi/${yt}/hqdefault.jpg" alt="" loading="lazy" referrerpolicy="no-referrer"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></button></div></div>`:""}
@@ -847,7 +1096,11 @@ document.addEventListener("click",e=>{
   const yt=t.closest(".video button");
   if(yt){ const box=yt.parentElement, id=box.dataset.yt; if(/^[\w-]{11}$/.test(id)) box.innerHTML=`<iframe src="https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0" title="Vidéo du projet" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>`; return; }
   const ct=t.closest("[data-t]");
-  if(ct){ state.type=ct.dataset.t; if(!ct.dataset.t) state.dom=""; filters(); render(); return; }
+  if(ct){ state.type=ct.dataset.t; if(!ct.dataset.t){ state.dom=""; state.parcours=""; } filters(); render(); return; }
+  const cp=t.closest("[data-p]");
+  if(cp){ state.parcours = state.parcours===cp.dataset.p ? "" : cp.dataset.p; filters(); render(); return; }
+  const lp=t.closest("[data-parcours]");
+  if(lp && PARCOURS[lp.dataset.parcours]){ state.parcours=lp.dataset.parcours; filters(); render(); }
   const cd=t.closest("[data-d]");
   if(cd){ state.dom = norm(state.dom)===norm(cd.dataset.d) ? "" : cd.dataset.d; filters(); render(); return; }
   const mail=t.closest("[data-contact]");
@@ -866,6 +1119,19 @@ let qTimer;
 $("#q").addEventListener("input",e=>{ clearTimeout(qTimer); qTimer=setTimeout(()=>{ state.q=e.target.value; render(); },120); });
 $("#year").addEventListener("change",e=>{ state.year=e.target.value; render(); });
 $("#sort").addEventListener("change",e=>{ state.sort=e.target.value; render(); });
+
+/* ---------- Effet lumière sur les cartes ---------- */
+$("#grid").addEventListener("pointermove",e=>{
+  const c=e.target.closest(".card"); if(!c) return;
+  const r=c.getBoundingClientRect(); c.style.setProperty("--mx",(e.clientX-r.left)+"px"); c.style.setProperty("--my",(e.clientY-r.top)+"px");
+});
+
+/* ---------- Apparition au défilement ---------- */
+const reveals=document.querySelectorAll(".reveal");
+if("IntersectionObserver" in window && !reduceMotion){
+  const io=new IntersectionObserver(es=>es.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add("in"); io.unobserve(en.target); } }),{rootMargin:"0px 0px -8% 0px",threshold:.08});
+  reveals.forEach(el=>io.observe(el));
+}else reveals.forEach(el=>el.classList.add("in"));
 
 load();
 })();
