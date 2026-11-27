@@ -10,7 +10,7 @@
   l'empreinte doit être recalculée, sinon le site ne s'affichera plus.
   Modifier le texte, CONFIG ou SEED ne change PAS l'empreinte.
 -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-vpo/kMbkDaGUKC7oZ74QeBTbAWBH86yLav5B867XGSE='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https: data:; connect-src https://docs.google.com https://*.googleusercontent.com; frame-src https://docs.google.com https://accounts.google.com https://www.youtube-nocookie.com; base-uri 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-vMKKi01vaEEp9heeZlPIaOd/NFnZRztR7R9gXqZ5io4='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https: data:; connect-src https://docs.google.com https://*.googleusercontent.com; frame-src https://docs.google.com https://accounts.google.com https://www.youtube-nocookie.com; base-uri 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Projets ITS – EPISEN · Santé, IA & Cybersécurité</title>
 <meta name="description" content="Les projets MESPI et PoC des élèves-ingénieurs de la spécialité ITS (Ingénierie et Technologies pour la Santé) de l'EPISEN : parcours IA&D-S (Intelligence Artificielle et Données de Santé) et Cyber-S (Cybersécurité en Santé).">
@@ -724,6 +724,8 @@ a.aud:hover .ic,a.stage:hover .ic{transform:rotate(-8deg) scale(1.08)}
 .tbl td{padding:14px 16px;border-bottom:1px solid var(--line);vertical-align:top}
 .tbl tr:last-child td{border-bottom:none}
 .tbl td b{display:block}
+.tbl-inline td b{display:inline}
+.more-wrap{grid-column:1/-1;display:flex;justify-content:center;padding:6px 0}
 .tbl .tbd{color:var(--muted);font-style:italic}
 .tbl a{color:var(--brand);font-weight:700}
 .ent-tools{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-top:14px}
@@ -758,6 +760,10 @@ a.aud:hover .ic,a.stage:hover .ic{transform:rotate(-8deg) scale(1.08)}
 .proc li::before{content:counter(pr);display:grid;place-items:center;width:34px;height:34px;border-radius:50%;margin-bottom:12px;font-weight:800;color:var(--on-brand);background:linear-gradient(135deg,var(--brand),var(--teal))}
 .proc b{display:block;font-size:15.5px;letter-spacing:-.01em;margin-bottom:4px}
 .proc span{font-size:14px;color:var(--muted)}
+.see{margin-top:30px;padding:16px 20px;border-radius:16px;background:var(--brand-soft);border:1px solid var(--line);font-size:15.5px}
+.see a{color:var(--brand);font-weight:700}
+.stage .desc{color:var(--muted);font-size:14.5px}
+.tbl td a.go-link{white-space:nowrap}
 .sub-title{font-size:clamp(22px,2.8vw,30px);letter-spacing:-.03em;margin:54px 0 6px}
 .sub-title em{font-family:var(--serif);font-weight:400}
 .contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:20px;margin-top:32px}
@@ -829,7 +835,7 @@ a.aud:hover .ic,a.stage:hover .ic{transform:rotate(-8deg) scale(1.08)}
       <a href="#pour-qui">Pour qui ?</a>
       <a href="#formation">La formation</a>
       <a href="#specialite">La spécialité</a>
-      <a href="#stages">Stages</a>
+      <a href="#infos-stages" data-view="infos-stages">Stages</a>
       <a href="#contribuer">Contribuer</a>
       <a href="#projets">Projets</a>
       <a href="#contacts" data-view="contacts">Contacts</a>
@@ -857,10 +863,6 @@ a.aud:hover .ic,a.stage:hover .ic{transform:rotate(-8deg) scale(1.08)}
       <span class="eyebrow"><span class="pulse" aria-hidden="true"></span>Spécialité ITS · EPISEN · UPEC</span>
       <h1>Ce que les élèves-ingénieurs ITS <em class="accent">construisent vraiment.</em></h1>
       <p class="lede">Santé connectée, intelligence artificielle, cybersécurité… Découvrez concrètement les projets MESPI et PoC réalisés par les étudiants de la spécialité <strong>Ingénierie et Technologies pour la Santé</strong>.</p>
-      <div class="parcours-pills">
-        <a href="#projets" class="pp pp-ia" data-parcours="ia"><b>IA&amp;D-S</b><span>Intelligence Artificielle et Données de Santé</span></a>
-        <a href="#projets" class="pp pp-cy" data-parcours="cyber"><b>Cyber-S</b><span>Cybersécurité en Santé</span></a>
-      </div>
       <div class="hero-cta">
         <a href="#projets" class="btn btn-primary">Explorer les projets
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a>
@@ -930,15 +932,40 @@ a.aud:hover .ic,a.stage:hover .ic{transform:rotate(-8deg) scale(1.08)}
   <div class="wrap">
     <div class="reveal">
       <span class="kicker">La formation</span>
-      <h2 class="section-title">Trois années, <em>un parcours progressif</em></h2>
-      <p class="section-sub">Le cycle ingénieur ITS se déroule sur trois ans : des fondamentaux jusqu'aux deux axes IA&amp;D-S et Cyber-S, avec un stage chaque année.</p>
+      <h2 class="section-title">Trois années, <em>un stage chaque année</em></h2>
+      <p class="section-sub">Des fondamentaux jusqu'aux deux axes IA&amp;D-S et Cyber-S. Clique sur une année pour découvrir son stage.</p>
     </div>
-    <div class="timeline reveal">
-      <div class="tl"><small>1re année · Semestres 1 et 2</small><b>Les fondamentaux</b><span>Le socle commun de l'ingénieur, entre numérique et santé.</span><br><a class="stg" href="#stage-1a">Stage de découverte · 4 semaines min. →</a><i class="bar"></i></div>
-      <div class="tl"><small>2e année · Semestres 3 et 4</small><b>Les bases des deux axes</b><span>Premiers modules IA&amp;D-S et Cyber-S.</span><br><a class="stg" href="#stage-2a">Stage à l'étranger · 16 semaines min. →</a><i class="bar"></i></div>
-      <div class="tl"><small>3e année · Semestre 5</small><b>Approfondissement</b><span>Les deux axes se densifient.</span><br><a class="stg" href="#stage-3a">Stage de fin d'études · 26 semaines →</a><i class="bar"></i></div>
+    <div class="stages reveal">
+      <a class="stage glow" href="#stage-1a" style="--w:15.4%">
+        <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5z"/></svg></span>
+        <span class="yr">1re année · S1–S2</span>
+        <h3>Les fondamentaux</h3>
+        <p class="desc">Le socle commun de l'ingénieur, entre numérique et santé.</p>
+        <div class="wk"><b data-count="4">4</b><span>semaines de stage min.</span></div>
+        <div class="dur" aria-hidden="true"><i></i></div>
+        <span class="more">Le stage de découverte <i aria-hidden="true">→</i></span>
+      </a>
+      <a class="stage glow" href="#stage-2a" style="--w:61.5%">
+        <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg></span>
+        <span class="yr">2e année · S3–S4</span>
+        <h3>Les deux axes</h3>
+        <p class="desc">Premiers modules IA&amp;D-S et Cyber-S, puis un stage à l'étranger.</p>
+        <div class="wk"><b data-count="16">16</b><span>semaines de stage min.</span></div>
+        <span class="flag">À l'étranger</span>
+        <div class="dur" aria-hidden="true"><i></i></div>
+        <span class="more">Le stage à l'étranger <i aria-hidden="true">→</i></span>
+      </a>
+      <a class="stage glow" href="#stage-3a" style="--w:100%">
+        <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg></span>
+        <span class="yr">3e année · S5–S6</span>
+        <h3>Approfondissement</h3>
+        <p class="desc">Les deux axes se densifient, puis le stage de fin d'études.</p>
+        <div class="wk"><b data-count="26">26</b><span>semaines de stage</span></div>
+        <div class="dur" aria-hidden="true"><i></i></div>
+        <span class="more">Le stage de fin d'études <i aria-hidden="true">→</i></span>
+      </a>
     </div>
-    <p class="fineprint">D'après la maquette de la spécialité et la présentation de la formation par l'EPISEN.</p>
+    <div class="stage-cta"><a class="btn btn-ghost" href="#infos-stages">Démarches, documents et calendrier des stages →</a></div>
   </div>
 </section>
 
@@ -981,44 +1008,6 @@ a.aud:hover .ic,a.stage:hover .ic{transform:rotate(-8deg) scale(1.08)}
       </article>
     </div>
     <p class="fineprint">D'après la maquette de la spécialité. Site étudiant non officiel : pour le programme de référence, consulte le <a href="https://episen.u-pec.fr/formations/technologies-pour-la-sante-its" target="_blank" rel="noopener noreferrer">site de l'EPISEN</a>.</p>
-  </div>
-</section>
-
-<section class="section" id="stages">
-  <div class="wrap">
-    <div class="reveal">
-      <span class="kicker">Stages &amp; international</span>
-      <h2 class="section-title">Trois stages, <em>une ouverture internationale</em></h2>
-      <p class="section-sub">Des expériences professionnelles chaque année pour une intégration réussie : <strong>au moins 46 semaines de stage</strong> sur les trois années du cycle ingénieur, dont une expérience obligatoire à l'étranger.</p>
-    </div>
-    <div class="stages reveal">
-      <a class="stage glow" href="#stage-1a" style="--w:15.4%">
-        <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5z"/></svg></span>
-        <span class="yr">1re année</span>
-        <div class="wk"><b data-count="4">4</b><span>semaines min.</span></div>
-        <h3>Stage de découverte du monde professionnel</h3>
-        <div class="dur" aria-hidden="true"><i></i></div>
-        <span class="more">Voir les détails <i aria-hidden="true">→</i></span>
-      </a>
-      <a class="stage glow" href="#stage-2a" style="--w:61.5%">
-        <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg></span>
-        <span class="yr">2e année</span>
-        <div class="wk"><b data-count="16">16</b><span>semaines min.</span></div>
-        <h3>Stage de réalisation</h3>
-        <span class="flag">À l'étranger</span>
-        <div class="dur" aria-hidden="true"><i></i></div>
-        <span class="more">Voir les détails <i aria-hidden="true">→</i></span>
-      </a>
-      <a class="stage glow" href="#stage-3a" style="--w:100%">
-        <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg></span>
-        <span class="yr">3e année</span>
-        <div class="wk"><b data-count="26">26</b><span>semaines</span></div>
-        <h3>Stage de fin d'études</h3>
-        <div class="dur" aria-hidden="true"><i></i></div>
-        <span class="more">Voir les détails <i aria-hidden="true">→</i></span>
-      </a>
-    </div>
-    <div class="stage-cta"><a class="btn btn-primary" href="#infos-stages">Tout savoir sur les stages et les contacts →</a></div>
   </div>
 </section>
 
@@ -1073,116 +1062,52 @@ a.aud:hover .ic,a.stage:hover .ic{transform:rotate(-8deg) scale(1.08)}
 
 <section class="section view" id="view-stages" aria-labelledby="view-stages-t">
   <div class="wrap">
-    <a href="#stages" class="back">← Retour</a>
-    <span class="kicker">Stages &amp; international</span>
-    <h1 class="section-title view-title" id="view-stages-t" tabindex="-1">Un stage chaque année, <em>et une expérience à l'étranger</em></h1>
-    <p class="lead-xl">Des expériences professionnelles à chaque année du cycle ingénieur, pour une intégration réussie.</p>
-    <div class="weeks">
-      <div class="tot">Au moins 46 semaines de stage <span>FISE, sur les 3 années</span></div>
-      <div class="bar3" aria-hidden="true"><i></i><i></i><i></i></div>
-      <div class="lab3"><span>4 sem.</span><span>16 sem. · étranger</span><span>26 sem.</span></div>
-    </div>
-    <div class="stages in">
-      <article class="stage" style="--w:15.4%">
-        <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5z"/></svg></span>
-        <span class="yr">1re année</span>
-        <div class="wk"><b>4</b><span>semaines min.</span></div>
-        <h3>Stage de découverte du monde professionnel</h3>
-        <p class="desc">Dans un milieu lié au monde de la santé : hôpital, médecine de ville, clinique, maison de santé, EHPAD, association ou ONG de santé… Restitution par un poster. À partir du 21 juin 2027.</p>
-        <div class="dur" aria-hidden="true"><i></i></div>
-      </article>
-      <article class="stage" style="--w:61.5%">
-        <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg></span>
-        <span class="yr">2e année</span>
-        <div class="wk"><b>16</b><span>semaines min.</span></div>
-        <h3>Stage de réalisation</h3>
-        <span class="flag">À l'étranger</span>
-        <p class="desc">En entreprise ou en organisme de recherche, de préférence à l'étranger chez un partenaire (pays non francophones privilégiés). Mémoire et soutenance en anglais. À partir du 10 mai 2027.</p>
-        <div class="dur" aria-hidden="true"><i></i></div>
-      </article>
-      <article class="stage" style="--w:100%">
-        <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg></span>
-        <span class="yr">3e année</span>
-        <div class="wk"><b>26</b><span>semaines</span></div>
-        <h3>Stage de fin d'études</h3>
-        <p class="desc">Une mission en entreprise ou en laboratoire de recherche (semestre 6). Mémoire et soutenance devant un jury d'enseignants et d'entreprises partenaires. À partir du 8 mars 2027.</p>
-        <div class="dur" aria-hidden="true"><i></i></div>
-      </article>
-    </div>
-    <h2 class="sub-title">Stage trouvé ? <em>Et maintenant</em></h2>
-    <ol class="proc">
-      <li><b>Récupère les deux fiches sur EPREL</b><span>La fiche de liaison (infos de l'entreprise) et la fiche de validation (infos sur le stage). Remplis-les en parallèle.</span></li>
-      <li><b>Fais valider ton stage</b><span>Envoie la fiche de validation au responsable des stages. Attends sa validation avant de passer à la suite.</span></li>
-      <li><b>Remplis la convention en ligne</b><span>Sur Pstage / eStage (E-Campus, rubrique Orientation-Insertion), avec les informations de la fiche de liaison. La fiche de liaison reste chez toi.</span></li>
-      <li><b>Récupère ta convention</b><span>Écris à la scolarité ITS en mettant le responsable des stages en copie, avec la fiche de validation signée et ton attestation de responsabilité civile.</span></li>
-      <li><b>Fais signer la convention</b><span>Toi, l'entreprise, le tuteur en entreprise, l'enseignant référent, puis la direction de l'école.</span></li>
-    </ol>
-    <p class="fineprint">Procédure FISE, d'après les documents de la filière ITS. Problème technique sur la plateforme : <a href="mailto:sos-estage@u-pec.fr">sos-estage@u-pec.fr</a>.</p>
-
-    <h2 class="sub-title">Comment <em>ça se passe</em></h2>
-    <div class="speech">
-      <p><strong>Avant le stage :</strong> le sujet est proposé par l'étudiant et doit être <strong>validé en amont</strong> par le responsable des stages de la filière. Un stage non validé n'est pas pris en compte. Chaque stage fait l'objet d'une convention entre l'école, l'entreprise et l'étudiant, établie en ligne sur la plateforme eStage de l'UPEC (attestation de responsabilité civile obligatoire, avec rapatriement pour l'étranger).</p>
-      <p><strong>Pendant le stage :</strong> un tuteur enseignant suit l'étudiant, en binôme avec le tuteur en entreprise. Le stagiaire a les mêmes droits que les salariés (temps de travail, restauration, transports), et une <strong>gratification est obligatoire au-delà de 2 mois</strong>.</p>
-      <p><strong>Après le stage :</strong> un poster en 1re année, un mémoire et une soutenance en anglais en 2e année, un mémoire et une soutenance devant un jury en 3e année.</p>
-    </div>
-
-    <h2 class="sub-title">Partir <em>à l'étranger</em></h2>
-    <div class="speech">
-      <p>L'expérience internationale est <strong>obligatoire</strong>. En FISE, c'est le plus souvent le stage de 2e année : 16 semaines minimum à la fin du semestre 4 (un semestre d'études dans une université partenaire est aussi possible). En FISA, c'est une <strong>mobilité de 12 semaines (9 minimum)</strong>, hors des périodes de cours, en 2e ou en 3e année, dans une branche étrangère de l'entreprise ou dans une autre entreprise (le contrat d'alternance est alors suspendu, avec une convention de stage et une convention de mobilité signées avec l'école, le CFA et l'entreprise).</p>
-      <p><strong>Destinations fréquentes :</strong> Vietnam, Thaïlande, Malaisie, Canada, mais aussi Corée du Sud, Espagne, Portugal, Italie, Allemagne, Suède, Brésil…</p>
-      <p><strong>Autres options en FISE :</strong> un semestre 4 à l'université HUST de Hanoï (programmes Global ICT, Data Science &amp; AI, Cyber Security) ou une université du <a href="https://www.u-pec.fr/fr/international/aurora/opportunites-etudiants" target="_blank" rel="noopener noreferrer">réseau européen AURORA ↗</a>.</p>
-      <p><strong>Bon à savoir :</strong> l'aide à la mobilité internationale de l'UPEC est d'environ 350 à 400 € par mois, sous réserve de budget et de classement. Le <strong>TOEIC (785 minimum)</strong> est obligatoire pour obtenir le diplôme : l'école finance une session au semestre 4, avant le départ.</p>
-      <p><strong>Le conseil des étudiants :</strong> commence ta recherche dès la rentrée, parle aux ITS3 et aux diplômés, récupère leurs contacts et sollicite le BDE.</p>
-    </div>
-    <div class="passport">
-      <div>
-        <h3>Le passeport international, <em>pour valoriser tes expériences</em></h3>
-        <p>Au-delà du stage à l'étranger, les expériences internationales sont reconnues tout au long de la formation.</p>
-      </div>
-      <ul class="pass-list">
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>Séjours académiques ou professionnels à l'étranger</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg>Participation à l'ouverture internationale de l'école et de l'université</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15l-3.5 2 1-4-3-2.7 4-.3L12 6l1.5 4 4 .3-3 2.7 1 4z"/><circle cx="12" cy="12" r="10"/></svg>Reconnaissance d'activités professionnelles ou de projets transnationaux</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.1V17h6v-.2c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2z"/></svg>Initiatives personnelles</li>
-      </ul>
-    </div>
-    <h2 class="sub-title">Documents <em>utiles</em></h2>
+    <a href="#formation" class="back">← Retour</a>
+    <span class="kicker">Stages</span>
+    <h1 class="section-title view-title" id="view-stages-t" tabindex="-1">Les stages <em>en un coup d'œil</em></h1>
+    <p class="lead-xl">Un stage chaque année et une expérience obligatoire à l'étranger. Clique sur « Détails » pour tout savoir sur un stage.</p>
     <div class="tbl-wrap">
       <table class="tbl">
-        <thead><tr><th>Document</th><th>Où le trouver</th></tr></thead>
+        <thead><tr><th>Année</th><th>Étudiants (FISE)</th><th>Apprentis (FISA)</th><th>Début 2026-2027</th><th></th></tr></thead>
         <tbody>
-          <tr><td><b>Fiche de liaison</b> (aussi en anglais) et <b>fiche de validation</b> du stage</td><td>EPREL, espace de la filière ITS (accès étudiant)</td></tr>
-          <tr><td><b>Guide eStage</b> : conventions, dates, gratification, droits du stagiaire</td><td>EPREL et page d'accueil d'eStage (E-Campus)</td></tr>
-          <tr><td><b>Vade-mecum des stages ITS</b> et grille d'évaluation de stage</td><td>EPREL, espace de la filière ITS</td></tr>
-          <tr><td><b>M3C et règlement des études</b> (validation, stages, mobilité)</td><td>EPREL, espace de la filière ITS</td></tr>
-          <tr><td><b>Calendriers FISE / FISA</b> et emploi du temps</td><td>EPREL et <a href="https://edtits.org/fr/edt/ITS/" target="_blank" rel="noopener noreferrer">edtits.org ↗</a></td></tr>
-          <tr><td>Guide officiel des stages étudiants</td><td><a href="https://www.enseignementsup-recherche.gouv.fr/fr/guide-des-stages-etudiants-en-france-et-l-etranger-87533" target="_blank" rel="noopener noreferrer">enseignementsup-recherche.gouv.fr ↗</a></td></tr>
-          <tr><td>Partir à l'étranger : inscription Ariane et carte européenne d'assurance maladie</td><td><a href="https://pastel.diplomatie.gouv.fr/fildariane/dyn/public/login.html" target="_blank" rel="noopener noreferrer">Ariane ↗</a> · <a href="https://www.ameli.fr" target="_blank" rel="noopener noreferrer">CEAM sur ameli.fr ↗</a></td></tr>
+          <tr><td><b>1re année</b></td><td><b>Stage de découverte · 4 sem. min.</b>Dans le monde de la santé</td><td>Missions en entreprise</td><td>21 juin 2027</td><td><a class="go-link" href="#stage-1a">Détails →</a></td></tr>
+          <tr><td><b>2e année</b></td><td><b>Stage à l'étranger · 16 sem. min.</b>Mémoire et soutenance en anglais</td><td><b>Mobilité internationale · 12 sem. (9 min.)</b>En 2e ou en 3e année</td><td>10 mai 2027</td><td><a class="go-link" href="#stage-2a">Détails →</a></td></tr>
+          <tr><td><b>3e année</b></td><td><b>Stage de fin d'études · 26 sem.</b>En entreprise ou en laboratoire</td><td>En entreprise</td><td>8 mars 2027</td><td><a class="go-link" href="#stage-3a">Détails →</a></td></tr>
         </tbody>
       </table>
     </div>
-    <p class="fineprint">Les documents internes de l'école restent sur EPREL : ce site n'en publie pas de copie.</p>
 
-    <h2 class="sub-title">Contacts <em>pour les stages</em></h2>
-    <p class="section-sub">Une offre, une question ou une démarche administrative : voici à qui s'adresser.</p>
-    <div class="contact-more">
-      <article class="cm">
-        <h3>Entreprises &amp; établissements de santé</h3>
-        <p>Proposer un stage (4, 16 ou 26 semaines minimum), un projet MESPI ou PoC, ou présenter votre structure aux étudiants ITS.</p>
-        <a class="btn btn-primary btn-sm" href="#" data-contact="Proposition de stage ou de projet">Proposer un stage</a>
-      </article>
-      <article class="cm">
-        <h3>Questions d'étudiants</h3>
-        <p>Tu prépares ton stage, par exemple celui à l'étranger en 2e année ? Échange avec les étudiants des autres promos.</p>
-        <a class="btn btn-ghost btn-sm" href="#" data-contact="[Stages] Question sur les stages">Poser une question</a>
-      </article>
-      <article class="cm">
-        <h3>Démarches officielles</h3>
-        <p>Conventions de stage et questions administratives : écris à la scolarité ITS, <a href="mailto:scolarite-its.episen@u-pec.fr">scolarite-its.episen@u-pec.fr</a>.</p>
-        <a class="btn btn-ghost btn-sm" href="https://episen.u-pec.fr/formations/technologies-pour-la-sante-its" target="_blank" rel="noopener noreferrer">Site de l'EPISEN ↗</a>
-      </article>
+    <h2 class="sub-title">Stage trouvé ? <em>Et maintenant</em></h2>
+    <ol class="proc">
+      <li><b>Récupère les deux fiches sur EPREL</b><span>La fiche de liaison (infos de l'entreprise) et la fiche de validation (infos sur le stage). Remplis-les en parallèle.</span></li>
+      <li><b>Fais valider ton stage</b><span>Envoie la fiche de validation au responsable des stages et attends sa validation avant de continuer.</span></li>
+      <li><b>Remplis la convention en ligne</b><span>Sur eStage (E-Campus, rubrique Orientation-Insertion), avec les informations de la fiche de liaison.</span></li>
+      <li><b>Récupère ta convention</b><span>Écris à la scolarité ITS (<a href="mailto:scolarite-its.episen@u-pec.fr">scolarite-its.episen@u-pec.fr</a>) avec le responsable des stages en copie, la fiche de validation signée et ton attestation de responsabilité civile.</span></li>
+      <li><b>Fais signer la convention</b><span>Toi, l'entreprise, le tuteur en entreprise, l'enseignant référent, puis la direction de l'école.</span></li>
+    </ol>
+
+    <h2 class="sub-title">Bon <em>à savoir</em></h2>
+    <div class="points">
+        <article class="point" style="--c:#2457f5"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div><h3>Validation préalable</h3><p>Le sujet est proposé par l'étudiant et validé avant le début du stage par le responsable des stages. Un stage non validé ne compte pas.</p></article>
+        <article class="point" style="--c:#0ba597"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.5 3.4-5.5 6.5-5.5s5.7 2 6.5 5.5"/><circle cx="17.5" cy="9" r="2.5"/><path d="M16 14.6c2.6.2 4.6 2 5.5 5.4"/></svg></div><h3>Double tutorat</h3><p>Un tuteur enseignant suit chaque stagiaire, en binôme avec le tuteur en entreprise.</p></article>
+        <article class="point" style="--c:#ff6a55"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 6.5A7 7 0 1 0 17 17.5M4 10h9M4 14h9"/></svg></div><h3>Droits et gratification</h3><p>Mêmes droits que les salariés (horaires, restauration, transports). Gratification obligatoire au-delà de 2 mois. Prolongation possible par avenant, jusqu'à +50 %.</p></article>
     </div>
-    <p class="fineprint">D'après le règlement des études, le guide des stages FISE 2026-2027 et la pré-rentrée ITS2 2026-2027 de l'EPISEN. Les dates peuvent évoluer : les communications officielles de l'école font référence. Site étudiant non officiel.</p>
+
+    <h2 class="sub-title">Documents <em>utiles</em></h2>
+    <div class="tbl-wrap">
+      <table class="tbl tbl-inline">
+        <thead><tr><th>Document</th><th>Où le trouver</th></tr></thead>
+        <tbody>
+          <tr><td><b>Fiche de liaison</b> (aussi en anglais) et <b>fiche de validation</b></td><td>EPREL, espace de la filière ITS</td></tr>
+          <tr><td><b>Guide eStage</b> : conventions, dates, gratification, droits</td><td>EPREL et page d'accueil d'eStage (E-Campus)</td></tr>
+          <tr><td><b>Vade-mecum des stages ITS</b>, grille d'évaluation, M3C, règlement des études</td><td>EPREL, espace de la filière ITS</td></tr>
+          <tr><td><b>Calendriers FISE / FISA</b> et emploi du temps</td><td>EPREL et <a href="https://edtits.org/fr/edt/ITS/" target="_blank" rel="noopener noreferrer">edtits.org ↗</a></td></tr>
+          <tr><td>Guide officiel des stages étudiants</td><td><a href="https://www.enseignementsup-recherche.gouv.fr/fr/guide-des-stages-etudiants-en-france-et-l-etranger-87533" target="_blank" rel="noopener noreferrer">enseignementsup-recherche.gouv.fr ↗</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="see">Une question ? Scolarité, responsable des stages, relations internationales, eStage : <a href="#contacts">tous les contacts →</a></p>
+    <p class="fineprint">D'après le règlement des études, le vade-mecum des stages ITS et le guide des stages FISE 2026-2027 de l'EPISEN. Les documents internes de l'école restent sur EPREL. Les dates peuvent évoluer : les communications officielles font référence.</p>
   </div>
 </section>
 
@@ -1193,27 +1118,16 @@ a.aud:hover .ic,a.stage:hover .ic{transform:rotate(-8deg) scale(1.08)}
     <h1 class="section-title view-title" id="view-candidats-t" tabindex="-1">L'ingénierie <em>au service de la santé</em></h1>
     <div class="speech">
       <p class="lead-xl">Tu veux mettre le numérique au service de la santé ? Voici, en quelques mots et par des étudiants, ce qui t'attend dans la spécialité ITS de l'EPISEN.</p>
-
       <h3>Comment on y entre</h3>
-      <p>La voie la plus connue, c'est le <strong>concours CCINP</strong> après une classe préparatoire (TSI, MP, PC, PSI, MPI). Mais ce n'est pas la seule : l'école recrute aussi <strong>sur dossier</strong> après un <strong>BUT</strong>, un BTS, une Licence 2 ou 3 ou un Master 1, et par le concours Pass'Ingénieur après une licence maths-info ou maths-physique. Dans notre promo, beaucoup d'étudiants viennent d'ailleurs de BUT. Tous les détails sont sur la <a href="https://episen.u-pec.fr/admissions/candidater-en-cycle-ingenieur" target="_blank" rel="noopener noreferrer">page Candidater de l'EPISEN</a>.</p>
-
+      <p>Par le <strong>concours CCINP</strong> après une classe préparatoire (TSI, MP, PC, PSI, MPI), <strong>sur dossier</strong> après un <strong>BUT</strong>, un BTS, une Licence 2 ou 3 ou un Master 1, ou par le concours Pass'Ingénieur après une licence maths-info ou maths-physique. Dans notre promo, beaucoup d'étudiants viennent de BUT. Détails sur la <a href="https://episen.u-pec.fr/admissions/candidater-en-cycle-ingenieur" target="_blank" rel="noopener noreferrer">page Candidater de l'EPISEN ↗</a>.</p>
       <h3>Étudiant ou alternant</h3>
-      <p>La formation existe sous <strong>statut étudiant</strong> et en <strong>alternance</strong> (statut d'apprenti) : tu alternes entre l'école et l'entreprise, avec un salaire et sans frais de formation à ta charge. Voir la <a href="https://episen.u-pec.fr/formations/apprentissage" target="_blank" rel="noopener noreferrer">page Apprentissage de l'EPISEN</a>.</p>
-
+      <p>La formation existe sous <strong>statut étudiant</strong> et en <strong>alternance</strong> (apprenti) : tu alternes école et entreprise, avec un salaire et sans frais de formation à ta charge. Voir la <a href="https://episen.u-pec.fr/formations/apprentissage" target="_blank" rel="noopener noreferrer">page Apprentissage de l'EPISEN ↗</a>.</p>
       <h3>Combien ça coûte</h3>
-      <p>C'est une école publique : environ <strong>630 € par an</strong> sous statut étudiant (année 2026-2027), et c'est <strong>gratuit pour les boursiers</strong>.</p>
-
-      <h3>Deux parcours</h3>
-      <p>Pendant la formation, tu te spécialises dans l'un des deux axes : <a href="#specialite">IA&amp;D-S</a>, l'intelligence artificielle appliquée aux données de santé, ou <a href="#specialite">Cyber-S</a>, la cybersécurité des systèmes de santé. Les deux se construisent sur <a href="#formation">trois années</a>, des fondamentaux jusqu'à l'approfondissement.</p>
-
-      <h3>Des stages chaque année</h3>
-      <p>Tu n'attends pas la fin des études pour découvrir l'entreprise : un stage de découverte d'au moins 4 semaines en 1re année, un stage d'au moins 16 semaines <strong>à l'étranger</strong> en 2e année, puis le stage de fin d'études de 26 semaines. En alternance, une mobilité internationale de 12 semaines (9 minimum) est aussi obligatoire. <a href="#infos-stages">Tout sur les stages →</a></p>
-
-      <h3>Des projets concrets</h3>
-      <p>Ici, on ne fait pas que de la théorie. Chaque année, on mène de vrais projets, notamment les <strong>MESPI</strong> et les <strong>PoC</strong> : un brassard connecté qui mesure l'activité musculaire, l'architecture réseau sécurisée d'une entreprise de téléradiologie… Si tu veux voir à quoi ça ressemble, voici <a href="#projets">des projets réalisés par les étudiants et des exemples de sujets →</a></p>
-
-      <p class="speech-end">Pour le programme complet et les informations officielles, rendez-vous sur la <a href="https://episen.u-pec.fr/formations/technologies-pour-la-sante-its" target="_blank" rel="noopener noreferrer">page de la formation ITS sur le site de l'EPISEN ↗</a>.</p>
+      <p>C'est une école publique : environ <strong>630 € par an</strong> sous statut étudiant (2026-2027), et c'est <strong>gratuit pour les boursiers</strong>.</p>
+      <h3>Ce que tu vas faire</h3>
+      <p>Trois années avec <a href="#formation">un stage chaque année</a>, dont un à l'étranger, deux parcours au choix (<a href="#specialite">IA&amp;D-S ou Cyber-S</a>) et de vrais projets dès la première année, comme les MESPI et les PoC. Pour voir concrètement à quoi ça ressemble : <a href="#projets">les projets des étudiants →</a></p>
     </div>
+    <p class="see">Programme complet et informations officielles : <a href="https://episen.u-pec.fr/formations/technologies-pour-la-sante-its" target="_blank" rel="noopener noreferrer">formation ITS sur le site de l’EPISEN ↗</a></p>
   </div>
 </section>
 
@@ -1223,44 +1137,15 @@ a.aud:hover .ic,a.stage:hover .ic{transform:rotate(-8deg) scale(1.08)}
     <span class="kicker">Entreprises &amp; recruteurs</span>
     <h1 class="section-title view-title" id="view-entreprises-t" tabindex="-1">Accueillir un <em>étudiant ITS</em></h1>
     <div class="speech">
-      <p class="lead-xl">Vous souhaitez accueillir un étudiant de la spécialité ITS de l'EPISEN, en stage ou en alternance ? Voici l'essentiel, les consignes de chaque stage et les bons contacts.</p>
-
+      <p class="lead-xl">Vous souhaitez accueillir un étudiant de la spécialité ITS de l'EPISEN, en stage ou en alternance ? Voici l'essentiel.</p>
       <h3>Recruter un alternant</h3>
-      <p>La formation existe aussi <strong>en alternance</strong> (statut d'apprenti, souvent appelé <strong>FISA</strong>), en partenariat avec le <strong>CFA numiA</strong>. L'entreprise recrute l'apprenti, et le contrat d'apprentissage se monte avec le CFA. Pour connaître les démarches et le calendrier, consultez la <a href="https://episen.u-pec.fr/formations/apprentissage" target="_blank" rel="noopener noreferrer">page Apprentissage de l'EPISEN ↗</a>.</p>
-
+      <p>La formation existe <strong>en alternance</strong> (apprentissage, ou FISA), en partenariat avec le <strong>CFA numiA</strong>. L'entreprise recrute l'apprenti et le contrat se monte avec le CFA : démarches et calendrier sur la <a href="https://episen.u-pec.fr/formations/apprentissage" target="_blank" rel="noopener noreferrer">page Apprentissage de l'EPISEN ↗</a>. À noter : l'apprenti doit effectuer une mobilité internationale de 12 semaines (9 minimum), à prévoir dès la signature du contrat.</p>
       <h3>Accueillir un stagiaire</h3>
-      <p>Les étudiants sous statut étudiant (<strong>FISE</strong>) font un stage chaque année ; les apprentis (<strong>FISA</strong>) sont en entreprise toute l'année et partent aussi à l'étranger. Voici ce qui est attendu chaque année :</p>
-    </div>
-    <div class="tbl-wrap">
-      <table class="tbl">
-        <thead><tr><th>Année</th><th>Étudiants FISE (stages)</th><th>Apprentis FISA</th><th>Période</th></tr></thead>
-        <tbody>
-          <tr><td><b>1re année</b></td><td><b>Stage de découverte · 4 semaines minimum</b>Dans un milieu lié au monde de la santé : hôpital, médecine de ville, clinique, maison de santé, EHPAD, association ou ONG de santé… Restitution par un poster.</td><td>En entreprise, sur des missions définies avec l'entreprise.</td><td>À partir du 21 juin 2027</td></tr>
-          <tr><td><b>2e année</b></td><td><b>Stage de réalisation à l'étranger · 16 semaines minimum</b>En entreprise ou en organisme de recherche, de préférence à l'étranger chez un partenaire (pays non francophones privilégiés). Mémoire et soutenance en anglais.</td><td><b>Mobilité internationale · 12 semaines (9 min.)</b>Obligatoire, hors périodes de cours, en 2e ou en 3e année, dans une branche étrangère de l'entreprise ou une autre entreprise. L'entreprise doit en être informée avant la signature du contrat.</td><td>À partir du 10 mai 2027</td></tr>
-          <tr><td><b>3e année</b></td><td><b>Stage de fin d'études · 26 semaines</b>Mission en entreprise ou en laboratoire de recherche. Mémoire et soutenance devant un jury d'enseignants et de représentants d'entreprises.</td><td>En entreprise.</td><td>À partir du 8 mars 2027</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="fineprint">Dates de début 2026-2027 pour ITS, d'après le guide des stages FISE de l'EPISEN et le règlement des études. Un stage plus long que le minimum est possible par avenant (dans la limite de 50 % de la durée). <strong>Gratification obligatoire</strong> au-delà de 2 mois de stage (stages de 2e et 3e année). Les consignes et les dates officielles sont fixées par l'école et peuvent évoluer : en cas de doute, renseignez-vous auprès de l'EPISEN. <a href="#infos-stages">Tout sur les stages →</a></p>
-
-    <div class="speech">
+      <p>Trois périodes possibles : un stage de découverte dans le monde de la santé en 1re année, un stage à l'étranger en 2e année et le stage de fin d'études en 3e année. Durées, dates 2026-2027, consignes et gratification : <a href="#infos-stages">page Stages →</a></p>
       <h3>Votre rôle de tuteur</h3>
-      <p>Avant le stage, vous complétez la fiche de liaison (disponible aussi en anglais pour les stages à l'étranger) qui sert à établir la convention, et vous validez les missions avec l'étudiant. Pendant le stage, un tuteur enseignant de l'école suit l'étudiant avec vous. À la fin, vous remplissez une grille d'évaluation notée de A à E : compétences techniques, travail accompli, autonomie, comportement et appréciation globale. Pour les stages de 2e et 3e année, vous êtes aussi invité à la soutenance.</p>
+      <p>Avant le stage, vous complétez la fiche de liaison (existe en anglais) et validez les missions avec l'étudiant. Pendant le stage, un tuteur enseignant le suit avec vous. À la fin, vous remplissez une grille d'évaluation notée de A à E (compétences techniques, travail accompli, autonomie, comportement) et vous êtes invité à la soutenance pour les stages de 2e et 3e année.</p>
     </div>
-
-    <h2 class="sub-title">Les <em>bons contacts</em></h2>
-    <div class="tbl-wrap">
-      <table class="tbl">
-        <thead><tr><th>Vous souhaitez…</th><th>Contact</th><th>Comment</th></tr></thead>
-        <tbody>
-          <tr><td><b>Recruter un alternant (FISA)</b></td><td>CFA numiA, partenaire de l'école</td><td><a href="https://episen.u-pec.fr/formations/apprentissage" target="_blank" rel="noopener noreferrer">Démarches sur la page Apprentissage de l'EPISEN ↗</a></td></tr>
-          <tr><td><b>Conventions de stage</b></td><td>Scolarité ITS de l'EPISEN</td><td><a href="mailto:scolarite-its.episen@u-pec.fr">scolarite-its.episen@u-pec.fr</a></td></tr>
-          <tr><td><b>Partenariats avec l'école</b></td><td>EPISEN (adresse générale)</td><td><a href="mailto:episen@u-pec.fr">episen@u-pec.fr</a></td></tr>
-          <tr><td><b>Diffuser une offre aux étudiants</b></td><td>L'équipe du site Projets ITS</td><td><a href="#" data-contact="Offre de stage ou d'alternance">Envoyer l'offre</a>, nous la partagerons aux promos concernées.</td></tr>
-          <tr><td><b>Informations officielles</b></td><td>Formation ITS</td><td><a href="https://episen.u-pec.fr/formations/technologies-pour-la-sante-its" target="_blank" rel="noopener noreferrer">Page de la formation sur le site de l'EPISEN ↗</a></td></tr>
-        </tbody>
-      </table>
-    </div>
+    <div class="cta-row"><a class="btn btn-primary" href="#" data-contact="Offre de stage ou d'alternance">Proposer une offre aux étudiants</a><a class="btn btn-ghost" href="#contacts">Tous les contacts</a></div>
 
     <h2 class="sub-title">Ils accueillent <em>des étudiants ITS</em></h2>
     <p class="section-sub">Une liste remplie par les étudiants : entreprises qui ont accueilli des stagiaires ou des alternants. Utile aux FISA qui cherchent une alternance comme aux FISE qui cherchent un stage.</p>
@@ -1279,88 +1164,71 @@ a.aud:hover .ic,a.stage:hover .ic{transform:rotate(-8deg) scale(1.08)}
     <h1 class="section-title view-title" id="view-ing1-t" tabindex="-1">Bien vivre <em>ta première année</em></h1>
     <div class="speech">
       <p class="lead-xl">Bienvenue en ITS ! La première année passe vite : voici, de la part des promos précédentes, les trois choses à ne pas rater.</p>
-
       <h3>Trouve l'inspiration, puis partage ton projet</h3>
-      <p>C'est en première année que tu réalises ton premier <strong>PoC</strong> et ton premier <strong>MESPI</strong>. Avant de choisir ton sujet, va voir <a href="#projets">les projets des promos précédentes et les sujets exemples</a> : capteurs connectés, réseaux sécurisés, IA appliquée à la santé… Ça donne des idées et une idée du niveau attendu. Et une fois ton projet terminé, <a href="#ajouter">ajoute-le sur le site</a> en 2 minutes : il servira aux suivants, et c'est une belle vitrine pour tes futurs stages.</p>
-
+      <p>C'est en première année que tu réalises ton premier <strong>PoC</strong> et ton premier <strong>MESPI</strong>. Avant de choisir ton sujet, va voir <a href="#projets">les projets des promos précédentes et les sujets exemples</a>. Une fois ton projet terminé, <a href="#ajouter">ajoute-le sur le site</a> : il servira aux suivants et fera une belle vitrine pour tes stages.</p>
       <h3>Prépare ton choix de parcours</h3>
-      <p>En 2e année, tu suivras l'un des deux axes : <strong>IA&amp;D-S</strong> (intelligence artificielle et données de santé) ou <strong>Cyber-S</strong> (cybersécurité des systèmes de santé). Compare dès maintenant <a href="#specialite">leurs unités d'enseignement</a>, et n'hésite pas à <a href="#contacts">poser tes questions aux 2e année</a>.</p>
-
-      <h3>Anticipe ton stage de première année</h3>
-      <p>En fin d'année, tu fais un <strong>stage de découverte d'au moins 4 semaines</strong> (à partir du 21 juin 2027) dans un <strong>milieu lié au monde de la santé</strong> : hôpital, clinique, maison de santé, EHPAD, association ou ONG de santé… Les places partent vite : commence à chercher tôt. Consignes, démarches et liste de lieux déjà testés par les étudiants : <a href="#stage-1a">tout sur le stage de 1re année →</a></p>
+      <p>En 2e année, tu suivras l'axe <strong>IA&amp;D-S</strong> ou <strong>Cyber-S</strong>. Compare dès maintenant <a href="#specialite">leurs unités d'enseignement</a> et pose tes questions <a href="#contacts">aux 2e année</a>.</p>
+      <h3>Anticipe ton stage</h3>
+      <p>En fin d'année, tu feras un stage de découverte dans le monde de la santé. Les places partent vite : commence à chercher tôt. <a href="#stage-1a">Tout sur le stage de 1re année →</a></p>
     </div>
-    <div class="cta-row"><a class="btn btn-primary" href="#stage-1a">Le stage de 1re année →</a><a class="btn btn-ghost" href="#projets">Voir les projets</a></div>
   </div>
 </section>
 
 
 <section class="section view" id="view-stage1a" aria-labelledby="view-stage1a-t">
   <div class="wrap">
-    <a href="#ing1" class="back">← Retour</a>
-    <span class="kicker">Stage de 1re année · FISE</span>
+    <a href="#formation" class="back">← Retour</a>
+    <span class="kicker">Stage de 1re année</span>
     <h1 class="section-title view-title" id="view-stage1a-t" tabindex="-1">Découvrir <em>le monde de la santé</em></h1>
     <div class="speech">
-      <p class="lead-xl">Ton premier stage n'est pas un stage technique : c'est une immersion dans le monde de la santé, pour comprendre de l'intérieur les besoins et les contraintes de ceux pour qui tu vas concevoir des solutions.</p>
+      <p class="lead-xl">Ton premier stage n'est pas un stage technique : c'est une immersion dans le monde de la santé, pour comprendre de l'intérieur les besoins de ceux pour qui tu vas concevoir des solutions.</p>
       <h3>Ce qui est attendu</h3>
-      <p><strong>Au moins 4 semaines</strong>, à partir du <strong>21 juin 2027</strong>, dans un <strong>milieu lié au monde de la santé</strong> : hôpital, médecine de ville, clinique, maison de santé, EHPAD, association ou ONG du domaine de la santé… L'objectif : découvrir les problématiques du terrain, la dimension humaine du soin et les enjeux d'intérêt public. À la fin, tu présentes un <strong>poster</strong> lors d'une journée de retour d'expérience avec toute la promo.</p>
-      <h3>Les démarches</h3>
-      <p>Ton lieu de stage doit être <strong>validé avant le début du stage</strong> par le responsable des stages : récupère la fiche de validation et la fiche de liaison sur EPREL, fais valider la fiche, puis établis ta convention sur eStage. Toutes les étapes sont détaillées sur la <a href="#infos-stages">page Stages</a>. N'oublie pas l'attestation de <strong>responsabilité civile</strong>, obligatoire pour obtenir ta convention.</p>
+      <p><strong>Au moins 4 semaines</strong>, à partir du <strong>21 juin 2027</strong>, dans un <strong>milieu lié au monde de la santé</strong> : hôpital, médecine de ville, clinique, maison de santé, EHPAD, association ou ONG du domaine de la santé… L'objectif : découvrir le terrain, la dimension humaine du soin et les enjeux d'intérêt public. À la fin, tu présentes un <strong>poster</strong> lors d'une journée de retour d'expérience.</p>
+      <p>Les apprentis (FISA) sont en entreprise : leurs missions sont définies avec l'entreprise.</p>
     </div>
 
     <h2 class="sub-title">Où faire <em>son stage ?</em></h2>
-    <p class="section-sub">Les lieux qui ont déjà accueilli des étudiants ITS en 1re année, partagés par les étudiants. Tu en connais un ? Ajoute-le !</p>
+    <p class="section-sub">Les lieux qui ont déjà accueilli des étudiants ITS en 1re année, partagés par les étudiants.</p>
     <div class="ent-tools"><span></span><a class="btn btn-primary btn-sm" href="#ajouter-entreprise" data-stage-add>+ Ajouter un lieu de stage</a></div>
     <div data-stage-list="s1"></div>
-
-    <h2 class="sub-title">Les <em>contacts</em></h2>
-    <div class="tbl-wrap">
-      <table class="tbl">
-        <thead><tr><th>Pour…</th><th>Contact</th></tr></thead>
-        <tbody>
-          <tr><td><b>Faire valider ton lieu de stage</b></td><td>Le responsable des stages de la filière ITS (coordonnées sur EPREL)</td></tr>
-          <tr><td><b>Ta convention, ta responsabilité civile</b></td><td>Scolarité ITS : <a href="mailto:scolarite-its.episen@u-pec.fr">scolarite-its.episen@u-pec.fr</a></td></tr>
-          <tr><td><b>Un problème sur eStage</b></td><td><a href="mailto:sos-estage@u-pec.fr">sos-estage@u-pec.fr</a></td></tr>
-          <tr><td><b>Des conseils d'étudiants</b></td><td><a href="#contacts">Écrire aux promos</a></td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="fineprint">D'après le vade-mecum des stages ITS, le règlement des études et le guide des stages FISE 2026-2027. Les apprentis (FISA) sont en entreprise : leurs missions sont définies avec l'entreprise.</p>
+    <p class="see">Convention, documents et contacts : <a href="#infos-stages">page Stages →</a></p>
+    <p class="fineprint">D'après le vade-mecum des stages ITS et le guide des stages FISE 2026-2027.</p>
   </div>
 </section>
 
 <section class="section view" id="view-stage2a" aria-labelledby="view-stage2a-t">
   <div class="wrap">
     <a href="#formation" class="back">← Retour</a>
-    <span class="kicker">Stage de 2e année · FISE</span>
+    <span class="kicker">Stage de 2e année</span>
     <h1 class="section-title view-title" id="view-stage2a-t" tabindex="-1">Un stage <em>à l'étranger</em></h1>
     <div class="speech">
       <p class="lead-xl">Le stage de 2e année, c'est l'aventure internationale de la formation : mettre en pratique ce que tu as appris, dans une autre culture et en anglais.</p>
       <h3>Ce qui est attendu</h3>
-      <p><strong>Au moins 16 semaines</strong>, à partir du <strong>10 mai 2027</strong>, en entreprise ou dans un organisme de recherche, de préférence <strong>à l'étranger</strong> chez un partenaire. Les pays non francophones sont privilégiés. Le stage se conclut par un <strong>mémoire rédigé en anglais</strong> et une <strong>soutenance en anglais</strong> devant un jury.</p>
+      <p><strong>Au moins 16 semaines</strong>, à partir du <strong>10 mai 2027</strong>, en entreprise ou dans un organisme de recherche, de préférence <strong>à l'étranger</strong> chez un partenaire (pays non francophones privilégiés). Le stage se conclut par un <strong>mémoire et une soutenance en anglais</strong>. En alternance (FISA), la mobilité internationale est de 12 semaines (9 minimum), en 2e ou en 3e année, hors périodes de cours.</p>
       <h3>Préparer son départ</h3>
-      <p>Commence ta recherche dès la rentrée : parle aux ITS3 et aux diplômés, récupère leurs contacts et sollicite le BDE. Destinations fréquentes : Vietnam, Thaïlande, Malaisie, Canada, mais aussi Corée du Sud, Espagne, Portugal, Italie, Allemagne, Suède, Brésil… Avant de partir : assurance avec <strong>rapatriement</strong>, inscription sur <a href="https://pastel.diplomatie.gouv.fr/fildariane/dyn/public/login.html" target="_blank" rel="noopener noreferrer">Ariane ↗</a>, formulaires de mobilité sur la plateforme MoveOn de l'UPEC et, en Europe, carte européenne d'assurance maladie.</p>
+      <p>Commence ta recherche dès la rentrée : parle aux ITS3 et aux diplômés, récupère leurs contacts et sollicite le BDE. Destinations fréquentes : Vietnam, Thaïlande, Malaisie, Canada, mais aussi Corée du Sud, Espagne, Portugal, Italie, Allemagne, Suède, Brésil… Avant de partir : assurance avec rapatriement, inscription sur <a href="https://pastel.diplomatie.gouv.fr/fildariane/dyn/public/login.html" target="_blank" rel="noopener noreferrer">Ariane ↗</a>, formulaires de mobilité sur MoveOn (UPEC) et, en Europe, carte européenne d'assurance maladie.</p>
       <h3>Bon à savoir</h3>
-      <p>L'aide à la mobilité internationale de l'UPEC est d'environ <strong>350 à 400 € par mois</strong> (sous réserve de budget et de classement). Le <strong>TOEIC (785 minimum)</strong> est obligatoire pour le diplôme : l'école finance une session au semestre 4. Autre option : un semestre 4 à l'université HUST de Hanoï ou dans le réseau <a href="https://www.u-pec.fr/fr/international/aurora/opportunites-etudiants" target="_blank" rel="noopener noreferrer">AURORA ↗</a>. En alternance (FISA), la mobilité est de 12 semaines (9 minimum), en 2e ou en 3e année.</p>
+      <p>Aide à la mobilité internationale de l'UPEC : environ <strong>350 à 400 € par mois</strong> (sous réserve de budget et de classement). Le <strong>TOEIC (785 minimum)</strong> est obligatoire pour le diplôme : l'école finance une session au semestre 4. Autre option : un semestre 4 à l'université HUST de Hanoï ou dans le réseau <a href="https://www.u-pec.fr/fr/international/aurora/opportunites-etudiants" target="_blank" rel="noopener noreferrer">AURORA ↗</a>.</p>
+    </div>
+
+    <div class="passport">
+      <div>
+        <h3>Le passeport international, <em>pour valoriser tes expériences</em></h3>
+        <p>Au-delà du stage, les expériences internationales sont reconnues tout au long de la formation.</p>
+      </div>
+      <ul class="pass-list">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>Séjours académiques ou professionnels à l'étranger</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg>Participation à l'ouverture internationale de l'école et de l'université</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15l-3.5 2 1-4-3-2.7 4-.3L12 6l1.5 4 4 .3-3 2.7 1 4z"/><circle cx="12" cy="12" r="10"/></svg>Reconnaissance d'activités professionnelles ou de projets transnationaux</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.1V17h6v-.2c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2z"/></svg>Initiatives personnelles</li>
+      </ul>
     </div>
 
     <h2 class="sub-title">Où partir <em>en stage ?</em></h2>
-    <p class="section-sub">Les entreprises et laboratoires à l'étranger qui ont déjà accueilli des étudiants ITS. Tu en connais un ? Ajoute-le !</p>
+    <p class="section-sub">Les entreprises et laboratoires à l'étranger qui ont déjà accueilli des étudiants ITS.</p>
     <div class="ent-tools"><span></span><a class="btn btn-primary btn-sm" href="#ajouter-entreprise" data-stage-add>+ Ajouter un lieu à l'étranger</a></div>
     <div data-stage-list="s2"></div>
-
-    <h2 class="sub-title">Les <em>contacts</em></h2>
-    <div class="tbl-wrap">
-      <table class="tbl">
-        <thead><tr><th>Pour…</th><th>Contact</th></tr></thead>
-        <tbody>
-          <tr><td><b>Faire valider ton stage</b></td><td>Le responsable des stages de la filière ITS (coordonnées sur EPREL)</td></tr>
-          <tr><td><b>Partir à l'étranger, aides à la mobilité</b></td><td>Le responsable des relations internationales de la filière ITS (coordonnées sur EPREL)</td></tr>
-          <tr><td><b>Ta convention, ta responsabilité civile</b></td><td>Scolarité ITS : <a href="mailto:scolarite-its.episen@u-pec.fr">scolarite-its.episen@u-pec.fr</a></td></tr>
-          <tr><td><b>Un problème sur eStage</b></td><td><a href="mailto:sos-estage@u-pec.fr">sos-estage@u-pec.fr</a></td></tr>
-          <tr><td><b>Des conseils d'étudiants</b></td><td><a href="#contacts">Écrire aux promos</a></td></tr>
-        </tbody>
-      </table>
-    </div>
+    <p class="see">Convention, documents et contacts : <a href="#infos-stages">page Stages →</a></p>
     <p class="fineprint">D'après le vade-mecum des stages ITS, le règlement des études, le guide des stages FISE 2026-2027 et la pré-rentrée ITS2 2026-2027.</p>
   </div>
 </section>
@@ -1368,36 +1236,22 @@ a.aud:hover .ic,a.stage:hover .ic{transform:rotate(-8deg) scale(1.08)}
 <section class="section view" id="view-stage3a" aria-labelledby="view-stage3a-t">
   <div class="wrap">
     <a href="#formation" class="back">← Retour</a>
-    <span class="kicker">Stage de 3e année · FISE</span>
+    <span class="kicker">Stage de 3e année</span>
     <h1 class="section-title view-title" id="view-stage3a-t" tabindex="-1">Le stage <em>de fin d'études</em></h1>
     <div class="speech">
-      <p class="lead-xl">Dernière marche avant le diplôme : une vraie mission d'ingénieur, en entreprise ou en laboratoire, pour appréhender le métier de façon globale.</p>
+      <p class="lead-xl">Dernière marche avant le diplôme : une vraie mission d'ingénieur, en entreprise ou en laboratoire, pour appréhender le métier dans sa globalité.</p>
       <h3>Ce qui est attendu</h3>
-      <p><strong>26 semaines</strong> (semestre 6), à partir du <strong>8 mars 2027</strong>, en entreprise ou en <strong>laboratoire de recherche</strong>. Tu y réalises une mission qui élargit tes compétences sous un angle concret, suivie par un tuteur enseignant en binôme avec ton tuteur en entreprise.</p>
+      <p><strong>26 semaines</strong> au semestre 6, à partir du <strong>8 mars 2027</strong>, en entreprise ou en <strong>laboratoire de recherche</strong>, sur une mission qui élargit tes compétences sous un angle concret.</p>
       <h3>L'évaluation</h3>
-      <p>Tu rédiges un <strong>mémoire</strong> (avec un résumé en anglais) qui présente l'entreprise et ton travail par rapport au cahier des charges, puis tu le soutiens devant un jury composé de tes tuteurs et d'au moins un autre enseignant. Quatre notes : celle de l'entreprise, le mémoire, la soutenance et l'anglais.</p>
-      <h3>Bon à savoir</h3>
-      <p>La <strong>gratification est obligatoire</strong> (stage de plus de 2 mois). Un stage plus long que la durée prévue est possible par avenant, dans la limite de 50 % de la durée.</p>
+      <p>Un <strong>mémoire</strong> (avec un résumé en anglais) qui présente l'entreprise et ton travail par rapport au cahier des charges, puis une <strong>soutenance</strong> devant un jury composé de tes tuteurs et d'au moins un autre enseignant. Quatre notes : l'entreprise, le mémoire, la soutenance et l'anglais.</p>
     </div>
 
     <h2 class="sub-title">Où faire <em>son stage de fin d'études ?</em></h2>
-    <p class="section-sub">Les entreprises et laboratoires qui ont déjà accueilli des étudiants ITS en fin d'études. Tu en connais un ? Ajoute-le !</p>
+    <p class="section-sub">Les entreprises et laboratoires qui ont déjà accueilli des étudiants ITS en fin d'études.</p>
     <div class="ent-tools"><span></span><a class="btn btn-primary btn-sm" href="#ajouter-entreprise" data-stage-add>+ Ajouter une entreprise</a></div>
     <div data-stage-list="s3"></div>
-
-    <h2 class="sub-title">Les <em>contacts</em></h2>
-    <div class="tbl-wrap">
-      <table class="tbl">
-        <thead><tr><th>Pour…</th><th>Contact</th></tr></thead>
-        <tbody>
-          <tr><td><b>Faire valider ton stage</b></td><td>Le responsable des stages de la filière ITS (coordonnées sur EPREL)</td></tr>
-          <tr><td><b>Ta convention, ta responsabilité civile</b></td><td>Scolarité ITS : <a href="mailto:scolarite-its.episen@u-pec.fr">scolarite-its.episen@u-pec.fr</a></td></tr>
-          <tr><td><b>Un problème sur eStage</b></td><td><a href="mailto:sos-estage@u-pec.fr">sos-estage@u-pec.fr</a></td></tr>
-          <tr><td><b>Des conseils d'étudiants</b></td><td><a href="#contacts">Écrire aux promos</a></td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="fineprint">D'après le vade-mecum des stages ITS, le règlement des études et le guide des stages FISE 2026-2027.</p>
+    <p class="see">Convention, documents et contacts : <a href="#infos-stages">page Stages →</a></p>
+    <p class="fineprint">D'après le vade-mecum des stages ITS et le guide des stages FISE 2026-2027.</p>
   </div>
 </section>
 
@@ -1406,24 +1260,24 @@ a.aud:hover .ic,a.stage:hover .ic{transform:rotate(-8deg) scale(1.08)}
     <a href="#" class="back">← Retour à l'accueil</a>
     <span class="kicker">Contacts</span>
     <h1 class="section-title view-title" id="contacts-title" tabindex="-1">Échanger avec <em>les étudiants ITS</em></h1>
-    <p class="section-sub">Une question sur la formation, les parcours, les stages ou un projet ? Écris aux étudiants de l'année qui t'intéresse.</p>
+    <p class="section-sub">Écris aux étudiants de l'année qui t'intéresse (ton message arrive à l'équipe du site, qui le transmet), ou trouve le bon interlocuteur dans le tableau ci-dessous.</p>
     <div class="contact-grid" id="contact-grid"></div>
-    <div class="contact-more">
-      <article class="cm">
-        <h3>Stages</h3>
-        <p>Proposer un stage ou poser une question sur les stages : tout est regroupé sur la page Stages.</p>
-        <a class="btn btn-primary btn-sm" href="#infos-stages">Page Stages et contacts →</a>
-      </article>
-      <article class="cm">
-        <h3>Le créateur du site</h3>
-        <p>Valentin Auger, étudiant en 2e année ITS. Une idée, une correction ou un projet à ajouter ? Écris-moi.</p>
-        <a class="btn btn-ghost btn-sm" href="#" data-contact="Message pour Valentin (Projets ITS)">Écrire à Valentin</a>
-      </article>
-      <article class="cm">
-        <h3>Informations officielles</h3>
-        <p>Admissions, programme officiel, scolarité : ces questions relèvent directement de l'école.</p>
-        <a class="btn btn-ghost btn-sm" href="https://episen.u-pec.fr/formations/technologies-pour-la-sante-its" target="_blank" rel="noopener noreferrer">Site de l'EPISEN ↗</a>
-      </article>
+    <h2 class="sub-title">Qui <em>contacter ?</em></h2>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Pour…</th><th>Contact</th></tr></thead>
+        <tbody>
+          <tr><td><b>Faire valider un stage</b></td><td>Le responsable des stages de la filière ITS (coordonnées sur EPREL)</td></tr>
+          <tr><td><b>Convention de stage, responsabilité civile</b></td><td>Scolarité ITS : <a href="mailto:scolarite-its.episen@u-pec.fr">scolarite-its.episen@u-pec.fr</a></td></tr>
+          <tr><td><b>Partir à l'étranger, aides à la mobilité</b></td><td>Le responsable des relations internationales de la filière ITS (coordonnées sur EPREL)</td></tr>
+          <tr><td><b>Un problème sur eStage</b></td><td><a href="mailto:sos-estage@u-pec.fr">sos-estage@u-pec.fr</a></td></tr>
+          <tr><td><b>Recruter un alternant</b></td><td>CFA numiA : <a href="https://episen.u-pec.fr/formations/apprentissage" target="_blank" rel="noopener noreferrer">démarches sur la page Apprentissage de l’EPISEN ↗</a></td></tr>
+          <tr><td><b>Un partenariat avec l'école</b></td><td>EPISEN : <a href="mailto:episen@u-pec.fr">episen@u-pec.fr</a></td></tr>
+          <tr><td><b>Admissions, programme officiel</b></td><td><a href="https://episen.u-pec.fr/admissions/candidater-en-cycle-ingenieur" target="_blank" rel="noopener noreferrer">Candidater ↗</a> · <a href="https://episen.u-pec.fr/formations/technologies-pour-la-sante-its" target="_blank" rel="noopener noreferrer">Formation ITS ↗</a></td></tr>
+          <tr><td><b>Proposer une offre, une idée ou un projet</b></td><td>L'équipe du site, Valentin Auger (2e année ITS) : <a href="#" data-contact="Message pour Projets ITS">écrire un message</a></td></tr>
+          <tr><td><b>Signaler un contenu</b></td><td><a href="#" data-contact="Signalement d'un contenu">Envoyer un signalement</a></td></tr>
+        </tbody>
+      </table>
     </div>
     <p class="fineprint">Site étudiant non officiel. Aucune coordonnée personnelle n'est publiée sans l'accord de la personne concernée.</p>
   </div>
@@ -1438,11 +1292,8 @@ a.aud:hover .ic,a.stage:hover .ic{transform:rotate(-8deg) scale(1.08)}
         <span class="secure"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 20 5v6c0 5-3.4 9.3-8 11-4.6-1.7-8-6-8-11V5Z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg>Politique de sécurité stricte · sans publicité ni outil de suivi</span>
       </div>
       <nav class="foot-links" aria-label="Liens du pied de page">
-        <a href="#pour-qui">Pour qui ?</a>
-        <a href="#formation">La formation</a>
-        <a href="#specialite">La spécialité</a>
-        <a href="#infos-stages">Stages</a>
         <a href="#projets">Projets</a>
+        <a href="#infos-stages">Stages</a>
         <a href="#contacts">Contacts</a>
         <a href="#ajouter">Ajouter mon projet</a>
         <a href="#" data-contact="Signalement d'un contenu">Signaler un contenu</a>
@@ -1692,7 +1543,8 @@ async function fetchSheet(src=CONFIG.SHEET_CSV_URL, CACHE_KEY="its-projets-csv")
   }finally{ clearTimeout(timer); }
 }
 
-let ALL=[], VISIBLE=[];
+let ALL=[], VISIBLE=[], showAll=false;
+const GRID_LIMIT=9;
 const BY_SLUG=new Map();
 const state={q:"",parcours:"",type:"",dom:"",year:"",sort:"recent"};
 
@@ -1765,7 +1617,9 @@ function render(){
     words.every(w=>p._hay.includes(w)));
   if(state.sort==="az") VISIBLE=[...VISIBLE].sort((a,b)=>(a.ex-b.ex)||a.nom.localeCompare(b.nom,"fr",{sensitivity:"base"}));
   const g=$("#grid");
-  g.innerHTML = VISIBLE.map((p,k)=>{
+  const active0 = state.q||state.parcours||state.type||state.dom||state.year;
+  const shown = (!active0 && !showAll && VISIBLE.length>GRID_LIMIT) ? VISIBLE.slice(0,GRID_LIMIT) : VISIBLE;
+  g.innerHTML = shown.map((p,k)=>{
     const a=projColors(p)[0], sum=p.resume||p.description;
     return `<article class="card${p.ex?" is-ex":""}" style="--a:${a};animation-delay:${Math.min(k,8)*40}ms">
       <a class="card-link" href="#/${p.slug}">
@@ -1780,7 +1634,8 @@ function render(){
     </article>`;
   }).join("")
   + (VISIBLE.length ? "" : `<div class="empty"><b>Aucun projet trouvé</b>Essaie un autre mot-clé ou retire un filtre.<br><button type="button" class="link-btn" data-reset>Réinitialiser les filtres</button></div>`)
-  + `<a class="add-card" href="#ajouter"><div><div class="plus" aria-hidden="true">+</div>Ton projet n'est pas encore là ?<br>Ajoute-le en 2 minutes.</div></a>`;
+  + `<a class="add-card" href="#ajouter"><div><div class="plus" aria-hidden="true">+</div>Ton projet n'est pas encore là ?<br>Ajoute-le en 2 minutes.</div></a>`
+  + (shown.length<VISIBLE.length ? `<div class="more-wrap"><button type="button" class="btn btn-ghost" data-show-all>Voir les ${VISIBLE.length-shown.length} autres projets ↓</button></div>` : "");
   g.setAttribute("aria-busy","false");
   const active = state.q||state.parcours||state.type||state.dom||state.year;
   const nr=ALL.filter(p=>!p.ex).length, ne=ALL.length-nr, vr=VISIBLE.filter(p=>!p.ex).length, ve=VISIBLE.length-vr;
@@ -1881,7 +1736,7 @@ function renderContacts(){
     const promo=mailtoFor(`[${y.k}] Question pour la promo`), join=mailtoFor(`Devenir contact ${y.k}`);
     const who = nom
       ? `<div class="who"><span class="avatar" style="background:${colorsFor(nom)[0]}">${esc(initials(nom))}</span><div><b>${esc(nom)}</b><span>${esc(role||"Contact de la promo")}</span></div></div>`
-      : `<div class="who vacant"><span class="avatar" aria-hidden="true">?</span><div><b>Contact de promo à venir</b><span>En attendant, ton message arrive à l'équipe du site.</span></div></div>`;
+      : "";
     const btns = (email ? `<a class="btn btn-primary btn-sm" href="mailto:${esc(email)}">Écrire un e-mail</a>` : (promo ? `<a class="btn btn-primary btn-sm" href="${esc(promo)}">Écrire à la promo</a>` : ""))
       + (liOk ? `<a class="btn btn-ghost btn-sm" href="${esc(li)}" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>` : "");
     return `<article class="ccard" style="--o:${[.45,.7,1][i]}">
@@ -1890,7 +1745,7 @@ function renderContacts(){
       <p>${esc(y.topics)}</p>
       ${who}
       <div class="row">${btns}</div>
-      ${!nom && join ? `<a class="join" href="${esc(join)}">Tu es en ${y.n}${y.sup} année ? Deviens le contact de ta promo →</a>` : ""}
+      ${!nom && join ? `<a class="join" href="${esc(join)}">Deviens le contact de ta promo →</a>` : ""}
     </article>`;
   }).join("");
 }
@@ -1955,6 +1810,7 @@ document.addEventListener("click",e=>{
   if(t.closest("[data-close]") || t.classList.contains("overlay")) return closeModal();
   if(t.closest("[data-share]")) return share();
   if(t.closest("[data-reset]")||t.closest("#reset")) return resetFilters();
+  if(t.closest("[data-show-all]")){ showAll=true; render(); return; }
   const rep=t.closest("a[data-replace]"); if(rep){ e.preventDefault(); location.replace(rep.getAttribute("href")); return; }
   const yt=t.closest(".video button");
   if(yt){ const box=yt.parentElement, id=box.dataset.yt; if(/^[\w-]{11}$/.test(id)) box.innerHTML=`<iframe src="https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0" title="Vidéo du projet" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>`; return; }
