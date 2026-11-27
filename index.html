@@ -10,7 +10,7 @@
   l'empreinte doit être recalculée, sinon le site ne s'affichera plus.
   Modifier le texte, CONFIG ou SEED ne change PAS l'empreinte.
 -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-vmGWCgB71C7D5VAX+gMUmxQswEWIqMeecVvHwYoCVGk='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https: data:; connect-src https://docs.google.com https://*.googleusercontent.com; frame-src https://docs.google.com https://accounts.google.com https://www.youtube-nocookie.com; base-uri 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-b9gVI/CZZR1qduKf1xIrW8A5dm14koPJqe0u+t6zaMs='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https: data:; connect-src https://docs.google.com https://*.googleusercontent.com; frame-src https://docs.google.com https://accounts.google.com https://www.youtube-nocookie.com; base-uri 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Projets ITS – EPISEN · Santé, IA & Cybersécurité</title>
 <meta name="description" content="Les projets MESPI et PoC des élèves-ingénieurs de la spécialité ITS (Ingénierie et Technologies pour la Santé) de l'EPISEN : parcours IA&D-S (Intelligence Artificielle et Données de Santé) et Cyber-S (Cybersécurité en Santé).">
@@ -51,6 +51,8 @@
      CONTACT_EMAIL : adresse qui reçoit les signalements
      ENTREPRISES_CSV_URL / ENTREPRISES_FORM_URL : tableau et formulaire de la liste
                                     collaborative des entreprises (page Entreprises)
+     CONTACTS_STAGE_2A_URL : tableau Google Sheets des contacts de stage de 2e année,
+                             à partager UNIQUEMENT avec la promo (accès restreint)
      MASQUER_EXEMPLES_A_PARTIR_DE : les projets exemples disparaissent dès qu'il y a
                                     ce nombre de vrais projets (0 = ne jamais les afficher)
      Garde les guillemets et les virgules (format JSON).
@@ -62,7 +64,8 @@
   "CONTACT_EMAIL": "projets.its.episen@gmail.com",
   "MASQUER_EXEMPLES_A_PARTIR_DE": 8,
   "ENTREPRISES_CSV_URL": "",
-  "ENTREPRISES_FORM_URL": ""
+  "ENTREPRISES_FORM_URL": "",
+  "CONTACTS_STAGE_2A_URL": ""
 }
 </script>
 
@@ -788,6 +791,8 @@ a.aud:hover .ic,a.stage:hover .ic{transform:rotate(-8deg) scale(1.08)}
 .ent-tbl caption{caption-side:top;text-align:left;padding:14px 16px;font-weight:800;font-size:15px;letter-spacing:-.01em;border-bottom:1px solid var(--line)}
 .ent-tbl caption span{display:inline-block;margin-left:6px;padding:1px 8px;border-radius:999px;background:var(--brand-soft);color:var(--brand);font-size:12.5px}
 .ent-tbl td .muted{display:block;font-size:13px}
+.lock-note{margin:14px 0 4px;padding:14px 16px;border-radius:14px;background:color-mix(in srgb,#ffcf5c 16%,var(--surface));border:1px solid color-mix(in srgb,#ffcf5c 55%,var(--line));font-size:14.5px}
+.lock-note a,.lock-link{color:var(--brand);font-weight:700;white-space:nowrap}
 .tbl-empty{text-align:center;color:var(--muted);padding:26px 16px!important;font-style:italic}
 .tbl-inline td b{display:inline}
 .more-wrap{grid-column:1/-1;display:flex;justify-content:center;padding:6px 0}
@@ -1327,13 +1332,8 @@ a.aud:hover .ic,a.stage:hover .ic{transform:rotate(-8deg) scale(1.08)}
       </ul>
     </div>
 
-    <h2 class="sub-title">Ils y sont <em>déjà allés</em></h2>
-    <p class="section-sub">Des structures à l'étranger où des étudiants ITS ont déjà fait leur stage de 2e année. Pour obtenir le contact d'un ancien, <a href="#contacts">écris à la promo</a> : les coordonnées ne sont pas publiées sur le site.</p>
-    <div id="s2-known"></div>
-    <p class="fineprint">D'après le tableau de suivi des stages de 2e année partagé entre étudiants. Rémunération et télétravail : à titre indicatif, à revérifier avec la structure. À l'étranger, la gratification n'est pas obligatoire.</p>
-
     <h2 class="sub-title">Où partir <em>en stage ?</em></h2>
-    <p class="section-sub">Les entreprises et laboratoires à l'étranger qui ont déjà accueilli des étudiants ITS.</p>
+    <p class="section-sub">Les structures à l'étranger qui ont déjà accueilli des étudiants ITS. Rémunération et télétravail sont indicatifs ; à l'étranger, la gratification n'est pas obligatoire.</p>
     <div class="ent-tools"><span></span><a class="btn btn-primary btn-sm" href="#ajouter-entreprise" data-stage-add>+ Ajouter un lieu à l'étranger</a></div>
     <div data-stage-list="s2"></div>
     <p class="see">Convention, documents et contacts : <a href="#infos-stages">page Stages →</a></p>
@@ -1978,17 +1978,27 @@ function entTable(list,title,withType,open){
     : `<tr><td colspan="${cols.length}" class="tbl-empty">Aucune structure pour l'instant. ${open?"Tu en connais une ? Ajoute-la : elle aidera toute la promo.":"La liste sera bientôt ouverte aux contributions des étudiants."}</td></tr>`;
   return `<div class="tbl-wrap"><table class="tbl ent-tbl"><caption>${esc(title)}${list.length?` <span>${list.length}</span>`:""}</caption><thead><tr>${cols.map(c=>`<th>${c}</th>`).join("")}</tr></thead><tbody>${rows}</tbody></table></div>`;
 }
-function renderKnown2A(){
-  const box=$("#s2-known"); if(!box) return;
-  const list=(readJSON("stages2a")||[]).map(e=>{ const o={}; for(const k of ["nom","pays","depuis","remuneration","teletravail","sujet"]) o[k]=clip(e[k],160); o.nb=Math.min(99,Math.max(1,parseInt(e.nb,10)||1)); return o; }).filter(e=>e.nom);
-  box.innerHTML=`<div class="tbl-wrap"><table class="tbl ent-tbl"><caption>Stages de 2e année déjà réalisés <span>${list.length}</span></caption><thead><tr><th>Structure</th><th>Pays (ville)</th><th>Depuis</th><th>Rémunération</th><th>Télétravail</th><th>Sujet</th></tr></thead><tbody>${list.map(e=>`<tr><td><b>${esc(e.nom)}</b>${e.nb>1?`<span class="muted">${e.nb} étudiants ITS</span>`:""}</td><td>${esc(e.pays)}</td><td>${esc(e.depuis)}</td><td>${esc(e.remuneration)}</td><td>${esc(e.teletravail)||"–"}</td><td>${esc(e.sujet)||"–"}</td></tr>`).join("")}</tbody></table></div>`;
+function known2A(){
+  return (readJSON("stages2a")||[]).map(e=>{ const o={}; for(const k of ["nom","pays","depuis","remuneration","teletravail","sujet"]) o[k]=clip(e[k],160); o.nb=Math.min(99,Math.max(1,parseInt(e.nb,10)||1)); return o; }).filter(e=>e.nom);
+}
+function table2A(open){
+  const known=known2A(), names=new Set(known.map(e=>norm(e.nom)));
+  const added=ENTS.filter(e=>e.tk.includes("s2") && !names.has(norm(e.nom)));
+  const priv=safeUrl(CONFIG.CONTACTS_STAGE_2A_URL), privOk=priv&&hostOf(priv)==="docs.google.com";
+  const lock=privOk?`<a href="${esc(priv)}" target="_blank" rel="noopener noreferrer" class="lock-link">Voir le contact 🔒</a>`:`<a href="#contacts">Via la promo</a>`;
+  const contactCell=e=>e.mail?`<a href="mailto:${esc(e.mail)}">${esc(e.personne||e.mail)}</a>`:(esc(e.personne||e.contact)||lock);
+  const rows=[
+    ...known.map(e=>`<tr><td><b>${esc(e.nom)}</b>${e.nb>1?`<span class="muted">${e.nb} étudiants ITS</span>`:""}</td><td>${esc(e.pays)}</td><td>${esc(e.depuis)||"–"}</td><td>${esc(e.remuneration)||"–"}</td><td>${esc(e.teletravail)||"–"}</td><td>${esc(e.sujet)||"–"}</td><td>${lock}</td></tr>`),
+    ...added.map(e=>`<tr><td><b>${e.lien?`<a href="${esc(e.lien)}" target="_blank" rel="noopener noreferrer">${esc(e.nom)} ↗</a>`:esc(e.nom)}</b>${e.secteur?`<span class="muted">${esc(e.secteur)}</span>`:""}</td><td>${esc(e.ville)}</td><td>–</td><td>–</td><td>–</td><td>${esc(e.note)||"–"}</td><td>${contactCell(e)}</td></tr>`)];
+  const note=privOk?`<p class="lock-note">🔒 <b>Les e-mails des structures et des anciens</b> sont dans un tableau réservé aux étudiants ITS : <a href="${esc(priv)}" target="_blank" rel="noopener noreferrer">ouvrir le tableau des contacts ↗</a>. Pas encore accès ? <a href="#contacts">Demande-le à la promo</a>.</p>`:"";
+  return note+`<div class="tbl-wrap"><table class="tbl ent-tbl"><caption>${esc(STAGE_TITLES.s2)} <span>${rows.length}</span></caption><thead><tr><th>Structure</th><th>Pays (ville)</th><th>Depuis</th><th>Rémunération</th><th>Télétravail</th><th>Sujet / commentaire</th><th>Contact</th></tr></thead><tbody>${rows.join("")||`<tr><td colspan="7" class="tbl-empty">Aucune structure pour l'instant.</td></tr>`}</tbody></table></div>`;
 }
 function renderStageTables(){
   const open=!!safeUrl(CONFIG.ENTREPRISES_FORM_URL);
   document.querySelectorAll("[data-stage-add]").forEach(a=>a.hidden=!open);
   document.querySelectorAll("[data-stage-list]").forEach(box=>{
     const k=box.dataset.stageList;
-    box.innerHTML=entTable(ENTS.filter(e=>e.tk.includes(k)),STAGE_TITLES[k]||"",false,open);
+    box.innerHTML = k==="s2" ? table2A(open) : entTable(ENTS.filter(e=>e.tk.includes(k)),STAGE_TITLES[k]||"",false,open);
   });
 }
 function renderEnts(){
@@ -2015,7 +2025,7 @@ async function loadEnts(){
 document.addEventListener("click",e=>{ const c=e.target.closest("[data-ent]"); if(c){ entFilter=entFilter===c.dataset.ent?"":c.dataset.ent; renderEnts(); } });
 
 renderContacts();
-renderKnown2A();
+renderStageTables();
 applyView();
 load();
 loadEnts();
