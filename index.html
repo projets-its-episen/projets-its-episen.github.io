@@ -10,7 +10,7 @@
   l'empreinte doit être recalculée, sinon le site ne s'affichera plus.
   Modifier le texte, CONFIG ou SEED ne change PAS l'empreinte.
 -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-pqV6e6kLM6IMZ/6CQf7Wk0Mjov+fH486ipKtMzVD3dI='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https: data:; connect-src https://docs.google.com https://*.googleusercontent.com; frame-src https://docs.google.com https://accounts.google.com https://www.youtube-nocookie.com; base-uri 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-vpo/kMbkDaGUKC7oZ74QeBTbAWBH86yLav5B867XGSE='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https: data:; connect-src https://docs.google.com https://*.googleusercontent.com; frame-src https://docs.google.com https://accounts.google.com https://www.youtube-nocookie.com; base-uri 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Projets ITS – EPISEN · Santé, IA & Cybersécurité</title>
 <meta name="description" content="Les projets MESPI et PoC des élèves-ingénieurs de la spécialité ITS (Ingénierie et Technologies pour la Santé) de l'EPISEN : parcours IA&D-S (Intelligence Artificielle et Données de Santé) et Cyber-S (Cybersécurité en Santé).">
@@ -655,6 +655,8 @@ footer{border-top:1px solid var(--line);padding:44px 0 36px;color:var(--muted);f
 .tl:nth-child(1) .bar{opacity:.3}
 .tl:nth-child(2) .bar{opacity:.6}
 .tl:last-child .bar{opacity:1}
+a.stg{text-decoration:none;transition:border-color .2s,color .2s,background .2s}
+a.stg:hover,a.stg:focus-visible{border-color:var(--brand);color:var(--brand);background:var(--brand-soft)}
 .tl .stg{display:inline-block;margin-top:12px;font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;border:1px solid var(--line);color:var(--muted)}
 .fineprint{margin-top:14px;font-size:13px;color:var(--muted)}
 .fineprint a{font-weight:700}
@@ -932,9 +934,9 @@ a.aud:hover .ic,a.stage:hover .ic{transform:rotate(-8deg) scale(1.08)}
       <p class="section-sub">Le cycle ingénieur ITS se déroule sur trois ans : des fondamentaux jusqu'aux deux axes IA&amp;D-S et Cyber-S, avec un stage chaque année.</p>
     </div>
     <div class="timeline reveal">
-      <div class="tl"><small>1re année · Semestres 1 et 2</small><b>Les fondamentaux</b><span>Le socle commun de l'ingénieur, entre numérique et santé.</span><br><span class="stg">Stage de découverte · 4 semaines min.</span><i class="bar"></i></div>
-      <div class="tl"><small>2e année · Semestres 3 et 4</small><b>Les bases des deux axes</b><span>Premiers modules IA&amp;D-S et Cyber-S.</span><br><span class="stg">Stage à l'étranger · 16 semaines min.</span><i class="bar"></i></div>
-      <div class="tl"><small>3e année · Semestre 5</small><b>Approfondissement</b><span>Les deux axes se densifient.</span><br><span class="stg">Stage de fin d'études · 26 semaines</span><i class="bar"></i></div>
+      <div class="tl"><small>1re année · Semestres 1 et 2</small><b>Les fondamentaux</b><span>Le socle commun de l'ingénieur, entre numérique et santé.</span><br><a class="stg" href="#stage-1a">Stage de découverte · 4 semaines min. →</a><i class="bar"></i></div>
+      <div class="tl"><small>2e année · Semestres 3 et 4</small><b>Les bases des deux axes</b><span>Premiers modules IA&amp;D-S et Cyber-S.</span><br><a class="stg" href="#stage-2a">Stage à l'étranger · 16 semaines min. →</a><i class="bar"></i></div>
+      <div class="tl"><small>3e année · Semestre 5</small><b>Approfondissement</b><span>Les deux axes se densifient.</span><br><a class="stg" href="#stage-3a">Stage de fin d'études · 26 semaines →</a><i class="bar"></i></div>
     </div>
     <p class="fineprint">D'après la maquette de la spécialité et la présentation de la formation par l'EPISEN.</p>
   </div>
@@ -998,7 +1000,7 @@ a.aud:hover .ic,a.stage:hover .ic{transform:rotate(-8deg) scale(1.08)}
         <div class="dur" aria-hidden="true"><i></i></div>
         <span class="more">Voir les détails <i aria-hidden="true">→</i></span>
       </a>
-      <a class="stage glow" href="#infos-stages" style="--w:61.5%">
+      <a class="stage glow" href="#stage-2a" style="--w:61.5%">
         <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg></span>
         <span class="yr">2e année</span>
         <div class="wk"><b data-count="16">16</b><span>semaines min.</span></div>
@@ -1007,7 +1009,7 @@ a.aud:hover .ic,a.stage:hover .ic{transform:rotate(-8deg) scale(1.08)}
         <div class="dur" aria-hidden="true"><i></i></div>
         <span class="more">Voir les détails <i aria-hidden="true">→</i></span>
       </a>
-      <a class="stage glow" href="#infos-stages" style="--w:100%">
+      <a class="stage glow" href="#stage-3a" style="--w:100%">
         <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg></span>
         <span class="yr">3e année</span>
         <div class="wk"><b data-count="26">26</b><span>semaines</span></div>
@@ -1307,8 +1309,8 @@ a.aud:hover .ic,a.stage:hover .ic{transform:rotate(-8deg) scale(1.08)}
 
     <h2 class="sub-title">Où faire <em>son stage ?</em></h2>
     <p class="section-sub">Les lieux qui ont déjà accueilli des étudiants ITS en 1re année, partagés par les étudiants. Tu en connais un ? Ajoute-le !</p>
-    <div class="ent-tools"><span></span><a class="btn btn-primary btn-sm" href="#ajouter-entreprise" id="s1-add">+ Ajouter un lieu de stage</a></div>
-    <div id="s1-list"></div>
+    <div class="ent-tools"><span></span><a class="btn btn-primary btn-sm" href="#ajouter-entreprise" data-stage-add>+ Ajouter un lieu de stage</a></div>
+    <div data-stage-list="s1"></div>
 
     <h2 class="sub-title">Les <em>contacts</em></h2>
     <div class="tbl-wrap">
@@ -1323,6 +1325,79 @@ a.aud:hover .ic,a.stage:hover .ic{transform:rotate(-8deg) scale(1.08)}
       </table>
     </div>
     <p class="fineprint">D'après le vade-mecum des stages ITS, le règlement des études et le guide des stages FISE 2026-2027. Les apprentis (FISA) sont en entreprise : leurs missions sont définies avec l'entreprise.</p>
+  </div>
+</section>
+
+<section class="section view" id="view-stage2a" aria-labelledby="view-stage2a-t">
+  <div class="wrap">
+    <a href="#formation" class="back">← Retour</a>
+    <span class="kicker">Stage de 2e année · FISE</span>
+    <h1 class="section-title view-title" id="view-stage2a-t" tabindex="-1">Un stage <em>à l'étranger</em></h1>
+    <div class="speech">
+      <p class="lead-xl">Le stage de 2e année, c'est l'aventure internationale de la formation : mettre en pratique ce que tu as appris, dans une autre culture et en anglais.</p>
+      <h3>Ce qui est attendu</h3>
+      <p><strong>Au moins 16 semaines</strong>, à partir du <strong>10 mai 2027</strong>, en entreprise ou dans un organisme de recherche, de préférence <strong>à l'étranger</strong> chez un partenaire. Les pays non francophones sont privilégiés. Le stage se conclut par un <strong>mémoire rédigé en anglais</strong> et une <strong>soutenance en anglais</strong> devant un jury.</p>
+      <h3>Préparer son départ</h3>
+      <p>Commence ta recherche dès la rentrée : parle aux ITS3 et aux diplômés, récupère leurs contacts et sollicite le BDE. Destinations fréquentes : Vietnam, Thaïlande, Malaisie, Canada, mais aussi Corée du Sud, Espagne, Portugal, Italie, Allemagne, Suède, Brésil… Avant de partir : assurance avec <strong>rapatriement</strong>, inscription sur <a href="https://pastel.diplomatie.gouv.fr/fildariane/dyn/public/login.html" target="_blank" rel="noopener noreferrer">Ariane ↗</a>, formulaires de mobilité sur la plateforme MoveOn de l'UPEC et, en Europe, carte européenne d'assurance maladie.</p>
+      <h3>Bon à savoir</h3>
+      <p>L'aide à la mobilité internationale de l'UPEC est d'environ <strong>350 à 400 € par mois</strong> (sous réserve de budget et de classement). Le <strong>TOEIC (785 minimum)</strong> est obligatoire pour le diplôme : l'école finance une session au semestre 4. Autre option : un semestre 4 à l'université HUST de Hanoï ou dans le réseau <a href="https://www.u-pec.fr/fr/international/aurora/opportunites-etudiants" target="_blank" rel="noopener noreferrer">AURORA ↗</a>. En alternance (FISA), la mobilité est de 12 semaines (9 minimum), en 2e ou en 3e année.</p>
+    </div>
+
+    <h2 class="sub-title">Où partir <em>en stage ?</em></h2>
+    <p class="section-sub">Les entreprises et laboratoires à l'étranger qui ont déjà accueilli des étudiants ITS. Tu en connais un ? Ajoute-le !</p>
+    <div class="ent-tools"><span></span><a class="btn btn-primary btn-sm" href="#ajouter-entreprise" data-stage-add>+ Ajouter un lieu à l'étranger</a></div>
+    <div data-stage-list="s2"></div>
+
+    <h2 class="sub-title">Les <em>contacts</em></h2>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Pour…</th><th>Contact</th></tr></thead>
+        <tbody>
+          <tr><td><b>Faire valider ton stage</b></td><td>Le responsable des stages de la filière ITS (coordonnées sur EPREL)</td></tr>
+          <tr><td><b>Partir à l'étranger, aides à la mobilité</b></td><td>Le responsable des relations internationales de la filière ITS (coordonnées sur EPREL)</td></tr>
+          <tr><td><b>Ta convention, ta responsabilité civile</b></td><td>Scolarité ITS : <a href="mailto:scolarite-its.episen@u-pec.fr">scolarite-its.episen@u-pec.fr</a></td></tr>
+          <tr><td><b>Un problème sur eStage</b></td><td><a href="mailto:sos-estage@u-pec.fr">sos-estage@u-pec.fr</a></td></tr>
+          <tr><td><b>Des conseils d'étudiants</b></td><td><a href="#contacts">Écrire aux promos</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="fineprint">D'après le vade-mecum des stages ITS, le règlement des études, le guide des stages FISE 2026-2027 et la pré-rentrée ITS2 2026-2027.</p>
+  </div>
+</section>
+
+<section class="section view" id="view-stage3a" aria-labelledby="view-stage3a-t">
+  <div class="wrap">
+    <a href="#formation" class="back">← Retour</a>
+    <span class="kicker">Stage de 3e année · FISE</span>
+    <h1 class="section-title view-title" id="view-stage3a-t" tabindex="-1">Le stage <em>de fin d'études</em></h1>
+    <div class="speech">
+      <p class="lead-xl">Dernière marche avant le diplôme : une vraie mission d'ingénieur, en entreprise ou en laboratoire, pour appréhender le métier de façon globale.</p>
+      <h3>Ce qui est attendu</h3>
+      <p><strong>26 semaines</strong> (semestre 6), à partir du <strong>8 mars 2027</strong>, en entreprise ou en <strong>laboratoire de recherche</strong>. Tu y réalises une mission qui élargit tes compétences sous un angle concret, suivie par un tuteur enseignant en binôme avec ton tuteur en entreprise.</p>
+      <h3>L'évaluation</h3>
+      <p>Tu rédiges un <strong>mémoire</strong> (avec un résumé en anglais) qui présente l'entreprise et ton travail par rapport au cahier des charges, puis tu le soutiens devant un jury composé de tes tuteurs et d'au moins un autre enseignant. Quatre notes : celle de l'entreprise, le mémoire, la soutenance et l'anglais.</p>
+      <h3>Bon à savoir</h3>
+      <p>La <strong>gratification est obligatoire</strong> (stage de plus de 2 mois). Un stage plus long que la durée prévue est possible par avenant, dans la limite de 50 % de la durée.</p>
+    </div>
+
+    <h2 class="sub-title">Où faire <em>son stage de fin d'études ?</em></h2>
+    <p class="section-sub">Les entreprises et laboratoires qui ont déjà accueilli des étudiants ITS en fin d'études. Tu en connais un ? Ajoute-le !</p>
+    <div class="ent-tools"><span></span><a class="btn btn-primary btn-sm" href="#ajouter-entreprise" data-stage-add>+ Ajouter une entreprise</a></div>
+    <div data-stage-list="s3"></div>
+
+    <h2 class="sub-title">Les <em>contacts</em></h2>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Pour…</th><th>Contact</th></tr></thead>
+        <tbody>
+          <tr><td><b>Faire valider ton stage</b></td><td>Le responsable des stages de la filière ITS (coordonnées sur EPREL)</td></tr>
+          <tr><td><b>Ta convention, ta responsabilité civile</b></td><td>Scolarité ITS : <a href="mailto:scolarite-its.episen@u-pec.fr">scolarite-its.episen@u-pec.fr</a></td></tr>
+          <tr><td><b>Un problème sur eStage</b></td><td><a href="mailto:sos-estage@u-pec.fr">sos-estage@u-pec.fr</a></td></tr>
+          <tr><td><b>Des conseils d'étudiants</b></td><td><a href="#contacts">Écrire aux promos</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="fineprint">D'après le vade-mecum des stages ITS, le règlement des études et le guide des stages FISE 2026-2027.</p>
   </div>
 </section>
 
@@ -1829,6 +1904,8 @@ const VIEWS = {
   "entreprises":  {id:"view-entreprises", title:"Entreprises et recruteurs"},
   "ing1":         {id:"view-ing1",        title:"Étudiants en ING1"},
   "stage-1a":     {id:"view-stage1a",     title:"Stage de 1re année"},
+  "stage-2a":     {id:"view-stage2a",     title:"Stage à l'étranger (2e année)"},
+  "stage-3a":     {id:"view-stage3a",     title:"Stage de fin d'études"},
 };
 function applyView(){
   let h=""; try{ h=decodeURIComponent(location.hash.slice(1)); }catch(e){}
@@ -1922,19 +1999,22 @@ if("IntersectionObserver" in window && !reduceMotion){
 }else reveals.forEach(el=>el.classList.add("in"));
 
 /* ---------- Liste collaborative des entreprises (page Entreprises) ---------- */
-const ENT_MATCH=[["publie",/publi|valid|approuv|moder/],["lien",/site|lien|url/],["type",/accueil|type/],["secteur",/secteur/],["ville",/ville|lieu|pays/],["note",/commentaire|remarque|precision/],["nom",/entreprise|structure|nom/]];
-const ENT_LIM={nom:80,secteur:60,ville:60,type:160,lien:2000,note:300};
+const ENT_MATCH=[["publie",/publi|valid|approuv|moder/],["lien",/site|lien|url/],["type",/accueil|type/],["secteur",/secteur/],["ville",/ville|lieu|pays/],["note",/commentaire|remarque|precision/],["contact",/contact|mail|courriel/],["nom",/entreprise|structure|nom/]];
+const ENT_LIM={nom:80,secteur:60,ville:60,type:160,lien:2000,note:300,contact:120};
 const ENT_TYPES=[["s1","Stage 1re année",/1re|1ere|premiere|decouverte/],["s2","Stage 2e année",/2e|deuxieme|etranger/],["s3","Stage 3e année",/3e|troisieme|fin d.etudes/],["alt","Alternance",/alternance|apprenti|fisa/]];
 let ENTS=[], entFilter="";
-function renderS1(){
-  const add=$("#s1-add"); add.hidden=!safeUrl(CONFIG.ENTREPRISES_FORM_URL);
-  const list=ENTS.filter(e=>e.tk.includes("s1"));
-  $("#s1-list").innerHTML = !list.length
-    ? `<div class="ent-empty"><b>La liste se remplit grâce aux étudiants</b>${add.hidden?"Elle sera bientôt ouverte aux contributions.":"Sois le premier à partager un lieu de stage de 1re année."}</div>`
-    : `<div class="tbl-wrap"><table class="tbl"><thead><tr><th>Structure</th><th>Type</th><th>Ville</th><th>Commentaire</th></tr></thead><tbody>${list.map(e=>`<tr><td><b>${e.lien?`<a href="${esc(e.lien)}" target="_blank" rel="noopener noreferrer">${esc(e.nom)} ↗</a>`:esc(e.nom)}</b></td><td>${esc(e.secteur)}</td><td>${esc(e.ville)}</td><td>${esc(e.note)}</td></tr>`).join("")}</tbody></table></div>`;
+function renderStageTables(){
+  const open=!!safeUrl(CONFIG.ENTREPRISES_FORM_URL);
+  document.querySelectorAll("[data-stage-add]").forEach(a=>a.hidden=!open);
+  document.querySelectorAll("[data-stage-list]").forEach(box=>{
+    const k=box.dataset.stageList, list=ENTS.filter(e=>e.tk.includes(k));
+    box.innerHTML = !list.length
+      ? `<div class="ent-empty"><b>La liste se remplit grâce aux étudiants</b>${open?"Sois le premier à partager un lieu de stage.":"Elle sera bientôt ouverte aux contributions."}</div>`
+      : `<div class="tbl-wrap"><table class="tbl"><thead><tr><th>Structure</th><th>Secteur</th><th>Ville / pays</th><th>Contact</th><th>Commentaire</th></tr></thead><tbody>${list.map(e=>`<tr><td><b>${e.lien?`<a href="${esc(e.lien)}" target="_blank" rel="noopener noreferrer">${esc(e.nom)} ↗</a>`:esc(e.nom)}</b></td><td>${esc(e.secteur)}</td><td>${esc(e.ville)}</td><td>${e.mail?`<a href="mailto:${esc(e.mail)}">${esc(e.mail)}</a>`:esc(e.contact)}</td><td>${esc(e.note)}</td></tr>`).join("")}</tbody></table></div>`;
+  });
 }
 function renderEnts(){
-  renderS1();
+  renderStageTables();
   const add=$("#ent-add"); add.hidden=!safeUrl(CONFIG.ENTREPRISES_FORM_URL);
   $("#ent-chips").innerHTML = ENTS.length ? [["","Toutes"],...ENT_TYPES.map(t=>[t[0],t[1]])].map(([k,l])=>`<button type="button" class="chip" data-ent="${k}" aria-pressed="${entFilter===k}">${esc(l)}</button>`).join("") : "";
   const list=ENTS.filter(e=>!entFilter||e.tk.includes(entFilter));
@@ -1952,7 +2032,7 @@ async function loadEnts(){
   const seen=new Set();
   ENTS=rows.slice(1).filter(r=>idx.publie===undefined||YES.has(norm(r[idx.publie]))).map(r=>{
     const e={}; for(const k in ENT_LIM) e[k]=clip(idx[k]!==undefined?r[idx[k]]:"",ENT_LIM[k]);
-    e.lien=safeUrl(e.lien); const t=norm(e.type); e.tk=ENT_TYPES.filter(x=>x[2].test(t)).map(x=>x[0]); return e;
+    e.lien=safeUrl(e.lien); e.mail=validEmail(e.contact)?e.contact.trim():""; const t=norm(e.type); e.tk=ENT_TYPES.filter(x=>x[2].test(t)).map(x=>x[0]); return e;
   }).filter(e=>e.nom && !seen.has(norm(e.nom)) && seen.add(norm(e.nom))).sort((a,b)=>a.nom.localeCompare(b.nom,"fr",{sensitivity:"base"}));
   renderEnts();
 }
