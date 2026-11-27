@@ -30,6 +30,14 @@ En attendant les vrais projets de la promo, le site affiche 21 **sujets exemples
 
 Ils disparaissent automatiquement dès qu'il y a **8 vrais projets** (réglage `MASQUER_EXEMPLES_A_PARTIR_DE` dans le bloc `config`, mettre `0` pour ne jamais les afficher). Pour en modifier ou en retirer un, édite le bloc `exemples` en haut de `index.html`.
 
+## Page Contacts
+
+La page **https://projets-its-episen.github.io/#contacts** présente une carte par année (1re, 2e, 3e année).
+
+- Par défaut, chaque carte affiche « Contact de promo à venir » et un bouton qui écrit à `CONTACT_EMAIL` avec l'année en objet (par exemple `[ING2] Question pour la promo`).
+- Pour afficher un vrai contact, remplis le bloc `contacts` en haut de `index.html` (`nom`, `role`, `email`, `linkedin`). **Uniquement avec l'accord de la personne.**
+- Le bouton « Proposer un stage ou un projet » envoie un e-mail à `CONTACT_EMAIL`. Les questions officielles (admissions, scolarité) renvoient vers le site de l'EPISEN.
+
 ## Modération (recommandé)
 
 Par défaut, tout projet envoyé s'affiche automatiquement. Pour **valider les projets avant publication** :
