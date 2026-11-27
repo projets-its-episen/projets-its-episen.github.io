@@ -10,7 +10,7 @@
   l'empreinte doit être recalculée, sinon le site ne s'affichera plus.
   Modifier le texte, CONFIG ou SEED ne change PAS l'empreinte.
 -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-qWO5uxpxMbRiAHUGe2WpiN7IP4vvFLs3EvhBiZeC+jU='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https: data:; connect-src https://docs.google.com https://*.googleusercontent.com; frame-src https://docs.google.com https://accounts.google.com https://www.youtube-nocookie.com; base-uri 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-GnZ8mS32ZG9HmqU0m/fvpQyaodaAChHTd44vmDGXRZ4='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https: data:; connect-src https://docs.google.com https://*.googleusercontent.com; frame-src https://docs.google.com https://accounts.google.com https://www.youtube-nocookie.com; base-uri 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Projets ITS – EPISEN · Santé, IA & Cybersécurité</title>
 <meta name="description" content="Les projets MESPI et PoC des élèves-ingénieurs de la spécialité ITS (Ingénierie et Technologies pour la Santé) de l'EPISEN : parcours IA&D-S (Intelligence Artificielle et Données de Santé) et Cyber-S (Cybersécurité en Santé).">
@@ -1729,9 +1729,11 @@ function rowsToProjects(rows){
   const head=rows[0].map(norm), idx={};
   head.forEach((h,i)=>{ for(const [key,re] of MATCH){ if(idx[key]===undefined && re.test(h)){ idx[key]=i; break; } } });
   MODERATED = idx.publie!==undefined;
+  const imgCols=head.map((h,i)=>/image|photo|visuel/.test(h)?i:-1).filter(i=>i>=0);
   return rows.slice(1)
     .filter(r=>!MODERATED || YES.has(norm(r[idx.publie])))
-    .map(r=>{ const o={}; for(const k in LIMITS) o[k]=idx[k]!==undefined ? (r[idx[k]]||"") : ""; return o; });
+    .map(r=>{ const o={}; for(const k in LIMITS) o[k]=idx[k]!==undefined ? (r[idx[k]]||"") : "";
+      const img=imgCols.map(i=>r[i]||"").find(v=>safeImage(v)); if(img) o.image=img; return o; });
 }
 function clean(p){
   const o={}; for(const k in LIMITS) o[k]=clip(p[k],LIMITS[k]);
