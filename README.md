@@ -95,9 +95,13 @@ Le site reconnaît les colonnes grâce aux mots en gras. Si tu renommes une ques
 | 6 | **Description** du projet (problème, solution) | Paragraphe | Non |
 | 7 | **Technologies** utilisées (séparées par des virgules) | Réponse courte | Non |
 | 8 | **Membres** de l'équipe (séparés par des virgules) | Réponse courte | Non |
-| 9 | Lien d'une **image** (optionnel) | Réponse courte | Non |
+| 9 | **Image** du projet (PNG ou JPG) | **Importation de fichier** (voir ci-dessous) | Non |
 | 10 | **Lien** vidéo, poster ou GitHub (optionnel) | Réponse courte | Non |
 | 11 | **Parcours** | Choix multiples : IA&D-S (Intelligence Artificielle et Données de Santé) / Cyber-S (Cybersécurité en Santé) / Les deux | Recommandé |
+
+**Image du projet (question 9) :** choisis le type « Importation de fichier », active « Autoriser uniquement certains types de fichiers » et coche **Image** seulement, avec 1 fichier et 10 Mo maximum. Google stocke les fichiers dans ton Drive, dans un dossier « (File responses) » : partage ce dossier en **« Tous les utilisateurs disposant du lien : lecteur »**, sinon les images ne s'afficheront pas. Les répondants devront se connecter à un compte Google pour importer un fichier.
+
+Côté sécurité : le site est entièrement statique, il n'exécute aucun fichier envoyé. Il n'affiche que des liens d'images (Google Drive, GitHub ou fichiers .png/.jpg/.jpeg/.webp) et refuse les autres (.php, .js, .html, .svg…).
 
 **Parcours :** la question 11 permet d'afficher le badge IA&D-S ou Cyber-S sur chaque projet et de filtrer par parcours. Si elle est absente ou vide, le site devine le parcours à partir du domaine (IA, données, imagerie → IA&D-S ; cybersécurité → Cyber-S).
 

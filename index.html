@@ -10,7 +10,7 @@
   l'empreinte doit être recalculée, sinon le site ne s'affichera plus.
   Modifier le texte, CONFIG ou SEED ne change PAS l'empreinte.
 -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-3XF+u0AItnAhuhafTEtNXBU7IuqxhNGUvF5/9ixUIvg='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https: data:; connect-src https://docs.google.com https://*.googleusercontent.com; frame-src https://docs.google.com https://accounts.google.com https://www.youtube-nocookie.com; base-uri 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-qWO5uxpxMbRiAHUGe2WpiN7IP4vvFLs3EvhBiZeC+jU='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https: data:; connect-src https://docs.google.com https://*.googleusercontent.com; frame-src https://docs.google.com https://accounts.google.com https://www.youtube-nocookie.com; base-uri 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Projets ITS – EPISEN · Santé, IA & Cybersécurité</title>
 <meta name="description" content="Les projets MESPI et PoC des élèves-ingénieurs de la spécialité ITS (Ingénierie et Technologies pour la Santé) de l'EPISEN : parcours IA&D-S (Intelligence Artificielle et Données de Santé) et Cyber-S (Cybersécurité en Santé).">
@@ -459,7 +459,7 @@
     "description": "Problème : suivre l'activité musculaire pendant l'effort demande aujourd'hui du matériel coûteux et peu pratique.\n\nSolution : un brassard porté sur le bras, équipé d'un capteur EMG MyoWare 2.0 relié à un microcontrôleur ESP32-S3. Les mesures sont envoyées en Bluetooth Low Energy vers une application Flutter qui affiche et enregistre le signal.",
     "technos": "ESP32-S3, MyoWare 2.0 (EMG), Bluetooth Low Energy, Flutter",
     "equipe": "Valentin Auger, Maxence Olivier, Othmen Al Bydeoi",
-    "image": "",
+    "image": "https://projets-its-episen.github.io/images/athletix-data.jpg",
     "lien": "https://github.com/Valentin-Auger-Laboratoire/athletix-data"
   }
 ]
@@ -1198,7 +1198,7 @@ a.aud:hover .ic,a.stage:hover .ic{transform:rotate(-8deg) scale(1.08)}
       <p class="section-sub">Aucun compte ni code nécessaire : tout passe par un formulaire.</p>
       <ol class="steps">
         <li><b>Clique sur « Ajouter mon projet »</b>Le formulaire s'ouvre directement sur la page.</li>
-        <li><b>Décris ton projet</b>Nom, résumé, technologies, équipe, et un lien vers une image ou une vidéo si tu en as.</li>
+        <li><b>Décris ton projet</b>Nom, résumé, technologies, équipe, et <strong>une image</strong> (photo, capture d'écran ou schéma en PNG ou JPG) et une vidéo si tu en as.</li>
         <li><b>Il apparaît sur le site</b><span id="step3">Quelques minutes après l'envoi, le temps que la liste se mette à jour.</span></li>
       </ol>
       <a class="btn btn-primary" href="#ajouter">Ajouter mon projet
@@ -1330,7 +1330,7 @@ a.aud:hover .ic,a.stage:hover .ic{transform:rotate(-8deg) scale(1.08)}
     <p class="section-sub">Une liste remplie par les étudiants : entreprises qui ont accueilli des stagiaires ou des alternants. Utile aux FISA qui cherchent une alternance comme aux FISE qui cherchent un stage.</p>
     <div class="ent-tools">
       <div class="chips" id="ent-chips" role="group" aria-label="Filtrer les entreprises"></div>
-      <a class="btn btn-primary btn-sm" href="#ajouter-entreprise" id="ent-add">+ Ajouter une entreprise</a>
+      <a class="btn btn-primary btn-sm" href="#ajouter-entreprise" id="ent-add" data-stage-add>+ Partager une entreprise</a>
     </div>
     <div id="ent-list"></div>
   </div>
@@ -1368,7 +1368,7 @@ a.aud:hover .ic,a.stage:hover .ic{transform:rotate(-8deg) scale(1.08)}
 
     <h2 class="sub-title">Où faire <em>son stage ?</em></h2>
     <p class="section-sub">Les lieux qui ont déjà accueilli des étudiants ITS en 1re année, partagés par les étudiants. Les lignes marquées « Piste » sont de vraies structures qui recrutent des stagiaires, repérées en ligne : elles n'ont pas forcément déjà accueilli d'ITS.</p>
-    <div class="ent-tools"><span></span><a class="btn btn-primary btn-sm" href="#ajouter-entreprise" data-stage-add>+ Ajouter un lieu de stage</a></div>
+    <div class="ent-tools"><span></span><a class="btn btn-primary btn-sm" href="#ajouter-entreprise" data-stage-add>+ Partager mon stage</a></div>
     <div data-stage-list="s1"></div>
     <p class="see">Convention, documents et contacts : <a href="#infos-stages">page Stages →</a></p>
     <p class="fineprint">D'après le vade-mecum des stages ITS et le guide des stages FISE 2026-2027.</p>
@@ -1431,7 +1431,7 @@ a.aud:hover .ic,a.stage:hover .ic{transform:rotate(-8deg) scale(1.08)}
 
     <h2 class="sub-title">Où partir <em>en stage ?</em></h2>
     <p class="section-sub">Les structures à l'étranger qui ont déjà accueilli des étudiants ITS, et quelques pistes (« Piste »). Rémunération et télétravail sont indicatifs ; à l'étranger, la gratification n'est pas obligatoire.</p>
-    <div class="ent-tools"><span></span><a class="btn btn-primary btn-sm" href="#ajouter-entreprise" data-stage-add>+ Ajouter un lieu à l'étranger</a></div>
+    <div class="ent-tools"><span></span><a class="btn btn-primary btn-sm" href="#ajouter-entreprise" data-stage-add>+ Partager mon stage</a></div>
     <div data-stage-list="s2"></div>
     <p class="see">Convention, documents et contacts : <a href="#infos-stages">page Stages →</a></p>
     <p class="fineprint">D'après le vade-mecum des stages ITS, le règlement des études, le guide des stages FISE 2026-2027 et la pré-rentrée ITS2 2026-2027.</p>
@@ -1453,7 +1453,7 @@ a.aud:hover .ic,a.stage:hover .ic{transform:rotate(-8deg) scale(1.08)}
 
     <h2 class="sub-title">Où faire <em>son stage de fin d'études ?</em></h2>
     <p class="section-sub">Les entreprises et laboratoires qui ont déjà accueilli des étudiants ITS en fin d'études. Les lignes marquées « Piste » sont de vraies structures qui recrutent des stagiaires, repérées en ligne : elles n'ont pas forcément déjà accueilli d'ITS.</p>
-    <div class="ent-tools"><span></span><a class="btn btn-primary btn-sm" href="#ajouter-entreprise" data-stage-add>+ Ajouter une entreprise</a></div>
+    <div class="ent-tools"><span></span><a class="btn btn-primary btn-sm" href="#ajouter-entreprise" data-stage-add>+ Partager mon stage</a></div>
     <div data-stage-list="s3"></div>
     <p class="see">Convention, documents et contacts : <a href="#infos-stages">page Stages →</a></p>
     <p class="fineprint">D'après le vade-mecum des stages ITS et le guide des stages FISE 2026-2027.</p>
@@ -1622,6 +1622,16 @@ function linkLabel(u){
   if(/\.pdf($|\?)/i.test(u)||h==="drive.google.com"||h==="docs.google.com"||h==="canva.com") return "Voir le poster / document";
   return "Ouvrir le lien";
 }
+/* Images : seulement des liens d'images (Google Drive, ce site, GitHub, ou fichiers .png/.jpg/.jpeg/.webp).
+   Une image affichée via <img> ne peut pas exécuter de code ; on refuse en plus tout lien qui ne ressemble pas à une image. */
+const IMG_HOSTS=["drive.google.com","docs.google.com","lh3.googleusercontent.com","raw.githubusercontent.com","projets-its-episen.github.io"];
+function safeImage(u){
+  u=String(u||"").split(/[\s,]+/).find(Boolean)||"";
+  const url=safeUrl(u); if(!url) return "";
+  let path=""; try{ path=new URL(url).pathname.toLowerCase(); }catch(e){ return ""; }
+  if(/\.(php\d?|phtml|js|mjs|html?|svg|exe|sh|py|cgi|asp|aspx|jsp)$/.test(path)) return "";
+  return (IMG_HOSTS.includes(hostOf(url)) || /\.(png|jpe?g|webp)$/.test(path)) ? url : "";
+}
 function validEmail(e){ return /^[^\s@<>"']+@[^\s@<>"']+\.[a-z]{2,}$/i.test(e||""); }
 
 /* ---------- Couleurs par domaine ---------- */
@@ -1725,7 +1735,7 @@ function rowsToProjects(rows){
 }
 function clean(p){
   const o={}; for(const k in LIMITS) o[k]=clip(p[k],LIMITS[k]);
-  o.image=safeUrl(p.image); o.lien=safeUrl(p.lien);
+  o.image=safeImage(p.image); o.lien=safeUrl(p.lien);
   return o.nom ? o : null;
 }
 
@@ -1917,7 +1927,7 @@ function showForm(kind){
   }else{
     const u=new URL(url); u.searchParams.set("embedded","true");
     body.innerHTML=`<h2 id="form-title" style="font-size:clamp(22px,3vw,28px);letter-spacing:-.03em;margin-bottom:6px;padding-right:48px">Ajouter mon projet</h2>
-      <p class="muted" style="margin-bottom:16px">Remplis le formulaire : ${MODERATED?"ton projet apparaîtra sur la page après une rapide vérification.":"ton projet apparaîtra sur la page quelques minutes après l'envoi."}</p>
+      <p class="muted" style="margin-bottom:16px">Remplis le formulaire et ajoute <b>une image</b> de ton projet (photo, capture d'écran ou schéma, en PNG ou JPG) : c'est elle qui sert de couverture. ${MODERATED?"Ton projet apparaîtra sur la page après une rapide vérification.":"Ton projet apparaîtra sur la page quelques minutes après l'envoi."}</p>
       <iframe class="form-frame" src="${esc(u.href)}" title="Formulaire d'ajout de projet" loading="lazy" referrerpolicy="strict-origin-when-cross-origin">Chargement…</iframe>
       <p style="text-align:center;font-size:13px;padding:12px 0" class="muted">Le formulaire ne s'affiche pas ? <a href="${esc(url)}" target="_blank" rel="noopener noreferrer">Ouvre-le dans un nouvel onglet</a>.</p>`;
   }
@@ -2075,7 +2085,7 @@ const STAGE_TITLES={s1:"Lieux de stage de 1re année · monde de la santé",s2:"
 function entTable(list,title,withType,open){
   const cols=["Structure",...(withType?["Accueil"]:[]),"Ville / pays","Contact","Commentaire"];
   const rows=list.length ? list.map(e=>`<tr><td><b>${e.lien?`<a href="${esc(e.lien)}" target="_blank" rel="noopener noreferrer">${esc(e.nom)} ↗</a>`:esc(e.nom)}</b>${e.secteur?`<span class="muted">${esc(e.secteur)}</span>`:""}${e.piste?`<span class="piste">Piste</span>`:""}</td>${withType?`<td>${e.tk.map(k=>`<span class="tag">${esc(ENT_TYPES.find(t=>t[0]===k)[1])}</span>`).join(" ")}</td>`:""}<td>${esc(e.ville)}</td><td>${contactOf(e)}</td><td>${esc(e.note)}</td></tr>`).join("")
-    : `<tr><td colspan="${cols.length}" class="tbl-empty">Aucune structure pour l'instant. ${open?"Tu en connais une ? Ajoute-la : elle aidera toute la promo.":"La liste sera bientôt ouverte aux contributions des étudiants."}</td></tr>`;
+    : `<tr><td colspan="${cols.length}" class="tbl-empty">Aucune structure pour l'instant. Tu en connais une ? Partage-la avec le bouton « Partager mon stage » : elle aidera toute la promo.</td></tr>`;
   return `<div class="tbl-wrap"><table class="tbl ent-tbl"><caption>${esc(title)}${list.length?` <span>${list.length}</span>`:""}</caption><thead><tr>${cols.map(c=>`<th>${c}</th>`).join("")}</tr></thead><tbody>${rows}</tbody></table></div>`;
 }
 function known2A(){
@@ -2095,7 +2105,9 @@ function table2A(open){
 }
 function renderStageTables(){
   const open=!!safeUrl(CONFIG.ENTREPRISES_FORM_URL);
-  document.querySelectorAll("[data-stage-add]").forEach(a=>a.hidden=!open);
+  const body="Structure :\nVille / pays :\nType de stage (1re année, 2e année à l'étranger, 3e année, alternance) :\nAnnée du stage :\nSujet / missions :\nRémunération :\nContact (adresse professionnelle, avec l'accord de la personne) :\nSite web :\nCommentaire :\n";
+  const mail=mailtoFor("Partager un stage ITS"), href=open?"#ajouter-entreprise":(mail?mail+"&body="+encodeURIComponent(body):"#contacts");
+  document.querySelectorAll("[data-stage-add]").forEach(a=>{ a.hidden=false; a.setAttribute("href",href); });
   document.querySelectorAll("[data-stage-list]").forEach(box=>{
     const k=box.dataset.stageList;
     box.innerHTML = k==="s2" ? table2A(open) : entTable(allStructures().filter(e=>e.tk.includes(k)),STAGE_TITLES[k]||"",false,open);
@@ -2103,7 +2115,7 @@ function renderStageTables(){
 }
 function renderEnts(){
   renderStageTables();
-  const add=$("#ent-add"); add.hidden=!safeUrl(CONFIG.ENTREPRISES_FORM_URL);
+  const add={hidden:false};
   $("#ent-chips").innerHTML = allStructures().length ? [["","Toutes"],...ENT_TYPES.map(t=>[t[0],t[1]])].map(([k,l])=>`<button type="button" class="chip" data-ent="${k}" aria-pressed="${entFilter===k}">${esc(l)}</button>`).join("") : "";
   const list=allStructures().filter(e=>!entFilter||e.tk.includes(entFilter));
   $("#ent-list").innerHTML = entTable(list,entFilter?ENT_TYPES.find(t=>t[0]===entFilter)[1]:"Toutes les structures",true,!add.hidden);
