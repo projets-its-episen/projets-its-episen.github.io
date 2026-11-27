@@ -10,7 +10,7 @@
   l'empreinte doit être recalculée, sinon le site ne s'affichera plus.
   Modifier le texte, CONFIG ou SEED ne change PAS l'empreinte.
 -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-N5gzO4FirwagnGFZWj2hhEQCIgJzaJwxT/VgNB7Zyz0='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https: data:; connect-src https://docs.google.com https://*.googleusercontent.com; frame-src https://docs.google.com https://accounts.google.com https://www.youtube-nocookie.com; base-uri 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-vmGWCgB71C7D5VAX+gMUmxQswEWIqMeecVvHwYoCVGk='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https: data:; connect-src https://docs.google.com https://*.googleusercontent.com; frame-src https://docs.google.com https://accounts.google.com https://www.youtube-nocookie.com; base-uri 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Projets ITS – EPISEN · Santé, IA & Cybersécurité</title>
 <meta name="description" content="Les projets MESPI et PoC des élèves-ingénieurs de la spécialité ITS (Ingénierie et Technologies pour la Santé) de l'EPISEN : parcours IA&D-S (Intelligence Artificielle et Données de Santé) et Cyber-S (Cybersécurité en Santé).">
@@ -75,6 +75,67 @@
   "ING2": {"nom": "", "role": "", "email": "", "linkedin": ""},
   "ING3": {"nom": "", "role": "", "email": "", "linkedin": ""}
 }
+</script>
+
+<!-- STAGES DE 2e ANNÉE DÉJÀ RÉALISÉS par des étudiants ITS (structures uniquement :
+     aucun nom d'étudiant ni coordonnée personnelle). -->
+<script type="application/json" id="stages2a">
+[
+  {
+    "nom": "University of Leicester",
+    "pays": "Angleterre (Leicester)",
+    "depuis": "2023-2024",
+    "remuneration": "Non rémunéré",
+    "teletravail": "",
+    "sujet": "",
+    "nb": 1
+  },
+  {
+    "nom": "Biogenes",
+    "pays": "Malaisie (Kuala Lumpur)",
+    "depuis": "2022-2023",
+    "remuneration": "1 000 MYR / mois",
+    "teletravail": "Non",
+    "sujet": "Data sciences",
+    "nb": 1
+  },
+  {
+    "nom": "FEV3R",
+    "pays": "Malaisie (Kuala Lumpur)",
+    "depuis": "2023-2024",
+    "remuneration": "1 000 MYR / mois",
+    "teletravail": "Occasionnel",
+    "sujet": "Gestion des risques, plans de continuité d'activité et de reprise après sinistre",
+    "nb": 1
+  },
+  {
+    "nom": "SOICT Cybersecurity Lab (HUST)",
+    "pays": "Vietnam (Hanoï)",
+    "depuis": "2024",
+    "remuneration": "Non rémunéré",
+    "teletravail": "Occasionnel",
+    "sujet": "A Novel Approach for Malaria Detection through Federated Learning",
+    "nb": 1
+  },
+  {
+    "nom": "ICBAS, Abel Salazar Biomedical Sciences Institute",
+    "pays": "Portugal",
+    "depuis": "2024",
+    "remuneration": "Non rémunéré",
+    "teletravail": "Oui",
+    "sujet": "",
+    "nb": 2
+  },
+  {
+    "nom": "Hôpital Sainte-Justine",
+    "pays": "Canada (Montréal)",
+    "depuis": "2019-2020",
+    "remuneration": "3 000 CAD (versés en une fois)",
+    "teletravail": "Oui",
+    "sujet": "",
+    "nb": 2
+  }
+]
 </script>
 
 <!-- Projets EXEMPLES : sujets fictifs, sans nom d'étudiant, marqués « Exemple » sur le site.
@@ -1266,6 +1327,11 @@ a.aud:hover .ic,a.stage:hover .ic{transform:rotate(-8deg) scale(1.08)}
       </ul>
     </div>
 
+    <h2 class="sub-title">Ils y sont <em>déjà allés</em></h2>
+    <p class="section-sub">Des structures à l'étranger où des étudiants ITS ont déjà fait leur stage de 2e année. Pour obtenir le contact d'un ancien, <a href="#contacts">écris à la promo</a> : les coordonnées ne sont pas publiées sur le site.</p>
+    <div id="s2-known"></div>
+    <p class="fineprint">D'après le tableau de suivi des stages de 2e année partagé entre étudiants. Rémunération et télétravail : à titre indicatif, à revérifier avec la structure. À l'étranger, la gratification n'est pas obligatoire.</p>
+
     <h2 class="sub-title">Où partir <em>en stage ?</em></h2>
     <p class="section-sub">Les entreprises et laboratoires à l'étranger qui ont déjà accueilli des étudiants ITS.</p>
     <div class="ent-tools"><span></span><a class="btn btn-primary btn-sm" href="#ajouter-entreprise" data-stage-add>+ Ajouter un lieu à l'étranger</a></div>
@@ -1912,6 +1978,11 @@ function entTable(list,title,withType,open){
     : `<tr><td colspan="${cols.length}" class="tbl-empty">Aucune structure pour l'instant. ${open?"Tu en connais une ? Ajoute-la : elle aidera toute la promo.":"La liste sera bientôt ouverte aux contributions des étudiants."}</td></tr>`;
   return `<div class="tbl-wrap"><table class="tbl ent-tbl"><caption>${esc(title)}${list.length?` <span>${list.length}</span>`:""}</caption><thead><tr>${cols.map(c=>`<th>${c}</th>`).join("")}</tr></thead><tbody>${rows}</tbody></table></div>`;
 }
+function renderKnown2A(){
+  const box=$("#s2-known"); if(!box) return;
+  const list=(readJSON("stages2a")||[]).map(e=>{ const o={}; for(const k of ["nom","pays","depuis","remuneration","teletravail","sujet"]) o[k]=clip(e[k],160); o.nb=Math.min(99,Math.max(1,parseInt(e.nb,10)||1)); return o; }).filter(e=>e.nom);
+  box.innerHTML=`<div class="tbl-wrap"><table class="tbl ent-tbl"><caption>Stages de 2e année déjà réalisés <span>${list.length}</span></caption><thead><tr><th>Structure</th><th>Pays (ville)</th><th>Depuis</th><th>Rémunération</th><th>Télétravail</th><th>Sujet</th></tr></thead><tbody>${list.map(e=>`<tr><td><b>${esc(e.nom)}</b>${e.nb>1?`<span class="muted">${e.nb} étudiants ITS</span>`:""}</td><td>${esc(e.pays)}</td><td>${esc(e.depuis)}</td><td>${esc(e.remuneration)}</td><td>${esc(e.teletravail)||"–"}</td><td>${esc(e.sujet)||"–"}</td></tr>`).join("")}</tbody></table></div>`;
+}
 function renderStageTables(){
   const open=!!safeUrl(CONFIG.ENTREPRISES_FORM_URL);
   document.querySelectorAll("[data-stage-add]").forEach(a=>a.hidden=!open);
@@ -1944,6 +2015,7 @@ async function loadEnts(){
 document.addEventListener("click",e=>{ const c=e.target.closest("[data-ent]"); if(c){ entFilter=entFilter===c.dataset.ent?"":c.dataset.ent; renderEnts(); } });
 
 renderContacts();
+renderKnown2A();
 applyView();
 load();
 loadEnts();
