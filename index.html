@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projets ITS – EPISEN</title>
+<meta name="description" content="Découvrez concrètement les projets réalisés par les élèves-ingénieurs de la filière ITS (Ingénierie des Technologies pour la Santé) de l'EPISEN.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* =========================================================
+   CONFIGURATION — la seule partie à modifier
+   (voir le README pour savoir où trouver ces liens)
+   ========================================================= */
+</style>
+<script>
+const CONFIG = {
+  // Lien CSV de la feuille Google Sheets liée au formulaire
+  // (Fichier > Partager > Publier sur le Web > CSV)
+  SHEET_CSV_URL: "https://docs.google.com/spreadsheets/d/e/2PACX-1vT3IUIzq-4m4OgX6QjNPeyxWifSh22qraIiD5FnA8hZOsYImm9R95bRfkHo8UiO4qs6OYiM8O5OoUt7/pub?gid=799833823&single=true&output=csv",
+
+  // Lien du formulaire Google (bouton "Envoyer" > lien)
+  FORM_URL: "https://docs.google.com/forms/d/e/1FAIpQLScz9egcTJLxxIh9N9W8atfQSzkuk1lnDvxhXEKN0jSuB3QIpg/viewform",
+};
+</script>
+<style>
+:root{
+  --bg:#f6f8fc; --surface:#ffffff; --ink:#0f1b2d; --muted:#5b6b82; --line:#e3e9f2;
+  --brand:#1f5eff; --brand-2:#00b3a4; --brand-ink:#0b2a7a;
+  --radius:18px; --shadow:0 1px 2px rgba(15,27,45,.04),0 8px 24px rgba(15,27,45,.06);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Plus Jakarta Sans",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+button{font:inherit;cursor:pointer;border:none;background:none;color:inherit}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+
+/* ---------- Header ---------- */
+.top{position:sticky;top:0;z-index:20;background:rgba(246,248,252,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:-.02em;text-decoration:none}
+.logo-mark{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--brand),var(--brand-2));display:grid;place-items:center;color:#fff;font-size:15px;font-weight:800}
+.btn{text-decoration:none;display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:12px;font-weight:700;font-size:15px;transition:transform .15s,box-shadow .15s,background .15s}
+.btn-primary{background:var(--brand);color:#fff;box-shadow:0 6px 18px rgba(31,94,255,.28)}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:0 10px 24px rgba(31,94,255,.34)}
+.btn-ghost{background:var(--surface);border:1px solid var(--line)}
+.btn-ghost:hover{border-color:#c9d4e5}
+.btn svg{width:18px;height:18px}
+
+/* ---------- Hero ---------- */
+.hero{padding:64px 0 36px;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:-40% -10% auto auto;width:620px;height:620px;background:radial-gradient(closest-side,rgba(31,94,255,.14),transparent);pointer-events:none}
+.hero::after{content:"";position:absolute;inset:auto auto -50% -10%;width:520px;height:520px;background:radial-gradient(closest-side,rgba(0,179,164,.12),transparent);pointer-events:none}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:999px;background:#e8efff;color:var(--brand-ink);font-size:13px;font-weight:700}
+.hero h1{font-size:clamp(34px,5.4vw,58px);line-height:1.05;letter-spacing:-.035em;font-weight:800;margin:18px 0 16px;max-width:820px}
+.hero h1 span{background:linear-gradient(90deg,var(--brand),var(--brand-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{font-size:clamp(16px,2vw,19px);color:var(--muted);max-width:640px}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.stats{display:flex;flex-wrap:wrap;gap:14px;margin-top:40px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 20px;min-width:140px;box-shadow:var(--shadow)}
+.stat b{display:block;font-size:28px;letter-spacing:-.03em;line-height:1.1}
+.stat small{color:var(--muted);font-size:13px;font-weight:600}
+
+/* ---------- Toolbar ---------- */
+.toolbar{position:sticky;top:64px;z-index:10;background:var(--bg);padding:16px 0 12px}
+.search{position:relative;margin-bottom:12px}
+.search input{width:100%;padding:14px 16px 14px 46px;border-radius:14px;border:1px solid var(--line);background:var(--surface);font:inherit;font-size:15px;outline:none;transition:border .15s,box-shadow .15s}
+.search input:focus{border-color:var(--brand);box-shadow:0 0 0 4px rgba(31,94,255,.12)}
+.search svg{position:absolute;left:16px;top:50%;transform:translateY(-50%);width:18px;height:18px;color:var(--muted)}
+.chips{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{white-space:nowrap;padding:8px 14px;border-radius:999px;border:1px solid var(--line);background:var(--surface);font-size:14px;font-weight:600;color:var(--muted);transition:all .15s}
+.chip:hover{color:var(--ink);border-color:#c9d4e5}
+.chip.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.sep{width:1px;background:var(--line);flex:0 0 1px;margin:4px 4px}
+
+/* ---------- Grid & cards ---------- */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px;padding:12px 0 60px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column;text-align:left;transition:transform .18s,box-shadow .18s}
+.card:hover{transform:translateY(-3px);box-shadow:0 2px 4px rgba(15,27,45,.05),0 16px 36px rgba(15,27,45,.10)}
+.cover{aspect-ratio:16/9;position:relative;display:grid;place-items:center;overflow:hidden}
+.cover img{width:100%;height:100%;object-fit:cover}
+.cover .ini{font-size:46px;font-weight:800;color:rgba(255,255,255,.95);letter-spacing:-.04em;text-shadow:0 4px 18px rgba(0,0,0,.15)}
+.cover .pattern{position:absolute;inset:0;opacity:.18;background-image:radial-gradient(#fff 1.2px,transparent 1.2px);background-size:16px 16px}
+.badge{position:absolute;top:12px;left:12px;padding:5px 10px;border-radius:8px;background:rgba(255,255,255,.92);font-size:12px;font-weight:800;letter-spacing:.02em;color:var(--ink)}
+.card-body{padding:18px 18px 20px;display:flex;flex-direction:column;gap:8px;flex:1}
+.meta{display:flex;gap:8px;align-items:center;font-size:12.5px;font-weight:700;color:var(--muted)}
+.dot{width:8px;height:8px;border-radius:50%}
+.card h3{font-size:19px;letter-spacing:-.02em;line-height:1.25}
+.card p{color:var(--muted);font-size:14.5px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:8px}
+.tag{font-size:12px;font-weight:600;padding:4px 9px;border-radius:7px;background:#f0f3f9;color:#3b4a60}
+
+.empty{grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--muted)}
+.empty b{display:block;color:var(--ink);font-size:18px;margin-bottom:6px}
+.add-card{border:2px dashed #c9d4e5;background:transparent;box-shadow:none;display:grid;place-items:center;min-height:300px;color:var(--muted);font-weight:700;gap:10px;text-align:center;padding:24px}
+.add-card:hover{border-color:var(--brand);color:var(--brand);transform:none;box-shadow:none}
+.add-card .plus{width:54px;height:54px;border-radius:16px;background:#e8efff;color:var(--brand);display:grid;place-items:center;font-size:30px;margin:0 auto 10px}
+
+/* ---------- Modal ---------- */
+.overlay{position:fixed;inset:0;z-index:50;background:rgba(15,27,45,.5);backdrop-filter:blur(4px);display:none;align-items:flex-end;justify-content:center;padding:0}
+.overlay.open{display:flex;animation:fade .2s}
+.modal{background:var(--surface);width:100%;max-width:760px;max-height:92vh;overflow:auto;border-radius:22px 22px 0 0;animation:up .25s cubic-bezier(.2,.8,.2,1)}
+@media(min-width:720px){.overlay{align-items:center;padding:24px}.modal{border-radius:22px}}
+.modal .cover{aspect-ratio:21/9}
+.modal-close{position:absolute;top:14px;right:14px;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.95);display:grid;place-items:center;font-size:20px;box-shadow:var(--shadow);z-index:2}
+.modal-inner{padding:26px 28px 32px}
+.modal h2{font-size:28px;letter-spacing:-.03em;line-height:1.15;margin:8px 0 10px}
+.lead{font-size:17px;color:var(--muted);margin-bottom:22px}
+.section{margin-top:22px}
+.section h4{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:8px}
+.section p{white-space:pre-line}
+.team{display:flex;flex-wrap:wrap;gap:8px}
+.person{display:flex;align-items:center;gap:8px;padding:6px 12px 6px 6px;border-radius:999px;background:#f0f3f9;font-size:14px;font-weight:600}
+.avatar{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;color:#fff;font-size:12px;font-weight:800}
+.form-modal .modal-inner{padding:24px 24px 8px}
+.form-frame{width:100%;height:70vh;border:0;border-radius:12px;background:#f6f8fc}
+.notice{background:#fff8e6;border:1px solid #ffe2a3;color:#6b4e00;padding:14px 16px;border-radius:12px;font-size:14.5px}
+
+footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--muted);font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
+
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@keyframes up{from{transform:translateY(30px);opacity:0}to{transform:none;opacity:1}}
+.skeleton{background:linear-gradient(90deg,#eef2f8 0%,#f7f9fc 50%,#eef2f8 100%);background-size:200% 100%;animation:sh 1.2s infinite;border-radius:var(--radius);min-height:300px}
+@keyframes sh{to{background-position:-200% 0}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a href="#" class="logo"><span class="logo-mark">ITS</span>Projets ITS</a>
+    <button class="btn btn-primary" data-add>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+      <span>Ajouter mon projet</span>
+    </button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Filière ITS · EPISEN · UPEC</span>
+    <h1>Ce que les élèves-ingénieurs ITS <span>construisent vraiment.</span></h1>
+    <p>Capteurs connectés, IA, cybersécurité, e-santé… Découvrez concrètement les projets MESPI et PoC réalisés par les étudiants de la filière Ingénierie des Technologies pour la Santé.</p>
+    <div class="hero-cta">
+      <a href="#projets" class="btn btn-ghost">Voir les projets ↓</a>
+      <button class="btn btn-primary" data-add>Ajouter mon projet</button>
+    </div>
+    <div class="stats">
+      <div class="stat"><b id="s-proj">–</b><small>projets</small></div>
+      <div class="stat"><b id="s-dom">–</b><small>domaines</small></div>
+      <div class="stat"><b id="s-promo">–</b><small>promotions</small></div>
+    </div>
+  </div>
+</section>
+
+<main id="projets" class="wrap">
+  <div class="toolbar">
+    <div class="search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="q" type="search" placeholder="Rechercher un projet, une techno, un membre…" autocomplete="off">
+    </div>
+    <div class="chips" id="chips"></div>
+  </div>
+  <div class="grid" id="grid">
+    <div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Initiative étudiante de la filière ITS – EPISEN – UPEC · site non officiel</span>
+    <span>Créé par Valentin Auger (PIP 2026)</span>
+  </div>
+</footer>
+
+<!-- Détail projet -->
+<div class="overlay" id="ov-proj" aria-hidden="true">
+  <div class="modal" role="dialog" aria-modal="true" style="position:relative">
+    <button class="modal-close" data-close aria-label="Fermer">×</button>
+    <div id="detail"></div>
+  </div>
+</div>
+
+<!-- Formulaire d'ajout -->
+<div class="overlay" id="ov-form" aria-hidden="true">
+  <div class="modal form-modal" role="dialog" aria-modal="true" style="position:relative">
+    <button class="modal-close" data-close aria-label="Fermer">×</button>
+    <div class="modal-inner" id="form-body"></div>
+  </div>
+</div>
+
+<script>
+/* =========================================================
+   Projets de départ (toujours affichés)
+   ========================================================= */
+const SEED = [
+  {
+    nom: "Athletix-Data",
+    type: "MESPI",
+    annee: "2025-2026",
+    domaine: "IoT & capteurs",
+    resume: "Un brassard connecté qui mesure l'activité musculaire (EMG) et l'affiche en temps réel sur une application mobile.",
+    description: "Problème : suivre l'activité musculaire pendant l'effort demande aujourd'hui du matériel coûteux et peu pratique.\n\nSolution : un brassard porté sur le bras, équipé d'un capteur EMG MyoWare 2.0 relié à un microcontrôleur ESP32-S3. Les mesures sont envoyées en Bluetooth Low Energy vers une application Flutter qui affiche et enregistre le signal.",
+    technos: "ESP32-S3, MyoWare 2.0 (EMG), Bluetooth Low Energy, Flutter",
+    equipe: "Valentin Auger, Maxence Olivier, Othmen Al Bydeoi",
+    image: "",
+    lien: ""
+  }
+];
+
+/* =========================================================
+   Code — pas besoin d'y toucher
+   ========================================================= */
+const DOMAIN_COLORS = {
+  "ia":["#6d4aff","#a26bff"], "data":["#6d4aff","#a26bff"],
+  "cyber":["#e5484d","#ff7a59"], "sécu":["#e5484d","#ff7a59"],
+  "iot":["#1f5eff","#00b3a4"], "capteur":["#1f5eff","#00b3a4"],
+  "réseau":["#0d8bd9","#38c6f4"], "reseau":["#0d8bd9","#38c6f4"],
+  "imagerie":["#0f766e","#22c3a6"],
+  "e-santé":["#d6336c","#f783ac"], "santé":["#d6336c","#f783ac"], "sante":["#d6336c","#f783ac"],
+  "web":["#f08c00","#ffc078"], "app":["#f08c00","#ffc078"],
+};
+function colorsFor(d){
+  const k=(d||"").toLowerCase();
+  for(const key in DOMAIN_COLORS) if(k.includes(key)) return DOMAIN_COLORS[key];
+  const pal=[["#334155","#64748b"],["#7c3aed","#c084fc"],["#0369a1","#38bdf8"],["#15803d","#4ade80"]];
+  let h=0; for(const c of k) h=(h*31+c.charCodeAt(0))>>>0; return pal[h%pal.length];
+}
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const initials=s=>(s||"?").split(/[\s\-_]+/).filter(Boolean).slice(0,2).map(w=>w[0].toUpperCase()).join("");
+const splitList=s=>(s||"").split(/[,;\n]+/).map(x=>x.trim()).filter(Boolean);
+
+function driveImg(url){
+  if(!url) return "";
+  const m=url.match(/(?:\/d\/|id=)([\w-]{20,})/);
+  if(m && /drive\.google|docs\.google/.test(url)) return "https://lh3.googleusercontent.com/d/"+m[1]+"=w1200";
+  return url;
+}
+function safeUrl(u){ return /^https?:\/\//i.test(u||"") ? u : ""; }
+
+/* CSV parser (gère guillemets, virgules et retours à la ligne) */
+function parseCSV(t){
+  const rows=[];let row=[],f="",q=false;
+  for(let i=0;i<t.length;i++){
+    const c=t[i];
+    if(q){ if(c=='"'){ if(t[i+1]=='"'){f+='"';i++;} else q=false; } else f+=c; }
+    else if(c=='"') q=true;
+    else if(c==','){row.push(f);f="";}
+    else if(c=='\n'||c=='\r'){ if(c=='\r'&&t[i+1]=='\n')i++; row.push(f);rows.push(row);row=[];f=""; }
+    else f+=c;
+  }
+  if(f!==""||row.length){row.push(f);rows.push(row);}
+  return rows.filter(r=>r.some(x=>x.trim()!==""));
+}
+
+/* Associe les colonnes du formulaire par leur titre */
+const MATCH=[
+  ["image",/image|photo|visuel/],
+  ["lien",/lien|vid[ée]o|poster|github|url/],
+  ["nom",/nom du projet|titre|^nom/],
+  ["type",/type/],
+  ["annee",/ann[ée]e|promo/],
+  ["domaine",/domaine/],
+  ["resume",/r[ée]sum[ée]|phrase/],
+  ["description",/description|d[ée]tail/],
+  ["technos",/techno|outil/],
+  ["equipe",/membre|[ée]quipe/],
+];
+function rowsToProjects(rows){
+  if(rows.length<2) return [];
+  const head=rows[0].map(h=>h.toLowerCase().trim());
+  const idx={};
+  head.forEach((h,i)=>{ for(const [key,re] of MATCH){ if(idx[key]===undefined && re.test(h)){ idx[key]=i; break; } } });
+  return rows.slice(1).map(r=>{
+    const o={}; for(const k in idx) o[k]=(r[idx[k]]||"").trim(); return o;
+  }).filter(p=>p.nom);
+}
+
+let ALL=[], filterType="Tous", filterDom="Tous";
+
+async function load(){
+  let fromSheet=[];
+  if(CONFIG.SHEET_CSV_URL){
+    try{
+      const res=await fetch(CONFIG.SHEET_CSV_URL+(CONFIG.SHEET_CSV_URL.includes("?")?"&":"?")+"t="+Date.now());
+      fromSheet=rowsToProjects(parseCSV(await res.text()));
+    }catch(e){ console.warn("Impossible de lire la feuille :",e); }
+  }
+  // Les plus récents en premier, puis les projets de départ
+  const seen=new Set(); ALL=[];
+  [...fromSheet.reverse(),...SEED].forEach(p=>{ const k=(p.nom+"|"+p.annee).toLowerCase(); if(!seen.has(k)){seen.add(k);ALL.push(p);} });
+  stats(); chips(); render();
+}
+
+function stats(){
+  const n=(arr)=>new Set(arr.filter(Boolean)).size;
+  animate("s-proj",ALL.length);
+  animate("s-dom",n(ALL.map(p=>p.domaine)));
+  animate("s-promo",n(ALL.map(p=>p.annee)));
+}
+function animate(id,to){
+  const el=document.getElementById(id); let v=0; const step=Math.max(1,Math.ceil(to/20));
+  const t=setInterval(()=>{ v=Math.min(to,v+step); el.textContent=v; if(v>=to) clearInterval(t); },30);
+}
+
+function chips(){
+  const types=["Tous",...new Set(ALL.map(p=>p.type).filter(Boolean))];
+  const doms=["Tous",...new Set(ALL.map(p=>p.domaine).filter(Boolean))];
+  const c=document.getElementById("chips");
+  c.innerHTML = types.map(t=>`<button class="chip ${t===filterType?"on":""}" data-t="${esc(t)}">${t==="Tous"?"Tous les projets":esc(t)}</button>`).join("")
+    + (doms.length>2?`<span class="sep"></span>`+doms.filter(d=>d!=="Tous").map(d=>`<button class="chip ${d===filterDom?"on":""}" data-d="${esc(d)}">${esc(d)}</button>`).join(""):"");
+}
+
+function cover(p,big){
+  const [a,b]=colorsFor(p.domaine); const img=driveImg(safeUrl(p.image));
+  return `<div class="cover" style="background:linear-gradient(135deg,${a},${b})">
+    ${img?`<img src="${esc(img)}" alt="" loading="lazy" onerror="this.remove()">`:`<div class="pattern"></div><span class="ini">${esc(initials(p.nom))}</span>`}
+    ${p.type?`<span class="badge">${esc(p.type)}</span>`:""}
+  </div>`;
+}
+
+function render(){
+  const q=document.getElementById("q").value.toLowerCase().trim();
+  const list=ALL.filter(p=>{
+    if(filterType!=="Tous" && p.type!==filterType) return false;
+    if(filterDom!=="Tous" && p.domaine!==filterDom) return false;
+    if(!q) return true;
+    return [p.nom,p.resume,p.description,p.technos,p.equipe,p.domaine,p.type,p.annee].join(" ").toLowerCase().includes(q);
+  });
+  const g=document.getElementById("grid");
+  g.innerHTML = list.map((p,i)=>{
+    const [a]=colorsFor(p.domaine);
+    return `<button class="card" data-i="${ALL.indexOf(p)}">
+      ${cover(p)}
+      <div class="card-body">
+        <div class="meta">${p.domaine?`<span class="dot" style="background:${a}"></span>${esc(p.domaine)}`:""}${p.annee?` · ${esc(p.annee)}`:""}</div>
+        <h3>${esc(p.nom)}</h3>
+        <p>${esc(p.resume||p.description)}</p>
+        <div class="tags">${splitList(p.technos).slice(0,4).map(t=>`<span class="tag">${esc(t)}</span>`).join("")}</div>
+      </div>
+    </button>`;
+  }).join("") + (list.length?"":`<div class="empty"><b>Aucun projet trouvé</b>Essaie un autre mot-clé ou un autre filtre.</div>`)
+    + `<button class="card add-card" data-add><div><div class="plus">+</div>Ton projet n'est pas encore là ?<br>Ajoute-le en 2 minutes.</div></button>`;
+}
+
+function openProject(i){
+  const p=ALL[i]; const lien=safeUrl(p.lien);
+  document.getElementById("detail").innerHTML = `
+    ${cover(p,true)}
+    <div class="modal-inner">
+      <div class="meta">${esc(p.domaine||"")}${p.annee?` · ${esc(p.annee)}`:""}</div>
+      <h2>${esc(p.nom)}</h2>
+      ${p.resume?`<p class="lead">${esc(p.resume)}</p>`:""}
+      ${p.description?`<div class="section"><h4>Le projet</h4><p>${esc(p.description)}</p></div>`:""}
+      ${p.technos?`<div class="section"><h4>Technologies</h4><div class="tags">${splitList(p.technos).map(t=>`<span class="tag">${esc(t)}</span>`).join("")}</div></div>`:""}
+      ${p.equipe?`<div class="section"><h4>L'équipe</h4><div class="team">${splitList(p.equipe).map(n=>{const [c]=colorsFor(n);return `<span class="person"><span class="avatar" style="background:${c}">${esc(initials(n))}</span>${esc(n)}</span>`}).join("")}</div></div>`:""}
+      ${lien?`<div class="section"><a class="btn btn-primary" href="${esc(lien)}" target="_blank" rel="noopener">Voir la vidéo / le poster ↗</a></div>`:""}
+    </div>`;
+  open("ov-proj");
+}
+
+function openForm(){
+  const body=document.getElementById("form-body");
+  if(!CONFIG.FORM_URL){
+    body.innerHTML=`<h2 style="font-size:24px;margin-bottom:12px">Ajouter un projet</h2>
+      <div class="notice">Le formulaire n'est pas encore relié. Colle le lien du formulaire Google dans <code>CONFIG.FORM_URL</code> en haut du fichier <code>index.html</code>.</div><div style="height:20px"></div>`;
+  } else {
+    let embed=CONFIG.FORM_URL;
+    if(!/embedded=true/.test(embed)) embed+= (embed.includes("?")?"&":"?")+"embedded=true";
+    body.innerHTML=`<h2 style="font-size:24px;margin-bottom:6px">Ajouter mon projet</h2>
+      <p style="color:var(--muted);margin-bottom:16px">Remplis le formulaire : ton projet apparaîtra sur la page quelques minutes après l'envoi.</p>
+      <iframe class="form-frame" src="${esc(embed)}" loading="lazy">Chargement…</iframe>
+      <p style="text-align:center;font-size:13px;color:var(--muted);padding:12px 0">Le formulaire ne s'affiche pas ? <a href="${esc(CONFIG.FORM_URL)}" target="_blank" rel="noopener">Ouvre-le dans un nouvel onglet</a>.</p>`;
+  }
+  open("ov-form");
+}
+
+function open(id){ const o=document.getElementById(id); o.classList.add("open"); o.setAttribute("aria-hidden","false"); document.body.style.overflow="hidden"; }
+function closeAll(){ document.querySelectorAll(".overlay").forEach(o=>{o.classList.remove("open");o.setAttribute("aria-hidden","true")}); document.body.style.overflow=""; }
+
+document.addEventListener("click",e=>{
+  const t=e.target;
+  if(t.closest("[data-add]")) return openForm();
+  if(t.closest("[data-close]") || t.classList.contains("overlay")) return closeAll();
+  const card=t.closest(".card[data-i]"); if(card) return openProject(+card.dataset.i);
+  const ct=t.closest("[data-t]"); if(ct){ filterType=ct.dataset.t; chips(); render(); return; }
+  const cd=t.closest("[data-d]"); if(cd){ filterDom = filterDom===cd.dataset.d ? "Tous" : cd.dataset.d; chips(); render(); return; }
+});
+document.addEventListener("keydown",e=>{ if(e.key==="Escape") closeAll(); });
+document.getElementById("q").addEventListener("input",render);
+
+load();
+</script>
+</body>
+</html>
