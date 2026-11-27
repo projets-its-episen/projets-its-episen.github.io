@@ -10,7 +10,7 @@
   l'empreinte doit être recalculée, sinon le site ne s'affichera plus.
   Modifier le texte, CONFIG ou SEED ne change PAS l'empreinte.
 -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-vMKKi01vaEEp9heeZlPIaOd/NFnZRztR7R9gXqZ5io4='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https: data:; connect-src https://docs.google.com https://*.googleusercontent.com; frame-src https://docs.google.com https://accounts.google.com https://www.youtube-nocookie.com; base-uri 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-XhD18gDh/SyaTh3TzQd0uMpcsErp1O5MpTXozMfhcA4='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https: data:; connect-src https://docs.google.com https://*.googleusercontent.com; frame-src https://docs.google.com https://accounts.google.com https://www.youtube-nocookie.com; base-uri 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Projets ITS – EPISEN · Santé, IA & Cybersécurité</title>
 <meta name="description" content="Les projets MESPI et PoC des élèves-ingénieurs de la spécialité ITS (Ingénierie et Technologies pour la Santé) de l'EPISEN : parcours IA&D-S (Intelligence Artificielle et Données de Santé) et Cyber-S (Cybersécurité en Santé).">
@@ -764,7 +764,19 @@ a.aud:hover .ic,a.stage:hover .ic{transform:rotate(-8deg) scale(1.08)}
 .see a{color:var(--brand);font-weight:700}
 .stage .desc{color:var(--muted);font-size:14.5px}
 .tbl td a.go-link{white-space:nowrap}
-.sub-title{font-size:clamp(22px,2.8vw,30px);letter-spacing:-.03em;margin:54px 0 6px}
+.unis{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin-top:20px}
+.uni{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:22px;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;gap:10px}
+.uni-head{display:flex;gap:12px;align-items:center}
+.uni-flag{font-size:30px;line-height:1}
+.uni h3{font-size:16.5px;letter-spacing:-.02em;line-height:1.3}
+.uni-head span{font-size:13px;color:var(--muted);font-weight:600}
+.uni p{font-size:14.5px;color:var(--muted)}
+.uni p strong{color:var(--ink)}
+.uni-dates{padding:10px 12px;border-radius:12px;background:var(--surface-2);border:1px solid var(--line)}
+.uni-dates b{color:var(--ink)}
+.uni-links{margin-top:auto;font-size:14px}
+.uni-links a{color:var(--brand);font-weight:700}
+.sub-title{font-size:clamp(22px,2.8vw,30px);letter-spacing:-.03em;margin:54px 0 6px;scroll-margin-top:90px}
 .sub-title em{font-family:var(--serif);font-weight:400}
 .contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:20px;margin-top:32px}
 .ccard{position:relative;overflow:hidden;background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:26px;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;gap:12px}
@@ -1208,8 +1220,34 @@ a.aud:hover .ic,a.stage:hover .ic{transform:rotate(-8deg) scale(1.08)}
       <h3>Préparer son départ</h3>
       <p>Commence ta recherche dès la rentrée : parle aux ITS3 et aux diplômés, récupère leurs contacts et sollicite le BDE. Destinations fréquentes : Vietnam, Thaïlande, Malaisie, Canada, mais aussi Corée du Sud, Espagne, Portugal, Italie, Allemagne, Suède, Brésil… Avant de partir : assurance avec rapatriement, inscription sur <a href="https://pastel.diplomatie.gouv.fr/fildariane/dyn/public/login.html" target="_blank" rel="noopener noreferrer">Ariane ↗</a>, formulaires de mobilité sur MoveOn (UPEC) et, en Europe, carte européenne d'assurance maladie.</p>
       <h3>Bon à savoir</h3>
-      <p>Aide à la mobilité internationale de l'UPEC : environ <strong>350 à 400 € par mois</strong> (sous réserve de budget et de classement). Le <strong>TOEIC (785 minimum)</strong> est obligatoire pour le diplôme : l'école finance une session au semestre 4. Autre option : un semestre 4 à l'université HUST de Hanoï ou dans le réseau <a href="https://www.u-pec.fr/fr/international/aurora/opportunites-etudiants" target="_blank" rel="noopener noreferrer">AURORA ↗</a>.</p>
+      <p>Le <strong>TOEIC (785 minimum)</strong> est obligatoire pour le diplôme : l'école finance une session au semestre 4. Tu peux aussi remplacer le stage par <a href="#semestre-etranger">un semestre dans une université partenaire ↓</a>.</p>
+      <h3>Financer ton séjour : l'aide AMI</h3>
+      <p>L'UPEC verse une <strong>aide à la mobilité internationale (AMI)</strong> pour les <strong>stages obligatoires à l'étranger</strong> comme pour les <strong>semestres d'études</strong>, dès 2 mois de séjour : de l'ordre de <strong>350 à 400 € par mois</strong> (en Europe, l'aide Erasmus+ va de 270 à 520 € par mois selon le pays). Environ 70 % sont versés au départ et le reste au retour. L'aide n'est pas automatique : elle dépend du budget et d'un classement.</p>
+      <p><strong>Comment faire :</strong> une fois ton projet validé par l'école, remplis d'abord ta <strong>déclaration de mobilité</strong> sur le portail MoveOn de l'UPEC, puis le formulaire de demande d'aide pendant la période de candidature (avec ta convention de stage et ton attestation de responsabilité civile à l'étranger). Les appels ont lieu plusieurs fois par an selon la date de départ : surveille-les dès la rentrée. <a href="https://www.u-pec.fr/fr/etudiant-e/actualites/aide-a-la-mobilite-internationale" target="_blank" rel="noopener noreferrer">Aide à la mobilité internationale (UPEC) ↗</a> · <a href="https://www.u-pec.fr/fr/etudiant-e/partir-a-l-etranger/aides-financieres/suis-je-eligible-a-une-aide-a-la-mobilite-internationale" target="_blank" rel="noopener noreferrer">Suis-je éligible ? ↗</a> · <a href="https://www.u-pec.fr/fr/etudiant-e/partir-a-l-etranger/aides-financieres/quand-faire-ma-demande-en-ligne-d-aide-a-la-mobilite-internationale" target="_blank" rel="noopener noreferrer">Quand faire ma demande ? ↗</a></p>
     </div>
+
+    <h2 class="sub-title" id="semestre-etranger">Option : un semestre <em>à l'étranger</em></h2>
+    <div class="speech">
+      <p>Au lieu du stage, tu peux passer <strong>un semestre (environ 6 mois) dans une université partenaire</strong>, au semestre 4 et/ou 5. Le semestre, stage compris, est validé si tu valides les crédits (ECTS) correspondants dans l'université d'accueil. Avant de te lancer, vérifie les programmes et les dates, puis parles-en au responsable des relations internationales de la filière.</p>
+    </div>
+    <div class="unis">
+      <article class="uni">
+        <div class="uni-head"><span class="uni-flag" aria-hidden="true">🇻🇳</span><div><h3>HUST · Hanoi University of Science and Technology</h3><span>Hanoï, Vietnam · partenaire de l'EPISEN</span></div></div>
+        <p>Programmes en anglais : <strong>Global ICT</strong>, <strong>Data Science &amp; AI</strong> et <strong>Cyber Security</strong>, idéaux pour IA&amp;D-S comme pour Cyber-S.</p><p class="uni-dates"><b>Spring Exchange 2027</b> : nomination par l'école le 1er octobre 2026, candidature avant le 15 octobre 2026, réponse du 20 octobre au 20 novembre, orientation du 18 au 22 janvier, début des cours le 25 janvier 2027.</p>
+        <div class="uni-links"><a href="https://hust.edu.vn/en/" target="_blank" rel="noopener noreferrer">Site de HUST ↗</a></div>
+      </article>
+      <article class="uni">
+        <div class="uni-head"><span class="uni-flag" aria-hidden="true">🇧🇷</span><div><h3>UFOP · Universidade Federal de Ouro Preto</h3><span>Ouro Preto, Minas Gerais, Brésil</span></div></div>
+        <p>Deux possibilités : un <strong>semestre d'études</strong> (cours surtout en portugais, niveau intermédiaire recommandé) ou un <strong>projet académique</strong> (recherche, stage, projet) ouvert aux francophones et anglophones. Logement en « républiques » étudiantes, restaurant universitaire à petit prix. Visa étudiant obligatoire au-delà de 90 jours.</p><p class="uni-dates"><b>Projets académiques 2027</b> : candidature avant le 30 novembre 2026 (départs de février à juillet 2027) ou avant le 31 mai 2027 (départs de juillet à décembre). Pas de financement de l'UFOP, sauf accord de réciprocité.</p>
+        <div class="uni-links"><a href="https://www.dri.ufop.br/en" target="_blank" rel="noopener noreferrer">Relations internationales UFOP ↗</a> · <a href="mailto:international@ufop.edu.br">international@ufop.edu.br</a></div>
+      </article>
+      <article class="uni">
+        <div class="uni-head"><span class="uni-flag" aria-hidden="true">🇪🇺</span><div><h3>Réseau européen AURORA</h3><span>Universités partenaires de l'UPEC</span></div></div>
+        <p>Vrije Universiteit Amsterdam (Pays-Bas), Universitat Rovira i Virgili (Espagne), University of Iceland (Islande), Universität Innsbruck (Autriche), University of Duisburg-Essen (Allemagne), Palacký University Olomouc (Tchéquie), University of Naples Federico II (Italie), Copenhagen Business School (Danemark).</p><p class="uni-dates">À toi de vérifier la compatibilité des programmes et le calendrier.</p>
+        <div class="uni-links"><a href="https://www.u-pec.fr/fr/international/aurora/opportunites-etudiants" target="_blank" rel="noopener noreferrer">Opportunités AURORA ↗</a></div>
+      </article>
+    </div>
+    <p class="fineprint">D'après la pré-rentrée ITS2 2026-2027 et les documents de l'UFOP (projets académiques 2027, fiche 2026). Cette liste n'est pas exhaustive : d'autres partenaires existent sûrement, renseigne-toi auprès des relations internationales.</p>
 
     <div class="passport">
       <div>
@@ -1766,11 +1804,15 @@ function applyView(){
   let h=""; try{ h=decodeURIComponent(location.hash.slice(1)); }catch(e){}
   closeMenu();
   if(h==="ajouter"||h==="ajouter-entreprise"||h.startsWith("/")) return;
-  const v=Object.prototype.hasOwnProperty.call(VIEWS,h)?VIEWS[h]:null, prev=document.body.dataset.view||"";
+  let v=Object.prototype.hasOwnProperty.call(VIEWS,h)?VIEWS[h]:null, anchor=null;
+  if(!v && h){ const el=document.getElementById(h), host=el&&el.closest(".view"); if(host){ const k=Object.keys(VIEWS).find(x=>VIEWS[x].id===host.id); if(k){ v=VIEWS[k]; anchor=el; h=k; } } }
+  const prev=document.body.dataset.view||"";
   document.querySelectorAll(".view").forEach(el=>el.classList.toggle("on",!!v&&el.id===v.id));
   if(v) document.body.dataset.view=h; else delete document.body.dataset.view;
   document.querySelectorAll('.nav a[data-view]').forEach(a=>a.dataset.view===h?a.setAttribute("aria-current","page"):a.removeAttribute("aria-current"));
-  if(v){ document.title=v.title+" – Projets ITS"; if(prev!==h){ scrollTo({top:0,behavior:"instant"}); const t=document.getElementById(v.id).querySelector(".view-title"); if(t) t.focus({preventScroll:true}); } }
+  if(v){ document.title=v.title+" – Projets ITS";
+    if(anchor){ requestAnimationFrame(()=>anchor.scrollIntoView({behavior:prev===h?"smooth":"instant",block:"start"})); }
+    else if(prev!==h){ scrollTo({top:0,behavior:"instant"}); const t=document.getElementById(v.id).querySelector(".view-title"); if(t) t.focus({preventScroll:true}); } }
   else if(prev){ document.title=baseTitle; const t=h&&document.getElementById(h); if(t) t.scrollIntoView({behavior:"instant",block:"start"}); else scrollTo({top:0,behavior:"instant"}); }
 }
 
