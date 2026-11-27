@@ -86,6 +86,24 @@
     "technos": "Python, MNE, scikit-learn, Sleep-EDF"
   },
   {
+    "nom": "MedVault",
+    "type": "PoC",
+    "parcours": "Cyber-S",
+    "domaine": "Cybersécurité",
+    "resume": "Un dossier médical partagé chiffré de bout en bout, avec un contrôle d'accès par rôle.",
+    "description": "Problème : les données de santé sont parmi les plus ciblées par les cyberattaques.\n\nSolution : une application où chaque document est chiffré côté client, les accès sont limités selon le rôle (patient, médecin, secrétariat) et chaque consultation est journalisée.",
+    "technos": "Node.js, PostgreSQL, AES-256-GCM, OAuth 2.0"
+  },
+  {
+    "nom": "TrustFL",
+    "type": "PoC",
+    "parcours": "Les deux",
+    "domaine": "IA & Data",
+    "resume": "Entraîner un modèle d'IA entre plusieurs hôpitaux sans jamais partager les données des patients.",
+    "description": "Problème : les données de santé ne peuvent pas quitter les établissements, ce qui freine l'IA médicale.\n\nSolution : l'apprentissage fédéré, où seuls les paramètres du modèle circulent, renforcé par de la confidentialité différentielle et des échanges chiffrés.",
+    "technos": "Flower, PyTorch, Confidentialité différentielle, TLS"
+  },
+  {
     "nom": "DermaScan",
     "type": "PoC",
     "parcours": "IA&D-S",
@@ -104,15 +122,6 @@
     "technos": "ESP32, TensorFlow Lite Micro, Bluetooth Low Energy"
   },
   {
-    "nom": "MedVault",
-    "type": "PoC",
-    "parcours": "Cyber-S",
-    "domaine": "Cybersécurité",
-    "resume": "Un dossier médical partagé chiffré de bout en bout, avec un contrôle d'accès par rôle.",
-    "description": "Problème : les données de santé sont parmi les plus ciblées par les cyberattaques.\n\nSolution : une application où chaque document est chiffré côté client, les accès sont limités selon le rôle (patient, médecin, secrétariat) et chaque consultation est journalisée.",
-    "technos": "Node.js, PostgreSQL, AES-256-GCM, OAuth 2.0"
-  },
-  {
     "nom": "FHIR Sentinel",
     "type": "MESPI",
     "parcours": "Cyber-S",
@@ -120,6 +129,33 @@
     "resume": "Détecter les intrusions dans les échanges de données entre logiciels hospitaliers (HL7 / FHIR).",
     "description": "Problème : les flux entre logiciels de santé sont rarement surveillés.\n\nSolution : un réseau hospitalier simulé, des règles de détection adaptées aux protocoles HL7 et FHIR, et un tableau de bord des alertes.",
     "technos": "Suricata, Zeek, Python, FHIR"
+  },
+  {
+    "nom": "AnonymiX",
+    "type": "PoC",
+    "parcours": "Les deux",
+    "domaine": "IA & Data",
+    "resume": "Pseudonymiser automatiquement les comptes rendus médicaux avant leur utilisation en recherche.",
+    "description": "Problème : les comptes rendus contiennent des noms, dates et adresses qui empêchent leur réutilisation.\n\nSolution : un modèle de traitement du langage qui repère et remplace les informations identifiantes, avec une table de correspondance chiffrée.",
+    "technos": "Python, spaCy, CamemBERT, AES-256"
+  },
+  {
+    "nom": "GlycoPredict",
+    "type": "PoC",
+    "parcours": "IA&D-S",
+    "domaine": "E-santé",
+    "resume": "Anticiper les hypoglycémies des personnes diabétiques à partir des mesures d'un capteur de glucose.",
+    "description": "Problème : une hypoglycémie détectée trop tard peut être dangereuse, surtout la nuit.\n\nSolution : un modèle de prévision de séries temporelles entraîné sur des données simulées de glycémie en continu, qui déclenche une alerte 30 minutes à l'avance.",
+    "technos": "Python, PyTorch (LSTM), simglucose"
+  },
+  {
+    "nom": "VoiceCare",
+    "type": "MESPI",
+    "parcours": "IA&D-S",
+    "domaine": "IA & Data",
+    "resume": "Repérer dans la voix des signes précoces de la maladie de Parkinson grâce à l'apprentissage machine.",
+    "description": "Problème : les premiers symptômes de la maladie de Parkinson passent souvent inaperçus.\n\nSolution : extraction de caractéristiques acoustiques (tremblement, débit, intensité) à partir d'enregistrements et modèle de classification, pensé comme aide au dépistage.",
+    "technos": "Python, librosa, scikit-learn"
   },
   {
     "nom": "SecurePump",
@@ -131,6 +167,24 @@
     "technos": "Raspberry Pi, MQTT, TLS, Wireshark"
   },
   {
+    "nom": "RadioAssist",
+    "type": "PoC",
+    "parcours": "IA&D-S",
+    "domaine": "Imagerie",
+    "resume": "Une aide à la détection des pneumonies sur radiographies thoraciques, avec des zones d'attention visibles.",
+    "description": "Problème : les radiologues font face à un volume croissant d'examens.\n\nSolution : un réseau de neurones entraîné sur une base publique de radiographies, qui signale les images suspectes et montre les zones qui ont guidé sa décision (Grad-CAM).",
+    "technos": "PyTorch, ResNet, Grad-CAM, FastAPI"
+  },
+  {
+    "nom": "StressSense",
+    "type": "MESPI",
+    "parcours": "IA&D-S",
+    "domaine": "IoT & capteurs",
+    "resume": "Un bracelet qui estime le niveau de stress à partir de la fréquence cardiaque et de la sudation.",
+    "description": "Problème : le stress chronique est difficile à objectiver au quotidien.\n\nSolution : un bracelet combinant capteur cardiaque optique et activité électrodermale, une application mobile et un modèle qui estime le niveau de stress.",
+    "technos": "ESP32, PPG, capteur GSR, Flutter, scikit-learn"
+  },
+  {
     "nom": "PhishLab Santé",
     "type": "MESPI",
     "parcours": "Cyber-S",
@@ -140,13 +194,67 @@
     "technos": "Python, Django, GoPhish"
   },
   {
-    "nom": "TrustFL",
+    "nom": "TriageBot",
     "type": "PoC",
-    "parcours": "Les deux",
+    "parcours": "IA&D-S",
     "domaine": "IA & Data",
-    "resume": "Entraîner un modèle d'IA entre plusieurs hôpitaux sans jamais partager les données des patients.",
-    "description": "Problème : les données de santé ne peuvent pas quitter les établissements, ce qui freine l'IA médicale.\n\nSolution : l'apprentissage fédéré, où seuls les paramètres du modèle circulent, renforcé par de la confidentialité différentielle et des échanges chiffrés.",
-    "technos": "Flower, PyTorch, Confidentialité différentielle, TLS"
+    "resume": "Un assistant de pré-orientation aux urgences qui propose un niveau de priorité à partir des symptômes.",
+    "description": "Problème : l'attente aux urgences est longue et le tri initial très chargé.\n\nSolution : une interface où le patient décrit ses symptômes, analysés par traitement du langage, pour proposer un niveau de priorité validé ensuite par un soignant.",
+    "technos": "Python, spaCy, XGBoost, React"
+  },
+  {
+    "nom": "RehabMotion",
+    "type": "MESPI",
+    "parcours": "IA&D-S",
+    "domaine": "IA & Data",
+    "resume": "Suivre les exercices de rééducation à la maison grâce à une simple webcam et à l'estimation de posture.",
+    "description": "Problème : entre deux séances de kinésithérapie, les exercices sont souvent mal réalisés.\n\nSolution : une application qui détecte la posture en temps réel, compte les répétitions et signale les mouvements incorrects.",
+    "technos": "MediaPipe, OpenCV, Python, Flask"
+  },
+  {
+    "nom": "ZeroTrust Clinic",
+    "type": "PoC",
+    "parcours": "Cyber-S",
+    "domaine": "Réseaux",
+    "resume": "Une architecture réseau « zéro confiance » pour une clinique : segmentation, VPN et authentification forte.",
+    "description": "Problème : dans beaucoup d'établissements, un seul poste compromis donne accès à tout le réseau.\n\nSolution : un réseau découpé en zones (soins, administratif, dispositifs médicaux), un accès distant par VPN et une authentification multifacteur pour chaque service.",
+    "technos": "pfSense, WireGuard, Keycloak, VLAN"
+  },
+  {
+    "nom": "EpiAlert",
+    "type": "PoC",
+    "parcours": "IA&D-S",
+    "domaine": "IA & Data",
+    "resume": "Détecter les crises d'épilepsie sur un signal EEG pour alerter plus vite l'entourage.",
+    "description": "Problème : certaines crises surviennent sans témoin, notamment la nuit.\n\nSolution : un modèle entraîné sur une base EEG publique (CHB-MIT) qui reconnaît le début d'une crise et déclenche une alerte.",
+    "technos": "Python, MNE, PyTorch, CHB-MIT"
+  },
+  {
+    "nom": "HealthFlow",
+    "type": "MESPI",
+    "parcours": "IA&D-S",
+    "domaine": "IA & Data",
+    "resume": "Automatiser le nettoyage et l'analyse des données d'activité d'un service hospitalier.",
+    "description": "Problème : les indicateurs d'un service sont souvent calculés à la main dans des tableurs.\n\nSolution : une chaîne automatisée qui récupère, nettoie et agrège les données (anonymisées), puis alimente un tableau de bord mis à jour chaque nuit.",
+    "technos": "Python, pandas, Apache Airflow, Metabase"
+  },
+  {
+    "nom": "RansomShield",
+    "type": "MESPI",
+    "parcours": "Cyber-S",
+    "domaine": "Cybersécurité",
+    "resume": "Un plan de sauvegarde et de reprise après rançongiciel pour un hôpital simulé, testé en exercice de crise.",
+    "description": "Problème : un rançongiciel peut paralyser un hôpital pendant des semaines.\n\nSolution : des sauvegardes chiffrées et isolées, une supervision des postes, une procédure de reprise documentée et un exercice de crise pour la valider.",
+    "technos": "Restic, Ansible, Wazuh"
+  },
+  {
+    "nom": "TeleSecure",
+    "type": "PoC",
+    "parcours": "Cyber-S",
+    "domaine": "Cybersécurité",
+    "resume": "Une téléconsultation vidéo chiffrée de bout en bout, avec authentification forte du patient et du médecin.",
+    "description": "Problème : beaucoup d'outils de visioconférence ne sont pas adaptés aux données de santé.\n\nSolution : une application de téléconsultation où le flux vidéo est chiffré de bout en bout et où chaque participant s'authentifie avec un second facteur.",
+    "technos": "WebRTC, DTLS-SRTP, Keycloak, Node.js"
   }
 ]
 </script>

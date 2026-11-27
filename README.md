@@ -23,7 +23,7 @@ Le site est un seul fichier, `index.html`, sans dépendance à installer. Les pr
 
 ## Projets exemples
 
-En attendant les vrais projets de la promo, le site affiche 9 **sujets exemples** (IA&D-S et Cyber-S) :
+En attendant les vrais projets de la promo, le site affiche 21 **sujets exemples** (IA&D-S et Cyber-S) :
 - marqués « Exemple » sur la carte et « Projet exemple (fictif) » dans la fiche ;
 - **sans aucun nom d'étudiant** ;
 - non comptés dans les statistiques.
