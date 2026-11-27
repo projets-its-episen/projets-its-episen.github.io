@@ -1,14 +1,51 @@
-# Projets ITS : mise en ligne (environ 20 minutes, une seule fois)
+# Projets ITS
 
-Le site est un seul fichier, `index.html`. Les projets ajoutés passent par un **formulaire Google** : chaque réponse s'affiche automatiquement sur le site, sans toucher au code.
+Vitrine des projets étudiants (MESPI et PoC) de la filière ITS de l'EPISEN.
+Initiative étudiante, site non officiel. En ligne sur **https://projets-its-episen.github.io**
+
+Le site est un seul fichier, `index.html`, sans dépendance à installer. Les projets viennent d'un **formulaire Google** relié à un **tableau Google Sheets publié en CSV** : personne n'a besoin de toucher au code pour ajouter un projet.
 
 ---
 
-## Étape 1 : créer le formulaire Google
+## Au quotidien
 
-Va sur forms.google.com, puis crée un formulaire vide intitulé « Ajouter mon projet ITS ».
+- **Ajouter un projet** : n'importe qui clique sur « Ajouter mon projet » sur le site. Le projet apparaît quelques minutes après l'envoi, le temps que Google mette à jour la feuille publiée.
+- **Retirer ou corriger un projet** : supprime ou modifie sa ligne dans le tableau Google Sheets. Il n'y a rien à faire sur le site.
+- **Image d'un projet** : un lien Google Drive fonctionne s'il est partagé en « Tous les utilisateurs disposant du lien ». Sans image, le site génère une couverture unique pour le projet.
+- **Vidéo** : un lien YouTube dans la question « Lien vidéo, poster ou GitHub » affiche un lecteur directement dans la fiche du projet.
+- **Liens à partager** :
+  - le site : `https://projets-its-episen.github.io`
+  - le formulaire directement : `https://projets-its-episen.github.io/#ajouter`
+  - un projet précis : bouton « Partager » dans sa fiche.
 
-Ajoute **ces questions, avec ces titres** (le site reconnaît les colonnes grâce aux mots en gras) :
+## Modération (recommandé)
+
+Par défaut, tout projet envoyé s'affiche automatiquement. Pour **valider les projets avant publication** :
+
+1. Dans le tableau des réponses, ajoute une colonne à droite intitulée **`Publié`**.
+2. Écris **`oui`** dans cette colonne pour chaque projet à afficher.
+
+Dès que cette colonne existe, seuls les projets marqués `oui` apparaissent sur le site, et le formulaire prévient que le projet sera visible après vérification. Supprime la colonne pour revenir à la publication automatique.
+
+Le lien « Signaler un contenu » en bas de page envoie un e-mail à l'adresse `CONTACT_EMAIL`.
+
+## Configuration
+
+Tout en haut de `index.html`, dans le bloc `config` :
+
+```json
+{
+  "SHEET_CSV_URL": "lien CSV du tableau (Fichier > Partager > Publier sur le Web > CSV)",
+  "FORM_URL": "lien du formulaire (bouton Envoyer > icône lien)",
+  "CONTACT_EMAIL": "adresse qui reçoit les signalements"
+}
+```
+
+Garde les guillemets et les virgules. Les projets de départ, toujours affichés, sont dans le bloc `seed`, juste en dessous.
+
+## Questions du formulaire
+
+Le site reconnaît les colonnes grâce aux mots en gras. Si tu renommes une question, garde ce mot.
 
 | # | Titre de la question | Type | Obligatoire |
 |---|---|---|---|
@@ -23,47 +60,20 @@ Ajoute **ces questions, avec ces titres** (le site reconnaît les colonnes grâc
 | 9 | Lien d'une **image** (optionnel) | Réponse courte | Non |
 | 10 | **Lien** vidéo, poster ou GitHub (optionnel) | Réponse courte | Non |
 
-Dans les paramètres du formulaire, **désactive** l'option « Limiter à 1 réponse » et la connexion obligatoire, pour que tout le monde puisse répondre sans compte Google.
+**Important :** le tableau publié est lisible par tout le monde. Ne collecte **pas** les adresses e-mail dans le formulaire (Paramètres → Réponses → « Collecter les adresses e-mail » désactivé), sinon elles seraient publiques.
 
-## Étape 2 : relier le formulaire à un tableau Google Sheets
+## Sécurité
 
-1. Dans l'onglet **Réponses**, clique sur **Associer à Sheets**, puis choisis de créer une feuille de calcul.
-2. Dans cette feuille, va dans **Fichier → Partager → Publier sur le Web**.
-3. Choisis l'onglet des réponses, le format **Valeurs séparées par des virgules (.csv)**, puis clique sur **Publier**.
-4. **Copie le lien** obtenu.
+- Tout le contenu venant du formulaire est affiché comme du texte : un code envoyé dans une réponse n'est jamais exécuté.
+- Seuls les liens `http(s)` sont acceptés. Les liens s'ouvrent dans un nouvel onglet, isolés du site.
+- Une politique de sécurité (CSP) limite le site à Google (tableau, formulaire, polices) et YouTube (vidéos).
+- Le script de la page est identifié par son empreinte `sha256` dans la CSP. **Si tu modifies le bloc `<script>` du bas de page, recalcule cette empreinte**, sinon le site ne s'affichera plus. Modifier le texte, `config` ou `seed` ne pose aucun problème.
 
-## Étape 3 : coller les 2 liens dans `index.html`
+## Mise en ligne
 
-Ouvre `index.html` avec le Bloc-notes. Tout en haut du fichier, remplis :
+Le site est publié automatiquement par GitHub Pages depuis la branche `main` (dossier racine). Toute modification enregistrée sur `main` est en ligne en 1 à 2 minutes.
 
-```js
-const CONFIG = {
-  SHEET_CSV_URL: "colle ici le lien CSV de l'étape 2",
-  FORM_URL: "colle ici le lien du formulaire",
-};
-```
-
-Pour trouver le lien du formulaire : bouton **Envoyer**, puis l'icône 🔗, puis copier.
-
-## Étape 4 : mettre le site en ligne avec GitHub Pages (gratuit)
-
-1. Connecte-toi à github.com avec le compte **`projets-its-episen`**, puis clique sur **New repository**.
-2. Nomme-le exactement `projets-its-episen.github.io`, en **Public**.
-3. Clique sur **Add file → Upload files**, glisse `index.html`, puis clique sur **Commit changes**.
-4. Va dans **Settings → Pages** : Source « Deploy from a branch », Branch `main`, dossier `/ (root)`, puis **Save**.
-5. Au bout de 1 à 2 minutes, le site est en ligne à l'adresse **https://projets-its-episen.github.io**
-
-C'est ce lien que tu partages : LinkedIn de l'école, Mellouk, groupe de promo.
-
----
-
-## Au quotidien
-
-- **Ajouter un projet** : n'importe qui clique sur « Ajouter mon projet » sur le site. Le projet apparaît quelques minutes après l'envoi, le temps que Google mette à jour la feuille publiée.
-- **Retirer ou corriger un projet** : supprime ou modifie la ligne dans le tableau Google Sheets. Il n'y a rien à faire sur le site.
-- **Image d'un projet** : un lien Google Drive fonctionne s'il est partagé en « Tous les utilisateurs disposant du lien ». Sans image, le site génère automatiquement une couverture colorée.
-
-## Passation (quand tu ne veux plus t'en occuper)
+## Passation
 
 - Partage le **formulaire** et le **tableau** en tant qu'**éditeur** avec la personne qui reprend (BDE, enseignant, élève d'une autre promo).
-- Sur GitHub, va dans **Settings → Collaborators** pour ajouter cette personne, ou dans **Settings → Transfer** pour lui donner le dépôt.
+- Sur GitHub, ajoute cette personne comme propriétaire de l'organisation `projets-its-episen` (**People → Invite member → Owner**).
