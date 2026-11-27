@@ -10,7 +10,7 @@
   l'empreinte doit être recalculée, sinon le site ne s'affichera plus.
   Modifier le texte, CONFIG ou SEED ne change PAS l'empreinte.
 -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-b9gVI/CZZR1qduKf1xIrW8A5dm14koPJqe0u+t6zaMs='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https: data:; connect-src https://docs.google.com https://*.googleusercontent.com; frame-src https://docs.google.com https://accounts.google.com https://www.youtube-nocookie.com; base-uri 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-3XF+u0AItnAhuhafTEtNXBU7IuqxhNGUvF5/9ixUIvg='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https: data:; connect-src https://docs.google.com https://*.googleusercontent.com; frame-src https://docs.google.com https://accounts.google.com https://www.youtube-nocookie.com; base-uri 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Projets ITS – EPISEN · Santé, IA & Cybersécurité</title>
 <meta name="description" content="Les projets MESPI et PoC des élèves-ingénieurs de la spécialité ITS (Ingénierie et Technologies pour la Santé) de l'EPISEN : parcours IA&D-S (Intelligence Artificielle et Données de Santé) et Cyber-S (Cybersécurité en Santé).">
@@ -91,7 +91,8 @@
     "remuneration": "Non rémunéré",
     "teletravail": "",
     "sujet": "",
-    "nb": 1
+    "nb": 1,
+    "lien": "https://le.ac.uk"
   },
   {
     "nom": "Biogenes",
@@ -109,7 +110,8 @@
     "remuneration": "1 000 MYR / mois",
     "teletravail": "Occasionnel",
     "sujet": "Gestion des risques, plans de continuité d'activité et de reprise après sinistre",
-    "nb": 1
+    "nb": 1,
+    "lien": "https://fev3r.com"
   },
   {
     "nom": "SOICT Cybersecurity Lab (HUST)",
@@ -118,7 +120,8 @@
     "remuneration": "Non rémunéré",
     "teletravail": "Occasionnel",
     "sujet": "A Novel Approach for Malaria Detection through Federated Learning",
-    "nb": 1
+    "nb": 1,
+    "lien": "https://hust.edu.vn/en/"
   },
   {
     "nom": "ICBAS, Abel Salazar Biomedical Sciences Institute",
@@ -127,7 +130,8 @@
     "remuneration": "Non rémunéré",
     "teletravail": "Oui",
     "sujet": "",
-    "nb": 2
+    "nb": 2,
+    "lien": "https://www.icbas.up.pt"
   },
   {
     "nom": "Hôpital Sainte-Justine",
@@ -136,7 +140,98 @@
     "remuneration": "3 000 CAD (versés en une fois)",
     "teletravail": "Oui",
     "sujet": "",
-    "nb": 2
+    "nb": 2,
+    "lien": "https://research.chusj.org/en/Etudiants/Etudier-et-faire-un-stage",
+    "mail": "affaires_academiques.crhsj.hsj@ssss.gouv.qc.ca"
+  }
+]
+</script>
+
+<!-- PISTES DE STAGE : vraies structures qui recrutent des stagiaires, repérées en ligne
+     (pages officielles et adresses de service uniquement, jamais d'adresse personnelle).
+     "stages" : s1 = 1re année, s2 = 2e année (étranger), s3 = fin d'études. -->
+<script type="application/json" id="pistes">
+[
+  {
+    "nom": "Hôpital Henri-Mondor (AP-HP)",
+    "stages": [
+      "s1"
+    ],
+    "secteur": "Hôpital universitaire",
+    "ville": "Créteil, à côté de l'UPEC",
+    "lien": "https://aphp-career.talent-soft.com/",
+    "note": "Offres de stage de l'AP-HP sur son site carrière et sur choisirleservicepublic.gouv.fr."
+  },
+  {
+    "nom": "Croix-Rouge française",
+    "stages": [
+      "s1"
+    ],
+    "secteur": "Association de santé et humanitaire",
+    "ville": "Montrouge (siège) et partout en France",
+    "lien": "https://www.croix-rouge.fr",
+    "note": "Stages réguliers au siège (santé, formation, projets). Convention de stage obligatoire."
+  },
+  {
+    "nom": "Clariane (maisons Korian)",
+    "stages": [
+      "s1"
+    ],
+    "secteur": "EHPAD et soins",
+    "ville": "Partout en France",
+    "lien": "https://recrutement.korian.fr",
+    "note": "Stages et alternance en EHPAD."
+  },
+  {
+    "nom": "UFOP, Universidade Federal de Ouro Preto",
+    "stages": [
+      "s2"
+    ],
+    "secteur": "Université (projets académiques : stage, recherche)",
+    "ville": "Brésil (Ouro Preto)",
+    "lien": "https://www.dri.ufop.br/en",
+    "mail": "international@ufop.edu.br",
+    "note": "Candidature avant le 30 novembre 2026 pour un départ de février à juillet 2027."
+  },
+  {
+    "nom": "Doctolib",
+    "stages": [
+      "s3"
+    ],
+    "secteur": "E-santé (logiciel, data, IA)",
+    "ville": "Paris / Levallois-Perret",
+    "lien": "https://www.welcometothejungle.com/fr/companies/doctolib/jobs",
+    "note": "Stages de 6 mois en ingénierie logicielle, data et machine learning. Anglais courant."
+  },
+  {
+    "nom": "Withings",
+    "stages": [
+      "s3"
+    ],
+    "secteur": "Objets connectés de santé",
+    "ville": "Issy-les-Moulineaux",
+    "lien": "https://www.withings.com/careers",
+    "note": "Stages en logiciel embarqué, qualité produit, data."
+  },
+  {
+    "nom": "Owkin",
+    "stages": [
+      "s3"
+    ],
+    "secteur": "IA pour la recherche médicale",
+    "ville": "Paris",
+    "lien": "https://www.owkin.com",
+    "note": "Stages de fin d'études en machine learning et imagerie médicale. Anglais courant."
+  },
+  {
+    "nom": "Agence du Numérique en Santé",
+    "stages": [
+      "s3"
+    ],
+    "secteur": "E-santé publique (interopérabilité, sécurité)",
+    "ville": "Paris",
+    "lien": "https://esante.gouv.fr/lagence/nous-rejoindre",
+    "note": "Recrute aussi en alternance. Offres sur choisirleservicepublic.gouv.fr."
   }
 ]
 </script>
@@ -793,6 +888,8 @@ a.aud:hover .ic,a.stage:hover .ic{transform:rotate(-8deg) scale(1.08)}
 .ent-tbl td .muted{display:block;font-size:13px}
 .lock-note{margin:14px 0 4px;padding:14px 16px;border-radius:14px;background:color-mix(in srgb,#ffcf5c 16%,var(--surface));border:1px solid color-mix(in srgb,#ffcf5c 55%,var(--line));font-size:14.5px}
 .lock-note a,.lock-link{color:var(--brand);font-weight:700;white-space:nowrap}
+.piste{display:inline-block;margin-top:4px;padding:1px 8px;border-radius:999px;font-size:11.5px;font-weight:800;color:var(--cy-ink);background:color-mix(in srgb,var(--cy-ink) 12%,transparent)}
+.ent-tbl td a[href^="mailto"]{overflow-wrap:anywhere;word-break:break-word}
 .tbl-empty{text-align:center;color:var(--muted);padding:26px 16px!important;font-style:italic}
 .tbl-inline td b{display:inline}
 .more-wrap{grid-column:1/-1;display:flex;justify-content:center;padding:6px 0}
@@ -1270,7 +1367,7 @@ a.aud:hover .ic,a.stage:hover .ic{transform:rotate(-8deg) scale(1.08)}
     </div>
 
     <h2 class="sub-title">Où faire <em>son stage ?</em></h2>
-    <p class="section-sub">Les lieux qui ont déjà accueilli des étudiants ITS en 1re année, partagés par les étudiants.</p>
+    <p class="section-sub">Les lieux qui ont déjà accueilli des étudiants ITS en 1re année, partagés par les étudiants. Les lignes marquées « Piste » sont de vraies structures qui recrutent des stagiaires, repérées en ligne : elles n'ont pas forcément déjà accueilli d'ITS.</p>
     <div class="ent-tools"><span></span><a class="btn btn-primary btn-sm" href="#ajouter-entreprise" data-stage-add>+ Ajouter un lieu de stage</a></div>
     <div data-stage-list="s1"></div>
     <p class="see">Convention, documents et contacts : <a href="#infos-stages">page Stages →</a></p>
@@ -1333,7 +1430,7 @@ a.aud:hover .ic,a.stage:hover .ic{transform:rotate(-8deg) scale(1.08)}
     </div>
 
     <h2 class="sub-title">Où partir <em>en stage ?</em></h2>
-    <p class="section-sub">Les structures à l'étranger qui ont déjà accueilli des étudiants ITS. Rémunération et télétravail sont indicatifs ; à l'étranger, la gratification n'est pas obligatoire.</p>
+    <p class="section-sub">Les structures à l'étranger qui ont déjà accueilli des étudiants ITS, et quelques pistes (« Piste »). Rémunération et télétravail sont indicatifs ; à l'étranger, la gratification n'est pas obligatoire.</p>
     <div class="ent-tools"><span></span><a class="btn btn-primary btn-sm" href="#ajouter-entreprise" data-stage-add>+ Ajouter un lieu à l'étranger</a></div>
     <div data-stage-list="s2"></div>
     <p class="see">Convention, documents et contacts : <a href="#infos-stages">page Stages →</a></p>
@@ -1355,7 +1452,7 @@ a.aud:hover .ic,a.stage:hover .ic{transform:rotate(-8deg) scale(1.08)}
     </div>
 
     <h2 class="sub-title">Où faire <em>son stage de fin d'études ?</em></h2>
-    <p class="section-sub">Les entreprises et laboratoires qui ont déjà accueilli des étudiants ITS en fin d'études.</p>
+    <p class="section-sub">Les entreprises et laboratoires qui ont déjà accueilli des étudiants ITS en fin d'études. Les lignes marquées « Piste » sont de vraies structures qui recrutent des stagiaires, repérées en ligne : elles n'ont pas forcément déjà accueilli d'ITS.</p>
     <div class="ent-tools"><span></span><a class="btn btn-primary btn-sm" href="#ajouter-entreprise" data-stage-add>+ Ajouter une entreprise</a></div>
     <div data-stage-list="s3"></div>
     <p class="see">Convention, documents et contacts : <a href="#infos-stages">page Stages →</a></p>
@@ -1971,25 +2068,28 @@ const ENT_MATCH=[["publie",/publi|valid|approuv|moder/],["lien",/site|lien|url/]
 const ENT_LIM={nom:80,secteur:60,ville:60,type:160,lien:2000,note:300,contact:120,personne:80};
 const ENT_TYPES=[["s1","Stage 1re année",/1re|1ere|premiere|decouverte/],["s2","Stage 2e année",/2e|deuxieme|etranger/],["s3","Stage 3e année",/3e|troisieme|fin d.etudes/],["alt","Alternance",/alternance|apprenti|fisa/]];
 let ENTS=[], entFilter="";
+const PISTES=(readJSON("pistes")||[]).map(e=>{ const o={}; for(const k in ENT_LIM) o[k]=clip(e[k]||"",ENT_LIM[k]); o.lien=safeUrl(e.lien); o.mail=validEmail(e.mail)?String(e.mail).trim():""; o.tk=(Array.isArray(e.stages)?e.stages:[]).filter(x=>/^(s1|s2|s3|alt)$/.test(x)); o.piste=true; return o; }).filter(e=>e.nom);
+const allStructures=()=>{ const seen=new Set(PISTES.map(e=>norm(e.nom))); return [...PISTES,...ENTS.filter(e=>!seen.has(norm(e.nom)))]; };
+const contactOf=e=>e.mail?`<a href="mailto:${esc(e.mail)}">${esc(e.personne||e.mail)}</a>`:(esc(e.personne||e.contact)||(e.lien?`<a href="${esc(e.lien)}" target="_blank" rel="noopener noreferrer">Page candidature ↗</a>`:"–"));
 const STAGE_TITLES={s1:"Lieux de stage de 1re année · monde de la santé",s2:"Entreprises et laboratoires à l'étranger · stage de 2e année",s3:"Entreprises et laboratoires · stage de fin d'études"};
 function entTable(list,title,withType,open){
-  const cols=["Structure",...(withType?["Accueil"]:[]),"Ville / pays","Nom du contact","E-mail","Commentaire"];
-  const rows=list.length ? list.map(e=>`<tr><td><b>${e.lien?`<a href="${esc(e.lien)}" target="_blank" rel="noopener noreferrer">${esc(e.nom)} ↗</a>`:esc(e.nom)}</b>${e.secteur?`<span class="muted">${esc(e.secteur)}</span>`:""}</td>${withType?`<td>${e.tk.map(k=>`<span class="tag">${esc(ENT_TYPES.find(t=>t[0]===k)[1])}</span>`).join(" ")}</td>`:""}<td>${esc(e.ville)}</td><td>${esc(e.personne)}</td><td>${e.mail?`<a href="mailto:${esc(e.mail)}">${esc(e.mail)}</a>`:esc(e.contact)}</td><td>${esc(e.note)}</td></tr>`).join("")
+  const cols=["Structure",...(withType?["Accueil"]:[]),"Ville / pays","Contact","Commentaire"];
+  const rows=list.length ? list.map(e=>`<tr><td><b>${e.lien?`<a href="${esc(e.lien)}" target="_blank" rel="noopener noreferrer">${esc(e.nom)} ↗</a>`:esc(e.nom)}</b>${e.secteur?`<span class="muted">${esc(e.secteur)}</span>`:""}${e.piste?`<span class="piste">Piste</span>`:""}</td>${withType?`<td>${e.tk.map(k=>`<span class="tag">${esc(ENT_TYPES.find(t=>t[0]===k)[1])}</span>`).join(" ")}</td>`:""}<td>${esc(e.ville)}</td><td>${contactOf(e)}</td><td>${esc(e.note)}</td></tr>`).join("")
     : `<tr><td colspan="${cols.length}" class="tbl-empty">Aucune structure pour l'instant. ${open?"Tu en connais une ? Ajoute-la : elle aidera toute la promo.":"La liste sera bientôt ouverte aux contributions des étudiants."}</td></tr>`;
   return `<div class="tbl-wrap"><table class="tbl ent-tbl"><caption>${esc(title)}${list.length?` <span>${list.length}</span>`:""}</caption><thead><tr>${cols.map(c=>`<th>${c}</th>`).join("")}</tr></thead><tbody>${rows}</tbody></table></div>`;
 }
 function known2A(){
-  return (readJSON("stages2a")||[]).map(e=>{ const o={}; for(const k of ["nom","pays","depuis","remuneration","teletravail","sujet"]) o[k]=clip(e[k],160); o.nb=Math.min(99,Math.max(1,parseInt(e.nb,10)||1)); return o; }).filter(e=>e.nom);
+  return (readJSON("stages2a")||[]).map(e=>{ const o={}; for(const k of ["nom","pays","depuis","remuneration","teletravail","sujet"]) o[k]=clip(e[k],160); o.lien=safeUrl(e.lien); o.mail=validEmail(e.mail)?String(e.mail).trim():""; o.nb=Math.min(99,Math.max(1,parseInt(e.nb,10)||1)); return o; }).filter(e=>e.nom);
 }
 function table2A(open){
   const known=known2A(), names=new Set(known.map(e=>norm(e.nom)));
-  const added=ENTS.filter(e=>e.tk.includes("s2") && !names.has(norm(e.nom)));
+  const added=allStructures().filter(e=>e.tk.includes("s2") && !names.has(norm(e.nom)));
   const priv=safeUrl(CONFIG.CONTACTS_STAGE_2A_URL), privOk=priv&&hostOf(priv)==="docs.google.com";
   const lock=privOk?`<a href="${esc(priv)}" target="_blank" rel="noopener noreferrer" class="lock-link">Voir le contact 🔒</a>`:`<a href="#contacts">Via la promo</a>`;
   const contactCell=e=>e.mail?`<a href="mailto:${esc(e.mail)}">${esc(e.personne||e.mail)}</a>`:(esc(e.personne||e.contact)||lock);
   const rows=[
-    ...known.map(e=>`<tr><td><b>${esc(e.nom)}</b>${e.nb>1?`<span class="muted">${e.nb} étudiants ITS</span>`:""}</td><td>${esc(e.pays)}</td><td>${esc(e.depuis)||"–"}</td><td>${esc(e.remuneration)||"–"}</td><td>${esc(e.teletravail)||"–"}</td><td>${esc(e.sujet)||"–"}</td><td>${lock}</td></tr>`),
-    ...added.map(e=>`<tr><td><b>${e.lien?`<a href="${esc(e.lien)}" target="_blank" rel="noopener noreferrer">${esc(e.nom)} ↗</a>`:esc(e.nom)}</b>${e.secteur?`<span class="muted">${esc(e.secteur)}</span>`:""}</td><td>${esc(e.ville)}</td><td>–</td><td>–</td><td>–</td><td>${esc(e.note)||"–"}</td><td>${contactCell(e)}</td></tr>`)];
+    ...known.map(e=>`<tr><td><b>${e.lien?`<a href="${esc(e.lien)}" target="_blank" rel="noopener noreferrer">${esc(e.nom)} ↗</a>`:esc(e.nom)}</b>${e.nb>1?`<span class="muted">${e.nb} étudiants ITS</span>`:""}</td><td>${esc(e.pays)}</td><td>${esc(e.depuis)||"–"}</td><td>${esc(e.remuneration)||"–"}</td><td>${esc(e.teletravail)||"–"}</td><td>${esc(e.sujet)||"–"}</td><td>${e.mail?`<a href="mailto:${esc(e.mail)}">${esc(e.mail)}</a>`:(e.lien?`<a href="${esc(e.lien)}" target="_blank" rel="noopener noreferrer">Site officiel ↗</a>`:lock)}</td></tr>`),
+    ...added.map(e=>`<tr><td><b>${e.lien?`<a href="${esc(e.lien)}" target="_blank" rel="noopener noreferrer">${esc(e.nom)} ↗</a>`:esc(e.nom)}</b>${e.secteur?`<span class="muted">${esc(e.secteur)}</span>`:""}${e.piste?`<span class="piste">Piste</span>`:""}</td><td>${esc(e.ville)}</td><td>–</td><td>–</td><td>–</td><td>${esc(e.note)||"–"}</td><td>${contactOf(e)}</td></tr>`)];
   const note=privOk?`<p class="lock-note">🔒 <b>Les e-mails des structures et des anciens</b> sont dans un tableau réservé aux étudiants ITS : <a href="${esc(priv)}" target="_blank" rel="noopener noreferrer">ouvrir le tableau des contacts ↗</a>. Pas encore accès ? <a href="#contacts">Demande-le à la promo</a>.</p>`:"";
   return note+`<div class="tbl-wrap"><table class="tbl ent-tbl"><caption>${esc(STAGE_TITLES.s2)} <span>${rows.length}</span></caption><thead><tr><th>Structure</th><th>Pays (ville)</th><th>Depuis</th><th>Rémunération</th><th>Télétravail</th><th>Sujet / commentaire</th><th>Contact</th></tr></thead><tbody>${rows.join("")||`<tr><td colspan="7" class="tbl-empty">Aucune structure pour l'instant.</td></tr>`}</tbody></table></div>`;
 }
@@ -1998,14 +2098,14 @@ function renderStageTables(){
   document.querySelectorAll("[data-stage-add]").forEach(a=>a.hidden=!open);
   document.querySelectorAll("[data-stage-list]").forEach(box=>{
     const k=box.dataset.stageList;
-    box.innerHTML = k==="s2" ? table2A(open) : entTable(ENTS.filter(e=>e.tk.includes(k)),STAGE_TITLES[k]||"",false,open);
+    box.innerHTML = k==="s2" ? table2A(open) : entTable(allStructures().filter(e=>e.tk.includes(k)),STAGE_TITLES[k]||"",false,open);
   });
 }
 function renderEnts(){
   renderStageTables();
   const add=$("#ent-add"); add.hidden=!safeUrl(CONFIG.ENTREPRISES_FORM_URL);
-  $("#ent-chips").innerHTML = ENTS.length ? [["","Toutes"],...ENT_TYPES.map(t=>[t[0],t[1]])].map(([k,l])=>`<button type="button" class="chip" data-ent="${k}" aria-pressed="${entFilter===k}">${esc(l)}</button>`).join("") : "";
-  const list=ENTS.filter(e=>!entFilter||e.tk.includes(entFilter));
+  $("#ent-chips").innerHTML = allStructures().length ? [["","Toutes"],...ENT_TYPES.map(t=>[t[0],t[1]])].map(([k,l])=>`<button type="button" class="chip" data-ent="${k}" aria-pressed="${entFilter===k}">${esc(l)}</button>`).join("") : "";
+  const list=allStructures().filter(e=>!entFilter||e.tk.includes(entFilter));
   $("#ent-list").innerHTML = entTable(list,entFilter?ENT_TYPES.find(t=>t[0]===entFilter)[1]:"Toutes les structures",true,!add.hidden);
 }
 async function loadEnts(){
