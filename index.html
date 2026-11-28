@@ -10,7 +10,7 @@
   l'empreinte doit être recalculée, sinon le site ne s'affichera plus.
   Modifier le texte, CONFIG ou SEED ne change PAS l'empreinte.
 -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-GnZ8mS32ZG9HmqU0m/fvpQyaodaAChHTd44vmDGXRZ4='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https: data:; connect-src https://docs.google.com https://*.googleusercontent.com; frame-src https://docs.google.com https://accounts.google.com https://www.youtube-nocookie.com; base-uri 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-FAY4z2gzPmAStLkThzQxWas0/zyDYvWclggapvxYQHA='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https: data:; connect-src https://docs.google.com https://*.googleusercontent.com; frame-src https://docs.google.com https://accounts.google.com https://www.youtube-nocookie.com; base-uri 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Projets ITS – EPISEN · Santé, IA & Cybersécurité</title>
 <meta name="description" content="Les projets MESPI et PoC des élèves-ingénieurs de la spécialité ITS (Ingénierie et Technologies pour la Santé) de l'EPISEN : parcours IA&D-S (Intelligence Artificielle et Données de Santé) et Cyber-S (Cybersécurité en Santé).">
@@ -890,6 +890,9 @@ a.aud:hover .ic,a.stage:hover .ic{transform:rotate(-8deg) scale(1.08)}
 .lock-note a,.lock-link{color:var(--brand);font-weight:700;white-space:nowrap}
 .piste{display:inline-block;margin-top:4px;padding:1px 8px;border-radius:999px;font-size:11.5px;font-weight:800;color:var(--cy-ink);background:color-mix(in srgb,var(--cy-ink) 12%,transparent)}
 .ent-tbl td a[href^="mailto"]{overflow-wrap:anywhere;word-break:break-word}
+.report-line{margin-top:8px;font-size:13px;color:var(--muted);text-align:right}
+.report-line a{color:var(--muted);font-weight:700}
+.report-line a:hover{color:var(--brand)}
 .tbl-empty{text-align:center;color:var(--muted);padding:26px 16px!important;font-style:italic}
 .tbl-inline td b{display:inline}
 .more-wrap{grid-column:1/-1;display:flex;justify-content:center;padding:6px 0}
@@ -2083,6 +2086,7 @@ let ENTS=[], entFilter="";
 const PISTES=(readJSON("pistes")||[]).map(e=>{ const o={}; for(const k in ENT_LIM) o[k]=clip(e[k]||"",ENT_LIM[k]); o.lien=safeUrl(e.lien); o.mail=validEmail(e.mail)?String(e.mail).trim():""; o.tk=(Array.isArray(e.stages)?e.stages:[]).filter(x=>/^(s1|s2|s3|alt)$/.test(x)); o.piste=true; return o; }).filter(e=>e.nom);
 const allStructures=()=>{ const seen=new Set(PISTES.map(e=>norm(e.nom))); return [...PISTES,...ENTS.filter(e=>!seen.has(norm(e.nom)))]; };
 const contactOf=e=>e.mail?`<a href="mailto:${esc(e.mail)}">${esc(e.personne||e.mail)}</a>`:(esc(e.personne||e.contact)||(e.lien?`<a href="${esc(e.lien)}" target="_blank" rel="noopener noreferrer">Page candidature ↗</a>`:"–"));
+const reportLink=what=>`<p class="report-line"><a href="#" data-contact="${esc("Signalement : "+what)}">⚑ Signaler une erreur dans ce tableau</a> <span>(contact faux, structure fermée, contenu inapproprié…)</span></p>`;
 const STAGE_TITLES={s1:"Lieux de stage de 1re année · monde de la santé",s2:"Entreprises et laboratoires à l'étranger · stage de 2e année",s3:"Entreprises et laboratoires · stage de fin d'études"};
 function entTable(list,title,withType,open){
   const cols=["Structure",...(withType?["Accueil"]:[]),"Ville / pays","Contact","Commentaire"];
@@ -2112,7 +2116,7 @@ function renderStageTables(){
   document.querySelectorAll("[data-stage-add]").forEach(a=>{ a.hidden=false; a.setAttribute("href",href); });
   document.querySelectorAll("[data-stage-list]").forEach(box=>{
     const k=box.dataset.stageList;
-    box.innerHTML = k==="s2" ? table2A(open) : entTable(allStructures().filter(e=>e.tk.includes(k)),STAGE_TITLES[k]||"",false,open);
+    box.innerHTML = (k==="s2" ? table2A(open) : entTable(allStructures().filter(e=>e.tk.includes(k)),STAGE_TITLES[k]||"",false,open)) + reportLink("tableau "+(STAGE_TITLES[k]||""));
   });
 }
 function renderEnts(){
@@ -2120,7 +2124,7 @@ function renderEnts(){
   const add={hidden:false};
   $("#ent-chips").innerHTML = allStructures().length ? [["","Toutes"],...ENT_TYPES.map(t=>[t[0],t[1]])].map(([k,l])=>`<button type="button" class="chip" data-ent="${k}" aria-pressed="${entFilter===k}">${esc(l)}</button>`).join("") : "";
   const list=allStructures().filter(e=>!entFilter||e.tk.includes(entFilter));
-  $("#ent-list").innerHTML = entTable(list,entFilter?ENT_TYPES.find(t=>t[0]===entFilter)[1]:"Toutes les structures",true,!add.hidden);
+  $("#ent-list").innerHTML = entTable(list,entFilter?ENT_TYPES.find(t=>t[0]===entFilter)[1]:"Toutes les structures",true,!add.hidden) + reportLink("tableau des entreprises");
 }
 async function loadEnts(){
   renderEnts();
