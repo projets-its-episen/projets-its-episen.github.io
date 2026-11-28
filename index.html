@@ -10,7 +10,7 @@
   l'empreinte doit être recalculée, sinon le site ne s'affichera plus.
   Modifier le texte, CONFIG ou SEED ne change PAS l'empreinte.
 -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-5EGT97cE8fDbSQ7JT4LTozD/g+3Mrr8J267PV1tDhO8='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://*.googleusercontent.com https://raw.githubusercontent.com https://i.ytimg.com; connect-src https://docs.google.com https://*.googleusercontent.com; frame-src https://docs.google.com https://accounts.google.com https://www.youtube-nocookie.com; base-uri 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-ro5DQneA2kALaeYieLHzyDNK0sHXyzW3EEE1B6fs9q4='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://*.googleusercontent.com https://raw.githubusercontent.com https://i.ytimg.com; connect-src https://docs.google.com https://*.googleusercontent.com; frame-src https://docs.google.com https://accounts.google.com https://www.youtube-nocookie.com; base-uri 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Projets ITS – EPISEN · Santé, IA & Cybersécurité</title>
 <meta name="description" content="Les projets MESPI et PoC des élèves-ingénieurs de la spécialité ITS (Ingénierie et Technologies pour la Santé) de l'EPISEN : parcours IA&D-S (Intelligence Artificielle et Données de Santé) et Cyber-S (Cybersécurité en Santé).">
@@ -237,7 +237,8 @@
     "domaine": "IA & Data",
     "resume": "Détecter automatiquement les arythmies cardiaques sur un ECG grâce à un réseau de neurones.",
     "description": "Problème : l'analyse manuelle de longs enregistrements ECG est lente et sujette aux erreurs.\n\nSolution : un réseau de neurones convolutif 1D entraîné sur une base ECG publique (MIT-BIH) qui repère les battements anormaux et les affiche sur un tableau de bord.",
-    "technos": "Python, PyTorch, MIT-BIH, Streamlit"
+    "technos": "Python, PyTorch, MIT-BIH, Streamlit",
+    "image": "images/exemples/pulsenet.jpg"
   },
   {
     "nom": "SleepScope",
@@ -246,7 +247,8 @@
     "domaine": "IA & Data",
     "resume": "Classer les stades du sommeil à partir du signal EEG pour faciliter le diagnostic des troubles du sommeil.",
     "description": "Problème : le scorage du sommeil par un expert prend plusieurs heures par patient.\n\nSolution : extraction de caractéristiques EEG et modèle d'apprentissage machine entraîné sur une base publique (Sleep-EDF), avec un rapport automatique par nuit.",
-    "technos": "Python, MNE, scikit-learn, Sleep-EDF"
+    "technos": "Python, MNE, scikit-learn, Sleep-EDF",
+    "image": "images/exemples/sleepscope.jpg"
   },
   {
     "nom": "MedVault",
@@ -255,7 +257,8 @@
     "domaine": "Cybersécurité",
     "resume": "Un dossier médical partagé chiffré de bout en bout, avec un contrôle d'accès par rôle.",
     "description": "Problème : les données de santé sont parmi les plus ciblées par les cyberattaques.\n\nSolution : une application où chaque document est chiffré côté client, les accès sont limités selon le rôle (patient, médecin, secrétariat) et chaque consultation est journalisée.",
-    "technos": "Node.js, PostgreSQL, AES-256-GCM, OAuth 2.0"
+    "technos": "Node.js, PostgreSQL, AES-256-GCM, OAuth 2.0",
+    "image": "images/exemples/medvault.jpg"
   },
   {
     "nom": "TrustFL",
@@ -264,7 +267,8 @@
     "domaine": "IA & Data",
     "resume": "Entraîner un modèle d'IA entre plusieurs hôpitaux sans jamais partager les données des patients.",
     "description": "Problème : les données de santé ne peuvent pas quitter les établissements, ce qui freine l'IA médicale.\n\nSolution : l'apprentissage fédéré, où seuls les paramètres du modèle circulent, renforcé par de la confidentialité différentielle et des échanges chiffrés.",
-    "technos": "Flower, PyTorch, Confidentialité différentielle, TLS"
+    "technos": "Flower, PyTorch, Confidentialité différentielle, TLS",
+    "image": "images/exemples/trustfl.jpg"
   },
   {
     "nom": "DermaScan",
@@ -273,7 +277,8 @@
     "domaine": "Imagerie",
     "resume": "Une aide au tri des lésions cutanées par vision par ordinateur, à partir d'une simple photo.",
     "description": "Problème : les délais pour consulter un dermatologue sont longs.\n\nSolution : un modèle de classification d'images entraîné sur une base publique (ISIC) qui indique le niveau de priorité d'une lésion, sans jamais remplacer l'avis médical.",
-    "technos": "TensorFlow, OpenCV, FastAPI, ISIC"
+    "technos": "TensorFlow, OpenCV, FastAPI, ISIC",
+    "image": "images/exemples/dermascan.jpg"
   },
   {
     "nom": "FallGuard",
@@ -282,7 +287,8 @@
     "domaine": "IoT & capteurs",
     "resume": "Un boîtier porté à la ceinture qui détecte les chutes des personnes âgées avec de l'IA embarquée.",
     "description": "Problème : une chute non détectée peut avoir des conséquences graves pour une personne seule.\n\nSolution : un accéléromètre relié à un microcontrôleur qui exécute un petit modèle de détection (TinyML) et envoie une alerte en Bluetooth Low Energy.",
-    "technos": "ESP32, TensorFlow Lite Micro, Bluetooth Low Energy"
+    "technos": "ESP32, TensorFlow Lite Micro, Bluetooth Low Energy",
+    "image": "images/exemples/fallguard.jpg"
   },
   {
     "nom": "FHIR Sentinel",
@@ -291,7 +297,8 @@
     "domaine": "Cybersécurité",
     "resume": "Détecter les intrusions dans les échanges de données entre logiciels hospitaliers (HL7 / FHIR).",
     "description": "Problème : les flux entre logiciels de santé sont rarement surveillés.\n\nSolution : un réseau hospitalier simulé, des règles de détection adaptées aux protocoles HL7 et FHIR, et un tableau de bord des alertes.",
-    "technos": "Suricata, Zeek, Python, FHIR"
+    "technos": "Suricata, Zeek, Python, FHIR",
+    "image": "images/exemples/fhir-sentinel.jpg"
   },
   {
     "nom": "AnonymiX",
@@ -300,7 +307,8 @@
     "domaine": "IA & Data",
     "resume": "Pseudonymiser automatiquement les comptes rendus médicaux avant leur utilisation en recherche.",
     "description": "Problème : les comptes rendus contiennent des noms, dates et adresses qui empêchent leur réutilisation.\n\nSolution : un modèle de traitement du langage qui repère et remplace les informations identifiantes, avec une table de correspondance chiffrée.",
-    "technos": "Python, spaCy, CamemBERT, AES-256"
+    "technos": "Python, spaCy, CamemBERT, AES-256",
+    "image": "images/exemples/anonymix.jpg"
   },
   {
     "nom": "GlycoPredict",
@@ -309,7 +317,8 @@
     "domaine": "E-santé",
     "resume": "Anticiper les hypoglycémies des personnes diabétiques à partir des mesures d'un capteur de glucose.",
     "description": "Problème : une hypoglycémie détectée trop tard peut être dangereuse, surtout la nuit.\n\nSolution : un modèle de prévision de séries temporelles entraîné sur des données simulées de glycémie en continu, qui déclenche une alerte 30 minutes à l'avance.",
-    "technos": "Python, PyTorch (LSTM), simglucose"
+    "technos": "Python, PyTorch (LSTM), simglucose",
+    "image": "images/exemples/glycopredict.jpg"
   },
   {
     "nom": "VoiceCare",
@@ -318,7 +327,8 @@
     "domaine": "IA & Data",
     "resume": "Repérer dans la voix des signes précoces de la maladie de Parkinson grâce à l'apprentissage machine.",
     "description": "Problème : les premiers symptômes de la maladie de Parkinson passent souvent inaperçus.\n\nSolution : extraction de caractéristiques acoustiques (tremblement, débit, intensité) à partir d'enregistrements et modèle de classification, pensé comme aide au dépistage.",
-    "technos": "Python, librosa, scikit-learn"
+    "technos": "Python, librosa, scikit-learn",
+    "image": "images/exemples/voicecare.jpg"
   },
   {
     "nom": "SecurePump",
@@ -327,7 +337,8 @@
     "domaine": "Cybersécurité",
     "resume": "L'audit de sécurité d'un dispositif médical connecté simulé, et les correctifs associés.",
     "description": "Problème : beaucoup de dispositifs médicaux connectés communiquent sans protection suffisante.\n\nSolution : une pompe connectée simulée sur Raspberry Pi, une analyse de ses vulnérabilités puis la mise en place de communications chiffrées et authentifiées.",
-    "technos": "Raspberry Pi, MQTT, TLS, Wireshark"
+    "technos": "Raspberry Pi, MQTT, TLS, Wireshark",
+    "image": "images/exemples/securepump.jpg"
   },
   {
     "nom": "RadioAssist",
@@ -336,7 +347,8 @@
     "domaine": "Imagerie",
     "resume": "Une aide à la détection des pneumonies sur radiographies thoraciques, avec des zones d'attention visibles.",
     "description": "Problème : les radiologues font face à un volume croissant d'examens.\n\nSolution : un réseau de neurones entraîné sur une base publique de radiographies, qui signale les images suspectes et montre les zones qui ont guidé sa décision (Grad-CAM).",
-    "technos": "PyTorch, ResNet, Grad-CAM, FastAPI"
+    "technos": "PyTorch, ResNet, Grad-CAM, FastAPI",
+    "image": "images/exemples/radioassist.jpg"
   },
   {
     "nom": "StressSense",
@@ -345,7 +357,8 @@
     "domaine": "IoT & capteurs",
     "resume": "Un bracelet qui estime le niveau de stress à partir de la fréquence cardiaque et de la sudation.",
     "description": "Problème : le stress chronique est difficile à objectiver au quotidien.\n\nSolution : un bracelet combinant capteur cardiaque optique et activité électrodermale, une application mobile et un modèle qui estime le niveau de stress.",
-    "technos": "ESP32, PPG, capteur GSR, Flutter, scikit-learn"
+    "technos": "ESP32, PPG, capteur GSR, Flutter, scikit-learn",
+    "image": "images/exemples/stresssense.jpg"
   },
   {
     "nom": "PhishLab Santé",
@@ -354,7 +367,8 @@
     "domaine": "Cybersécurité",
     "resume": "Une plateforme de sensibilisation au hameçonnage pensée pour les personnels soignants.",
     "description": "Problème : la majorité des attaques contre les hôpitaux commencent par un e-mail piégé.\n\nSolution : des campagnes d'entraînement réalistes, des mini-formations adaptées au quotidien d'un service hospitalier et un suivi des progrès.",
-    "technos": "Python, Django, GoPhish"
+    "technos": "Python, Django, GoPhish",
+    "image": "images/exemples/phishlab-sante.jpg"
   },
   {
     "nom": "TriageBot",
@@ -363,7 +377,8 @@
     "domaine": "IA & Data",
     "resume": "Un assistant de pré-orientation aux urgences qui propose un niveau de priorité à partir des symptômes.",
     "description": "Problème : l'attente aux urgences est longue et le tri initial très chargé.\n\nSolution : une interface où le patient décrit ses symptômes, analysés par traitement du langage, pour proposer un niveau de priorité validé ensuite par un soignant.",
-    "technos": "Python, spaCy, XGBoost, React"
+    "technos": "Python, spaCy, XGBoost, React",
+    "image": "images/exemples/triagebot.jpg"
   },
   {
     "nom": "RehabMotion",
@@ -372,7 +387,8 @@
     "domaine": "IA & Data",
     "resume": "Suivre les exercices de rééducation à la maison grâce à une simple webcam et à l'estimation de posture.",
     "description": "Problème : entre deux séances de kinésithérapie, les exercices sont souvent mal réalisés.\n\nSolution : une application qui détecte la posture en temps réel, compte les répétitions et signale les mouvements incorrects.",
-    "technos": "MediaPipe, OpenCV, Python, Flask"
+    "technos": "MediaPipe, OpenCV, Python, Flask",
+    "image": "images/exemples/rehabmotion.jpg"
   },
   {
     "nom": "ZeroTrust Clinic",
@@ -381,7 +397,8 @@
     "domaine": "Réseaux",
     "resume": "Une architecture réseau « zéro confiance » pour une clinique : segmentation, VPN et authentification forte.",
     "description": "Problème : dans beaucoup d'établissements, un seul poste compromis donne accès à tout le réseau.\n\nSolution : un réseau découpé en zones (soins, administratif, dispositifs médicaux), un accès distant par VPN et une authentification multifacteur pour chaque service.",
-    "technos": "pfSense, WireGuard, Keycloak, VLAN"
+    "technos": "pfSense, WireGuard, Keycloak, VLAN",
+    "image": "images/exemples/zerotrust-clinic.jpg"
   },
   {
     "nom": "EpiAlert",
@@ -390,7 +407,8 @@
     "domaine": "IA & Data",
     "resume": "Détecter les crises d'épilepsie sur un signal EEG pour alerter plus vite l'entourage.",
     "description": "Problème : certaines crises surviennent sans témoin, notamment la nuit.\n\nSolution : un modèle entraîné sur une base EEG publique (CHB-MIT) qui reconnaît le début d'une crise et déclenche une alerte.",
-    "technos": "Python, MNE, PyTorch, CHB-MIT"
+    "technos": "Python, MNE, PyTorch, CHB-MIT",
+    "image": "images/exemples/epialert.jpg"
   },
   {
     "nom": "HealthFlow",
@@ -399,7 +417,8 @@
     "domaine": "IA & Data",
     "resume": "Automatiser le nettoyage et l'analyse des données d'activité d'un service hospitalier.",
     "description": "Problème : les indicateurs d'un service sont souvent calculés à la main dans des tableurs.\n\nSolution : une chaîne automatisée qui récupère, nettoie et agrège les données (anonymisées), puis alimente un tableau de bord mis à jour chaque nuit.",
-    "technos": "Python, pandas, Apache Airflow, Metabase"
+    "technos": "Python, pandas, Apache Airflow, Metabase",
+    "image": "images/exemples/healthflow.jpg"
   },
   {
     "nom": "RansomShield",
@@ -408,7 +427,8 @@
     "domaine": "Cybersécurité",
     "resume": "Un plan de sauvegarde et de reprise après rançongiciel pour un hôpital simulé, testé en exercice de crise.",
     "description": "Problème : un rançongiciel peut paralyser un hôpital pendant des semaines.\n\nSolution : des sauvegardes chiffrées et isolées, une supervision des postes, une procédure de reprise documentée et un exercice de crise pour la valider.",
-    "technos": "Restic, Ansible, Wazuh"
+    "technos": "Restic, Ansible, Wazuh",
+    "image": "images/exemples/ransomshield.jpg"
   },
   {
     "nom": "TeleSecure",
@@ -417,7 +437,8 @@
     "domaine": "Cybersécurité",
     "resume": "Une téléconsultation vidéo chiffrée de bout en bout, avec authentification forte du patient et du médecin.",
     "description": "Problème : beaucoup d'outils de visioconférence ne sont pas adaptés aux données de santé.\n\nSolution : une application de téléconsultation où le flux vidéo est chiffré de bout en bout et où chaque participant s'authentifie avec un second facteur.",
-    "technos": "WebRTC, DTLS-SRTP, Keycloak, Node.js"
+    "technos": "WebRTC, DTLS-SRTP, Keycloak, Node.js",
+    "image": "images/exemples/telesecure.jpg"
   }
 ]
 </script>
@@ -1630,7 +1651,7 @@ function linkLabel(u){
 const IMG_HOSTS=["drive.google.com","docs.google.com","lh3.googleusercontent.com","raw.githubusercontent.com","projets-its-episen.github.io"];
 function safeImage(u){
   u=String(u||"").split(/[\s,]+/).find(Boolean)||"";
-  if(/^images\/[\w-]+\.(png|jpe?g|webp)$/i.test(u)) return u;   /* image hébergée sur ce site */
+  if(/^images\/(?:[\w-]+\/)?[\w-]+\.(png|jpe?g|webp)$/i.test(u)) return u;   /* image hébergée sur ce site */
   const url=safeUrl(u); if(!url) return "";
   let path=""; try{ path=new URL(url).pathname.toLowerCase(); }catch(e){ return ""; }
   if(/\.(php\d?|phtml|js|mjs|html?|svg|exe|sh|py|cgi|asp|aspx|jsp)$/.test(path)) return "";
@@ -1777,7 +1798,7 @@ async function load(){
   const seen=new Set(); ALL=[]; BY_SLUG.clear();
   const real=[...fromSheet.reverse(),...SEED].map(clean).filter(Boolean);
   const limit=Number(CONFIG.MASQUER_EXEMPLES_A_PARTIR_DE)||0;
-  const ex = real.length<limit ? EXEMPLES.map(e=>{ const c=clean({...e,equipe:"",image:"",lien:""}); if(c){ c.ex=true; c.annee=""; } return c; }).filter(Boolean) : [];
+  const ex = real.length<limit ? EXEMPLES.map(e=>{ const c=clean({...e,equipe:"",lien:""}); if(c){ c.ex=true; c.annee=""; } return c; }).filter(Boolean) : [];
   [...real,...ex].forEach(p=>{
     const k=norm(p.nom+"|"+p.annee); if(seen.has(k)) return; seen.add(k);
     let slug=(p.ex?"exemple-":"")+slugify(p.nom+(p.annee?"-"+p.annee:"")), n=2, base=slug;
