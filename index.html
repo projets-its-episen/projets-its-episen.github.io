@@ -10,7 +10,7 @@
   l'empreinte doit être recalculée, sinon le site ne s'affichera plus.
   Modifier le texte, CONFIG ou SEED ne change PAS l'empreinte.
 -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-2/6AfO0/YLx1iJEV87SrlWRQIXm6wQ3INCJ0EMy68ro='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://*.googleusercontent.com https://raw.githubusercontent.com https://i.ytimg.com; connect-src https://docs.google.com https://*.googleusercontent.com; frame-src https://docs.google.com https://accounts.google.com https://www.youtube-nocookie.com; base-uri 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-5EGT97cE8fDbSQ7JT4LTozD/g+3Mrr8J267PV1tDhO8='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://*.googleusercontent.com https://raw.githubusercontent.com https://i.ytimg.com; connect-src https://docs.google.com https://*.googleusercontent.com; frame-src https://docs.google.com https://accounts.google.com https://www.youtube-nocookie.com; base-uri 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Projets ITS – EPISEN · Santé, IA & Cybersécurité</title>
 <meta name="description" content="Les projets MESPI et PoC des élèves-ingénieurs de la spécialité ITS (Ingénierie et Technologies pour la Santé) de l'EPISEN : parcours IA&D-S (Intelligence Artificielle et Données de Santé) et Cyber-S (Cybersécurité en Santé).">
@@ -436,7 +436,7 @@
     "technos": "GNS3, Cisco IOS, VyOS, OSPF, VLAN 802.1Q, Debian 12, Apache2",
     "equipe": "Valentin Auger",
     "image": "images/poc-teleradiologie.jpg",
-    "lien": "https://github.com/Valentin-Auger-Laboratoire/poc-reseau-teleradiologie"
+    "lien": "#demo-poc"
   },
   {
     "nom": "Athletix-Data",
@@ -449,7 +449,7 @@
     "technos": "ESP32-S3, MyoWare 2.0 (EMG), Bluetooth Low Energy, Flutter",
     "equipe": "Valentin Auger, Maxence Olivier, Othmen Al Bydeoi",
     "image": "images/athletix-data.jpg",
-    "lien": "https://github.com/Valentin-Auger-Laboratoire/athletix-data"
+    "lien": "https://valentin-auger-laboratoire.github.io/athletix-data/"
   }
 ]
 </script>
@@ -858,6 +858,17 @@ a.aud:hover .ic,a.stage:hover .ic{transform:rotate(-8deg) scale(1.08)}
 .report-line{margin-top:8px;font-size:13px;color:var(--muted);text-align:right}
 .report-line a{color:var(--muted);font-weight:700}
 .report-line a:hover{color:var(--brand)}
+.demo-steps{display:grid;gap:26px;margin-top:30px}
+.demo-step{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:28px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:20px;box-shadow:var(--shadow-sm)}
+.demo-step:nth-child(even){grid-template-columns:minmax(0,1fr) minmax(0,1.25fr)}
+.demo-step:nth-child(even) .demo-img{order:2}
+@media(max-width:760px){.demo-step,.demo-step:nth-child(even){grid-template-columns:1fr}.demo-step:nth-child(even) .demo-img{order:0}}
+.demo-img{display:block;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:#fff}
+.demo-img img{width:100%;height:auto;transition:transform .4s}
+.demo-img:hover img{transform:scale(1.03)}
+.demo-n{display:inline-grid;place-items:center;width:36px;height:36px;border-radius:50%;font-weight:800;color:var(--on-brand);background:linear-gradient(135deg,var(--brand),var(--teal));margin-bottom:10px}
+.demo-step h3{font-size:19px;letter-spacing:-.02em;margin-bottom:6px}
+.demo-step p{color:var(--muted);font-size:15px}
 .tbl-empty{text-align:center;color:var(--muted);padding:26px 16px!important;font-style:italic}
 .tbl-inline td b{display:inline}
 .more-wrap{grid-column:1/-1;display:flex;justify-content:center;padding:6px 0}
@@ -1405,6 +1416,50 @@ a.aud:hover .ic,a.stage:hover .ic{transform:rotate(-8deg) scale(1.08)}
   </div>
 </section>
 
+<section class="section view" id="view-demo-poc" aria-labelledby="view-demo-poc-t">
+  <div class="wrap">
+    <a href="#projets" class="back">← Retour aux projets</a>
+    <span class="kicker">Démo · PoC · Cyber-S</span>
+    <h1 class="section-title view-title" id="view-demo-poc-t" tabindex="-1">Plateforme de téléradiologie <em>sécurisée</em></h1>
+    <p class="lead-xl">La maquette, réalisée sous GNS3, de l'infrastructure réseau d'une entreprise de téléradiologie qui échange des images médicales avec des radiologues et des établissements de santé. Visite guidée en 8 étapes.</p>
+    <div class="demo-steps">
+      <figure class="demo-step">
+        <a href="images/poc/01-architecture-globale.jpg" target="_blank" rel="noopener" class="demo-img"><img src="images/poc/01-architecture-globale.jpg" alt="Architecture globale" loading="lazy" decoding="async"></a>
+        <figcaption><span class="demo-n">01</span><h3>Architecture globale</h3><p>Trois sites (Paris, Lyon, Marseille) reliés entre eux, un pare-feu central, une DMZ qui héberge la plateforme web, un Cloud HDS pour les données de santé et deux zones Extranet : radiologues et établissements de santé.</p></figcaption>
+      </figure>
+      <figure class="demo-step">
+        <a href="images/poc/04-gns3-zones-legende.jpg" target="_blank" rel="noopener" class="demo-img"><img src="images/poc/04-gns3-zones-legende.jpg" alt="Des zones de confiance" loading="lazy" decoding="async"></a>
+        <figcaption><span class="demo-n">02</span><h3>Des zones de confiance</h3><p>Chaque zone a son niveau de confiance. Principe de défense en profondeur : aucune zone peu fiable n'accède directement à une zone critique.</p></figcaption>
+      </figure>
+      <figure class="demo-step">
+        <a href="images/poc/07-vlan.jpg" target="_blank" rel="noopener" class="demo-img"><img src="images/poc/07-vlan.jpg" alt="Segmentation en VLAN" loading="lazy" decoding="async"></a>
+        <figcaption><span class="demo-n">03</span><h3>Segmentation en VLAN</h3><p>Quatre VLAN par site : postes utilisateurs, serveurs, administration et imagerie médicale, pour isoler les IRM et scanners du reste du réseau.</p></figcaption>
+      </figure>
+      <figure class="demo-step">
+        <a href="images/poc/09-ospf-voisins-routeurs.jpg" target="_blank" rel="noopener" class="demo-img"><img src="images/poc/09-ospf-voisins-routeurs.jpg" alt="Routage OSPF" loading="lazy" decoding="async"></a>
+        <figcaption><span class="demo-n">04</span><h3>Routage OSPF</h3><p>Les routeurs des trois sites et le pare-feu se découvrent automatiquement et échangent leurs routes grâce au protocole OSPF.</p></figcaption>
+      </figure>
+      <figure class="demo-step">
+        <a href="images/poc/11-rulesets-vyos.jpg" target="_blank" rel="noopener" class="demo-img"><img src="images/poc/11-rulesets-vyos.jpg" alt="Pare-feu « deny by default »" loading="lazy" decoding="async"></a>
+        <figcaption><span class="demo-n">05</span><h3>Pare-feu « deny by default »</h3><p>Pare-feu stateful VyOS : chaque zone a ses propres règles, et tout ce qui n'est pas explicitement autorisé est bloqué.</p></figcaption>
+      </figure>
+      <figure class="demo-step">
+        <a href="images/poc/13-telerad-connexion.jpg" target="_blank" rel="noopener" class="demo-img"><img src="images/poc/13-telerad-connexion.jpg" alt="La plateforme TeleRad Pro" loading="lazy" decoding="async"></a>
+        <figcaption><span class="demo-n">06</span><h3>La plateforme TeleRad Pro</h3><p>Le site web hébergé en DMZ : connexion par rôle (radiologue ou établissement), tableau de bord et dépôt de fichiers DICOM (simulé).</p></figcaption>
+      </figure>
+      <figure class="demo-step">
+        <a href="images/poc/14-tests-tableau.jpg" target="_blank" rel="noopener" class="demo-img"><img src="images/poc/14-tests-tableau.jpg" alt="10 tests de validation" loading="lazy" decoding="async"></a>
+        <figcaption><span class="demo-n">07</span><h3>10 tests de validation</h3><p>Les flux autorisés passent (entre les sites, des Extranets vers la DMZ), et les accès des Extranets vers le réseau interne sont bloqués.</p></figcaption>
+      </figure>
+      <figure class="demo-step">
+        <a href="images/poc/16-tests-extranet-radio.jpg" target="_blank" rel="noopener" class="demo-img"><img src="images/poc/16-tests-extranet-radio.jpg" alt="Exemple de test" loading="lazy" decoding="async"></a>
+        <figcaption><span class="demo-n">08</span><h3>Exemple de test</h3><p>Depuis la zone des radiologues, la DMZ répond, mais le réseau interne de l'entreprise reste inaccessible : le pare-feu fait son travail.</p></figcaption>
+      </figure>
+    </div>
+    <p class="fineprint">Captures issues du projet. Clique sur une image pour l'agrandir.</p>
+  </div>
+</section>
+
 <section class="section view" id="contacts-view" aria-labelledby="contacts-title">
   <div class="wrap">
     <a href="#" class="back">← Retour à l'accueil</a>
@@ -1562,7 +1617,9 @@ function youtubeId(u){
   return /^[\w-]{11}$/.test(id) ? id : "";
 }
 function linkLabel(u){
+  if(/^#demo-/.test(u)) return "Voir la démo";
   const h=hostOf(u);
+  if(/\.github\.io$/.test(h)) return "Essayer la démo";
   if(h==="github.com"||h==="gitlab.com") return "Voir le code";
   if(youtubeId(u)) return "Voir sur YouTube";
   if(/\.pdf($|\?)/i.test(u)||h==="drive.google.com"||h==="docs.google.com"||h==="canva.com") return "Voir le poster / document";
@@ -1685,7 +1742,7 @@ function rowsToProjects(rows){
 const SPAMMY=/https?:\/\/|www\.|\.(ru|xyz|top|click)\b|<\s*(script|iframe)/i;
 function clean(p){
   const o={}; for(const k in LIMITS) o[k]=clip(p[k],LIMITS[k]);
-  o.image=safeImage(p.image); o.lien=safeUrl(p.lien);
+  o.image=safeImage(p.image); o.lien=/^#demo-[a-z0-9-]+$/.test(String(p.lien||"").trim()) ? String(p.lien).trim() : safeUrl(p.lien);
   if(SPAMMY.test(o.nom)||SPAMMY.test(o.resume)) return null;
   return o.nom ? o : null;
 }
@@ -1827,7 +1884,7 @@ function showOverlay(id){
 function hideOverlays(){
   if(!current) return;
   current.hidden=true; current.classList.remove("open"); current=null;
-  page.inert=false; document.body.style.overflow=""; document.title=baseTitle;
+  page.inert=false; document.body.style.overflow=""; { const v=document.body.dataset.view; document.title=(v&&VIEWS[v])?VIEWS[v].title+" – Projets ITS":baseTitle; }
   $("#detail").innerHTML=""; $("#form-body").innerHTML="";
   if(lastFocus && document.contains(lastFocus)) lastFocus.focus({preventScroll:true});
 }
@@ -1852,7 +1909,7 @@ function showProject(p){
       ${p.technos?`<div class="block"><h4>Technologies</h4><div class="tags">${splitList(p.technos).map(t=>`<span class="tag">${esc(clip(t,40))}</span>`).join("")}</div></div>`:""}
       ${p.equipe?`<div class="block"><h4>L'équipe</h4><div class="team">${splitList(p.equipe).map(n=>`<span class="person"><span class="avatar" style="background:${colorsFor(n)[0]}">${esc(initials(n))}</span>${esc(clip(n,50))}</span>`).join("")}</div></div>`:""}
       <div class="actions">
-        ${p.lien?`<a class="btn btn-primary" href="${esc(p.lien)}" target="_blank" rel="noopener noreferrer nofollow ugc" title="${esc(p.lien)}">${esc(linkLabel(p.lien))} <small style="opacity:.75;font-weight:600">· ${esc(hostOf(p.lien))}</small> <span aria-hidden="true">↗</span><span class="sr-only"> (nouvel onglet)</span></a>`:""}
+        ${p.lien?(/^#demo-/.test(p.lien)?`<a class="btn btn-primary" href="${esc(p.lien)}">${esc(linkLabel(p.lien))} →</a>`:`<a class="btn btn-primary" href="${esc(p.lien)}" target="_blank" rel="noopener noreferrer nofollow ugc" title="${esc(p.lien)}">${esc(linkLabel(p.lien))} <small style="opacity:.75;font-weight:600">· ${esc(hostOf(p.lien))}</small> <span aria-hidden="true">↗</span><span class="sr-only"> (nouvel onglet)</span></a>`):""}
         <button type="button" class="btn btn-ghost" data-share>Partager</button>
       </div>
       ${(prev||next)?`<nav class="pager" aria-label="Autres projets">${prev?`<a class="prev" href="#/${prev.slug}" data-replace><small>← Précédent</small><span>${esc(prev.nom)}</span></a>`:""}${next?`<a class="next" href="#/${next.slug}" data-replace><small>Suivant →</small><span>${esc(next.nom)}</span></a>`:""}</nav>`:""}
@@ -1920,6 +1977,7 @@ function closeMenu(){ topBar.classList.remove("menu-open"); menuBtn.setAttribute
 menuBtn.addEventListener("click",()=>{ const o=topBar.classList.toggle("menu-open"); menuBtn.setAttribute("aria-expanded",String(o)); });
 const VIEWS = {
   "contacts":     {id:"contacts-view",    title:"Contacts"},
+  "demo-poc":     {id:"view-demo-poc",    title:"Démo : plateforme de téléradiologie sécurisée"},
   "infos-stages": {id:"view-stages",      title:"Les stages"},
   "candidats":    {id:"view-candidats",   title:"Futurs candidats"},
   "entreprises":  {id:"view-entreprises", title:"Entreprises et recruteurs"},
