@@ -10,7 +10,7 @@
   l'empreinte doit être recalculée, sinon le site ne s'affichera plus.
   Modifier le texte, CONFIG ou SEED ne change PAS l'empreinte.
 -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-FAY4z2gzPmAStLkThzQxWas0/zyDYvWclggapvxYQHA='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https: data:; connect-src https://docs.google.com https://*.googleusercontent.com; frame-src https://docs.google.com https://accounts.google.com https://www.youtube-nocookie.com; base-uri 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-2/6AfO0/YLx1iJEV87SrlWRQIXm6wQ3INCJ0EMy68ro='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://*.googleusercontent.com https://raw.githubusercontent.com https://i.ytimg.com; connect-src https://docs.google.com https://*.googleusercontent.com; frame-src https://docs.google.com https://accounts.google.com https://www.youtube-nocookie.com; base-uri 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Projets ITS – EPISEN · Santé, IA & Cybersécurité</title>
 <meta name="description" content="Les projets MESPI et PoC des élèves-ingénieurs de la spécialité ITS (Ingénierie et Technologies pour la Santé) de l'EPISEN : parcours IA&D-S (Intelligence Artificielle et Données de Santé) et Cyber-S (Cybersécurité en Santé).">
@@ -181,17 +181,6 @@
     "ville": "Partout en France",
     "lien": "https://recrutement.korian.fr",
     "note": "Stages et alternance en EHPAD."
-  },
-  {
-    "nom": "UFOP, Universidade Federal de Ouro Preto",
-    "stages": [
-      "s2"
-    ],
-    "secteur": "Université (projets académiques : stage, recherche)",
-    "ville": "Brésil (Ouro Preto)",
-    "lien": "https://www.dri.ufop.br/en",
-    "mail": "international@ufop.edu.br",
-    "note": "Candidature avant le 30 novembre 2026 pour un départ de février à juillet 2027."
   },
   {
     "nom": "Doctolib",
@@ -446,7 +435,7 @@
     "description": "Contexte : une entreprise de téléradiologie répartie sur 3 sites (Paris, Lyon, Marseille, environ 300 salariés) reçoit des images médicales d'établissements de santé, les met à disposition de radiologues distants et renvoie les comptes rendus. Ces données de santé imposent le RGPD, l'hébergement HDS, ainsi que les protocoles DICOM et HL7.\n\nSolution : une architecture en défense en profondeur, où aucune zone peu fiable n'accède directement à une zone critique. Zones de confiance (intranets, DMZ, Cloud HDS, Extranets radiologues et établissements), segmentation en 4 VLAN dont un VLAN dédié aux appareils d'imagerie, routage OSPF entre les sites et pare-feu stateful VyOS en « deny by default ». Une plateforme web « TeleRad Pro » est hébergée en DMZ.\n\nRésultats : 10 tests de validation (flux inter-sites, accès Extranet vers la DMZ, blocage des accès Extranet vers le réseau interne). Le dépôt documente aussi les limites connues et ce qui est prévu en production : VPN IPsec, 2FA, HTTPS, DICOM TLS, IDS/IPS.",
     "technos": "GNS3, Cisco IOS, VyOS, OSPF, VLAN 802.1Q, Debian 12, Apache2",
     "equipe": "Valentin Auger",
-    "image": "https://raw.githubusercontent.com/Valentin-Auger-Laboratoire/poc-reseau-teleradiologie/main/images/01-architecture-globale.png",
+    "image": "images/poc-teleradiologie.jpg",
     "lien": "https://github.com/Valentin-Auger-Laboratoire/poc-reseau-teleradiologie"
   },
   {
@@ -459,7 +448,7 @@
     "description": "Problème : suivre l'activité musculaire pendant l'effort demande aujourd'hui du matériel coûteux et peu pratique.\n\nSolution : un brassard porté sur le bras, équipé d'un capteur EMG MyoWare 2.0 relié à un microcontrôleur ESP32-S3. Les mesures sont envoyées en Bluetooth Low Energy vers une application Flutter qui affiche et enregistre le signal.",
     "technos": "ESP32-S3, MyoWare 2.0 (EMG), Bluetooth Low Energy, Flutter",
     "equipe": "Valentin Auger, Maxence Olivier, Othmen Al Bydeoi",
-    "image": "https://projets-its-episen.github.io/images/athletix-data.jpg",
+    "image": "images/athletix-data.jpg",
     "lien": "https://github.com/Valentin-Auger-Laboratoire/athletix-data"
   }
 ]
@@ -517,6 +506,8 @@ button{cursor:pointer;border:none;background:none}
 .wrap{max-width:1200px;margin:0 auto;padding:0 24px}
 @media(max-width:600px){.wrap{padding:0 16px}}
 [hidden]{display:none!important}
+html.framed body>*{display:none!important}
+html.framed body::before{content:"Ce site ne peut pas être affiché dans une autre page. Ouvrez projets-its-episen.github.io directement.";display:block;padding:40px;font:600 18px system-ui,sans-serif}
 .sr-only{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .skip{position:absolute;left:16px;top:-60px;z-index:100;background:var(--brand);color:var(--on-brand);padding:10px 16px;border-radius:10px;font-weight:700;text-decoration:none;transition:top .2s}
 .skip:focus{top:12px}
@@ -556,8 +547,7 @@ button{cursor:pointer;border:none;background:none}
   .top.menu-open .nav{display:flex;flex-direction:column;gap:2px;position:absolute;left:0;right:0;top:64px;padding:10px 16px 16px;background:var(--surface);border-bottom:1px solid var(--line);box-shadow:var(--shadow)}
   .top.menu-open .nav a{padding:12px 14px;font-size:16px;color:var(--ink)}
 }
-@media(max-width:420px){.top .wrap{gap:8px}.top .btn .lbl-long,.top .btn .lbl-short{display:none}.top .btn-sm{padding:10px}}
-@media(min-width:421px){.top .btn .lbl-short{display:none}}
+@media(max-width:420px){.top .wrap{gap:8px}.top .btn-sm{padding:10px}}
 
 /* ---------- Hero ---------- */
 .hero{position:relative;isolation:isolate;padding:84px 0 120px;overflow:hidden}
@@ -728,12 +718,6 @@ footer{border-top:1px solid var(--line);padding:44px 0 36px;color:var(--muted);f
 :root[data-theme="dark"]{--ia-ink:#ab98ff;--cy-ink:#43e0c6}
 .hero-grid{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);gap:56px;align-items:center}
 @media(max-width:980px){.hero-grid{grid-template-columns:1fr}.hero-visual{display:none!important}}
-.parcours-pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
-.pp{display:inline-flex;align-items:center;gap:10px;padding:7px 14px 7px 7px;border-radius:999px;background:var(--surface);border:1px solid var(--line);text-decoration:none;font-size:13.5px;color:var(--muted);font-weight:600;box-shadow:var(--shadow-sm);transition:border-color .2s,transform .2s}
-.pp:hover{transform:translateY(-1px);border-color:var(--line-2)}
-.pp b{color:#fff;font-size:12.5px;letter-spacing:.02em;padding:4px 9px;border-radius:999px;background:linear-gradient(135deg,var(--c1),var(--c2))}
-.pp-ia{--c1:var(--ia);--c2:var(--ia-2)} .pp-cy{--c1:var(--cy);--c2:var(--cy-2)}
-@media(max-width:520px){.pp span{display:none}.pp{padding:6px}}
 
 /* Illustration du hero */
 .hero-visual{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:16px}
@@ -803,20 +787,6 @@ footer{border-top:1px solid var(--line);padding:44px 0 36px;color:var(--muted);f
 .ue li{display:flex;gap:10px;align-items:flex-start;font-size:14.5px;font-weight:600;padding:10px 12px;border-radius:12px;background:var(--surface-2);border:1px solid var(--line)}
 .ue li::before{content:"";flex:none;width:8px;height:8px;margin-top:7px;border-radius:2px;background:linear-gradient(135deg,var(--c1),var(--c2));transform:rotate(45deg)}
 .track .btn{margin-top:auto;align-self:flex-start}
-.timeline{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:0;margin-top:26px;border:1px solid var(--line);border-radius:20px;overflow:hidden;background:var(--surface)}
-.tl{padding:20px 24px;position:relative}
-.tl+.tl{border-left:1px solid var(--line)}
-@media(max-width:600px){.tl+.tl{border-left:none;border-top:1px solid var(--line)}}
-.tl small{display:block;font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--brand)}
-.tl b{display:block;font-size:17px;letter-spacing:-.02em;margin:4px 0 2px}
-.tl span{color:var(--muted);font-size:14.5px}
-.tl .bar{position:absolute;left:24px;right:24px;bottom:0;height:3px;border-radius:3px;background:linear-gradient(90deg,var(--ia),var(--cy-2));opacity:.5}
-.tl:nth-child(1) .bar{opacity:.3}
-.tl:nth-child(2) .bar{opacity:.6}
-.tl:last-child .bar{opacity:1}
-a.stg{text-decoration:none;transition:border-color .2s,color .2s,background .2s}
-a.stg:hover,a.stg:focus-visible{border-color:var(--brand);color:var(--brand);background:var(--brand-soft)}
-.tl .stg{display:inline-block;margin-top:12px;font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;border:1px solid var(--line);color:var(--muted)}
 .fineprint{margin-top:14px;font-size:13px;color:var(--muted)}
 .fineprint a{font-weight:700}
 
@@ -833,7 +803,6 @@ a.stg:hover,a.stg:focus-visible{border-color:var(--brand);color:var(--brand);bac
 .stage .flag{align-self:flex-start;font-size:12px;font-weight:800;padding:4px 10px;border-radius:999px;background:color-mix(in srgb,var(--cy-ink) 12%,transparent);color:var(--cy-ink)}
 .stage .dur{height:8px;border-radius:8px;background:var(--surface-2);overflow:hidden;margin-top:auto}
 .stage .dur i{display:block;height:100%;width:var(--w);border-radius:inherit;background:linear-gradient(90deg,var(--brand),var(--teal))}
-.stage .dur-l{font-size:12px;color:var(--muted);font-weight:600}
 .passport{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:28px;align-items:center;margin-top:22px;padding:clamp(24px,4vw,40px);border-radius:24px;background:linear-gradient(135deg,var(--brand-soft),color-mix(in srgb,var(--teal) 10%,var(--surface)));border:1px solid var(--line)}
 @media(max-width:760px){.passport{grid-template-columns:1fr}}
 .passport h3{font-size:clamp(22px,2.6vw,30px);letter-spacing:-.03em;line-height:1.15}
@@ -843,9 +812,6 @@ a.stg:hover,a.stg:focus-visible{border-color:var(--brand);color:var(--brand);bac
 @media(max-width:520px){.pass-list{grid-template-columns:1fr}}
 .pass-list li{display:flex;gap:10px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px;font-weight:600;font-size:14.5px}
 .pass-list svg{flex:none;width:20px;height:20px;color:var(--brand);margin-top:1px}
-.biz{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;margin-top:22px;padding:18px 22px;border-radius:18px;border:1px dashed var(--line-2)}
-.biz b{font-size:16px;display:block}
-.biz span{color:var(--muted);font-size:14.5px}
 
 /* Page contacts */
 .view{display:none;padding-top:44px;min-height:70vh}
@@ -876,7 +842,6 @@ a.aud:hover .ic,a.stage:hover .ic{transform:rotate(-8deg) scale(1.08)}
 .speech p{font-size:16.5px;line-height:1.7}
 .speech p:not(.lead-xl){color:var(--ink)}
 .speech a{color:var(--brand);font-weight:700;text-underline-offset:3px}
-.speech-end{margin-top:34px;padding:18px 20px;border-radius:16px;background:var(--brand-soft);border:1px solid var(--line)}
 .tbl-wrap{overflow-x:auto;margin-top:14px;border:1px solid var(--line);border-radius:18px;background:var(--surface)}
 .tbl{width:100%;border-collapse:collapse;font-size:14.5px;min-width:640px}
 .tbl th{text-align:left;font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);padding:14px 16px;border-bottom:1px solid var(--line);background:var(--surface-2)}
@@ -896,17 +861,8 @@ a.aud:hover .ic,a.stage:hover .ic{transform:rotate(-8deg) scale(1.08)}
 .tbl-empty{text-align:center;color:var(--muted);padding:26px 16px!important;font-style:italic}
 .tbl-inline td b{display:inline}
 .more-wrap{grid-column:1/-1;display:flex;justify-content:center;padding:6px 0}
-.tbl .tbd{color:var(--muted);font-style:italic}
 .tbl a{color:var(--brand);font-weight:700}
 .ent-tools{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-top:14px}
-.ent-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;margin-top:16px}
-.ent{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:18px;display:flex;flex-direction:column;gap:8px;box-shadow:var(--shadow-sm)}
-.ent h4{font-size:16.5px;letter-spacing:-.02em}
-.ent .m{font-size:13px;color:var(--muted);font-weight:600}
-.ent .n{font-size:14px;color:var(--muted)}
-.ent a{color:var(--brand);font-weight:700;font-size:14px;margin-top:auto}
-.ent-empty{margin-top:16px;padding:26px;border:2px dashed var(--line-2);border-radius:18px;text-align:center;color:var(--muted)}
-.ent-empty b{display:block;color:var(--ink);font-size:17px;margin-bottom:4px}
 .lead-xl{font-size:clamp(17px,2vw,20px);color:var(--muted);max-width:720px;margin-top:6px}
 .points{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-top:32px}
 .point{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:24px;box-shadow:var(--shadow-sm)}
@@ -916,14 +872,6 @@ a.aud:hover .ic,a.stage:hover .ic{transform:rotate(-8deg) scale(1.08)}
 .point p{color:var(--muted);font-size:14.5px}
 .point a{font-weight:700}
 .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
-.weeks{margin-top:34px;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:22px}
-.weeks .bar3{display:flex;gap:6px;height:16px}
-.weeks .bar3 i{border-radius:8px;background:linear-gradient(90deg,var(--brand),var(--teal))}
-.weeks .bar3 i:nth-child(1){flex:4;opacity:.5}.weeks .bar3 i:nth-child(2){flex:16;opacity:.75}.weeks .bar3 i:nth-child(3){flex:26}
-.weeks .lab3{display:flex;gap:6px;margin-top:10px;font-size:13px;font-weight:700;color:var(--muted)}
-.weeks .lab3 span:nth-child(1){flex:4}.weeks .lab3 span:nth-child(2){flex:16}.weeks .lab3 span:nth-child(3){flex:26}
-.weeks .tot{display:flex;justify-content:space-between;margin-bottom:12px;font-weight:800}
-.weeks .tot span{color:var(--muted);font-weight:600;font-size:14px}
 .stage p.desc{color:var(--muted);font-size:14.5px}
 .proc{list-style:none;counter-reset:pr;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:18px}
 .proc li{counter-increment:pr;position:relative;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:20px 18px 18px;box-shadow:var(--shadow-sm)}
@@ -960,14 +908,8 @@ a.aud:hover .ic,a.stage:hover .ic{transform:rotate(-8deg) scale(1.08)}
 .who .avatar{width:40px;height:40px;font-size:14px;flex:none}
 .who b{display:block;font-size:15px}
 .who span{font-size:13px;color:var(--muted)}
-.who.vacant{border-style:dashed}
-.who.vacant .avatar{background:var(--line-2);color:var(--muted)}
 .ccard .row{display:flex;flex-wrap:wrap;gap:8px}
 .ccard .join{font-size:13px;color:var(--muted);font-weight:600}
-.contact-more{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;margin-top:22px}
-.cm{border-radius:22px;padding:26px;border:1px solid var(--line);background:linear-gradient(135deg,var(--brand-soft),var(--surface))}
-.cm h3{font-size:18px;letter-spacing:-.02em;margin-bottom:6px}
-.cm p{color:var(--muted);font-size:14.5px;margin-bottom:16px}
 
 /* Pied de page : badge sécurité */
 .secure{display:inline-flex;align-items:center;gap:8px;margin-top:14px;padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:var(--surface);font-size:12.5px;font-weight:700}
@@ -1433,7 +1375,7 @@ a.aud:hover .ic,a.stage:hover .ic{transform:rotate(-8deg) scale(1.08)}
     </div>
 
     <h2 class="sub-title">Où partir <em>en stage ?</em></h2>
-    <p class="section-sub">Les structures à l'étranger qui ont déjà accueilli des étudiants ITS, et quelques pistes (« Piste »). Rémunération et télétravail sont indicatifs ; à l'étranger, la gratification n'est pas obligatoire.</p>
+    <p class="section-sub">Les structures à l'étranger qui ont déjà accueilli des étudiants ITS. Rémunération et télétravail sont indicatifs ; à l'étranger, la gratification n'est pas obligatoire.</p>
     <div class="ent-tools"><span></span><a class="btn btn-primary btn-sm" href="#ajouter-entreprise" data-stage-add>+ Partager mon stage</a></div>
     <div data-stage-list="s2"></div>
     <p class="see">Convention, documents et contacts : <a href="#infos-stages">page Stages →</a></p>
@@ -1569,6 +1511,8 @@ const store = {
 };
 const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
 document.documentElement.classList.add("js");
+/* Anti-clickjacking : le site refuse de s'afficher à l'intérieur d'une autre page */
+if(window.top!==window.self){ document.documentElement.classList.add("framed"); try{ window.top.location.replace(window.location.href); }catch(e){} }
 
 /* ---------- Parcours de la spécialité ITS ---------- */
 const PARCOURS = {
@@ -1594,7 +1538,6 @@ function projColors(p){
   if(p.pk.length===1) return PARCOURS[p.pk[0]].colors;
   return colorsFor(p.domaine);
 }
-function inkFor(p){ return p.pk.length ? (p.pk[0]==="ia"?"var(--ia-ink)":"var(--cy-ink)") : colorsFor(p.domaine)[0]; }
 const plBadge = k=>`<span class="pl pl-${k}" title="${esc(PARCOURS[k].name)}">${esc(PARCOURS[k].label)}</span>`;
 
 /* ---------- Liens : uniquement http(s), jamais javascript: ou data: ---------- */
@@ -1625,15 +1568,16 @@ function linkLabel(u){
   if(/\.pdf($|\?)/i.test(u)||h==="drive.google.com"||h==="docs.google.com"||h==="canva.com") return "Voir le poster / document";
   return "Ouvrir le lien";
 }
-/* Images : seulement des liens d'images (Google Drive, ce site, GitHub, ou fichiers .png/.jpg/.jpeg/.webp).
+/* Images : seulement depuis Google Drive (formulaire), GitHub ou ce site.
    Une image affichée via <img> ne peut pas exécuter de code ; on refuse en plus tout lien qui ne ressemble pas à une image. */
 const IMG_HOSTS=["drive.google.com","docs.google.com","lh3.googleusercontent.com","raw.githubusercontent.com","projets-its-episen.github.io"];
 function safeImage(u){
   u=String(u||"").split(/[\s,]+/).find(Boolean)||"";
+  if(/^images\/[\w-]+\.(png|jpe?g|webp)$/i.test(u)) return u;   /* image hébergée sur ce site */
   const url=safeUrl(u); if(!url) return "";
   let path=""; try{ path=new URL(url).pathname.toLowerCase(); }catch(e){ return ""; }
   if(/\.(php\d?|phtml|js|mjs|html?|svg|exe|sh|py|cgi|asp|aspx|jsp)$/.test(path)) return "";
-  return (IMG_HOSTS.includes(hostOf(url)) || /\.(png|jpe?g|webp)$/.test(path)) ? url : "";
+  return IMG_HOSTS.includes(hostOf(url)) ? url : "";
 }
 function validEmail(e){ return /^[^\s@<>"']+@[^\s@<>"']+\.[a-z]{2,}$/i.test(e||""); }
 
@@ -1693,7 +1637,7 @@ function cover(p,uid){
 
 /* ---------- CSV ---------- */
 function parseCSV(t){
-  t=String(t).replace(/^\uFEFF/,"");
+  t=String(t).slice(0,2000000).replace(/^\uFEFF/,"");
   const rows=[]; let row=[], f="", q=false;
   for(let i=0;i<t.length;i++){
     const c=t[i];
@@ -1704,7 +1648,7 @@ function parseCSV(t){
     else f+=c;
   }
   if(f!==""||row.length){ row.push(f); rows.push(row); }
-  return rows.filter(r=>r.some(x=>x.trim()!==""));
+  return rows.filter(r=>r.some(x=>x.trim()!=="")).slice(0,1500);
 }
 
 /* Colonnes reconnues par mots-clés dans les titres des questions.
@@ -1738,9 +1682,11 @@ function rowsToProjects(rows){
     .map(r=>{ const o={}; for(const k in LIMITS) o[k]=idx[k]!==undefined ? (r[idx[k]]||"") : "";
       const img=imgCols.map(i=>r[i]||"").find(v=>safeImage(v)); if(img) o.image=img; return o; });
 }
+const SPAMMY=/https?:\/\/|www\.|\.(ru|xyz|top|click)\b|<\s*(script|iframe)/i;
 function clean(p){
   const o={}; for(const k in LIMITS) o[k]=clip(p[k],LIMITS[k]);
   o.image=safeImage(p.image); o.lien=safeUrl(p.lien);
+  if(SPAMMY.test(o.nom)||SPAMMY.test(o.resume)) return null;
   return o.nom ? o : null;
 }
 
@@ -1752,7 +1698,7 @@ async function fetchSheet(src=CONFIG.SHEET_CSV_URL, CACHE_KEY="its-projets-csv")
   try{
     const res=await fetch(url+(url.includes("?")?"&":"?")+"t="+Date.now(),{signal:ctrl.signal,credentials:"omit",cache:"no-store",referrerPolicy:"no-referrer"});
     if(!res.ok) throw new Error("HTTP "+res.status);
-    const text=await res.text();
+    const text=(await res.text()).slice(0,2000000);
     if(/^\s*</.test(text)) throw new Error("Le lien ne renvoie pas un CSV (la feuille est-elle publiée ?)");
     store.set(CACHE_KEY,JSON.stringify({t:Date.now(),text}));
     return {text,source:"live"};
@@ -1906,7 +1852,7 @@ function showProject(p){
       ${p.technos?`<div class="block"><h4>Technologies</h4><div class="tags">${splitList(p.technos).map(t=>`<span class="tag">${esc(clip(t,40))}</span>`).join("")}</div></div>`:""}
       ${p.equipe?`<div class="block"><h4>L'équipe</h4><div class="team">${splitList(p.equipe).map(n=>`<span class="person"><span class="avatar" style="background:${colorsFor(n)[0]}">${esc(initials(n))}</span>${esc(clip(n,50))}</span>`).join("")}</div></div>`:""}
       <div class="actions">
-        ${p.lien?`<a class="btn btn-primary" href="${esc(p.lien)}" target="_blank" rel="noopener noreferrer">${esc(linkLabel(p.lien))} <span aria-hidden="true">↗</span><span class="sr-only"> (nouvel onglet)</span></a>`:""}
+        ${p.lien?`<a class="btn btn-primary" href="${esc(p.lien)}" target="_blank" rel="noopener noreferrer nofollow ugc" title="${esc(p.lien)}">${esc(linkLabel(p.lien))} <small style="opacity:.75;font-weight:600">· ${esc(hostOf(p.lien))}</small> <span aria-hidden="true">↗</span><span class="sr-only"> (nouvel onglet)</span></a>`:""}
         <button type="button" class="btn btn-ghost" data-share>Partager</button>
       </div>
       ${(prev||next)?`<nav class="pager" aria-label="Autres projets">${prev?`<a class="prev" href="#/${prev.slug}" data-replace><small>← Précédent</small><span>${esc(prev.nom)}</span></a>`:""}${next?`<a class="next" href="#/${next.slug}" data-replace><small>Suivant →</small><span>${esc(next.nom)}</span></a>`:""}</nav>`:""}
@@ -2090,7 +2036,7 @@ const reportLink=what=>`<p class="report-line"><a href="#" data-contact="${esc("
 const STAGE_TITLES={s1:"Lieux de stage de 1re année · monde de la santé",s2:"Entreprises et laboratoires à l'étranger · stage de 2e année",s3:"Entreprises et laboratoires · stage de fin d'études"};
 function entTable(list,title,withType,open){
   const cols=["Structure",...(withType?["Accueil"]:[]),"Ville / pays","Contact","Commentaire"];
-  const rows=list.length ? list.map(e=>`<tr><td><b>${e.lien?`<a href="${esc(e.lien)}" target="_blank" rel="noopener noreferrer">${esc(e.nom)} ↗</a>`:esc(e.nom)}</b>${e.secteur?`<span class="muted">${esc(e.secteur)}</span>`:""}${e.piste?`<span class="piste">Piste</span>`:""}</td>${withType?`<td>${e.tk.map(k=>`<span class="tag">${esc(ENT_TYPES.find(t=>t[0]===k)[1])}</span>`).join(" ")}</td>`:""}<td>${esc(e.ville)}</td><td>${contactOf(e)}</td><td>${esc(e.note)}</td></tr>`).join("")
+  const rows=list.length ? list.map(e=>`<tr><td><b>${e.lien?`<a href="${esc(e.lien)}" target="_blank" rel="noopener noreferrer nofollow ugc" title="${esc(hostOf(e.lien))}">${esc(e.nom)} ↗</a>`:esc(e.nom)}</b>${e.secteur?`<span class="muted">${esc(e.secteur)}</span>`:""}${e.piste?`<span class="piste">Piste</span>`:""}</td>${withType?`<td>${e.tk.map(k=>`<span class="tag">${esc(ENT_TYPES.find(t=>t[0]===k)[1])}</span>`).join(" ")}</td>`:""}<td>${esc(e.ville)}</td><td>${contactOf(e)}</td><td>${esc(e.note)}</td></tr>`).join("")
     : `<tr><td colspan="${cols.length}" class="tbl-empty">Aucune structure pour l'instant. Tu en connais une ? Partage-la avec le bouton « Partager mon stage » : elle aidera toute la promo.</td></tr>`;
   return `<div class="tbl-wrap"><table class="tbl ent-tbl"><caption>${esc(title)}${list.length?` <span>${list.length}</span>`:""}</caption><thead><tr>${cols.map(c=>`<th>${c}</th>`).join("")}</tr></thead><tbody>${rows}</tbody></table></div>`;
 }
@@ -2102,10 +2048,9 @@ function table2A(open){
   const added=allStructures().filter(e=>e.tk.includes("s2") && !names.has(norm(e.nom)));
   const priv=safeUrl(CONFIG.CONTACTS_STAGE_2A_URL), privOk=priv&&hostOf(priv)==="docs.google.com";
   const lock=privOk?`<a href="${esc(priv)}" target="_blank" rel="noopener noreferrer" class="lock-link">Voir le contact 🔒</a>`:`<a href="#contacts">Via la promo</a>`;
-  const contactCell=e=>e.mail?`<a href="mailto:${esc(e.mail)}">${esc(e.personne||e.mail)}</a>`:(esc(e.personne||e.contact)||lock);
   const rows=[
-    ...known.map(e=>`<tr><td><b>${e.lien?`<a href="${esc(e.lien)}" target="_blank" rel="noopener noreferrer">${esc(e.nom)} ↗</a>`:esc(e.nom)}</b>${e.nb>1?`<span class="muted">${e.nb} étudiants ITS</span>`:""}</td><td>${esc(e.pays)}</td><td>${esc(e.depuis)||"–"}</td><td>${esc(e.remuneration)||"–"}</td><td>${esc(e.teletravail)||"–"}</td><td>${esc(e.sujet)||"–"}</td><td>${e.mail?`<a href="mailto:${esc(e.mail)}">${esc(e.mail)}</a>`:(e.lien?`<a href="${esc(e.lien)}" target="_blank" rel="noopener noreferrer">Site officiel ↗</a>`:lock)}</td></tr>`),
-    ...added.map(e=>`<tr><td><b>${e.lien?`<a href="${esc(e.lien)}" target="_blank" rel="noopener noreferrer">${esc(e.nom)} ↗</a>`:esc(e.nom)}</b>${e.secteur?`<span class="muted">${esc(e.secteur)}</span>`:""}${e.piste?`<span class="piste">Piste</span>`:""}</td><td>${esc(e.ville)}</td><td>–</td><td>–</td><td>–</td><td>${esc(e.note)||"–"}</td><td>${contactOf(e)}</td></tr>`)];
+    ...known.map(e=>`<tr><td><b>${e.lien?`<a href="${esc(e.lien)}" target="_blank" rel="noopener noreferrer nofollow ugc" title="${esc(hostOf(e.lien))}">${esc(e.nom)} ↗</a>`:esc(e.nom)}</b>${e.nb>1?`<span class="muted">${e.nb} étudiants ITS</span>`:""}</td><td>${esc(e.pays)}</td><td>${esc(e.depuis)||"–"}</td><td>${esc(e.remuneration)||"–"}</td><td>${esc(e.teletravail)||"–"}</td><td>${esc(e.sujet)||"–"}</td><td>${e.mail?`<a href="mailto:${esc(e.mail)}">${esc(e.mail)}</a>`:(e.lien?`<a href="${esc(e.lien)}" target="_blank" rel="noopener noreferrer">Site officiel ↗</a>`:lock)}</td></tr>`),
+    ...added.map(e=>`<tr><td><b>${e.lien?`<a href="${esc(e.lien)}" target="_blank" rel="noopener noreferrer nofollow ugc" title="${esc(hostOf(e.lien))}">${esc(e.nom)} ↗</a>`:esc(e.nom)}</b>${e.secteur?`<span class="muted">${esc(e.secteur)}</span>`:""}${e.piste?`<span class="piste">Piste</span>`:""}</td><td>${esc(e.ville)}</td><td>–</td><td>–</td><td>–</td><td>${esc(e.note)||"–"}</td><td>${contactOf(e)}</td></tr>`)];
   const note=privOk?`<p class="lock-note">🔒 <b>Les e-mails des structures et des anciens</b> sont dans un tableau réservé aux étudiants ITS : <a href="${esc(priv)}" target="_blank" rel="noopener noreferrer">ouvrir le tableau des contacts ↗</a>. Pas encore accès ? <a href="#contacts">Demande-le à la promo</a>.</p>`:"";
   return note+`<div class="tbl-wrap"><table class="tbl ent-tbl"><caption>${esc(STAGE_TITLES.s2)} <span>${rows.length}</span></caption><thead><tr><th>Structure</th><th>Pays (ville)</th><th>Depuis</th><th>Rémunération</th><th>Télétravail</th><th>Sujet / commentaire</th><th>Contact</th></tr></thead><tbody>${rows.join("")||`<tr><td colspan="7" class="tbl-empty">Aucune structure pour l'instant.</td></tr>`}</tbody></table></div>`;
 }
@@ -2137,7 +2082,7 @@ async function loadEnts(){
   ENTS=rows.slice(1).filter(r=>idx.publie===undefined||YES.has(norm(r[idx.publie]))).map(r=>{
     const e={}; for(const k in ENT_LIM) e[k]=clip(idx[k]!==undefined?r[idx[k]]:"",ENT_LIM[k]);
     e.lien=safeUrl(e.lien); e.mail=validEmail(e.contact)?e.contact.trim():""; const t=norm(e.type); e.tk=ENT_TYPES.filter(x=>x[2].test(t)).map(x=>x[0]); return e;
-  }).filter(e=>e.nom && !seen.has(norm(e.nom)) && seen.add(norm(e.nom))).sort((a,b)=>a.nom.localeCompare(b.nom,"fr",{sensitivity:"base"}));
+  }).filter(e=>e.nom && !SPAMMY.test(e.nom) && !seen.has(norm(e.nom)) && seen.add(norm(e.nom))).sort((a,b)=>a.nom.localeCompare(b.nom,"fr",{sensitivity:"base"}));
   renderEnts();
 }
 document.addEventListener("click",e=>{ const c=e.target.closest("[data-ent]"); if(c){ entFilter=entFilter===c.dataset.ent?"":c.dataset.ent; renderEnts(); } });

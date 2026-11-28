@@ -101,7 +101,7 @@ Le site reconnaît les colonnes grâce aux mots en gras. Si tu renommes une ques
 
 **Image du projet (question 9) :** choisis le type « Importation de fichier », active « Autoriser uniquement certains types de fichiers » et coche **Image** seulement, avec 1 fichier et 10 Mo maximum. Google stocke les fichiers dans ton Drive, dans un dossier « (File responses) » : partage ce dossier en **« Tous les utilisateurs disposant du lien : lecteur »**, sinon les images ne s'afficheront pas. Les répondants devront se connecter à un compte Google pour importer un fichier.
 
-Côté sécurité : le site est entièrement statique, il n'exécute aucun fichier envoyé. Il n'affiche que des liens d'images (Google Drive, GitHub ou fichiers .png/.jpg/.jpeg/.webp) et refuse les autres (.php, .js, .html, .svg…).
+Côté sécurité : le site est entièrement statique, il n'exécute aucun fichier envoyé. Il n'affiche que des images venant de Google Drive, de GitHub ou du dossier `images/` du site, et refuse tout le reste.
 
 **Parcours :** la question 11 permet d'afficher le badge IA&D-S ou Cyber-S sur chaque projet et de filtrer par parcours. Si elle est absente ou vide, le site devine le parcours à partir du domaine (IA, données, imagerie → IA&D-S ; cybersécurité → Cyber-S).
 
@@ -112,6 +112,10 @@ Côté sécurité : le site est entièrement statique, il n'exécute aucun fichi
 - Tout le contenu venant du formulaire est affiché comme du texte : un code envoyé dans une réponse n'est jamais exécuté.
 - Seuls les liens `http(s)` sont acceptés. Les liens s'ouvrent dans un nouvel onglet, isolés du site.
 - Une politique de sécurité (CSP) limite le site à Google (tableau, formulaire, polices) et YouTube (vidéos).
+- Les images ne peuvent venir que de Google Drive, de GitHub ou du dossier `images/` (pas de pixel espion).
+- Le site refuse de s'afficher à l'intérieur d'une autre page (anti-clickjacking).
+- Les tableaux lus sont plafonnés (1 500 lignes) et les lignes dont le nom contient un lien sont écartées (anti-spam).
+- Les liens envoyés par les visiteurs affichent leur site de destination et sont marqués « nofollow ugc ».
 - Le script de la page est identifié par son empreinte `sha256` dans la CSP. **Si tu modifies le bloc `<script>` du bas de page, recalcule cette empreinte**, sinon le site ne s'affichera plus. Modifier le texte, `config` ou `seed` ne pose aucun problème.
 
 ## Fichiers
